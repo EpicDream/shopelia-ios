@@ -8,6 +8,7 @@
 
 #import "SPZBarReaderViewController.h"
 #import "overlayView.h"
+#import "UIView+Shopelia.h"
 
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO( v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
 
@@ -30,6 +31,9 @@
 {
     [super viewDidLoad]; // Do any additional setup after loading the view, typically from a nib.
     
+    UIImageView *logo = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"logo-word.png" ]];
+    self.navigationItem.titleView = logo ;
+    
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0"))
         self.edgesForExtendedLayout = UIRectEdgeNone;
     
@@ -37,8 +41,9 @@
     self.supportedOrientationsMask = ZBarOrientationMaskAll;
     self.showsZBarControls = NO;
     CGRect frame = self.readerView.frame;
-    frame.size.height = UIScreen.mainScreen.bounds.size.height;
-    frame.size.width = UIScreen.mainScreen.bounds.size.width;
+    
+    [self.readerView setFrameSizeWithW:UIScreen.mainScreen.bounds.size.width h:UIScreen.mainScreen.bounds.size.height];
+
     self.readerView.frame = frame;
     self.wantsFullScreenLayout = NO;
     NSLog(@"%@",UIScreen.mainScreen);
@@ -52,10 +57,6 @@
     [self.scanner setSymbology: ZBAR_I25
                    config: ZBAR_CFG_ENABLE
                        to: 0];
-
-    
-    // present and release the controller
-    //[self presentViewController:self animated:YES completion:nil];
 
 	// Do any additional setup after loading the view.
 }

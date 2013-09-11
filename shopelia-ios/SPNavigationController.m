@@ -18,7 +18,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+
     }
     return self;
 }
@@ -27,11 +27,13 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+       [self.navigationBar setBackgroundImage:[UIImage imageNamed:@"navbar.png"] forBarMetrics:UIBarMetricsDefault];
     
 
-    [self.navigationBar setBackgroundImage:[UIImage imageNamed:@"navbar.png"] forBarMetrics:UIBarMetricsDefault];    
     
 }
+
+
 
 - (void)didReceiveMemoryWarning
 {

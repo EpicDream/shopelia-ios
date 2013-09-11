@@ -14,5 +14,9 @@
     return [UIColor colorWithRed:0 green:0.5059 blue:0.651 alpha:1.0];
 }
 
++(UIColor *) shopeliaLightBlue {
+    return [UIColor colorWithRed:0 green:0.776 blue:1.0 alpha:1.0];
+}
+
 @end
 

@@ -11,5 +11,6 @@
 @interface UIColor (Shopelia)
 
 +(UIColor *) shopeliaBlue;
++(UIColor *) shopeliaLightBlue;
 
 @end

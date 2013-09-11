@@ -38,6 +38,9 @@
 		116CD95417DE1B4600978733 /* SPHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 116CD95017DE1B4600978733 /* SPHTTPRequest.m */; };
 		116CD95517DE1B4600978733 /* SPHTTPResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 116CD95217DE1B4600978733 /* SPHTTPResponse.m */; };
 		11C6E7E317E06F5600D66D96 /* UIColor+Shopelia.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C6E7E217E06F5600D66D96 /* UIColor+Shopelia.m */; };
+		11C6E7E617E078BE00D66D96 /* logo-word.png in Resources */ = {isa = PBXBuildFile; fileRef = 11C6E7E417E078BE00D66D96 /* logo-word.png */; };
+		11C6E7E717E078BE00D66D96 /* logo-word@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 11C6E7E517E078BE00D66D96 /* logo-word@2x.png */; };
+		11C6E7EB17E07E8500D66D96 /* UIView+Shopelia.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C6E7EA17E07E8500D66D96 /* UIView+Shopelia.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +116,10 @@
 		116CD95217DE1B4600978733 /* SPHTTPResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPHTTPResponse.m; sourceTree = "<group>"; };
 		11C6E7E117E06F5600D66D96 /* UIColor+Shopelia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Shopelia.h"; sourceTree = "<group>"; };
 		11C6E7E217E06F5600D66D96 /* UIColor+Shopelia.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Shopelia.m"; sourceTree = "<group>"; };
+		11C6E7E417E078BE00D66D96 /* logo-word.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo-word.png"; sourceTree = "<group>"; };
+		11C6E7E517E078BE00D66D96 /* logo-word@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo-word@2x.png"; sourceTree = "<group>"; };
+		11C6E7E917E07E8500D66D96 /* UIView+Shopelia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Shopelia.h"; sourceTree = "<group>"; };
+		11C6E7EA17E07E8500D66D96 /* UIView+Shopelia.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Shopelia.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +205,8 @@
 				1163C5AE17DF5B6C0043E73D /* overlayView.m */,
 				11C6E7E117E06F5600D66D96 /* UIColor+Shopelia.h */,
 				11C6E7E217E06F5600D66D96 /* UIColor+Shopelia.m */,
+				11C6E7E917E07E8500D66D96 /* UIView+Shopelia.h */,
+				11C6E7EA17E07E8500D66D96 /* UIView+Shopelia.m */,
 			);
 			path = "shopelia-ios";
 			sourceTree = "<group>";
@@ -311,6 +320,8 @@
 		116CD95617DF085500978733 /* ShopeliaResources */ = {
 			isa = PBXGroup;
 			children = (
+				11C6E7E417E078BE00D66D96 /* logo-word.png */,
+				11C6E7E517E078BE00D66D96 /* logo-word@2x.png */,
 				1163C5A417DF1F380043E73D /* navbar.png */,
 				1163C5A517DF1F380043E73D /* navbar@2x.png */,
 			);
@@ -398,7 +409,9 @@
 				1163C5A717DF1F380043E73D /* navbar@2x.png in Resources */,
 				113DDE8717DDFE630056E126 /* zbar-samples.png in Resources */,
 				113DDE8617DDFE630056E126 /* zbar-helpicons.png in Resources */,
+				11C6E7E717E078BE00D66D96 /* logo-word@2x.png in Resources */,
 				113DDE8417DDFE630056E126 /* zbar-back.png in Resources */,
+				11C6E7E617E078BE00D66D96 /* logo-word.png in Resources */,
 				113DDE3917DDFA9A0056E126 /* InfoPlist.strings in Resources */,
 				1163C5A617DF1F380043E73D /* navbar.png in Resources */,
 			);
@@ -422,6 +435,7 @@
 				113DDE3F17DDFA9A0056E126 /* AppDelegate.m in Sources */,
 				113DDE3B17DDFA9A0056E126 /* main.m in Sources */,
 				1163C5AF17DF5B6C0043E73D /* overlayView.m in Sources */,
+				11C6E7EB17E07E8500D66D96 /* UIView+Shopelia.m in Sources */,
 				1163C5A317DF1D070043E73D /* SPNavigationController.m in Sources */,
 				1163C5A017DF161F0043E73D /* SPZBarReaderViewController.m in Sources */,
 				116CD95517DE1B4600978733 /* SPHTTPResponse.m in Sources */,
