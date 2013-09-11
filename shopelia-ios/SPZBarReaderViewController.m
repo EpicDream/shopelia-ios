@@ -40,14 +40,12 @@
     self.readerDelegate = self;
     self.supportedOrientationsMask = ZBarOrientationMaskAll;
     self.showsZBarControls = NO;
-    CGRect frame = self.readerView.frame;
     
     [self.readerView setFrameSizeWithW:UIScreen.mainScreen.bounds.size.width h:UIScreen.mainScreen.bounds.size.height];
 
-    self.readerView.frame = frame;
     self.wantsFullScreenLayout = NO;
     NSLog(@"%@",UIScreen.mainScreen);
-    overlayView *view = [[overlayView alloc] initWithFrame:frame];
+    overlayView *view = [[overlayView alloc] initWithFrame:self.readerView.frame];
     self.cameraOverlayView = view;
     //self.scanCrop = CGRectMake(0,0,0.5,0.5);
     
