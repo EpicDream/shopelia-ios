@@ -37,6 +37,7 @@
 		116CD95317DE1B4600978733 /* SPHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 116CD94E17DE1B4600978733 /* SPHTTPClient.m */; };
 		116CD95417DE1B4600978733 /* SPHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 116CD95017DE1B4600978733 /* SPHTTPRequest.m */; };
 		116CD95517DE1B4600978733 /* SPHTTPResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 116CD95217DE1B4600978733 /* SPHTTPResponse.m */; };
+		11C6E7E317E06F5600D66D96 /* UIColor+Shopelia.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C6E7E217E06F5600D66D96 /* UIColor+Shopelia.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,6 +111,8 @@
 		116CD95017DE1B4600978733 /* SPHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPHTTPRequest.m; sourceTree = "<group>"; };
 		116CD95117DE1B4600978733 /* SPHTTPResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPHTTPResponse.h; sourceTree = "<group>"; };
 		116CD95217DE1B4600978733 /* SPHTTPResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPHTTPResponse.m; sourceTree = "<group>"; };
+		11C6E7E117E06F5600D66D96 /* UIColor+Shopelia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Shopelia.h"; sourceTree = "<group>"; };
+		11C6E7E217E06F5600D66D96 /* UIColor+Shopelia.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Shopelia.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +196,8 @@
 				1163C5A217DF1D070043E73D /* SPNavigationController.m */,
 				1163C5AD17DF5B6C0043E73D /* overlayView.h */,
 				1163C5AE17DF5B6C0043E73D /* overlayView.m */,
+				11C6E7E117E06F5600D66D96 /* UIColor+Shopelia.h */,
+				11C6E7E217E06F5600D66D96 /* UIColor+Shopelia.m */,
 			);
 			path = "shopelia-ios";
 			sourceTree = "<group>";
@@ -422,6 +427,7 @@
 				116CD95517DE1B4600978733 /* SPHTTPResponse.m in Sources */,
 				116CD95317DE1B4600978733 /* SPHTTPClient.m in Sources */,
 				116CD95417DE1B4600978733 /* SPHTTPRequest.m in Sources */,
+				11C6E7E317E06F5600D66D96 /* UIColor+Shopelia.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

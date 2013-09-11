@@ -9,6 +9,8 @@
 #import "SPZBarReaderViewController.h"
 #import "overlayView.h"
 
+#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO( v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+
 @interface SPZBarReaderViewController ()
 
 @end
@@ -27,6 +29,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad]; // Do any additional setup after loading the view, typically from a nib.
+    
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0"))
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    
     self.readerDelegate = self;
     self.supportedOrientationsMask = ZBarOrientationMaskAll;
     self.showsZBarControls = NO;
@@ -35,6 +41,7 @@
     frame.size.width = UIScreen.mainScreen.bounds.size.width;
     self.readerView.frame = frame;
     self.wantsFullScreenLayout = NO;
+    NSLog(@"%@",UIScreen.mainScreen);
     overlayView *view = [[overlayView alloc] initWithFrame:frame];
     self.cameraOverlayView = view;
     //self.scanCrop = CGRectMake(0,0,0.5,0.5);
