@@ -37,6 +37,10 @@
 		116CD95317DE1B4600978733 /* SPHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 116CD94E17DE1B4600978733 /* SPHTTPClient.m */; };
 		116CD95417DE1B4600978733 /* SPHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 116CD95017DE1B4600978733 /* SPHTTPRequest.m */; };
 		116CD95517DE1B4600978733 /* SPHTTPResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 116CD95217DE1B4600978733 /* SPHTTPResponse.m */; };
+		118433B117E1F01E00425AEB /* green-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 118433AC17E1F01E00425AEB /* green-button.png */; };
+		118433B217E1F01E00425AEB /* green-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 118433AD17E1F01E00425AEB /* green-button@2x.png */; };
+		118433B317E1F01E00425AEB /* productViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 118433AF17E1F01E00425AEB /* productViewController.m */; };
+		118433B417E1F01E00425AEB /* productViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 118433B017E1F01E00425AEB /* productViewController.xib */; };
 		11C6E7E317E06F5600D66D96 /* UIColor+Shopelia.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C6E7E217E06F5600D66D96 /* UIColor+Shopelia.m */; };
 		11C6E7E617E078BE00D66D96 /* logo-word.png in Resources */ = {isa = PBXBuildFile; fileRef = 11C6E7E417E078BE00D66D96 /* logo-word.png */; };
 		11C6E7E717E078BE00D66D96 /* logo-word@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 11C6E7E517E078BE00D66D96 /* logo-word@2x.png */; };
@@ -116,6 +120,11 @@
 		116CD95017DE1B4600978733 /* SPHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPHTTPRequest.m; sourceTree = "<group>"; };
 		116CD95117DE1B4600978733 /* SPHTTPResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPHTTPResponse.h; sourceTree = "<group>"; };
 		116CD95217DE1B4600978733 /* SPHTTPResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPHTTPResponse.m; sourceTree = "<group>"; };
+		118433AC17E1F01E00425AEB /* green-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "green-button.png"; sourceTree = "<group>"; };
+		118433AD17E1F01E00425AEB /* green-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "green-button@2x.png"; sourceTree = "<group>"; };
+		118433AE17E1F01E00425AEB /* productViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = productViewController.h; sourceTree = "<group>"; };
+		118433AF17E1F01E00425AEB /* productViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = productViewController.m; sourceTree = "<group>"; };
+		118433B017E1F01E00425AEB /* productViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = productViewController.xib; sourceTree = "<group>"; };
 		11C6E7E117E06F5600D66D96 /* UIColor+Shopelia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Shopelia.h"; sourceTree = "<group>"; };
 		11C6E7E217E06F5600D66D96 /* UIColor+Shopelia.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Shopelia.m"; sourceTree = "<group>"; };
 		11C6E7E417E078BE00D66D96 /* logo-word.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo-word.png"; sourceTree = "<group>"; };
@@ -195,6 +204,9 @@
 		113DDE3417DDFA9A0056E126 /* shopelia-ios */ = {
 			isa = PBXGroup;
 			children = (
+				118433AE17E1F01E00425AEB /* productViewController.h */,
+				118433AF17E1F01E00425AEB /* productViewController.m */,
+				118433B017E1F01E00425AEB /* productViewController.xib */,
 				116CD95617DF085500978733 /* ShopeliaResources */,
 				116CD94C17DE1B2B00978733 /* SPHTTP */,
 				113DDE3D17DDFA9A0056E126 /* AppDelegate.h */,
@@ -324,6 +336,8 @@
 		116CD95617DF085500978733 /* ShopeliaResources */ = {
 			isa = PBXGroup;
 			children = (
+				118433AC17E1F01E00425AEB /* green-button.png */,
+				118433AD17E1F01E00425AEB /* green-button@2x.png */,
 				11C6E7EC17E086AD00D66D96 /* bar-code.png */,
 				11C6E7ED17E086AD00D66D96 /* bar-code@2x.png */,
 				11C6E7E417E078BE00D66D96 /* logo-word.png */,
@@ -410,6 +424,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				118433B417E1F01E00425AEB /* productViewController.xib in Resources */,
 				113DDE4717DDFA9A0056E126 /* Images.xcassets in Resources */,
 				11C6E7EF17E086AD00D66D96 /* bar-code@2x.png in Resources */,
 				113DDE8517DDFE630056E126 /* zbar-help.html in Resources */,
@@ -420,7 +435,9 @@
 				11C6E7E717E078BE00D66D96 /* logo-word@2x.png in Resources */,
 				113DDE8417DDFE630056E126 /* zbar-back.png in Resources */,
 				11C6E7E617E078BE00D66D96 /* logo-word.png in Resources */,
+				118433B117E1F01E00425AEB /* green-button.png in Resources */,
 				113DDE3917DDFA9A0056E126 /* InfoPlist.strings in Resources */,
+				118433B217E1F01E00425AEB /* green-button@2x.png in Resources */,
 				1163C5A617DF1F380043E73D /* navbar.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -449,6 +466,7 @@
 				116CD95517DE1B4600978733 /* SPHTTPResponse.m in Sources */,
 				116CD95317DE1B4600978733 /* SPHTTPClient.m in Sources */,
 				116CD95417DE1B4600978733 /* SPHTTPRequest.m in Sources */,
+				118433B317E1F01E00425AEB /* productViewController.m in Sources */,
 				11C6E7E317E06F5600D66D96 /* UIColor+Shopelia.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -571,7 +589,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/aminebellakrid/Documents/Geek/shopelia-ios/ZBarSDK",
+					"/Users/aminebellakrid/Documents/Geek/shopelia-ios/shopelia-ios/ZBarSDK",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "811533E2-09FE-46BC-830D-C621B0726B4A";
@@ -591,7 +609,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/aminebellakrid/Documents/Geek/shopelia-ios/ZBarSDK",
+					"/Users/aminebellakrid/Documents/Geek/shopelia-ios/shopelia-ios/ZBarSDK",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "811533E2-09FE-46BC-830D-C621B0726B4A";
