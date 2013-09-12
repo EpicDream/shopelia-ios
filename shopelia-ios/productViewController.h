@@ -11,4 +11,8 @@
 @interface productViewController : UIViewController
 
 @property (strong, nonatomic) IBOutlet UIView *contentView;
+@property (strong, nonatomic) IBOutlet UILabel *shippingPrice;
+
+
+
 @end

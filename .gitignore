@@ -1,0 +1,9 @@
+Pods/Pods.xcodeproj/xcuserdata/**
+shopelia-ios.xcworkspace/xcshareddata/**
+shopelia-ios.xcworkspace/xcuserdata/**
+shopelia-ios.xcodeproj/xcuserdata/**
+shopelia-ios.xcodeproj/xcuserdata/*
+shopelia-ios.xcodeproj/project.xcworkspace/xcuserdata/**
+shopelia-ios.xcodeproj/project.xcworkspace/xcuserdata/*
+*.DS_Store
+	

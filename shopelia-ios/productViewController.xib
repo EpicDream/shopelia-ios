@@ -8,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="productViewController">
             <connections>
                 <outlet property="contentView" destination="ul5-3L-hnC" id="wnV-LF-wfH"/>
+                <outlet property="shippingPrice" destination="so2-JQ-gDQ" id="rq4-ii-qw0"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
         </placeholder>
@@ -28,10 +29,18 @@
                                 <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </state>
                         </button>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="shipping price" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="so2-JQ-gDQ" customClass="OHAttributedLabel">
+                            <rect key="frame" x="20" y="439" width="147" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="e3M-Wg-RvX" secondAttribute="trailing" constant="20" id="LV1-lu-qrT"/>
+                        <constraint firstItem="e3M-Wg-RvX" firstAttribute="top" secondItem="so2-JQ-gDQ" secondAttribute="bottom" constant="14" id="LaX-Z0-VFL"/>
                         <constraint firstAttribute="bottom" secondItem="e3M-Wg-RvX" secondAttribute="bottom" constant="20" id="PPx-nE-mSC"/>
                         <constraint firstItem="e3M-Wg-RvX" firstAttribute="leading" secondItem="ul5-3L-hnC" secondAttribute="leading" constant="20" id="shP-I0-HBx"/>
                     </constraints>

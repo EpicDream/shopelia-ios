@@ -7,12 +7,18 @@
 //
 
 #import "productViewController.h"
+#import <OHAttributedLabel/OHASBasicHTMLParser.h>
+
 
 @interface productViewController ()
 
 @end
 
+
 @implementation productViewController
+
+@synthesize shippingPrice;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -30,6 +36,9 @@
     self.navigationItem.titleView = logo ;
     UIView *view = self.contentView;
     view.layer.cornerRadius =  8.0;
+    
+    NSMutableAttributedString *shipping = [[NSMutableAttributedString alloc] initWithAttributedString:[OHASBasicHTMLParser attributedStringByProcessingMarkupInString:@"<b><font name='Arial' size='13'><font color='#39ADBB'>allo</font></font></b>"]];
+    self.shippingPrice.attributedText = shipping;
     
     // Do any additional setup after loading the view from its nib.
 }
