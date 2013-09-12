@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "productViewController.h"
 
 @implementation AppDelegate
 
@@ -19,7 +20,8 @@
 
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    self.viewController = [[SPZBarReaderViewController alloc] init];
+    //self.viewController = [[SPZBarReaderViewController alloc] init];
+    self.viewController = [[productViewController alloc] initWithNibName:@"productViewController" bundle:nil];
 
 
     SPNavigationController *navbar = [[SPNavigationController alloc] initWithRootViewController:self.viewController];
