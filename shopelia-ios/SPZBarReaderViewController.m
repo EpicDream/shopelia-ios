@@ -20,6 +20,8 @@
 
 @implementation SPZBarReaderViewController
 
+@synthesize SPClient;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -79,21 +81,66 @@
         // EXAMPLE: just grab the first barcode
         break;
     
+    //NSURL *url = [NSURL URLWithString:@"https://mysite.com/"];
+    //AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
+    [self getProductNameAndUrlsWithEAN: symbol.data];
+    // ADD: dismiss the controller (NB dismiss from the *reader*!)
+    [reader dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+- (void) getProductNameAndUrlsWithEAN: (NSString *) EAN {
+    NSDictionary *dict = [[NSBundle mainBundle] infoDictionary];
+    NSString *shopeliApiKey = [dict valueForKey:@"ShopeliaAPIKey"] ;
+    
+    NSString *url = API_URL;
+    url =[url stringByAppendingFormat:@"showcase/products/search?ean=%@",EAN];
+
     SPHTTPRequest *request = [[SPHTTPRequest alloc] init];
-    NSString *url =@"http://api.prixing.fr/api/v4/products/E";
-    url = [url stringByAppendingFormat:@"%@",symbol.data];
-    url = [url stringByAppendingString:@"/?device=Samsung&lat=0&lng=0"];
+    [request setValue:shopeliApiKey forHTTPHeaderField:@"X-Shopelia-ApiKey"];
+    
     [request setURL:[NSURL URLWithString:url]];
     [request setHTTPMethod:@"GET"];
     [request startWithCompletion:^(NSError *error, SPHTTPResponse *response){
         if (error == nil) {
-            NSLog(@"%@",response.responseJSON);
+            NSMutableArray *urls = [response.responseJSON objectForKey:@"urls"];
+            NSLog(@"%@",urls);
+            [self getAllProductInfosForUrls:urls ];
         } else {
             NSLog(@"%@",error);
         }
     }];
-    // ADD: dismiss the controller (NB dismiss from the *reader*!)
-    [reader dismissViewControllerAnimated:YES completion:nil];
+ 
+}
+
+
+-(void) getAllProductInfosForUrls: (NSMutableArray*) urls {
+    NSDictionary *dict = [[NSBundle mainBundle] infoDictionary];
+    NSString *shopeliApiKey = [dict valueForKey:@"ShopeliaAPIKey"] ;
+    SPHTTPRequest *request = [[SPHTTPRequest alloc] init];
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    
+    [params setObject:urls forKey: @"urls"];
+    NSLog(@"%@",params);
+    
+    NSData* jsonData = [NSJSONSerialization dataWithJSONObject:params
+                                                       options:NSJSONWritingPrettyPrinted error:nil];
+    
+    request.HTTPBody = jsonData;
+    [request setValue:shopeliApiKey forHTTPHeaderField:@"X-Shopelia-ApiKey"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    NSString *url =@"https://www.shopelia.com/api/products";
+    [request setURL:[NSURL URLWithString:url]];
+    [request setHTTPMethod:@"POST"];
+    NSLog(@"%@",request);
+    [request startWithCompletion:^(NSError *error, SPHTTPResponse *response){
+        if (error == nil) {
+            NSLog(@"%@",response.responseJSON);
+
+        } else {
+            NSLog(@"%@",error);
+        }
+    }];
 }
 
 @end

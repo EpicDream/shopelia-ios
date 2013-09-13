@@ -19,8 +19,8 @@
 
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    //self.viewController = [[SPZBarReaderViewController alloc] init];
-    self.viewController = [[productViewController alloc] initWithNibName:@"productViewController" bundle:nil];
+    self.viewController = [[SPZBarReaderViewController alloc] init];
+    //self.viewController = [[productViewController alloc] initWithNibName:@"productViewController" bundle:nil];
 
 
     SPNavigationController *navbar = [[SPNavigationController alloc] initWithRootViewController:self.viewController];

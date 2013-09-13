@@ -7,7 +7,11 @@
 //
 
 #import "ZBarReaderViewController.h"
+#import "SPHTTPClient.h"
+
 
 @interface SPZBarReaderViewController : ZBarReaderViewController <ZBarReaderDelegate>
+
+@property (strong, nonatomic) SPHTTPClient *SPClient;
 
 @end
