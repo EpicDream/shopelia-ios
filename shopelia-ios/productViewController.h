@@ -12,6 +12,8 @@
 
 @property (strong, nonatomic) IBOutlet UIView *contentView;
 @property (strong, nonatomic) IBOutlet UILabel *shippingPrice;
+@property (strong, nonatomic) NSArray* products;
+@property (strong, nonatomic) NSDictionary* cheaperProduct;
 
 
 

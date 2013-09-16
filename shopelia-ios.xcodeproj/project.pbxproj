@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		110B54DD17E6F9D000DF1C3A /* SPHTTPPoller.m in Sources */ = {isa = PBXBuildFile; fileRef = 110B54DC17E6F9D000DF1C3A /* SPHTTPPoller.m */; };
 		113DDE2F17DDFA9A0056E126 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 113DDE2E17DDFA9A0056E126 /* Foundation.framework */; };
 		113DDE3117DDFA9A0056E126 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 113DDE3017DDFA9A0056E126 /* CoreGraphics.framework */; };
 		113DDE3317DDFA9A0056E126 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 113DDE3217DDFA9A0056E126 /* UIKit.framework */; };
@@ -42,13 +43,13 @@
 		119C076417E320DA003AF6AA /* SPHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 119C075F17E320DA003AF6AA /* SPHTTPClient.m */; };
 		119C076517E320DA003AF6AA /* SPHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 119C076117E320DA003AF6AA /* SPHTTPRequest.m */; };
 		119C076617E320DA003AF6AA /* SPHTTPResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 119C076317E320DA003AF6AA /* SPHTTPResponse.m */; };
+		119C076C17E3685C003AF6AA /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 119C076B17E3685C003AF6AA /* libPods.a */; };
 		11C6E7E317E06F5600D66D96 /* UIColor+Shopelia.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C6E7E217E06F5600D66D96 /* UIColor+Shopelia.m */; };
 		11C6E7E617E078BE00D66D96 /* logo-word.png in Resources */ = {isa = PBXBuildFile; fileRef = 11C6E7E417E078BE00D66D96 /* logo-word.png */; };
 		11C6E7E717E078BE00D66D96 /* logo-word@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 11C6E7E517E078BE00D66D96 /* logo-word@2x.png */; };
 		11C6E7EB17E07E8500D66D96 /* UIView+Shopelia.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C6E7EA17E07E8500D66D96 /* UIView+Shopelia.m */; };
 		11C6E7EE17E086AD00D66D96 /* bar-code.png in Resources */ = {isa = PBXBuildFile; fileRef = 11C6E7EC17E086AD00D66D96 /* bar-code.png */; };
 		11C6E7EF17E086AD00D66D96 /* bar-code@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 11C6E7ED17E086AD00D66D96 /* bar-code@2x.png */; };
-		FD7AC85EDBB04402A658FDEF /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE7EC3D152B545618C950648 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		110B54DB17E6F9D000DF1C3A /* SPHTTPPoller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPHTTPPoller.h; sourceTree = "<group>"; };
+		110B54DC17E6F9D000DF1C3A /* SPHTTPPoller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPHTTPPoller.m; sourceTree = "<group>"; };
 		113DDE2B17DDFA9A0056E126 /* shopelia-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "shopelia-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		113DDE2E17DDFA9A0056E126 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		113DDE3017DDFA9A0056E126 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -129,6 +132,7 @@
 		119C076117E320DA003AF6AA /* SPHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPHTTPRequest.m; sourceTree = "<group>"; };
 		119C076217E320DA003AF6AA /* SPHTTPResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPHTTPResponse.h; sourceTree = "<group>"; };
 		119C076317E320DA003AF6AA /* SPHTTPResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPHTTPResponse.m; sourceTree = "<group>"; };
+		119C076B17E3685C003AF6AA /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "Pods/build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
 		11C6E7E117E06F5600D66D96 /* UIColor+Shopelia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Shopelia.h"; sourceTree = "<group>"; };
 		11C6E7E217E06F5600D66D96 /* UIColor+Shopelia.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Shopelia.m"; sourceTree = "<group>"; };
 		11C6E7E417E078BE00D66D96 /* logo-word.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo-word.png"; sourceTree = "<group>"; };
@@ -146,6 +150,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				119C076C17E3685C003AF6AA /* libPods.a in Frameworks */,
 				116CD92917DE030100978733 /* AVFoundation.framework in Frameworks */,
 				116CD92A17DE030100978733 /* CoreMedia.framework in Frameworks */,
 				116CD92B17DE030100978733 /* CoreVideo.framework in Frameworks */,
@@ -155,7 +160,6 @@
 				113DDE3317DDFA9A0056E126 /* UIKit.framework in Frameworks */,
 				113DDE8317DDFE630056E126 /* libzbar.a in Frameworks */,
 				113DDE2F17DDFA9A0056E126 /* Foundation.framework in Frameworks */,
-				FD7AC85EDBB04402A658FDEF /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,6 +202,7 @@
 		113DDE2D17DDFA9A0056E126 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				119C076B17E3685C003AF6AA /* libPods.a */,
 				116CD92417DE030000978733 /* AVFoundation.framework */,
 				116CD92517DE030000978733 /* CoreMedia.framework */,
 				116CD92617DE030000978733 /* CoreVideo.framework */,
@@ -355,6 +360,8 @@
 				119C076117E320DA003AF6AA /* SPHTTPRequest.m */,
 				119C076217E320DA003AF6AA /* SPHTTPResponse.h */,
 				119C076317E320DA003AF6AA /* SPHTTPResponse.m */,
+				110B54DB17E6F9D000DF1C3A /* SPHTTPPoller.h */,
+				110B54DC17E6F9D000DF1C3A /* SPHTTPPoller.m */,
 			);
 			name = SPHTTP;
 			sourceTree = "<group>";
@@ -512,6 +519,7 @@
 				119C076417E320DA003AF6AA /* SPHTTPClient.m in Sources */,
 				119C074917E30DA5003AF6AA /* Constants.m in Sources */,
 				1163C5A017DF161F0043E73D /* SPZBarReaderViewController.m in Sources */,
+				110B54DD17E6F9D000DF1C3A /* SPHTTPPoller.m in Sources */,
 				119C076617E320DA003AF6AA /* SPHTTPResponse.m in Sources */,
 				118433B317E1F01E00425AEB /* productViewController.m in Sources */,
 				11C6E7E317E06F5600D66D96 /* UIColor+Shopelia.m in Sources */,
@@ -572,7 +580,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jean-Charles Samuelian (BNELGWXT42)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jean-Charles Samuelian (BNELGWXT42)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -587,8 +596,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "811533E2-09FE-46BC-830D-C621B0726B4A";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -609,7 +619,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jean-Charles Samuelian (BNELGWXT42)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jean-Charles Samuelian (BNELGWXT42)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -618,7 +629,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				PROVISIONING_PROFILE = "811533E2-09FE-46BC-830D-C621B0726B4A";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};

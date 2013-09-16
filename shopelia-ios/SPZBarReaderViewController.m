@@ -8,8 +8,10 @@
 
 #import "SPZBarReaderViewController.h"
 #import "SPHTTPRequest.h"
+#import "SPHTTPPoller.h"
 #import "overlayView.h"
 #import "UIView+Shopelia.h"
+#import "productViewController.h"
 
 
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO( v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
@@ -81,9 +83,8 @@
         // EXAMPLE: just grab the first barcode
         break;
     
-    //NSURL *url = [NSURL URLWithString:@"https://mysite.com/"];
-    //AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
     [self getProductNameAndUrlsWithEAN: symbol.data];
+    
     // ADD: dismiss the controller (NB dismiss from the *reader*!)
     [reader dismissViewControllerAnimated:YES completion:nil];
 }
@@ -94,18 +95,22 @@
     NSString *shopeliApiKey = [dict valueForKey:@"ShopeliaAPIKey"] ;
     
     NSString *url = API_URL;
-    url =[url stringByAppendingFormat:@"showcase/products/search?ean=%@",EAN];
+    url =[url stringByAppendingFormat:@"showcase/products/search?ean=%@&visitor=%@",EAN,@"false"];
 
     SPHTTPRequest *request = [[SPHTTPRequest alloc] init];
     [request setValue:shopeliApiKey forHTTPHeaderField:@"X-Shopelia-ApiKey"];
     
     [request setURL:[NSURL URLWithString:url]];
     [request setHTTPMethod:@"GET"];
+    
     [request startWithCompletion:^(NSError *error, SPHTTPResponse *response){
         if (error == nil) {
+            NSLog(@"%@",response.responseJSON);
             NSMutableArray *urls = [response.responseJSON objectForKey:@"urls"];
             NSLog(@"%@",urls);
-            [self getAllProductInfosForUrls:urls ];
+            if (urls != nil) {
+                [self getAllProductInfosForUrls:urls ];
+            }
         } else {
             NSLog(@"%@",error);
         }
@@ -115,6 +120,8 @@
 
 
 -(void) getAllProductInfosForUrls: (NSMutableArray*) urls {
+
+
     NSDictionary *dict = [[NSBundle mainBundle] infoDictionary];
     NSString *shopeliApiKey = [dict valueForKey:@"ShopeliaAPIKey"] ;
     SPHTTPRequest *request = [[SPHTTPRequest alloc] init];
@@ -133,14 +140,34 @@
     [request setURL:[NSURL URLWithString:url]];
     [request setHTTPMethod:@"POST"];
     NSLog(@"%@",request);
-    [request startWithCompletion:^(NSError *error, SPHTTPResponse *response){
-        if (error == nil) {
-            NSLog(@"%@",response.responseJSON);
+    
+    [SPHTTPPoller pollRequest:request
+                      maxTime:60.0f
+              requestInterval:2.0f
+                 restartBlock:^(BOOL *restart, NSError *error, SPHTTPResponse *response) {
+                     NSLog(@"%@",response.responseJSON);
+                     *restart = NO;
+                     NSArray* resArray  = (NSArray *) response.responseJSON;
+                     for (int i = 0; i<[resArray count]; i++) {
+                         NSDictionary* product = [resArray objectAtIndex:i];
+                         *restart = *restart || ![[product valueForKey:@"ready"] boolValue];
+                         //NSLog(@"%hhd",[[product valueForKey:@"ready"] boolValue]);
+                         //NSLog(@"%hhd",*restart);
 
-        } else {
-            NSLog(@"%@",error);
-        }
+                     }
+                     
+    }
+              completionBlock:^(BOOL timeout, NSError *error, SPHTTPResponse *response) {
+                  NSLog(@"%@",response.responseJSON);
+                  NSLog(@"%hhd", timeout);
+                  if (!timeout) {
+                      NSArray* resArray  = (NSArray *) response.responseJSON;
+                      productViewController *viewController = [[productViewController alloc] initWithNibName:@"productViewController" bundle:nil];
+                      viewController.products = resArray;
+                      [self.navigationController pushViewController:viewController animated:YES];
+                  }
     }];
+    
 }
 
 @end
