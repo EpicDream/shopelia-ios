@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "OHAttributedLabel.h"
 
 @implementation AppDelegate
 
@@ -24,7 +25,8 @@
 
 
     SPNavigationController *navbar = [[SPNavigationController alloc] initWithRootViewController:self.viewController];
-    
+
+    [[OHAttributedLabel appearance] setLinkColor:[UIColor colorWithRed:0.0 green:0.502 blue:0.647 alpha:1.0] ];
     
     self.window.rootViewController = navbar;
     [self.window makeKeyAndVisible];

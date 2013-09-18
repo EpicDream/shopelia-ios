@@ -20,6 +20,8 @@
 @synthesize shippingPrice;
 @synthesize products;
 @synthesize cheaperProduct;
+@synthesize productImageView;
+@synthesize product;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -34,20 +36,48 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    NSLog(@"%@",self.products);
+    [self customBackButton];
+    NSLog(@"%@",self.productImageView);
+    [self.productImageView setAsynchImageWithURL:[self.product valueForKey:@"image_url"]];
+    //self.productImageView = [[UIImageView alloc] initWithImage:self.productImage];
     [self getCheaperProduct];
     NSLog(@"%@",self.cheaperProduct);
+    
+    
     
     UIImageView *logo = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"logo-word.png" ]];
     self.navigationItem.titleView = logo ;
     UIView *view = self.contentView;
-    view.layer.cornerRadius =  8.0;
+    view.layer.cornerRadius =  4.0;
+    NSDictionary *version =[self getVersion:self.cheaperProduct];
+    //NSLog(@"VERSION: %@",version);
+    self.productTitle.text =  [self.cheaperProduct valueForKey:@"name"];
+    self.price.text = [[[version valueForKey:@"price"] stringValue] stringByAppendingString:@"€"];
+    self.shippingPrice.text = [[version valueForKey:@"price_shipping"] stringValue];
     
-    NSMutableAttributedString *shipping = [[NSMutableAttributedString alloc] initWithAttributedString:[OHASBasicHTMLParser attributedStringByProcessingMarkupInString:@"<b><font name='Arial' size='13'><font color='#39ADBB'>allo</font></font></b>"]];
-    self.shippingPrice.attributedText = shipping;
+    //[[NSString alloc] initWithFormat:@"<b><font name='Arial' size='13'><font color='#39ADBB'>%@</font></font></b>",price];
+    
+    [self formatMerchantUrl];
+    [self formatShippingPrice];
     
     // Do any additional setup after loading the view from its nib.
+}
+
+- (void) formatMerchantUrl {
+    NSMutableAttributedString *merchantUrlLabel = [[NSMutableAttributedString alloc] initWithAttributedString:[OHASBasicHTMLParser attributedStringByProcessingMarkupInString: [[NSString alloc] initWithFormat:@"par <font name='Arial' size='13'><font color='#2b9b82'><a href='%@'>%@</a></font></font>",[self.cheaperProduct valueForKey:@"url"],[[self.cheaperProduct objectForKey:@"merchant"] valueForKey:@"domain"]]]];
+    self.soldBy.attributedText = merchantUrlLabel;
+}
+
+- (void) formatShippingPrice {
+    NSString *formatedShippingPrice = [[NSString alloc] init];
+    if([self.shippingPrice.text floatValue] == 0.0f){
+        formatedShippingPrice = @"Livraison gratuite";
+    } else {
+        formatedShippingPrice = [[NSString alloc] initWithFormat:@"frais de livraison <b><font name='Arial' size='13'><font color='#2b9b82'>%@€</font></font></b>",self.shippingPrice.text];
+    }
+    
+    NSMutableAttributedString *shipping = [[NSMutableAttributedString alloc] initWithAttributedString:[OHASBasicHTMLParser attributedStringByProcessingMarkupInString: formatedShippingPrice]];
+    self.shippingPrice.attributedText = shipping;
 }
 
 -(void) getCheaperProduct {
@@ -58,10 +88,10 @@
     } else {
         NSDictionary *result = [[NSDictionary alloc] initWithDictionary:[self.products objectAtIndex:0]];
         for (int i=1;i<self.products.count;i++) {
-            NSDictionary *version = [[NSDictionary alloc] initWithDictionary:[[result objectForKey: @"versions"] objectAtIndex:0]];
+            NSDictionary *version = [self getVersion: result];
             float totalPrice = [[version valueForKey:@"price"] floatValue] + [[version valueForKey:@"price_shipping"] floatValue] - [[version valueForKey:@"cashfront_value"] floatValue];
             NSDictionary *temp = [self.products objectAtIndex:i];
-            NSDictionary *tempVersion = [[temp objectForKey:@"versions" ] objectAtIndex:0];
+            NSDictionary *tempVersion = [self getVersion: temp];
             float tempTotalPrice = [[tempVersion valueForKey:@"price"] floatValue] + [[tempVersion valueForKey:@"price_shipping"] floatValue]- [[tempVersion valueForKey:@"cashfront_value"] floatValue];
             if (tempTotalPrice < totalPrice) {
                 result = temp;
@@ -72,10 +102,30 @@
     }
 }
 
+-(NSDictionary *) getVersion: (NSDictionary *) product {
+    return [[product objectForKey:@"versions"] objectAtIndex:0];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void) customBackButton {
+    UIImage *backImage = [UIImage imageNamed:@"back-button"];
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.bounds = CGRectMake( 0, 0, backImage.size.width, backImage.size.height );
+    [button setImage:backImage forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:button];
+    self.navigationItem.hidesBackButton = YES;
+    self.navigationItem.leftBarButtonItem = item;
+}
+
+
+-(void)back {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

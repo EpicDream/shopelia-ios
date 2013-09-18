@@ -8,10 +8,11 @@
 
 #import "ZBarReaderViewController.h"
 #import "SPHTTPClient.h"
-
+#import "productViewController.h"
 
 @interface SPZBarReaderViewController : ZBarReaderViewController <ZBarReaderDelegate>
 
 @property (strong, nonatomic) SPHTTPClient *SPClient;
+@property (strong,nonatomic) productViewController *productVC;
 
 @end

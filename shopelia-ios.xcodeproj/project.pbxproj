@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		110B54DD17E6F9D000DF1C3A /* SPHTTPPoller.m in Sources */ = {isa = PBXBuildFile; fileRef = 110B54DC17E6F9D000DF1C3A /* SPHTTPPoller.m */; };
+		110B54E017E7406E00DF1C3A /* SPImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 110B54DF17E7406E00DF1C3A /* SPImageView.m */; };
+		110B54E317E740F700DF1C3A /* SPThreadFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 110B54E217E740F700DF1C3A /* SPThreadFactory.m */; };
+		110B54E617E7533900DF1C3A /* backgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 110B54E517E7533900DF1C3A /* backgroundView.m */; };
 		113DDE2F17DDFA9A0056E126 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 113DDE2E17DDFA9A0056E126 /* Foundation.framework */; };
 		113DDE3117DDFA9A0056E126 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 113DDE3017DDFA9A0056E126 /* CoreGraphics.framework */; };
 		113DDE3317DDFA9A0056E126 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 113DDE3217DDFA9A0056E126 /* UIKit.framework */; };
@@ -25,6 +28,10 @@
 		113DDE8517DDFE630056E126 /* zbar-help.html in Resources */ = {isa = PBXBuildFile; fileRef = 113DDE8017DDFE630056E126 /* zbar-help.html */; };
 		113DDE8617DDFE630056E126 /* zbar-helpicons.png in Resources */ = {isa = PBXBuildFile; fileRef = 113DDE8117DDFE630056E126 /* zbar-helpicons.png */; };
 		113DDE8717DDFE630056E126 /* zbar-samples.png in Resources */ = {isa = PBXBuildFile; fileRef = 113DDE8217DDFE630056E126 /* zbar-samples.png */; };
+		115E67B117E8961D00B88DCA /* ic_purchase_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 115E67AF17E8961D00B88DCA /* ic_purchase_white.png */; };
+		115E67B317E8966000B88DCA /* ic_purchase_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 115E67B217E8966000B88DCA /* ic_purchase_white@2x.png */; };
+		115E67B617E89A7900B88DCA /* back-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 115E67B417E89A7900B88DCA /* back-button.png */; };
+		115E67B717E89A7900B88DCA /* back-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 115E67B517E89A7900B88DCA /* back-button@2x.png */; };
 		1163C5A017DF161F0043E73D /* SPZBarReaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1163C59F17DF161F0043E73D /* SPZBarReaderViewController.m */; };
 		1163C5A317DF1D070043E73D /* SPNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1163C5A217DF1D070043E73D /* SPNavigationController.m */; };
 		1163C5A617DF1F380043E73D /* navbar.png in Resources */ = {isa = PBXBuildFile; fileRef = 1163C5A417DF1F380043E73D /* navbar.png */; };
@@ -65,6 +72,12 @@
 /* Begin PBXFileReference section */
 		110B54DB17E6F9D000DF1C3A /* SPHTTPPoller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPHTTPPoller.h; sourceTree = "<group>"; };
 		110B54DC17E6F9D000DF1C3A /* SPHTTPPoller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPHTTPPoller.m; sourceTree = "<group>"; };
+		110B54DE17E7406E00DF1C3A /* SPImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPImageView.h; sourceTree = "<group>"; };
+		110B54DF17E7406E00DF1C3A /* SPImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPImageView.m; sourceTree = "<group>"; };
+		110B54E117E740F700DF1C3A /* SPThreadFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPThreadFactory.h; sourceTree = "<group>"; };
+		110B54E217E740F700DF1C3A /* SPThreadFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPThreadFactory.m; sourceTree = "<group>"; };
+		110B54E417E7533900DF1C3A /* backgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = backgroundView.h; sourceTree = "<group>"; };
+		110B54E517E7533900DF1C3A /* backgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = backgroundView.m; sourceTree = "<group>"; };
 		113DDE2B17DDFA9A0056E126 /* shopelia-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "shopelia-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		113DDE2E17DDFA9A0056E126 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		113DDE3017DDFA9A0056E126 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -106,6 +119,10 @@
 		113DDE8017DDFE630056E126 /* zbar-help.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "zbar-help.html"; sourceTree = "<group>"; };
 		113DDE8117DDFE630056E126 /* zbar-helpicons.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zbar-helpicons.png"; sourceTree = "<group>"; };
 		113DDE8217DDFE630056E126 /* zbar-samples.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zbar-samples.png"; sourceTree = "<group>"; };
+		115E67AF17E8961D00B88DCA /* ic_purchase_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_purchase_white.png; sourceTree = "<group>"; };
+		115E67B217E8966000B88DCA /* ic_purchase_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_purchase_white@2x.png"; sourceTree = "<group>"; };
+		115E67B417E89A7900B88DCA /* back-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back-button.png"; sourceTree = "<group>"; };
+		115E67B517E89A7900B88DCA /* back-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back-button@2x.png"; sourceTree = "<group>"; };
 		1163C59E17DF161F0043E73D /* SPZBarReaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPZBarReaderViewController.h; sourceTree = "<group>"; };
 		1163C59F17DF161F0043E73D /* SPZBarReaderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPZBarReaderViewController.m; sourceTree = "<group>"; };
 		1163C5A117DF1D070043E73D /* SPNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPNavigationController.h; sourceTree = "<group>"; };
@@ -239,6 +256,12 @@
 				11C6E7E217E06F5600D66D96 /* UIColor+Shopelia.m */,
 				11C6E7E917E07E8500D66D96 /* UIView+Shopelia.h */,
 				11C6E7EA17E07E8500D66D96 /* UIView+Shopelia.m */,
+				110B54DE17E7406E00DF1C3A /* SPImageView.h */,
+				110B54DF17E7406E00DF1C3A /* SPImageView.m */,
+				110B54E117E740F700DF1C3A /* SPThreadFactory.h */,
+				110B54E217E740F700DF1C3A /* SPThreadFactory.m */,
+				110B54E417E7533900DF1C3A /* backgroundView.h */,
+				110B54E517E7533900DF1C3A /* backgroundView.m */,
 			);
 			path = "shopelia-ios";
 			sourceTree = "<group>";
@@ -339,6 +362,10 @@
 		116CD95617DF085500978733 /* ShopeliaResources */ = {
 			isa = PBXGroup;
 			children = (
+				115E67B417E89A7900B88DCA /* back-button.png */,
+				115E67B517E89A7900B88DCA /* back-button@2x.png */,
+				115E67B217E8966000B88DCA /* ic_purchase_white@2x.png */,
+				115E67AF17E8961D00B88DCA /* ic_purchase_white.png */,
 				118433AC17E1F01E00425AEB /* green-button.png */,
 				118433AD17E1F01E00425AEB /* green-button@2x.png */,
 				11C6E7EC17E086AD00D66D96 /* bar-code.png */,
@@ -447,17 +474,21 @@
 				118433B417E1F01E00425AEB /* productViewController.xib in Resources */,
 				113DDE4717DDFA9A0056E126 /* Images.xcassets in Resources */,
 				11C6E7EF17E086AD00D66D96 /* bar-code@2x.png in Resources */,
+				115E67B117E8961D00B88DCA /* ic_purchase_white.png in Resources */,
 				113DDE8517DDFE630056E126 /* zbar-help.html in Resources */,
 				1163C5A717DF1F380043E73D /* navbar@2x.png in Resources */,
 				113DDE8717DDFE630056E126 /* zbar-samples.png in Resources */,
 				11C6E7EE17E086AD00D66D96 /* bar-code.png in Resources */,
+				115E67B717E89A7900B88DCA /* back-button@2x.png in Resources */,
 				113DDE8617DDFE630056E126 /* zbar-helpicons.png in Resources */,
 				11C6E7E717E078BE00D66D96 /* logo-word@2x.png in Resources */,
 				113DDE8417DDFE630056E126 /* zbar-back.png in Resources */,
 				11C6E7E617E078BE00D66D96 /* logo-word.png in Resources */,
 				118433B117E1F01E00425AEB /* green-button.png in Resources */,
 				113DDE3917DDFA9A0056E126 /* InfoPlist.strings in Resources */,
+				115E67B617E89A7900B88DCA /* back-button.png in Resources */,
 				118433B217E1F01E00425AEB /* green-button@2x.png in Resources */,
+				115E67B317E8966000B88DCA /* ic_purchase_white@2x.png in Resources */,
 				1163C5A617DF1F380043E73D /* navbar.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -513,7 +544,10 @@
 				113DDE3F17DDFA9A0056E126 /* AppDelegate.m in Sources */,
 				113DDE3B17DDFA9A0056E126 /* main.m in Sources */,
 				1163C5AF17DF5B6C0043E73D /* overlayView.m in Sources */,
+				110B54E017E7406E00DF1C3A /* SPImageView.m in Sources */,
 				11C6E7EB17E07E8500D66D96 /* UIView+Shopelia.m in Sources */,
+				110B54E317E740F700DF1C3A /* SPThreadFactory.m in Sources */,
+				110B54E617E7533900DF1C3A /* backgroundView.m in Sources */,
 				1163C5A317DF1D070043E73D /* SPNavigationController.m in Sources */,
 				119C076517E320DA003AF6AA /* SPHTTPRequest.m in Sources */,
 				119C076417E320DA003AF6AA /* SPHTTPClient.m in Sources */,

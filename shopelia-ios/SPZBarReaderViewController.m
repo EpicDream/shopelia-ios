@@ -12,6 +12,7 @@
 #import "overlayView.h"
 #import "UIView+Shopelia.h"
 #import "productViewController.h"
+#import "SPImageView.h"
 
 
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO( v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
@@ -105,10 +106,16 @@
     
     [request startWithCompletion:^(NSError *error, SPHTTPResponse *response){
         if (error == nil) {
-            NSLog(@"%@",response.responseJSON);
+            //NSLog(@"%@",response.responseJSON);
             NSMutableArray *urls = [response.responseJSON objectForKey:@"urls"];
-            NSLog(@"%@",urls);
+            //NSLog(@"%@",urls);
             if (urls != nil) {
+                self.productVC = [[productViewController alloc] initWithNibName:@"productViewController" bundle:nil];
+                self.productVC.product = response.responseJSON;
+                
+                //  = [UIImage imageWithData:[NSData dataWithContentsOfURL: [NSURL URLWithString:[response.responseJSON valueForKey:@"image_url"]]]];
+                //NSLog(@"%@",self.productVC.productImageView);
+                //self.productVC.productTitle.text  = [response.responseJSON valueForKey:@"name"];
                 [self getAllProductInfosForUrls:urls ];
             }
         } else {
@@ -162,12 +169,12 @@
                   NSLog(@"%hhd", timeout);
                   if (!timeout) {
                       NSArray* resArray  = (NSArray *) response.responseJSON;
-                      productViewController *viewController = [[productViewController alloc] initWithNibName:@"productViewController" bundle:nil];
-                      viewController.products = resArray;
-                      [self.navigationController pushViewController:viewController animated:YES];
+                      self.productVC.products = resArray;                      
+                      [self.navigationController pushViewController:self.productVC animated:YES];
                   }
     }];
     
 }
+
 
 @end
