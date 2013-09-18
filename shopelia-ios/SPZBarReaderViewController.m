@@ -12,6 +12,7 @@
 #import "overlayView.h"
 #import "UIView+Shopelia.h"
 #import "productViewController.h"
+#import "baseProductViewController.h"
 #import "SPImageView.h"
 
 

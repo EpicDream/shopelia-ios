@@ -42,10 +42,13 @@
 		116CD92B17DE030100978733 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 116CD92617DE030000978733 /* CoreVideo.framework */; };
 		116CD92C17DE030100978733 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 116CD92717DE030100978733 /* libiconv.dylib */; };
 		116CD92D17DE030100978733 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 116CD92817DE030100978733 /* QuartzCore.framework */; };
+		1183CD9117E9D58300F1E66D /* baseProductViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1183CD9017E9D58300F1E66D /* baseProductViewController.m */; };
 		118433B117E1F01E00425AEB /* green-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 118433AC17E1F01E00425AEB /* green-button.png */; };
 		118433B217E1F01E00425AEB /* green-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 118433AD17E1F01E00425AEB /* green-button@2x.png */; };
 		118433B317E1F01E00425AEB /* productViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 118433AF17E1F01E00425AEB /* productViewController.m */; };
 		118433B417E1F01E00425AEB /* productViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 118433B017E1F01E00425AEB /* productViewController.xib */; };
+		1190AAE317E9CECE003E570E /* productListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1190AAE117E9CECE003E570E /* productListViewController.m */; };
+		1190AAE417E9CECE003E570E /* productListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1190AAE217E9CECE003E570E /* productListViewController.xib */; };
 		119C074917E30DA5003AF6AA /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 119C074817E30DA5003AF6AA /* Constants.m */; };
 		119C076417E320DA003AF6AA /* SPHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 119C075F17E320DA003AF6AA /* SPHTTPClient.m */; };
 		119C076517E320DA003AF6AA /* SPHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 119C076117E320DA003AF6AA /* SPHTTPRequest.m */; };
@@ -136,11 +139,16 @@
 		116CD92617DE030000978733 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		116CD92717DE030100978733 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 		116CD92817DE030100978733 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		1183CD8F17E9D58300F1E66D /* baseProductViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = baseProductViewController.h; sourceTree = "<group>"; };
+		1183CD9017E9D58300F1E66D /* baseProductViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = baseProductViewController.m; sourceTree = "<group>"; };
 		118433AC17E1F01E00425AEB /* green-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "green-button.png"; sourceTree = "<group>"; };
 		118433AD17E1F01E00425AEB /* green-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "green-button@2x.png"; sourceTree = "<group>"; };
 		118433AE17E1F01E00425AEB /* productViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = productViewController.h; sourceTree = "<group>"; };
 		118433AF17E1F01E00425AEB /* productViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = productViewController.m; sourceTree = "<group>"; };
 		118433B017E1F01E00425AEB /* productViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = productViewController.xib; sourceTree = "<group>"; };
+		1190AAE017E9CECE003E570E /* productListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = productListViewController.h; sourceTree = "<group>"; };
+		1190AAE117E9CECE003E570E /* productListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = productListViewController.m; sourceTree = "<group>"; };
+		1190AAE217E9CECE003E570E /* productListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = productListViewController.xib; sourceTree = "<group>"; };
 		119C074717E30DA5003AF6AA /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		119C074817E30DA5003AF6AA /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		119C075E17E320DA003AF6AA /* SPHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPHTTPClient.h; sourceTree = "<group>"; };
@@ -262,6 +270,11 @@
 				110B54E217E740F700DF1C3A /* SPThreadFactory.m */,
 				110B54E417E7533900DF1C3A /* backgroundView.h */,
 				110B54E517E7533900DF1C3A /* backgroundView.m */,
+				1190AAE017E9CECE003E570E /* productListViewController.h */,
+				1190AAE117E9CECE003E570E /* productListViewController.m */,
+				1190AAE217E9CECE003E570E /* productListViewController.xib */,
+				1183CD8F17E9D58300F1E66D /* baseProductViewController.h */,
+				1183CD9017E9D58300F1E66D /* baseProductViewController.m */,
 			);
 			path = "shopelia-ios";
 			sourceTree = "<group>";
@@ -481,6 +494,7 @@
 				11C6E7EE17E086AD00D66D96 /* bar-code.png in Resources */,
 				115E67B717E89A7900B88DCA /* back-button@2x.png in Resources */,
 				113DDE8617DDFE630056E126 /* zbar-helpicons.png in Resources */,
+				1190AAE417E9CECE003E570E /* productListViewController.xib in Resources */,
 				11C6E7E717E078BE00D66D96 /* logo-word@2x.png in Resources */,
 				113DDE8417DDFE630056E126 /* zbar-back.png in Resources */,
 				11C6E7E617E078BE00D66D96 /* logo-word.png in Resources */,
@@ -544,6 +558,7 @@
 				113DDE3F17DDFA9A0056E126 /* AppDelegate.m in Sources */,
 				113DDE3B17DDFA9A0056E126 /* main.m in Sources */,
 				1163C5AF17DF5B6C0043E73D /* overlayView.m in Sources */,
+				1183CD9117E9D58300F1E66D /* baseProductViewController.m in Sources */,
 				110B54E017E7406E00DF1C3A /* SPImageView.m in Sources */,
 				11C6E7EB17E07E8500D66D96 /* UIView+Shopelia.m in Sources */,
 				110B54E317E740F700DF1C3A /* SPThreadFactory.m in Sources */,
@@ -551,6 +566,7 @@
 				1163C5A317DF1D070043E73D /* SPNavigationController.m in Sources */,
 				119C076517E320DA003AF6AA /* SPHTTPRequest.m in Sources */,
 				119C076417E320DA003AF6AA /* SPHTTPClient.m in Sources */,
+				1190AAE317E9CECE003E570E /* productListViewController.m in Sources */,
 				119C074917E30DA5003AF6AA /* Constants.m in Sources */,
 				1163C5A017DF161F0043E73D /* SPZBarReaderViewController.m in Sources */,
 				110B54DD17E6F9D000DF1C3A /* SPHTTPPoller.m in Sources */,
