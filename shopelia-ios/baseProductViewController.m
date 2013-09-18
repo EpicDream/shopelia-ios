@@ -7,6 +7,10 @@
 //
 
 #import "baseProductViewController.h"
+#import <OHAttributedLabel/OHASBasicHTMLParser.h>
+#import "UIColor+Shopelia.h"
+#import "UIView+Shopelia.h"
+
 
 @interface baseProductViewController ()
 
@@ -33,7 +37,10 @@
     [self customBackButton];
     UIImageView *logo = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"logo-word.png" ]];
     self.navigationItem.titleView = logo ;
+    
 }
+
+
 
 -(void) getCheaperProduct {
     if (self.products == nil || self.products.count < 1 ) {

@@ -11,8 +11,6 @@
 #import "SPHTTPPoller.h"
 #import "overlayView.h"
 #import "UIView+Shopelia.h"
-#import "productViewController.h"
-#import "baseProductViewController.h"
 #import "SPImageView.h"
 
 
@@ -111,12 +109,9 @@
             NSMutableArray *urls = [response.responseJSON objectForKey:@"urls"];
             //NSLog(@"%@",urls);
             if (urls != nil) {
-                self.productVC = [[productViewController alloc] initWithNibName:@"productViewController" bundle:nil];
+                //self.productVC = [[productViewController alloc] initWithNibName:@"productViewController" bundle:nil];
+                self.productVC = [[productListViewController alloc] initWithNibName:@"productListViewController" bundle:nil];
                 self.productVC.product = response.responseJSON;
-                
-                //  = [UIImage imageWithData:[NSData dataWithContentsOfURL: [NSURL URLWithString:[response.responseJSON valueForKey:@"image_url"]]]];
-                //NSLog(@"%@",self.productVC.productImageView);
-                //self.productVC.productTitle.text  = [response.responseJSON valueForKey:@"name"];
                 [self getAllProductInfosForUrls:urls ];
             }
         } else {

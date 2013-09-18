@@ -7,7 +7,6 @@
 //
 
 #import "productViewController.h"
-#import "baseProductViewController.h"
 #import <OHAttributedLabel/OHASBasicHTMLParser.h>
 
 
