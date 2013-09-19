@@ -7,6 +7,7 @@
 //
 
 #import "productListViewController.h"
+#import "SPCell.h"
 
 @interface productListViewController ()
 
@@ -60,18 +61,26 @@
     
     static NSString *CellIdentifier = @"Cell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    SPCell *cell = (SPCell*) [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil) {
+        NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"SPCell" owner:nil options:nil];
         
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        
+        for (id currentObject in topLevelObjects) {
+            if ([currentObject isKindOfClass:[UITableViewCell class]])
+            {
+                cell = (SPCell *) currentObject;
+                break;
+            }
+        }
     }
     NSDictionary* prod = [self.products objectAtIndex:indexPath.row];
     NSDictionary* version = [self getVersion:prod];
     NSLog(@"%@",version);
     // Configure the cell...
-    cell.textLabel.text = [[version valueForKey:@"price"] stringValue];
+    cell.price.text = [[version valueForKey:@"price"] stringValue];
+    cell.soldBy.text = [[prod objectForKey:@"merchant"] valueForKey:@"domain"];
+    cell.shippingInfos.text = [version valueForKey:@"shipping_info"];
     
     return cell;
     

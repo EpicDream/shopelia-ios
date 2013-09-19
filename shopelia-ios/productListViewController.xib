@@ -22,42 +22,56 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <color key="sectionIndexTrackingBackgroundColor" red="0.90588241815567017" green="0.94117653369903564" blue="0.93725496530532837" alpha="1" colorSpace="deviceRGB"/>
                     <view key="tableHeaderView" contentMode="scaleToFill" id="eWc-LK-JwK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="330"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3kT-Ac-eOP" customClass="SPImageView">
-                                <rect key="frame" x="20" y="20" width="280" height="230"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="230" id="Pvk-Hv-qdq"/>
-                                    <constraint firstAttribute="width" constant="280" id="SfL-uo-Y9I"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Internet Marketing 2013" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="270" translatesAutoresizingMaskIntoConstraints="NO" id="P9A-4b-OAX">
-                                <rect key="frame" x="20" y="260" width="270" height="70"/>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3O5-bF-0wB">
+                                <rect key="frame" x="10" y="10" width="300" height="320"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3kT-Ac-eOP" customClass="SPImageView">
+                                        <rect key="frame" x="10" y="10" width="280" height="230"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="230" id="Pvk-Hv-qdq"/>
+                                            <constraint firstAttribute="width" constant="280" id="SfL-uo-Y9I"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="38g-tj-i8W">
+                                        <rect key="frame" x="10" y="245" width="280" height="1"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.8980392814" green="0.9215686917" blue="0.9215686917" alpha="1" colorSpace="deviceRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="280" id="Psr-Fj-1ph"/>
+                                            <constraint firstAttribute="height" constant="1" id="pbu-5I-2Q2"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Internet Marketing 2013" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="270" translatesAutoresizingMaskIntoConstraints="NO" id="P9A-4b-OAX">
+                                        <rect key="frame" x="15" y="251" width="270" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="270" id="b1A-hf-FsR"/>
+                                            <constraint firstAttribute="height" constant="60" id="ozu-iq-BTH"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
+                                        <color key="textColor" red="0.13333334029999999" green="0.13333334029999999" blue="0.13333334029999999" alpha="1" colorSpace="deviceRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="70" id="7dn-Yf-cJt"/>
-                                    <constraint firstAttribute="width" constant="270" id="b1A-hf-FsR"/>
+                                    <constraint firstItem="38g-tj-i8W" firstAttribute="top" secondItem="3kT-Ac-eOP" secondAttribute="bottom" constant="5" id="47p-lS-fJJ"/>
+                                    <constraint firstItem="P9A-4b-OAX" firstAttribute="top" secondItem="38g-tj-i8W" secondAttribute="bottom" constant="5" id="DTE-5g-KsW"/>
+                                    <constraint firstAttribute="width" constant="300" id="gtZ-kj-26X"/>
+                                    <constraint firstAttribute="height" constant="320" id="iAs-P7-Om3"/>
+                                    <constraint firstAttribute="bottom" secondItem="P9A-4b-OAX" secondAttribute="bottom" constant="9" id="p3Q-UG-nYb"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
-                                <color key="textColor" red="0.13333334029999999" green="0.13333334029999999" blue="0.13333334029999999" alpha="1" colorSpace="deviceRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="3kT-Ac-eOP" firstAttribute="leading" secondItem="eWc-LK-JwK" secondAttribute="leading" constant="20" id="86R-ea-Lho"/>
-                            <constraint firstAttribute="bottom" secondItem="P9A-4b-OAX" secondAttribute="bottom" id="Beo-Zs-pv6"/>
-                            <constraint firstItem="P9A-4b-OAX" firstAttribute="top" secondItem="3kT-Ac-eOP" secondAttribute="bottom" constant="10" id="Djs-fT-v3i"/>
-                            <constraint firstItem="P9A-4b-OAX" firstAttribute="top" secondItem="3kT-Ac-eOP" secondAttribute="bottom" constant="10" id="MCU-BM-TAr"/>
-                            <constraint firstItem="3kT-Ac-eOP" firstAttribute="top" secondItem="eWc-LK-JwK" secondAttribute="top" constant="20" id="Zav-Go-MkT"/>
-                            <constraint firstItem="P9A-4b-OAX" firstAttribute="leading" secondItem="eWc-LK-JwK" secondAttribute="leading" constant="20" id="ckN-Ez-9BS"/>
-                            <constraint firstAttribute="trailing" secondItem="P9A-4b-OAX" secondAttribute="trailing" constant="30" id="eHj-VO-6Dh"/>
-                            <constraint firstAttribute="trailing" secondItem="3kT-Ac-eOP" secondAttribute="trailing" constant="20" id="jDF-Pi-TVl"/>
-                        </constraints>
+                        <color key="backgroundColor" red="0.90588241815567017" green="0.94117653369903564" blue="0.93725496530532837" alpha="1" colorSpace="deviceRGB"/>
                     </view>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="0eX-AI-kv8"/>

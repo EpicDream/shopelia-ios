@@ -44,6 +44,8 @@
 		116CD92D17DE030100978733 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 116CD92817DE030100978733 /* QuartzCore.framework */; };
 		1183CD9117E9D58300F1E66D /* baseProductViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1183CD9017E9D58300F1E66D /* baseProductViewController.m */; };
 		1183CD9317EB365900F1E66D /* products.json in Resources */ = {isa = PBXBuildFile; fileRef = 1183CD9217EB365900F1E66D /* products.json */; };
+		1183CD9617EB41DD00F1E66D /* SPCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1183CD9517EB41DD00F1E66D /* SPCell.m */; };
+		1183CD9817EB423600F1E66D /* SPCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1183CD9717EB423600F1E66D /* SPCell.xib */; };
 		118433B117E1F01E00425AEB /* green-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 118433AC17E1F01E00425AEB /* green-button.png */; };
 		118433B217E1F01E00425AEB /* green-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 118433AD17E1F01E00425AEB /* green-button@2x.png */; };
 		118433B317E1F01E00425AEB /* productViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 118433AF17E1F01E00425AEB /* productViewController.m */; };
@@ -143,6 +145,9 @@
 		1183CD8F17E9D58300F1E66D /* baseProductViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = baseProductViewController.h; sourceTree = "<group>"; };
 		1183CD9017E9D58300F1E66D /* baseProductViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = baseProductViewController.m; sourceTree = "<group>"; };
 		1183CD9217EB365900F1E66D /* products.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = products.json; sourceTree = "<group>"; };
+		1183CD9417EB41DD00F1E66D /* SPCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPCell.h; sourceTree = "<group>"; };
+		1183CD9517EB41DD00F1E66D /* SPCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPCell.m; sourceTree = "<group>"; };
+		1183CD9717EB423600F1E66D /* SPCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPCell.xib; sourceTree = "<group>"; };
 		118433AC17E1F01E00425AEB /* green-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "green-button.png"; sourceTree = "<group>"; };
 		118433AD17E1F01E00425AEB /* green-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "green-button@2x.png"; sourceTree = "<group>"; };
 		118433AE17E1F01E00425AEB /* productViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = productViewController.h; sourceTree = "<group>"; };
@@ -278,6 +283,9 @@
 				11C6E7E217E06F5600D66D96 /* UIColor+Shopelia.m */,
 				11C6E7E917E07E8500D66D96 /* UIView+Shopelia.h */,
 				11C6E7EA17E07E8500D66D96 /* UIView+Shopelia.m */,
+				1183CD9417EB41DD00F1E66D /* SPCell.h */,
+				1183CD9517EB41DD00F1E66D /* SPCell.m */,
+				1183CD9717EB423600F1E66D /* SPCell.xib */,
 			);
 			path = "shopelia-ios";
 			sourceTree = "<group>";
@@ -497,6 +505,7 @@
 				11C6E7EE17E086AD00D66D96 /* bar-code.png in Resources */,
 				115E67B717E89A7900B88DCA /* back-button@2x.png in Resources */,
 				1183CD9317EB365900F1E66D /* products.json in Resources */,
+				1183CD9817EB423600F1E66D /* SPCell.xib in Resources */,
 				113DDE8617DDFE630056E126 /* zbar-helpicons.png in Resources */,
 				1190AAE417E9CECE003E570E /* productListViewController.xib in Resources */,
 				11C6E7E717E078BE00D66D96 /* logo-word@2x.png in Resources */,
@@ -576,6 +585,7 @@
 				110B54DD17E6F9D000DF1C3A /* SPHTTPPoller.m in Sources */,
 				119C076617E320DA003AF6AA /* SPHTTPResponse.m in Sources */,
 				118433B317E1F01E00425AEB /* productViewController.m in Sources */,
+				1183CD9617EB41DD00F1E66D /* SPCell.m in Sources */,
 				11C6E7E317E06F5600D66D96 /* UIColor+Shopelia.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
