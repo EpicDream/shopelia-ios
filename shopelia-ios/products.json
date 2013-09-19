@@ -32,6 +32,39 @@
               ],
  "ready": 1,
  "options_completed": 1
+ },{
+ "id": 45287,
+ "image_url": "http://pmcdn.priceminister.com/photo/the-magic-charger-for-magic-mouse-onduleur-peripherique-d-alimentation-925649299_ML.jpg",
+ "name": "Mobee The Magic Charger - Station de chargement pour souris - pour Apple Magic Mouse",
+ "url": "http://www.priceminister.com/offer/buy/126604380/the-magic-charger-for-magic-mouse-onduleur-peripherique-d-alimentation.html",
+ "merchant": {
+ "id": 4,
+ "name": "Price Minister",
+ "logo": "http://www.prixing.fr/images/logos/priceminister_large.png",
+ "url": "http://www.priceminister.com",
+ "accepting_orders": 1,
+ "allow_iframe": 1,
+ "domain": "priceminister.com",
+ "allow_quantities": 1
+ },
+ "description": "<ul><li> Référence fabricant : <em>MO2212<\/em> <\/li><\/ul> <p>Général<\/p> <table><tbody> <tr> <th>Type de périphérique<\/th> <td>Station de chargement pour souris - externe<\/td> <\/tr> <tr> <th>Emplacement de la batterie<\/th> <td>Interne<\/td> <\/tr> <\/tbody><\/table> <p>Périphérique d'alimentation<\/p> <table><tbody><tr> <th>Connecteur(s) d'entrée<\/th> <td>Type A USB 4 broches (alimentation uniquement)<\/td> <\/tr><\/tbody><\/table> <p>Batterie<\/p> <table><tbody> <tr> <th>Temps de recharge<\/th> <td>6 heures<\/td> <\/tr> <tr> <th>Nombre maxi de cycles de recharge<\/th> <td>500<\/td> <\/tr> <\/tbody><\/table> <p>Divers<\/p> <table><tbody><tr> <th>Câbles inclus<\/th> <td>1 x câble USB - externe - 1.1 m<\/td> <\/tr><\/tbody><\/table> <p>Garantie du fabricant<\/p> <table><tbody> <tr> <th>Services &amp; maintenance<\/th> <td>Garantie de 1 an<\/td> <\/tr> <tr> <th>Détails des services et de la maintenance<\/th> <td>Garantie limitée - 1 an<\/td> <\/tr> <\/tbody><\/table> <p>Dimensions et poids<\/p> <table><tbody> <tr> <th>Largeur<\/th> <td>11.8 cm<\/td> <\/tr> <tr> <th>Profondeur<\/th> <td>6.5 cm<\/td> <\/tr> <tr> <th>Hauteur<\/th> <td>0.9 cm<\/td> <\/tr> <tr> <th>Poids<\/th> <td>55 g<\/td> <\/tr> <\/tbody><\/table> <p>Information de compatibilité<\/p> <table><tbody><tr> <th>Conçu pour<\/th> <td>Apple Magic Mouse<\/td> <\/tr><\/tbody><\/table>",
+ "master_id": 48883,
+ "versions": [
+              {
+              "id": 73878,
+              "name": "Mobee The Magic Charger - Station de chargement pour souris - pour Apple Magic Mouse",
+              "description": "<ul><li> Référence fabricant : <em>MO2212<\/em> <\/li><\/ul> <p>Général<\/p> <table><tbody> <tr> <th>Type de périphérique<\/th> <td>Station de chargement pour souris - externe<\/td> <\/tr> <tr> <th>Emplacement de la batterie<\/th> <td>Interne<\/td> <\/tr> <\/tbody><\/table> <p>Périphérique d'alimentation<\/p> <table><tbody><tr> <th>Connecteur(s) d'entrée<\/th> <td>Type A USB 4 broches (alimentation uniquement)<\/td> <\/tr><\/tbody><\/table> <p>Batterie<\/p> <table><tbody> <tr> <th>Temps de recharge<\/th> <td>6 heures<\/td> <\/tr> <tr> <th>Nombre maxi de cycles de recharge<\/th> <td>500<\/td> <\/tr> <\/tbody><\/table> <p>Divers<\/p> <table><tbody><tr> <th>Câbles inclus<\/th> <td>1 x câble USB - externe - 1.1 m<\/td> <\/tr><\/tbody><\/table> <p>Garantie du fabricant<\/p> <table><tbody> <tr> <th>Services &amp; maintenance<\/th> <td>Garantie de 1 an<\/td> <\/tr> <tr> <th>Détails des services et de la maintenance<\/th> <td>Garantie limitée - 1 an<\/td> <\/tr> <\/tbody><\/table> <p>Dimensions et poids<\/p> <table><tbody> <tr> <th>Largeur<\/th> <td>11.8 cm<\/td> <\/tr> <tr> <th>Profondeur<\/th> <td>6.5 cm<\/td> <\/tr> <tr> <th>Hauteur<\/th> <td>0.9 cm<\/td> <\/tr> <tr> <th>Poids<\/th> <td>55 g<\/td> <\/tr> <\/tbody><\/table> <p>Information de compatibilité<\/p> <table><tbody><tr> <th>Conçu pour<\/th> <td>Apple Magic Mouse<\/td> <\/tr><\/tbody><\/table>",
+              "image_url": "http://pmcdn.priceminister.com/photo/the-magic-charger-for-magic-mouse-onduleur-peripherique-d-alimentation-925649299_ML.jpg",
+              "price": 40.99,
+              "price_shipping": 0,
+              "shipping_info": "Recommandé",
+              "available": 1,
+              "cashfront_value": 0,
+              "availability_info": "(9)"
+              }
+              ],
+ "ready": 1,
+ "options_completed": 1
  },
  {
  "id": 45288,

@@ -19,11 +19,15 @@
 @synthesize productImageView;
 @synthesize priceTableView;
 
+static const int CELL_HEIGHT = 70;
+
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+
     }
     return self;
 }
@@ -47,7 +51,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma UITableViewDelegate 
+#pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
@@ -70,6 +74,20 @@
             if ([currentObject isKindOfClass:[UITableViewCell class]])
             {
                 cell = (SPCell *) currentObject;
+                int rowsInSection = [self tableView:tableView numberOfRowsInSection:indexPath.section];
+                if (rowsInSection == 1) {
+                    cell.position = CellPositionSingle;
+                } else {
+                    if (indexPath.row == 0) {
+                        cell.position = CellPositionTop;
+                    } else if (indexPath.row == rowsInSection - 1) {
+                        cell.position = CellPositionBottom;
+                    } else {
+                        cell.position = CellPositionMiddle;
+                    }
+                }
+                [cell setNeedsDisplay];
+
                 break;
             }
         }
@@ -81,9 +99,24 @@
     cell.price.text = [[version valueForKey:@"price"] stringValue];
     cell.soldBy.text = [[prod objectForKey:@"merchant"] valueForKey:@"domain"];
     cell.shippingInfos.text = [version valueForKey:@"shipping_info"];
+
     
     return cell;
     
 }
+
+#pragma mark - Table view delegate
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return CELL_HEIGHT;
+}
+
+- (void)tableView:(UITableView *)currentTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    //Launch Shopelia
+}
+
+
+
 
 @end
