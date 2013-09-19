@@ -30,34 +30,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self customBackButton];
-    
-
-    
+    //[self customBackButton];
     [self.productImageView setAsynchImageWithURL:[self.product valueForKey:@"image_url"]];
     
     self.productTitle.text =  [self.product valueForKey:@"name"];
-    
-    priceTableView = [[UITableView alloc] initWithFrame:CGRectMake(20,40 + self.productImageView.Height + self.productTitle.Height ,self.productImageView.Width,200) style:UITableViewStyleGrouped];
-    priceTableView.dataSource = self;
-    priceTableView.delegate = self;
-    priceTableView.scrollEnabled = NO;
-    [self.scrollView addSubview:priceTableView];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self.scrollView setShowsHorizontalScrollIndicator:NO];
-    [self.scrollView setShowsVerticalScrollIndicator:NO];
-    
-    
-    CGFloat scrollViewHeight = 0.0f;
-    for (UIView* view in self.scrollView.subviews)
-    {
-        scrollViewHeight += view.frame.size.height;
-    }
-    
-    self.scrollView.contentSize= CGSizeMake(200.0,scrollViewHeight);
 }
 
 - (void)didReceiveMemoryWarning
@@ -73,7 +53,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 2;
+    return [self.products count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -87,9 +67,11 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         
     }
-    
+    NSDictionary* prod = [self.products objectAtIndex:indexPath.row];
+    NSDictionary* version = [self getVersion:prod];
+    NSLog(@"%@",version);
     // Configure the cell...
-    cell.textLabel.text = @"test";
+    cell.textLabel.text = [[version valueForKey:@"price"] stringValue];
     
     return cell;
     

@@ -10,13 +10,15 @@
 #import  "SPZBarReaderViewController.h"
 #import "SPNavigationController.h"
 #import "productViewController.h"
+#import "productListViewController.h"
 
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property (strong,nonatomic) SPZBarReaderViewController *viewController;
+//@property (strong,nonatomic) SPZBarReaderViewController *viewController;
 //@property (strong,nonatomic) productViewController *viewController;
+@property (strong,nonatomic) productListViewController *viewController;
 @property (strong, nonatomic) UINavigationController *navController;
 
 

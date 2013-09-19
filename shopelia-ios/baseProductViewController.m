@@ -27,6 +27,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        [self fakeProducts];
     }
     return self;
 }
@@ -81,6 +82,26 @@
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:button];
     self.navigationItem.hidesBackButton = YES;
     self.navigationItem.leftBarButtonItem = item;
+}
+
+-(void) fakeProducts {
+    
+    NSError * localError = nil;
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"products" ofType:@"json"];
+    NSData *data = [NSData dataWithContentsOfFile:filePath];
+    
+    NSLog(@"data: %@", data);
+    
+    self.products = [NSJSONSerialization JSONObjectWithData: data options: NSJSONReadingMutableContainers error: &localError];
+    if (localError == nil)
+        NSLog(@"myConvertedJSONData: %@", self.products);
+    else {
+        NSLog(@"json error: %@", [localError userInfo]);
+    }
+    
+    self.product = [self.products objectAtIndex:0];
+    NSLog(@"product : %@", self.product);
+    
 }
 
 

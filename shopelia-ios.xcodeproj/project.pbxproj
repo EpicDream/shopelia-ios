@@ -43,6 +43,7 @@
 		116CD92C17DE030100978733 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 116CD92717DE030100978733 /* libiconv.dylib */; };
 		116CD92D17DE030100978733 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 116CD92817DE030100978733 /* QuartzCore.framework */; };
 		1183CD9117E9D58300F1E66D /* baseProductViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1183CD9017E9D58300F1E66D /* baseProductViewController.m */; };
+		1183CD9317EB365900F1E66D /* products.json in Resources */ = {isa = PBXBuildFile; fileRef = 1183CD9217EB365900F1E66D /* products.json */; };
 		118433B117E1F01E00425AEB /* green-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 118433AC17E1F01E00425AEB /* green-button.png */; };
 		118433B217E1F01E00425AEB /* green-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 118433AD17E1F01E00425AEB /* green-button@2x.png */; };
 		118433B317E1F01E00425AEB /* productViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 118433AF17E1F01E00425AEB /* productViewController.m */; };
@@ -141,6 +142,7 @@
 		116CD92817DE030100978733 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		1183CD8F17E9D58300F1E66D /* baseProductViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = baseProductViewController.h; sourceTree = "<group>"; };
 		1183CD9017E9D58300F1E66D /* baseProductViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = baseProductViewController.m; sourceTree = "<group>"; };
+		1183CD9217EB365900F1E66D /* products.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = products.json; sourceTree = "<group>"; };
 		118433AC17E1F01E00425AEB /* green-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "green-button.png"; sourceTree = "<group>"; };
 		118433AD17E1F01E00425AEB /* green-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "green-button@2x.png"; sourceTree = "<group>"; };
 		118433AE17E1F01E00425AEB /* productViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = productViewController.h; sourceTree = "<group>"; };
@@ -245,36 +247,37 @@
 		113DDE3417DDFA9A0056E126 /* shopelia-ios */ = {
 			isa = PBXGroup;
 			children = (
-				119C076717E3216C003AF6AA /* SPHTTP */,
+				1183CD9217EB365900F1E66D /* products.json */,
+				113DDE3D17DDFA9A0056E126 /* AppDelegate.h */,
+				113DDE3E17DDFA9A0056E126 /* AppDelegate.m */,
+				110B54E417E7533900DF1C3A /* backgroundView.h */,
+				110B54E517E7533900DF1C3A /* backgroundView.m */,
+				1183CD8F17E9D58300F1E66D /* baseProductViewController.h */,
+				1183CD9017E9D58300F1E66D /* baseProductViewController.m */,
+				113DDE4617DDFA9A0056E126 /* Images.xcassets */,
+				1163C5AD17DF5B6C0043E73D /* overlayView.h */,
+				1163C5AE17DF5B6C0043E73D /* overlayView.m */,
+				1190AAE017E9CECE003E570E /* productListViewController.h */,
+				1190AAE117E9CECE003E570E /* productListViewController.m */,
+				1190AAE217E9CECE003E570E /* productListViewController.xib */,
 				118433AE17E1F01E00425AEB /* productViewController.h */,
 				118433AF17E1F01E00425AEB /* productViewController.m */,
 				118433B017E1F01E00425AEB /* productViewController.xib */,
 				116CD95617DF085500978733 /* ShopeliaResources */,
-				113DDE3D17DDFA9A0056E126 /* AppDelegate.h */,
-				113DDE3E17DDFA9A0056E126 /* AppDelegate.m */,
-				113DDE4617DDFA9A0056E126 /* Images.xcassets */,
-				113DDE3517DDFA9A0056E126 /* Supporting Files */,
-				1163C59E17DF161F0043E73D /* SPZBarReaderViewController.h */,
-				1163C59F17DF161F0043E73D /* SPZBarReaderViewController.m */,
+				119C076717E3216C003AF6AA /* SPHTTP */,
+				110B54DE17E7406E00DF1C3A /* SPImageView.h */,
+				110B54DF17E7406E00DF1C3A /* SPImageView.m */,
 				1163C5A117DF1D070043E73D /* SPNavigationController.h */,
 				1163C5A217DF1D070043E73D /* SPNavigationController.m */,
-				1163C5AD17DF5B6C0043E73D /* overlayView.h */,
-				1163C5AE17DF5B6C0043E73D /* overlayView.m */,
+				110B54E117E740F700DF1C3A /* SPThreadFactory.h */,
+				110B54E217E740F700DF1C3A /* SPThreadFactory.m */,
+				1163C59E17DF161F0043E73D /* SPZBarReaderViewController.h */,
+				1163C59F17DF161F0043E73D /* SPZBarReaderViewController.m */,
+				113DDE3517DDFA9A0056E126 /* Supporting Files */,
 				11C6E7E117E06F5600D66D96 /* UIColor+Shopelia.h */,
 				11C6E7E217E06F5600D66D96 /* UIColor+Shopelia.m */,
 				11C6E7E917E07E8500D66D96 /* UIView+Shopelia.h */,
 				11C6E7EA17E07E8500D66D96 /* UIView+Shopelia.m */,
-				110B54DE17E7406E00DF1C3A /* SPImageView.h */,
-				110B54DF17E7406E00DF1C3A /* SPImageView.m */,
-				110B54E117E740F700DF1C3A /* SPThreadFactory.h */,
-				110B54E217E740F700DF1C3A /* SPThreadFactory.m */,
-				110B54E417E7533900DF1C3A /* backgroundView.h */,
-				110B54E517E7533900DF1C3A /* backgroundView.m */,
-				1190AAE017E9CECE003E570E /* productListViewController.h */,
-				1190AAE117E9CECE003E570E /* productListViewController.m */,
-				1190AAE217E9CECE003E570E /* productListViewController.xib */,
-				1183CD8F17E9D58300F1E66D /* baseProductViewController.h */,
-				1183CD9017E9D58300F1E66D /* baseProductViewController.m */,
 			);
 			path = "shopelia-ios";
 			sourceTree = "<group>";
@@ -493,6 +496,7 @@
 				113DDE8717DDFE630056E126 /* zbar-samples.png in Resources */,
 				11C6E7EE17E086AD00D66D96 /* bar-code.png in Resources */,
 				115E67B717E89A7900B88DCA /* back-button@2x.png in Resources */,
+				1183CD9317EB365900F1E66D /* products.json in Resources */,
 				113DDE8617DDFE630056E126 /* zbar-helpicons.png in Resources */,
 				1190AAE417E9CECE003E570E /* productListViewController.xib in Resources */,
 				11C6E7E717E078BE00D66D96 /* logo-word@2x.png in Resources */,

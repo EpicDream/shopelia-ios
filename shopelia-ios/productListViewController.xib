@@ -7,9 +7,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="productListViewController">
             <connections>
+                <outlet property="priceTableView" destination="6yJ-ll-Dxe" id="dGc-mG-29L"/>
                 <outlet property="productImageView" destination="3kT-Ac-eOP" id="bs9-8j-uU0"/>
                 <outlet property="productTitle" destination="P9A-4b-OAX" id="IX3-Yq-7Pg"/>
-                <outlet property="scrollView" destination="PbX-8u-84n" id="JC8-B6-blW"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
         </placeholder>
@@ -18,63 +18,59 @@
             <rect key="frame" x="0.0" y="20" width="320" height="548"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PbX-8u-84n">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="6yJ-ll-Dxe">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <subviews>
-                        <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eWc-LK-JwK">
-                            <rect key="frame" x="20" y="20" width="280" height="508"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3kT-Ac-eOP" customClass="SPImageView">
-                                    <rect key="frame" x="0.0" y="0.0" width="280" height="250"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="280" id="HW3-VX-aJH"/>
-                                        <constraint firstAttribute="height" constant="250" id="h2A-kw-C5Y"/>
-                                    </constraints>
-                                </imageView>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Internet Marketing 2013" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="270" translatesAutoresizingMaskIntoConstraints="NO" id="P9A-4b-OAX">
-                                    <rect key="frame" x="10" y="260" width="270" height="70"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="270" id="uiR-MC-CLr"/>
-                                        <constraint firstAttribute="height" constant="70" id="xpO-rN-mNx"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
-                                    <color key="textColor" red="0.13333334029999999" green="0.13333334029999999" blue="0.13333334029999999" alpha="1" colorSpace="deviceRGB"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                            </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstItem="3kT-Ac-eOP" firstAttribute="leading" secondItem="eWc-LK-JwK" secondAttribute="leading" id="Dfo-Jm-xhf"/>
-                                <constraint firstItem="P9A-4b-OAX" firstAttribute="top" secondItem="3kT-Ac-eOP" secondAttribute="bottom" constant="10" id="YEw-iK-Nga"/>
-                                <constraint firstAttribute="width" constant="280" id="bw5-J7-Spz"/>
-                                <constraint firstAttribute="trailing" secondItem="3kT-Ac-eOP" secondAttribute="trailing" id="sU7-BA-klO"/>
-                                <constraint firstItem="3kT-Ac-eOP" firstAttribute="top" secondItem="eWc-LK-JwK" secondAttribute="top" id="wAG-hh-d9U"/>
-                            </constraints>
-                        </view>
-                    </subviews>
-                    <constraints>
-                        <constraint firstItem="eWc-LK-JwK" firstAttribute="top" secondItem="PbX-8u-84n" secondAttribute="top" constant="20" id="AUd-kp-x3i"/>
-                        <constraint firstAttribute="trailing" secondItem="eWc-LK-JwK" secondAttribute="trailing" constant="20" id="hnl-UC-yMl"/>
-                        <constraint firstItem="eWc-LK-JwK" firstAttribute="leading" secondItem="PbX-8u-84n" secondAttribute="leading" constant="20" id="qyO-1P-LwJ"/>
-                        <constraint firstAttribute="bottom" secondItem="eWc-LK-JwK" secondAttribute="bottom" constant="20" id="rSW-UK-gmK"/>
-                    </constraints>
-                </scrollView>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <view key="tableHeaderView" contentMode="scaleToFill" id="eWc-LK-JwK">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="330"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3kT-Ac-eOP" customClass="SPImageView">
+                                <rect key="frame" x="20" y="20" width="280" height="230"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="230" id="Pvk-Hv-qdq"/>
+                                    <constraint firstAttribute="width" constant="280" id="SfL-uo-Y9I"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Internet Marketing 2013" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="270" translatesAutoresizingMaskIntoConstraints="NO" id="P9A-4b-OAX">
+                                <rect key="frame" x="20" y="260" width="270" height="70"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="7dn-Yf-cJt"/>
+                                    <constraint firstAttribute="width" constant="270" id="b1A-hf-FsR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
+                                <color key="textColor" red="0.13333334029999999" green="0.13333334029999999" blue="0.13333334029999999" alpha="1" colorSpace="deviceRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="3kT-Ac-eOP" firstAttribute="leading" secondItem="eWc-LK-JwK" secondAttribute="leading" constant="20" id="86R-ea-Lho"/>
+                            <constraint firstAttribute="bottom" secondItem="P9A-4b-OAX" secondAttribute="bottom" id="Beo-Zs-pv6"/>
+                            <constraint firstItem="P9A-4b-OAX" firstAttribute="top" secondItem="3kT-Ac-eOP" secondAttribute="bottom" constant="10" id="Djs-fT-v3i"/>
+                            <constraint firstItem="P9A-4b-OAX" firstAttribute="top" secondItem="3kT-Ac-eOP" secondAttribute="bottom" constant="10" id="MCU-BM-TAr"/>
+                            <constraint firstItem="3kT-Ac-eOP" firstAttribute="top" secondItem="eWc-LK-JwK" secondAttribute="top" constant="20" id="Zav-Go-MkT"/>
+                            <constraint firstItem="P9A-4b-OAX" firstAttribute="leading" secondItem="eWc-LK-JwK" secondAttribute="leading" constant="20" id="ckN-Ez-9BS"/>
+                            <constraint firstAttribute="trailing" secondItem="P9A-4b-OAX" secondAttribute="trailing" constant="30" id="eHj-VO-6Dh"/>
+                            <constraint firstAttribute="trailing" secondItem="3kT-Ac-eOP" secondAttribute="trailing" constant="20" id="jDF-Pi-TVl"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="0eX-AI-kv8"/>
+                        <outlet property="delegate" destination="-1" id="iP8-sp-WpT"/>
+                    </connections>
+                </tableView>
             </subviews>
             <color key="backgroundColor" red="0.90588241815567017" green="0.94117653369903564" blue="0.93725496530532837" alpha="1" colorSpace="deviceRGB"/>
             <constraints>
-                <constraint firstItem="PbX-8u-84n" firstAttribute="top" secondItem="1" secondAttribute="top" id="3WI-yb-dfz"/>
-                <constraint firstAttribute="trailing" secondItem="PbX-8u-84n" secondAttribute="trailing" id="Aey-Mb-aGV"/>
-                <constraint firstItem="PbX-8u-84n" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="IGT-Ar-sSs"/>
-                <constraint firstAttribute="bottom" secondItem="PbX-8u-84n" secondAttribute="bottom" id="YTv-Yy-cku"/>
-                <constraint firstAttribute="bottom" secondItem="PbX-8u-84n" secondAttribute="bottom" id="cmO-6o-M3h"/>
-                <constraint firstItem="PbX-8u-84n" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="nI6-YI-EKu"/>
-                <constraint firstItem="PbX-8u-84n" firstAttribute="top" secondItem="1" secondAttribute="top" id="p4r-mT-nJI"/>
-                <constraint firstAttribute="trailing" secondItem="PbX-8u-84n" secondAttribute="trailing" id="xuk-jW-K9W"/>
+                <constraint firstItem="6yJ-ll-Dxe" firstAttribute="top" secondItem="1" secondAttribute="top" id="RiB-cF-rRZ"/>
+                <constraint firstItem="6yJ-ll-Dxe" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="Vls-HT-6tC"/>
+                <constraint firstAttribute="bottom" secondItem="6yJ-ll-Dxe" secondAttribute="bottom" id="lPP-Ho-EP7"/>
+                <constraint firstAttribute="trailing" secondItem="6yJ-ll-Dxe" secondAttribute="trailing" id="nxi-Rg-y7z"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
