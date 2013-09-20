@@ -22,5 +22,9 @@
     return [UIColor colorWithRed:0.667 green:0.667 blue:0.667 alpha:1.0];
 }
 
++(UIColor *) shopeliaBackgroundColor {
+    return [UIColor colorWithRed:0.914 green:0.937 blue:0.937 alpha:1.0];
+}
+
 @end
 

@@ -46,7 +46,11 @@
     
     bottomLabel.font =[UIFont fontWithName:@"Helvetica Neue" size:14.0];
     bottomLabel.text = @"Centrez le code-barre dans la zone ci-dessus";
+#if __IPHONE_OS_VERSION_MAX_ALLOWED < 60000
     bottomLabel.textAlignment = UITextAlignmentCenter;
+#else
+    bottomLabel.textAlignment = NSTextAlignmentCenter;
+#endif
     bottomLabel.backgroundColor = [UIColor clearColor];
     bottomLabel.textColor = [UIColor shopeliaBlue];
     bottomLabel.lineBreakMode = NSLineBreakByWordWrapping;
@@ -89,7 +93,11 @@
     
     centralTextLabel.font =[UIFont fontWithName:@"Helvetica Neue" size:24.0];
     centralTextLabel.text = @"Profitez des prix exclusifs avec Shopelia";
+#if __IPHONE_OS_VERSION_MAX_ALLOWED < 60000
     centralTextLabel.textAlignment = UITextAlignmentCenter;
+#else
+    centralTextLabel.textAlignment = NSTextAlignmentCenter;
+#endif
     centralTextLabel.backgroundColor = [UIColor clearColor];
     centralTextLabel.textColor = [UIColor whiteColor];
     centralTextLabel.lineBreakMode = NSLineBreakByWordWrapping;

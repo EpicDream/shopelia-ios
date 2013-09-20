@@ -1,8 +1,24 @@
+_Table of Contents_
+
+* [About these classes](#about-these-classes)
+  * [`OHAttributedLabel`](#ohattributedlabel)
+  * [`NSAttributedString` and `NSTextChecking` Additions](#nsattributedstring-and-nstextchecking-additions)
+  * [`OHASMarkupParsers` and simple markup to build your attributed strings easily](#ohasmarkupparsers-and-simple-markup-to-build-your-attributed-strings-easily)
+  * [`UIAppearance` support](#uiappearance-support)
+* [How to use in your project](#how-to-use-in-your-project)
+* [Sample code & Other documentation](#sample-code--other-documentation)
+* [ChangeLog — Revisions History](#changelog-%E2%80%94-revisions-history)
+* [Projects that use this class](#projects-that-use-this-class)
+
+----
+
 # About these classes
 
 ### OHAttributedLabel
 
-This class allows you to use a `UILabel` with `NSAttributedString`s, in order to **display styled text** with mixed style (mixed fonts, color, size, ...) in a unique label. It is a subclass of `UILabel`, which adds an `attributedText` property. Use this property, instead of the `text` property, to set and get the `NSAttributedString` to display.
+This class allows you to use a `UILabel` with `NSAttributedStrings`, in order to **display styled text** with various style (mixed fonts, color, size, ...) in a unique label. It is a subclass of `UILabel` which adds an `attributedText` property. Use this property, instead of the `text` property, to set and get the `NSAttributedString` to display.
+
+> Note: This class is compatible with iOS4.3+ and has been developped before the release of the iOS6 SDK (before Apple added support for `NSAttributedLabel` in the `UILabel` class itself). It can still be used with the iOS6 SDK (the `attributedText` property hopefully match the one chosen by Apple) if you need support for eariler iOS versions or for the additional features it provides.
 
 This class **also support hyperlinks and URLs**. It can **automatically detect links** in your text, color them and make them touchable; you can also **add "custom links" in your text** by attaching an URL to a range of your text and thus make it touchable, and even then catch the event of a touch on a link to act as you wish to.
 
@@ -10,6 +26,30 @@ This class **also support hyperlinks and URLs**. It can **automatically detect l
 
 In addition to this `OHAttributedLabel` class, you will also find a category of `NS(Mutable)AttributedString` to ease creation and manipulation of common attributes of `NSAttributedString` (to easily change the font, style, color, ... of a range of the string). See the header file `NSAttributedString+Attributes.h` for a list of those comodity methods.
 
+Example:
+
+```objc
+// Build an NSAttributedString easily from a NSString
+NSMutableAttributedString* attrStr = [NSMutableAttributedString attributedStringWithString:txt];
+// Change font, text color, paragraph style
+[attrStr setFont:[UIFont fontWithName:@"Helvetica" size:18]];
+[attrStr setTextColor:[UIColor grayColor]];
+
+OHParagraphStyle* paragraphStyle = [OHParagraphStyle defaultParagraphStyle];
+paragraphStyle.textAlignment = kCTJustifiedTextAlignment;
+paragraphStyle.lineBreakMode = kCTLineBreakByWordWrapping;
+paragraphStyle.firstLineHeadIndent = 30.f; // indentation for first line
+paragraphStyle.lineSpacing = 3.f; // increase space between lines by 3 points
+[attrStr setParagraphStyle:paragraphStyle];
+
+// Change the color and bold of only one part of the string
+[attrStr setTextColor:[UIColor redColor] range:NSMakeRange(10,3)];
+[attrStr setTextBold:YES range:NSMakeRange(10,8)];
+
+// Add a link to a given portion of the string
+[attrStr setLink:someNSURL range:NSMakeRange(8,20)];
+```
+    
 There is also a category for `NSTextCheckingResult` that adds the `extendedURL` property. This property returns the same value as the `URL` value for standard link cases, and return a formatted Maps URL for `NSTextCheckingTypeAddress` link types, that will open Google Maps in iOS version before 6.0 and the Apple's Maps application in iOS 6.0 and later.
 
 ### OHASMarkupParsers and simple markup to build your attributed strings easily
@@ -57,13 +97,17 @@ There are two possible methods to include these classes in your project:
 
 2. Manually:
     * Include the `OHAttributedLabel.xcodeproj` project in your Xcode4 workspace
-    * Add the `libOHAttributedLabel.a` library **and the `CoreText.framework`** to your "Link binary with libraries" Build Phase.
-    * Add the relative path to the OHAttributedLabel headers in your "User Header Search Path" Build Setting
-    * Add the `-ObjC` flag in the "Other Linker Flags" Build Setting if not present already
+    * Build this `OHAttributedLabel.xcodeproj` project once for the "iOS Device" (not the simulator) _(1)_
+    * Add `libOHAttributedLabel.a` **and `CoreText.framework`** to your **"Link Binary With Libraries"** Build Phase of your app project.
+    * Select the `libOHAttributedLabel.a` that has just been added to your app project in your Project Navigator on the left, and change the "Location" dropdown in the File Inspector to **"Relative to Build Products"** _(1)_
+    * Add the **`-ObjC` flag in the "Other Linker Flags"** Build Setting (if not present already)
 
-Then in your application code, when you want to make use of OHAttributedLabel methods, import the headers as usual: `#import "OHAttributedLabel.h"` or `#import "NSAttributedString+Attributes.h"` etc.
+Then in your application code, when you want to make use of OHAttributedLabel methods, you only need to import the headers with `#import <OHAttributedLabel/OHAttributedLabel.h>` or `#import <OHAttributedLabel/NSAttributedString+Attributes.h>` etc.
 
-For more details and import/linking troubleshooting, please see the [dedicated page](https://github.com/AliSoftware/OHAttributedLabel/wiki/How-to-use) and issue #90.
+> _(1) Note: These two steps are only necessary to avoid a bug in Xcode4 that would otherwise make Xcode fail to detect implicit dependencies between your app and the lib._
+
+For more details and import/linking troubleshooting, please see the [dedicated page](https://github.com/AliSoftware/OHAttributedLabel/wiki/How-to-use).
+
 
 # Sample code & Other documentation
 

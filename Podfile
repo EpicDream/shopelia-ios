@@ -1,1 +1,1 @@
-pod 'OHAttributedLabel', '~> 3.2.1'
+pod 'OHAttributedLabel', '~> 3.4.2'

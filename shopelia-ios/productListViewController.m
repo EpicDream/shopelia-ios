@@ -8,6 +8,7 @@
 
 #import "productListViewController.h"
 #import "SPCell.h"
+#import "UIColor+Shopelia.h"
 
 @interface productListViewController ()
 
@@ -19,7 +20,7 @@
 @synthesize productImageView;
 @synthesize priceTableView;
 
-static const int CELL_HEIGHT = 70;
+static const int CELL_HEIGHT = 82;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -87,7 +88,7 @@ static const int CELL_HEIGHT = 70;
                         cell.position = CellPositionMiddle;
                     }
                 }
-                [cell setNeedsDisplay];
+                [cell updateContentView];
 
                 break;
             }

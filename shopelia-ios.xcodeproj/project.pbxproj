@@ -11,6 +11,7 @@
 		110B54E017E7406E00DF1C3A /* SPImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 110B54DF17E7406E00DF1C3A /* SPImageView.m */; };
 		110B54E317E740F700DF1C3A /* SPThreadFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 110B54E217E740F700DF1C3A /* SPThreadFactory.m */; };
 		110B54E617E7533900DF1C3A /* backgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 110B54E517E7533900DF1C3A /* backgroundView.m */; };
+		1128F8EF17EC608B0079EC11 /* SPCellContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1128F8EE17EC608B0079EC11 /* SPCellContentView.m */; };
 		113DDE2F17DDFA9A0056E126 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 113DDE2E17DDFA9A0056E126 /* Foundation.framework */; };
 		113DDE3117DDFA9A0056E126 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 113DDE3017DDFA9A0056E126 /* CoreGraphics.framework */; };
 		113DDE3317DDFA9A0056E126 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 113DDE3217DDFA9A0056E126 /* UIKit.framework */; };
@@ -84,6 +85,8 @@
 		110B54E217E740F700DF1C3A /* SPThreadFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPThreadFactory.m; sourceTree = "<group>"; };
 		110B54E417E7533900DF1C3A /* backgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = backgroundView.h; sourceTree = "<group>"; };
 		110B54E517E7533900DF1C3A /* backgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = backgroundView.m; sourceTree = "<group>"; };
+		1128F8ED17EC608B0079EC11 /* SPCellContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPCellContentView.h; sourceTree = "<group>"; };
+		1128F8EE17EC608B0079EC11 /* SPCellContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPCellContentView.m; sourceTree = "<group>"; };
 		113DDE2B17DDFA9A0056E126 /* shopelia-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "shopelia-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		113DDE2E17DDFA9A0056E126 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		113DDE3017DDFA9A0056E126 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -286,6 +289,8 @@
 				1183CD9417EB41DD00F1E66D /* SPCell.h */,
 				1183CD9517EB41DD00F1E66D /* SPCell.m */,
 				1183CD9717EB423600F1E66D /* SPCell.xib */,
+				1128F8ED17EC608B0079EC11 /* SPCellContentView.h */,
+				1128F8EE17EC608B0079EC11 /* SPCellContentView.m */,
 			);
 			path = "shopelia-ios";
 			sourceTree = "<group>";
@@ -579,6 +584,7 @@
 				1163C5A317DF1D070043E73D /* SPNavigationController.m in Sources */,
 				119C076517E320DA003AF6AA /* SPHTTPRequest.m in Sources */,
 				119C076417E320DA003AF6AA /* SPHTTPClient.m in Sources */,
+				1128F8EF17EC608B0079EC11 /* SPCellContentView.m in Sources */,
 				1190AAE317E9CECE003E570E /* productListViewController.m in Sources */,
 				119C074917E30DA5003AF6AA /* Constants.m in Sources */,
 				1163C5A017DF161F0043E73D /* SPZBarReaderViewController.m in Sources */,

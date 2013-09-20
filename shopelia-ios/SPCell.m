@@ -10,8 +10,6 @@
 #import "UIColor+Shopelia.h"
 #import "UIView+Shopelia.h"
 
-static const CGFloat kCornerRadius = 4;
-
 @implementation SPCell
 
 @synthesize position;
@@ -21,9 +19,6 @@ static const CGFloat kCornerRadius = 4;
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
-        [self setBackgroundColor:[UIColor clearColor]];
-        //self.position = 2;
-
     }
     return self;
 }
@@ -35,39 +30,40 @@ static const CGFloat kCornerRadius = 4;
     // Configure the view for the selected state
 }
 
-- (void)drawRect:(CGRect)rect {
-    [self setOrigX: 10.0];
-    [self setWidth:310.0];
-    //[self setHeight:60.0];
-    
-    CGRect bounds = CGRectInset(self.bounds,0.5 / [UIScreen mainScreen].scale,0.5 / [UIScreen mainScreen].scale);
-    UIBezierPath *path;
-    if (position == CellPositionSingle) {
-        path = [UIBezierPath bezierPathWithRoundedRect:bounds cornerRadius:kCornerRadius];
-    } else if (position == CellPositionTop) {
-        bounds.size.height += 1;
-        path = [UIBezierPath bezierPathWithRoundedRect:bounds
-                                     byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight
-                                           cornerRadii:CGSizeMake(kCornerRadius, kCornerRadius)];
-    } else if (position == CellPositionBottom) {
-        path = [UIBezierPath bezierPathWithRoundedRect:bounds
-                                     byRoundingCorners:UIRectCornerBottomLeft | UIRectCornerBottomRight
-                                           cornerRadii:CGSizeMake(kCornerRadius, kCornerRadius)];
-    } else {
-        bounds.size.height += 1;
-        path = [UIBezierPath bezierPathWithRect:bounds];
-    }
-    
-    [[UIColor whiteColor] setFill];
-    [[UIColor shopeliaLightGray] setStroke];
-    [path fill];
-    [path stroke];
-    
+
+- (void) updateContentView {
+    SPCellContentView *contentView = [[SPCellContentView alloc] initWithFrame:self.frame];
+    contentView.position = self.position;
+    [contentView setNeedsDisplay];
+    [self.contentView addSubview: contentView];
+
 }
+
+
 
 
 - (void)layoutSubviews {
     [super layoutSubviews];
+    UILabel *infoLabel = self.shippingInfos;
+    
+#if __IPHONE_OS_VERSION_MAX_ALLOWED < 60000
+    CGSize expectedLabelSize =  [infoLabel.text sizeWithFont:infoLabel.font
+                           constrainedToSize:infoLabel.frame.size
+                               lineBreakMode:UILineBreakModeWordWrap];
+    int lines = expectedLabelSize.height /infoLabel.font.pointSize;
+#else
+    CGSize expectedLabelSize =  [infoLabel.text sizeWithFont:infoLabel.font
+                                           constrainedToSize:infoLabel.frame.size
+                                               lineBreakMode:NSLineBreakByWordWrapping];
+    
+    int lines = expectedLabelSize.height /infoLabel.font.pointSize;
+
+#endif
+    NSLog(@"%f",expectedLabelSize.height);
+    infoLabel.numberOfLines = lines;
+    CGRect newFrame = infoLabel.frame;
+    newFrame.size.height = expectedLabelSize.height;
+    infoLabel.frame = newFrame;
 }
 
 @end

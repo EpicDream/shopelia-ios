@@ -7,13 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-typedef enum {
-    CellPositionTop,
-    CellPositionMiddle,
-    CellPositionBottom,
-    CellPositionSingle
-} CellPosition;
+#import "SPCellContentView.h"
 
 
 @interface SPCell : UITableViewCell
@@ -21,5 +15,7 @@ typedef enum {
 @property (strong, nonatomic) IBOutlet UILabel *shippingInfos;
 @property (strong, nonatomic) IBOutlet UILabel *soldBy;
 @property (assign) CellPosition position;
+
+- (void) updateContentView;
 
 @end
