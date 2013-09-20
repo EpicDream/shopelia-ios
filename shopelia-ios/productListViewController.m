@@ -39,6 +39,7 @@ static const int CELL_HEIGHT = 70;
     [self.productImageView setAsynchImageWithURL:[self.product valueForKey:@"image_url"]];
     
     self.productTitle.text =  [self.product valueForKey:@"name"];
+    self.priceTableView.contentInset = UIEdgeInsetsMake(0, 0,10, 0);
 }
 
 - (void)viewDidAppear:(BOOL)animated {
