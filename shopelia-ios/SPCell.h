@@ -15,7 +15,10 @@
 @property (strong, nonatomic) IBOutlet UILabel *shippingInfos;
 @property (strong, nonatomic) IBOutlet UILabel *soldBy;
 @property (assign) CellPosition position;
+@property (strong, nonatomic) IBOutlet UILabel *shippingPrice;
 
+- (void) formatMerchantUrl: (NSDictionary *) product;
+- (void) formatShipping ;
 - (void) updateContentView;
 
 @end

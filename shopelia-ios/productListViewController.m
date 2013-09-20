@@ -99,10 +99,10 @@ static const int CELL_HEIGHT = 82;
     NSLog(@"%@",version);
     // Configure the cell...
     cell.price.text = [[version valueForKey:@"price"] stringValue];
-    cell.soldBy.text = [[prod objectForKey:@"merchant"] valueForKey:@"domain"];
+    [cell formatMerchantUrl:prod];
+    [cell formatShipping];
     cell.shippingInfos.text = [version valueForKey:@"shipping_info"];
 
-    
     return cell;
     
 }
