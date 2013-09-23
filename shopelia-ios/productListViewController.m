@@ -43,6 +43,8 @@ static const int CELL_HEIGHT = 82;
     
     self.productTitle.text =  [self.product valueForKey:@"name"];
     self.priceTableView.contentInset = UIEdgeInsetsMake(0, 0,10, 0);
+    [self comparePrices];
+
 
 }
 
@@ -101,7 +103,9 @@ static const int CELL_HEIGHT = 82;
     NSDictionary* version = [self getVersion:prod];
     NSLog(@"%@",version);
     // Configure the cell...
-    cell.price.text = [[version valueForKey:@"price"] stringValue];
+    float price = [[version valueForKey:@"price"] floatValue];
+    cell.price.text = [NSString stringWithFormat:@"%0.2f€" ,(round(price * 100)/100)];
+    
     [cell formatMerchantUrl:prod];
     [cell formatShipping];
     cell.shippingInfos.text = [version valueForKey:@"shipping_info"];

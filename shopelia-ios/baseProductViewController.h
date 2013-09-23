@@ -18,5 +18,6 @@
 - (NSDictionary *) getVersion: (NSDictionary *) product;
 - (void) customBackButton ;
 - (void) back;
+- (void) comparePrices;
 
 @end

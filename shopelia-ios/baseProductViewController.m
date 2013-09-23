@@ -28,7 +28,6 @@
     if (self) {
         // Custom initialization
         [self fakeProducts];
-        //[self comparePrices];
     }
     return self;
 }
@@ -107,6 +106,24 @@
 
 - (void) comparePrices {
     NSLog(@"Comparing Prices: %@", self.products);
+    NSMutableArray *productsArray = [[NSMutableArray alloc] initWithArray:self.products];
+    [productsArray sortUsingComparator:^NSComparisonResult(NSDictionary *product1, NSDictionary * product2){
+        NSDictionary *version1 = [self getVersion:product1] ;
+        NSDictionary *version2 = [self getVersion:product2];
+
+        if ([[version1 valueForKey:@"price"] floatValue] > [[version2 valueForKey:@"price"] floatValue]) {
+             return (NSComparisonResult)NSOrderedDescending;
+         }
+        
+        if ([[version1 valueForKey:@"price"] floatValue] < [[version2 valueForKey:@"price"] floatValue]) {
+            return (NSComparisonResult)NSOrderedAscending;
+        }
+        
+        
+         return (NSComparisonResult)NSOrderedSame;
+     }];
+    
+    self.products = productsArray;
 }
 
 
