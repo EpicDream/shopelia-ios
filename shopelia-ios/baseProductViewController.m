@@ -28,6 +28,7 @@
     if (self) {
         // Custom initialization
         [self fakeProducts];
+        //[self comparePrices];
     }
     return self;
 }
@@ -102,6 +103,10 @@
     self.product = [self.products objectAtIndex:0];
     NSLog(@"product : %@", self.product);
     
+}
+
+- (void) comparePrices {
+    NSLog(@"Comparing Prices: %@", self.products);
 }
 
 

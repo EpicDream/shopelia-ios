@@ -16,6 +16,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *soldBy;
 @property (assign) CellPosition position;
 @property (strong, nonatomic) IBOutlet UILabel *shippingPrice;
+@property (strong, nonatomic) IBOutlet UIButton *shopeliaBtn;
+
 
 - (void) formatMerchantUrl: (NSDictionary *) product;
 - (void) formatShipping ;

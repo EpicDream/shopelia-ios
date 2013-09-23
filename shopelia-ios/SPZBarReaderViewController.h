@@ -7,14 +7,14 @@
 //
 
 #import "ZBarReaderViewController.h"
-#import "SPHTTPClient.h"
+#import "HTTPClient.h"
 #import "productViewController.h"
 #import "productListViewController.h"
 
 
 @interface SPZBarReaderViewController : ZBarReaderViewController <ZBarReaderDelegate>
 
-@property (strong, nonatomic) SPHTTPClient *SPClient;
+@property (strong, nonatomic) HTTPClient *SPClient;
 //@property (strong,nonatomic) productViewController *productVC;
 @property (strong,nonatomic) productListViewController *productVC;
 

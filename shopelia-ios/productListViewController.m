@@ -9,6 +9,8 @@
 #import "productListViewController.h"
 #import "SPCell.h"
 #import "UIColor+Shopelia.h"
+#import <ShopeliaSDK/ShopeliaSDK.h>
+
 
 @interface productListViewController ()
 
@@ -41,6 +43,7 @@ static const int CELL_HEIGHT = 82;
     
     self.productTitle.text =  [self.product valueForKey:@"name"];
     self.priceTableView.contentInset = UIEdgeInsetsMake(0, 0,10, 0);
+
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -102,10 +105,30 @@ static const int CELL_HEIGHT = 82;
     [cell formatMerchantUrl:prod];
     [cell formatShipping];
     cell.shippingInfos.text = [version valueForKey:@"shipping_info"];
+    [cell.shopeliaBtn addTarget:self action:@selector(shopeliaInit:) forControlEvents:UIControlEventTouchUpInside];
+    
+    
 
     return cell;
     
 }
+
+- (void)shopeliaInit:(id)sender {
+    NSLog(@"%@",@"SHOPELIA INITIALISATION");
+    CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:self.priceTableView];
+    NSIndexPath *indexPath = [self.priceTableView indexPathForRowAtPoint:buttonPosition];
+    if (indexPath != nil)
+    {
+         NSDictionary *prod = [self.products objectAtIndex:indexPath.row];
+        Shopelia *shopelia = [[Shopelia alloc] init];
+        [shopelia prepareOrderWithProductURL:[NSURL URLWithString: [prod valueForKey:@"url"] ] completion:^(NSError *error) {
+                NSLog(@"%@", error);
+            [shopelia checkoutPreparedOrderFromViewController:self animated:YES completion:nil];
+        }];
+    }
+    
+}
+
 
 #pragma mark - Table view delegate
 

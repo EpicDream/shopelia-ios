@@ -36,6 +36,7 @@
 - (void) updateContentView {
     SPCellContentView *contentView = [[SPCellContentView alloc] initWithFrame:self.frame];
     contentView.position = self.position;
+    [contentView setUserInteractionEnabled: NO];
     [contentView setNeedsDisplay];
     [self.contentView addSubview: contentView];
 }

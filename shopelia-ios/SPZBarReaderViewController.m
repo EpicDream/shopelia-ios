@@ -7,11 +7,11 @@
 //
 
 #import "SPZBarReaderViewController.h"
-#import "SPHTTPRequest.h"
-#import "SPHTTPPoller.h"
+#import "HTTPRequest.h"
+#import "HTTPPoller.h"
 #import "overlayView.h"
 #import "UIView+Shopelia.h"
-#import "SPImageView.h"
+#import "imageView.h"
 
 
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO( v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
@@ -97,13 +97,13 @@
     NSString *url = API_URL;
     url =[url stringByAppendingFormat:@"showcase/products/search?ean=%@&visitor=%@",EAN,@"false"];
 
-    SPHTTPRequest *request = [[SPHTTPRequest alloc] init];
+    HTTPRequest *request = [[HTTPRequest alloc] init];
     [request setValue:shopeliApiKey forHTTPHeaderField:@"X-Shopelia-ApiKey"];
     
     [request setURL:[NSURL URLWithString:url]];
     [request setHTTPMethod:@"GET"];
     
-    [request startWithCompletion:^(NSError *error, SPHTTPResponse *response){
+    [request startWithCompletion:^(NSError *error, HTTPResponse *response){
         if (error == nil) {
             //NSLog(@"%@",response.responseJSON);
             NSMutableArray *urls = [response.responseJSON objectForKey:@"urls"];
@@ -127,7 +127,7 @@
 
     NSDictionary *dict = [[NSBundle mainBundle] infoDictionary];
     NSString *shopeliApiKey = [dict valueForKey:@"ShopeliaAPIKey"] ;
-    SPHTTPRequest *request = [[SPHTTPRequest alloc] init];
+    HTTPRequest *request = [[HTTPRequest alloc] init];
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     
     [params setObject:urls forKey: @"urls"];
@@ -144,10 +144,10 @@
     [request setHTTPMethod:@"POST"];
     NSLog(@"%@",request);
     
-    [SPHTTPPoller pollRequest:request
+    [HTTPPoller pollRequest:request
                       maxTime:60.0f
               requestInterval:2.0f
-                 restartBlock:^(BOOL *restart, NSError *error, SPHTTPResponse *response) {
+                 restartBlock:^(BOOL *restart, NSError *error, HTTPResponse *response) {
                      NSLog(@"%@",response.responseJSON);
                      *restart = NO;
                      NSArray* resArray  = (NSArray *) response.responseJSON;
@@ -160,7 +160,7 @@
                      }
                      
     }
-              completionBlock:^(BOOL timeout, NSError *error, SPHTTPResponse *response) {
+              completionBlock:^(BOOL timeout, NSError *error, HTTPResponse *response) {
                   NSLog(@"%@",response.responseJSON);
                   NSLog(@"%hhd", timeout);
                   if (!timeout) {

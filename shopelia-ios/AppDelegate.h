@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import  "SPZBarReaderViewController.h"
-#import "SPNavigationController.h"
+#import "navigationController.h"
 #import "productViewController.h"
 #import "productListViewController.h"
 
