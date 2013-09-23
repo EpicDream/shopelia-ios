@@ -76,8 +76,9 @@
 - (void) customBackButton {
     UIImage *backImage = [UIImage imageNamed:@"back-button"];
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.bounds = CGRectMake( 0, 0, backImage.size.width, backImage.size.height );
+    button.bounds = CGRectMake(0,0, backImage.size.width, backImage.size.height );
     [button setImage:backImage forState:UIControlStateNormal];
+    button.imageEdgeInsets = UIEdgeInsetsMake(0,0, 0,-10);
     [button addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:button];
     self.navigationItem.hidesBackButton = YES;
