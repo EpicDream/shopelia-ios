@@ -33,15 +33,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSLog(@"%@",self.productImageView);
+    //NSLog(@"%@",self.productImageView);
     [self.productImageView setAsynchImageWithURL:[self.product valueForKey:@"image_url"]];
     [self getCheaperProduct];
-    //NSLog(@"%@",self.cheaperProduct);
+    ////NSLog(@"%@",self.cheaperProduct);
     
     UIView *view = self.contentView;
     view.layer.cornerRadius =  4.0;
     NSDictionary *version =[self getVersion:self.cheaperProduct];
-    //NSLog(@"VERSION: %@",version);
+    ////NSLog(@"VERSION: %@",version);
     self.productTitle.text =  [self.cheaperProduct valueForKey:@"name"];
     self.price.text = [[[version valueForKey:@"price"] stringValue] stringByAppendingString:@"€"];
     self.shippingPrice.text = [[version valueForKey:@"price_shipping"] stringValue];    

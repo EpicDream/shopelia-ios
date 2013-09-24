@@ -10,6 +10,8 @@
 #import <OHAttributedLabel/OHASBasicHTMLParser.h>
 #import "UIColor+Shopelia.h"
 #import "UIView+Shopelia.h"
+#import "HTTPRequest.h"
+#import "HTTPPoller.h"
 
 
 @interface baseProductViewController ()
@@ -21,13 +23,14 @@
 @synthesize products;
 @synthesize cheaperProduct;
 @synthesize product;
+@synthesize urls;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        [self fakeProducts];
+        //[self fakeProducts];
     }
     return self;
 }
@@ -41,11 +44,55 @@
     
 }
 
+-(void) getAllProductInfosForUrls: (NSMutableArray*) productUrls
+              withCompletionBlock: (void (^)(BOOL timeout, NSError *error, id response))completionBlock
+{
+    
+    
+    NSDictionary *dict = [[NSBundle mainBundle] infoDictionary];
+    NSString *shopeliApiKey = [dict valueForKey:@"ShopeliaAPIKey"] ;
+    HTTPRequest *request = [[HTTPRequest alloc] init];
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    
+    [params setObject:productUrls forKey: @"urls"];
+    //NSLog(@"%@",params);
+    
+    NSData* jsonData = [NSJSONSerialization dataWithJSONObject:params
+                                                       options:NSJSONWritingPrettyPrinted error:nil];
+    
+    request.HTTPBody = jsonData;
+    [request setValue:shopeliApiKey forHTTPHeaderField:@"X-Shopelia-ApiKey"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    NSString *url =@"https://www.shopelia.com/api/products";
+    [request setURL:[NSURL URLWithString:url]];
+    [request setHTTPMethod:@"POST"];
+    //NSLog(@"%@",request);
+    
+    [HTTPPoller pollRequest:request
+                    maxTime:10.0f
+            requestInterval:1.0f
+               restartBlock:^(BOOL *restart, NSError *error, HTTPResponse *response) {
+                   //NSLog(@"%@",response.responseJSON);
+                   *restart = NO;
+                   NSArray* resArray  = (NSArray *) response.responseJSON;
+                   for (int i = 0; i<[resArray count]; i++) {
+                       NSDictionary* prod = [resArray objectAtIndex:i];
+                       *restart = *restart || ![[prod valueForKey:@"ready"] boolValue];
+                       //NSLog(@"%hhd",[[prod valueForKey:@"ready"] boolValue]);
+                       //NSLog(@"%hhd",*restart);
+                       
+                   }
+                   
+               }
+            completionBlock: completionBlock];
+    
+}
+
 
 
 -(void) getCheaperProduct {
     if (self.products == nil || self.products.count < 1 ) {
-        NSLog(@"Someething wrong with Product Array : %@",self.products);
+        //NSLog(@"Someething wrong with Product Array : %@",self.products);
     } else if(self.products.count == 1) {
         self.cheaperProduct  = [self.products objectAtIndex:0];
     } else {
@@ -68,8 +115,8 @@
 
 
 
--(NSDictionary *) getVersion: (NSDictionary *) product {
-    return [[product objectForKey:@"versions"] objectAtIndex:0];
+-(NSDictionary *) getVersion: (NSDictionary *) prod {
+    return [[prod objectForKey:@"versions"] objectAtIndex:0];
 }
 
 
@@ -91,32 +138,36 @@
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"products" ofType:@"json"];
     NSData *data = [NSData dataWithContentsOfFile:filePath];
     
-    NSLog(@"data: %@", data);
+    //NSLog(@"data: %@", data);
     
     self.products = [NSJSONSerialization JSONObjectWithData: data options: NSJSONReadingMutableContainers error: &localError];
     if (localError == nil)
-        NSLog(@"myConvertedJSONData: %@", self.products);
+        NSLog(@"myConvertedJSONData: %@",@"here"); //, self.products);
     else {
         NSLog(@"json error: %@", [localError userInfo]);
     }
     
     self.product = [self.products objectAtIndex:0];
-    NSLog(@"product : %@", self.product);
+    //NSLog(@"product : %@", self.product);
     
 }
 
 - (void) comparePrices {
-    NSLog(@"Comparing Prices: %@", self.products);
+    //NSLog(@"Comparing Prices: %@", self.products);
     NSMutableArray *productsArray = [[NSMutableArray alloc] initWithArray:self.products];
     [productsArray sortUsingComparator:^NSComparisonResult(NSDictionary *product1, NSDictionary * product2){
         NSDictionary *version1 = [self getVersion:product1] ;
         NSDictionary *version2 = [self getVersion:product2];
+        
+        float totalPrice1 = [[version1 valueForKey:@"price_shipping"] floatValue] + [[version1 valueForKey:@"price"] floatValue];
+        
+        float totalPrice2 = [[version2 valueForKey:@"price_shipping"] floatValue] + [[version2 valueForKey:@"price"] floatValue];
 
-        if ([[version1 valueForKey:@"price"] floatValue] > [[version2 valueForKey:@"price"] floatValue]) {
+        if ( totalPrice1 > totalPrice2) {
              return (NSComparisonResult)NSOrderedDescending;
          }
         
-        if ([[version1 valueForKey:@"price"] floatValue] < [[version2 valueForKey:@"price"] floatValue]) {
+        if (totalPrice1 < totalPrice2) {
             return (NSComparisonResult)NSOrderedAscending;
         }
         

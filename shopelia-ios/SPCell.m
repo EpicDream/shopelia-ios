@@ -64,7 +64,7 @@
 #else
     self.shippingPrice.textAlignment = NSTextAlignmentLeft;
 #endif
-    NSLog(@"%@",self.shippingPrice.attributedText);
+    //NSLog(@"%@",self.shippingPrice.attributedText);
     
 }
 
@@ -88,7 +88,7 @@
     int lines = expectedLabelSize.height /infoLabel.font.pointSize;
 
 #endif
-    NSLog(@"%f",expectedLabelSize.height);
+    //NSLog(@"%f",expectedLabelSize.height);
     infoLabel.numberOfLines = lines;
     CGRect newFrame = infoLabel.frame;
     newFrame.size.height = expectedLabelSize.height;

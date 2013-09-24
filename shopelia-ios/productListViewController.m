@@ -10,6 +10,7 @@
 #import "SPCell.h"
 #import "UIColor+Shopelia.h"
 #import <ShopeliaSDK/ShopeliaSDK.h>
+#import "HTTPResponse.h"
 
 
 @interface productListViewController ()
@@ -43,10 +44,21 @@ static const int CELL_HEIGHT = 82;
     
     self.productTitle.text =  [self.product valueForKey:@"name"];
     self.priceTableView.contentInset = UIEdgeInsetsMake(0, 0,10, 0);
-    [self comparePrices];
-
+    [self getAllProductInfosForUrls: self.urls
+                withCompletionBlock: ^(BOOL timeout, NSError *error, HTTPResponse *response) {
+                    //NSLog(@"%@",response.responseJSON);
+                    //NSLog(@"%hhd", timeout);
+                    if (!timeout) {
+                        NSArray* resArray  = (NSArray *) response.responseJSON;
+                        self.products = resArray;
+                        [self comparePrices];
+                        [self.priceTableView reloadData];
+                    }
+                }];
 
 }
+
+
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
@@ -101,9 +113,9 @@ static const int CELL_HEIGHT = 82;
     }
     NSDictionary* prod = [self.products objectAtIndex:indexPath.row];
     NSDictionary* version = [self getVersion:prod];
-    NSLog(@"%@",version);
+    //NSLog(@"%@",version);
     // Configure the cell...
-    float price = [[version valueForKey:@"price"] floatValue];
+    float price = [[version valueForKey:@"price"] floatValue] + [[version valueForKey:@"price_shipping"] floatValue] ;
     cell.price.text = [NSString stringWithFormat:@"%0.2f€" ,(round(price * 100)/100)];
     
     [cell formatMerchantUrl:prod];
@@ -118,7 +130,7 @@ static const int CELL_HEIGHT = 82;
 }
 
 - (void)shopeliaInit:(id)sender {
-    NSLog(@"%@",@"SHOPELIA INITIALISATION");
+    //NSLog(@"%@",@"SHOPELIA INITIALISATION");
     CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:self.priceTableView];
     NSIndexPath *indexPath = [self.priceTableView indexPathForRowAtPoint:buttonPosition];
     if (indexPath != nil)
@@ -126,7 +138,7 @@ static const int CELL_HEIGHT = 82;
          NSDictionary *prod = [self.products objectAtIndex:indexPath.row];
         Shopelia *shopelia = [[Shopelia alloc] init];
         [shopelia prepareOrderWithProductURL:[NSURL URLWithString: [prod valueForKey:@"url"] ] completion:^(NSError *error) {
-                NSLog(@"%@", error);
+                //NSLog(@"%@", error);
             [shopelia checkoutPreparedOrderFromViewController:self animated:YES completion:nil];
         }];
     }

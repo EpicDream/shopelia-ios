@@ -12,6 +12,8 @@
 
 @implementation overlayView
 
+@synthesize scanCrop;
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -77,6 +79,8 @@
     CGContextAddRect(context, rectangle);
     CGContextStrokePath(context);
     CGContextClearRect(context,rectangle);
+    
+    self.scanCrop =rectangle;
     
     
     //Draw centeral blue line

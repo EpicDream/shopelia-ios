@@ -13,8 +13,10 @@
 @property (strong, nonatomic) NSArray* products;
 @property (strong, nonatomic) NSDictionary* cheaperProduct;
 @property (strong, nonatomic) NSDictionary* product;
+@property (strong, nonatomic) NSMutableArray* urls;
 
 -(void) getCheaperProduct;
+-(void) getAllProductInfosForUrls: (NSMutableArray*) productUrls withCompletionBlock: (void (^)(BOOL timeout, NSError *error, id response))completionBlock;
 - (NSDictionary *) getVersion: (NSDictionary *) product;
 - (void) customBackButton ;
 - (void) back;
