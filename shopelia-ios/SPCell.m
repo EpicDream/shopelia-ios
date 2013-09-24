@@ -43,7 +43,7 @@
 
 
 - (void) formatMerchantUrl: (NSDictionary *) product{
-    NSMutableAttributedString *merchantUrlLabel = [[NSMutableAttributedString alloc] initWithAttributedString:[OHASBasicHTMLParser attributedStringByProcessingMarkupInString: [[NSString alloc] initWithFormat:@"<font name='Helvetica Neue Light' size='10'>Par</font> <font name='Helvetica Neue Light' size='10'><a href='%@'>%@</a></font>",[product valueForKey:@"url"],[[product objectForKey:@"merchant"] valueForKey:@"domain"]]]];
+    NSMutableAttributedString *merchantUrlLabel = [[NSMutableAttributedString alloc] initWithAttributedString:[OHASBasicHTMLParser attributedStringByProcessingMarkupInString: [[NSString alloc] initWithFormat:@"<font name='HelveticaNeue-Light' size='10'>Par</font> <font name='HelveticaNeue-Light' size='10'><a href='%@'>%@</a></font>",[product valueForKey:@"url"],[[product objectForKey:@"merchant"] valueForKey:@"domain"]]]];
     self.soldBy.attributedText = merchantUrlLabel;
 #if __IPHONE_OS_VERSION_MAX_ALLOWED < 60000
     self.soldBy.textAlignment = UITextAlignmentRight;
@@ -54,7 +54,7 @@
 
 - (void) formatShipping {
     
-    NSString *formatedShipping = @"<font name='Helvetica Neue Light' size='10'>Livraison </font><font name='Helvetica Neue Light' size='10'><font color='#2B9B82'>incluse</font></font>";
+    NSString *formatedShipping = @"<font name='HelveticaNeue-Light' size='10'>Livraison </font><font name='HelveticaNeue-Light' size='10'><font color='#2B9B82'>incluse</font></font>";
     NSMutableAttributedString *shippingLabel = [[NSMutableAttributedString alloc] initWithAttributedString:[OHASBasicHTMLParser attributedStringByProcessingMarkupInString: formatedShipping]];
     
     self.shippingPrice.attributedText = shippingLabel;

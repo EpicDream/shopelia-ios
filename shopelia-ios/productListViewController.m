@@ -14,7 +14,7 @@
 
 
 @interface productListViewController ()
-
+@property UINib *cellNib;
 @end
 
 @implementation productListViewController
@@ -22,6 +22,7 @@
 @synthesize shippingPrice;
 @synthesize productImageView;
 @synthesize priceTableView;
+@synthesize cellNib;
 
 static const int CELL_HEIGHT = 82;
 
@@ -41,6 +42,8 @@ static const int CELL_HEIGHT = 82;
     [super viewDidLoad];
     //[self customBackButton];
     [self.productImageView setAsynchImageWithURL:[self.product valueForKey:@"image_url"]];
+    
+    self.cellNib = [UINib nibWithNibName:@"SPCell" bundle:nil];
     
     self.productTitle.text =  [self.product valueForKey:@"name"];
     self.priceTableView.contentInset = UIEdgeInsetsMake(0, 0,10, 0);
@@ -87,12 +90,12 @@ static const int CELL_HEIGHT = 82;
     SPCell *cell = (SPCell*) [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil) {
-        NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"SPCell" owner:nil options:nil];
-        
-        for (id currentObject in topLevelObjects) {
-            if ([currentObject isKindOfClass:[UITableViewCell class]])
-            {
-                cell = (SPCell *) currentObject;
+        NSLog(@"coucou");
+        NSArray *topLevelObjects = [self.cellNib instantiateWithOwner:self options:nil];
+
+        //[[NSBundle mainBundle] loadNibNamed:@"SPCell" owner:self options:nil];
+        cell = (SPCell *)[topLevelObjects objectAtIndex:0];
+
                 int rowsInSection = [self tableView:tableView numberOfRowsInSection:indexPath.section];
                 if (rowsInSection == 1) {
                     cell.position = CellPositionSingle;
@@ -107,13 +110,10 @@ static const int CELL_HEIGHT = 82;
                 }
                 [cell updateContentView];
 
-                break;
-            }
-        }
     }
     NSDictionary* prod = [self.products objectAtIndex:indexPath.row];
     NSDictionary* version = [self getVersion:prod];
-    NSLog(@"%@",version);
+    //NSLog(@"%@",version);
     // Configure the cell...
     float price = [[version valueForKey:@"price"] floatValue] + [[version valueForKey:@"price_shipping"] floatValue] - [[version valueForKey:@"cashfront_value"] floatValue] ;
     cell.price.text = [NSString stringWithFormat:@"%0.2f€" ,(round(price * 100)/100)];
@@ -152,10 +152,7 @@ static const int CELL_HEIGHT = 82;
     return CELL_HEIGHT;
 }
 
-- (void)tableView:(UITableView *)currentTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    //Launch Shopelia
-}
+
 
 
 
