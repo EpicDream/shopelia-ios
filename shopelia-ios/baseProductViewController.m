@@ -159,9 +159,9 @@
         NSDictionary *version1 = [self getVersion:product1] ;
         NSDictionary *version2 = [self getVersion:product2];
         
-        float totalPrice1 = [[version1 valueForKey:@"price_shipping"] floatValue] + [[version1 valueForKey:@"price"] floatValue];
+        float totalPrice1 = [[version1 valueForKey:@"price_shipping"] floatValue] + [[version1 valueForKey:@"price"] floatValue] - [[version1 valueForKey:@"cashfront_value"] floatValue];
         
-        float totalPrice2 = [[version2 valueForKey:@"price_shipping"] floatValue] + [[version2 valueForKey:@"price"] floatValue];
+        float totalPrice2 = [[version2 valueForKey:@"price_shipping"] floatValue] + [[version2 valueForKey:@"price"] floatValue] - [[version2 valueForKey:@"cashfront_value"] floatValue];
 
         if ( totalPrice1 > totalPrice2) {
              return (NSComparisonResult)NSOrderedDescending;

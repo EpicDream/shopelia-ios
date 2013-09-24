@@ -113,9 +113,9 @@ static const int CELL_HEIGHT = 82;
     }
     NSDictionary* prod = [self.products objectAtIndex:indexPath.row];
     NSDictionary* version = [self getVersion:prod];
-    //NSLog(@"%@",version);
+    NSLog(@"%@",version);
     // Configure the cell...
-    float price = [[version valueForKey:@"price"] floatValue] + [[version valueForKey:@"price_shipping"] floatValue] ;
+    float price = [[version valueForKey:@"price"] floatValue] + [[version valueForKey:@"price_shipping"] floatValue] - [[version valueForKey:@"cashfront_value"] floatValue] ;
     cell.price.text = [NSString stringWithFormat:@"%0.2f€" ,(round(price * 100)/100)];
     
     [cell formatMerchantUrl:prod];
