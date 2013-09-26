@@ -12,6 +12,14 @@
 		110B54E317E740F700DF1C3A /* threadFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 110B54E217E740F700DF1C3A /* threadFactory.m */; };
 		110B54E617E7533900DF1C3A /* backgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 110B54E517E7533900DF1C3A /* backgroundView.m */; };
 		1128F8EF17EC608B0079EC11 /* SPCellContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1128F8EE17EC608B0079EC11 /* SPCellContentView.m */; };
+		113137B917F1CC8600AA7DAB /* loader-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 113137B517F1CC8600AA7DAB /* loader-icon.png */; };
+		113137BA17F1CC8600AA7DAB /* loader-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 113137B617F1CC8600AA7DAB /* loader-icon@2x.png */; };
+		113137BB17F1CC8600AA7DAB /* small-loader.png in Resources */ = {isa = PBXBuildFile; fileRef = 113137B717F1CC8600AA7DAB /* small-loader.png */; };
+		113137BC17F1CC8600AA7DAB /* small-loader@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 113137B817F1CC8600AA7DAB /* small-loader@2x.png */; };
+		113137C517F1D15F00AA7DAB /* SpinnerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 113137C417F1D15F00AA7DAB /* SpinnerView.m */; };
+		113137C717F1D52300AA7DAB /* SpinnerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 113137C617F1D52300AA7DAB /* SpinnerView.xib */; };
+		113137CA17F1D7ED00AA7DAB /* UIImage+Shopelia.m in Sources */ = {isa = PBXBuildFile; fileRef = 113137C917F1D7ED00AA7DAB /* UIImage+Shopelia.m */; };
+		113137CE17F2EEC900AA7DAB /* SpinnerLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 113137CD17F2EEC900AA7DAB /* SpinnerLayer.m */; };
 		113DDE2F17DDFA9A0056E126 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 113DDE2E17DDFA9A0056E126 /* Foundation.framework */; };
 		113DDE3117DDFA9A0056E126 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 113DDE3017DDFA9A0056E126 /* CoreGraphics.framework */; };
 		113DDE3317DDFA9A0056E126 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 113DDE3217DDFA9A0056E126 /* UIKit.framework */; };
@@ -89,6 +97,17 @@
 		110B54E517E7533900DF1C3A /* backgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = backgroundView.m; sourceTree = "<group>"; };
 		1128F8ED17EC608B0079EC11 /* SPCellContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPCellContentView.h; sourceTree = "<group>"; };
 		1128F8EE17EC608B0079EC11 /* SPCellContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPCellContentView.m; sourceTree = "<group>"; };
+		113137B517F1CC8600AA7DAB /* loader-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loader-icon.png"; sourceTree = "<group>"; };
+		113137B617F1CC8600AA7DAB /* loader-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loader-icon@2x.png"; sourceTree = "<group>"; };
+		113137B717F1CC8600AA7DAB /* small-loader.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "small-loader.png"; sourceTree = "<group>"; };
+		113137B817F1CC8600AA7DAB /* small-loader@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "small-loader@2x.png"; sourceTree = "<group>"; };
+		113137C317F1D15F00AA7DAB /* SpinnerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpinnerView.h; sourceTree = "<group>"; };
+		113137C417F1D15F00AA7DAB /* SpinnerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpinnerView.m; sourceTree = "<group>"; };
+		113137C617F1D52300AA7DAB /* SpinnerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpinnerView.xib; sourceTree = "<group>"; };
+		113137C817F1D7ED00AA7DAB /* UIImage+Shopelia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Shopelia.h"; sourceTree = "<group>"; };
+		113137C917F1D7ED00AA7DAB /* UIImage+Shopelia.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Shopelia.m"; sourceTree = "<group>"; };
+		113137CC17F2EEC900AA7DAB /* SpinnerLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpinnerLayer.h; sourceTree = "<group>"; };
+		113137CD17F2EEC900AA7DAB /* SpinnerLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpinnerLayer.m; sourceTree = "<group>"; };
 		113DDE2B17DDFA9A0056E126 /* shopelia-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "shopelia-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		113DDE2E17DDFA9A0056E126 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		113DDE3017DDFA9A0056E126 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -216,6 +235,61 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		113137BD17F1CCA900AA7DAB /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				11C6E7E117E06F5600D66D96 /* UIColor+Shopelia.h */,
+				11C6E7E217E06F5600D66D96 /* UIColor+Shopelia.m */,
+				11C6E7E917E07E8500D66D96 /* UIView+Shopelia.h */,
+				11C6E7EA17E07E8500D66D96 /* UIView+Shopelia.m */,
+				113137C817F1D7ED00AA7DAB /* UIImage+Shopelia.h */,
+				113137C917F1D7ED00AA7DAB /* UIImage+Shopelia.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		113137BE17F1CCCC00AA7DAB /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1183CD8F17E9D58300F1E66D /* baseProductViewController.h */,
+				1183CD9017E9D58300F1E66D /* baseProductViewController.m */,
+				1190AAE017E9CECE003E570E /* productListViewController.h */,
+				1190AAE117E9CECE003E570E /* productListViewController.m */,
+				118433AE17E1F01E00425AEB /* productViewController.h */,
+				118433AF17E1F01E00425AEB /* productViewController.m */,
+				1163C5A117DF1D070043E73D /* navigationController.h */,
+				1163C5A217DF1D070043E73D /* navigationController.m */,
+				1163C59E17DF161F0043E73D /* SPZBarReaderViewController.h */,
+				1163C59F17DF161F0043E73D /* SPZBarReaderViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		113137BF17F1CCE800AA7DAB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				110B54E417E7533900DF1C3A /* backgroundView.h */,
+				110B54E517E7533900DF1C3A /* backgroundView.m */,
+				1163C5AD17DF5B6C0043E73D /* overlayView.h */,
+				1163C5AE17DF5B6C0043E73D /* overlayView.m */,
+				1190AAE217E9CECE003E570E /* productListViewController.xib */,
+				118433B017E1F01E00425AEB /* productViewController.xib */,
+				110B54DE17E7406E00DF1C3A /* imageView.h */,
+				110B54DF17E7406E00DF1C3A /* imageView.m */,
+				1183CD9417EB41DD00F1E66D /* SPCell.h */,
+				1183CD9517EB41DD00F1E66D /* SPCell.m */,
+				1183CD9717EB423600F1E66D /* SPCell.xib */,
+				1128F8ED17EC608B0079EC11 /* SPCellContentView.h */,
+				1128F8EE17EC608B0079EC11 /* SPCellContentView.m */,
+				113137C317F1D15F00AA7DAB /* SpinnerView.h */,
+				113137C417F1D15F00AA7DAB /* SpinnerView.m */,
+				113137C617F1D52300AA7DAB /* SpinnerView.xib */,
+				113137CC17F2EEC900AA7DAB /* SpinnerLayer.h */,
+				113137CD17F2EEC900AA7DAB /* SpinnerLayer.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		113DDE2217DDFA9A0056E126 = {
 			isa = PBXGroup;
 			children = (
@@ -261,42 +335,18 @@
 		113DDE3417DDFA9A0056E126 /* shopelia-ios */ = {
 			isa = PBXGroup;
 			children = (
+				113137BF17F1CCE800AA7DAB /* Views */,
+				113137BE17F1CCCC00AA7DAB /* Controllers */,
+				113137BD17F1CCA900AA7DAB /* Categories */,
 				1183CD9217EB365900F1E66D /* products.json */,
 				113DDE3D17DDFA9A0056E126 /* AppDelegate.h */,
 				113DDE3E17DDFA9A0056E126 /* AppDelegate.m */,
-				110B54E417E7533900DF1C3A /* backgroundView.h */,
-				110B54E517E7533900DF1C3A /* backgroundView.m */,
-				1183CD8F17E9D58300F1E66D /* baseProductViewController.h */,
-				1183CD9017E9D58300F1E66D /* baseProductViewController.m */,
 				113DDE4617DDFA9A0056E126 /* Images.xcassets */,
-				1163C5AD17DF5B6C0043E73D /* overlayView.h */,
-				1163C5AE17DF5B6C0043E73D /* overlayView.m */,
-				1190AAE017E9CECE003E570E /* productListViewController.h */,
-				1190AAE117E9CECE003E570E /* productListViewController.m */,
-				1190AAE217E9CECE003E570E /* productListViewController.xib */,
-				118433AE17E1F01E00425AEB /* productViewController.h */,
-				118433AF17E1F01E00425AEB /* productViewController.m */,
-				118433B017E1F01E00425AEB /* productViewController.xib */,
 				116CD95617DF085500978733 /* ShopeliaResources */,
 				119C076717E3216C003AF6AA /* HTTP */,
-				110B54DE17E7406E00DF1C3A /* imageView.h */,
-				110B54DF17E7406E00DF1C3A /* imageView.m */,
-				1163C5A117DF1D070043E73D /* navigationController.h */,
-				1163C5A217DF1D070043E73D /* navigationController.m */,
 				110B54E117E740F700DF1C3A /* threadFactory.h */,
 				110B54E217E740F700DF1C3A /* threadFactory.m */,
-				1163C59E17DF161F0043E73D /* SPZBarReaderViewController.h */,
-				1163C59F17DF161F0043E73D /* SPZBarReaderViewController.m */,
 				113DDE3517DDFA9A0056E126 /* Supporting Files */,
-				11C6E7E117E06F5600D66D96 /* UIColor+Shopelia.h */,
-				11C6E7E217E06F5600D66D96 /* UIColor+Shopelia.m */,
-				11C6E7E917E07E8500D66D96 /* UIView+Shopelia.h */,
-				11C6E7EA17E07E8500D66D96 /* UIView+Shopelia.m */,
-				1183CD9417EB41DD00F1E66D /* SPCell.h */,
-				1183CD9517EB41DD00F1E66D /* SPCell.m */,
-				1183CD9717EB423600F1E66D /* SPCell.xib */,
-				1128F8ED17EC608B0079EC11 /* SPCellContentView.h */,
-				1128F8EE17EC608B0079EC11 /* SPCellContentView.m */,
 			);
 			path = "shopelia-ios";
 			sourceTree = "<group>";
@@ -397,6 +447,10 @@
 		116CD95617DF085500978733 /* ShopeliaResources */ = {
 			isa = PBXGroup;
 			children = (
+				113137B517F1CC8600AA7DAB /* loader-icon.png */,
+				113137B617F1CC8600AA7DAB /* loader-icon@2x.png */,
+				113137B717F1CC8600AA7DAB /* small-loader.png */,
+				113137B817F1CC8600AA7DAB /* small-loader@2x.png */,
 				115E67B417E89A7900B88DCA /* back-button.png */,
 				115E67B517E89A7900B88DCA /* back-button@2x.png */,
 				115E67B217E8966000B88DCA /* ic_purchase_white@2x.png */,
@@ -526,12 +580,14 @@
 				118433B417E1F01E00425AEB /* productViewController.xib in Resources */,
 				113DDE4717DDFA9A0056E126 /* Images.xcassets in Resources */,
 				11C6E7EF17E086AD00D66D96 /* bar-code@2x.png in Resources */,
+				113137BC17F1CC8600AA7DAB /* small-loader@2x.png in Resources */,
 				115E67B117E8961D00B88DCA /* ic_purchase_white.png in Resources */,
 				113DDE8517DDFE630056E126 /* zbar-help.html in Resources */,
 				1163C5A717DF1F380043E73D /* navbar@2x.png in Resources */,
 				113DDE8717DDFE630056E126 /* zbar-samples.png in Resources */,
 				11C8B43C17F0680D004BEB7C /* ShopeliaSDKResources.bundle in Resources */,
 				11C6E7EE17E086AD00D66D96 /* bar-code.png in Resources */,
+				113137C717F1D52300AA7DAB /* SpinnerView.xib in Resources */,
 				115E67B717E89A7900B88DCA /* back-button@2x.png in Resources */,
 				1183CD9317EB365900F1E66D /* products.json in Resources */,
 				1183CD9817EB423600F1E66D /* SPCell.xib in Resources */,
@@ -542,10 +598,13 @@
 				11C6E7E617E078BE00D66D96 /* logo-word.png in Resources */,
 				118433B117E1F01E00425AEB /* green-button.png in Resources */,
 				113DDE3917DDFA9A0056E126 /* InfoPlist.strings in Resources */,
+				113137BA17F1CC8600AA7DAB /* loader-icon@2x.png in Resources */,
 				115E67B617E89A7900B88DCA /* back-button.png in Resources */,
 				118433B217E1F01E00425AEB /* green-button@2x.png in Resources */,
+				113137BB17F1CC8600AA7DAB /* small-loader.png in Resources */,
 				115E67B317E8966000B88DCA /* ic_purchase_white@2x.png in Resources */,
 				1163C5A617DF1F380043E73D /* navbar.png in Resources */,
+				113137B917F1CC8600AA7DAB /* loader-icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -598,6 +657,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				113DDE3F17DDFA9A0056E126 /* AppDelegate.m in Sources */,
+				113137C517F1D15F00AA7DAB /* SpinnerView.m in Sources */,
 				113DDE3B17DDFA9A0056E126 /* main.m in Sources */,
 				1163C5AF17DF5B6C0043E73D /* overlayView.m in Sources */,
 				1183CD9117E9D58300F1E66D /* baseProductViewController.m in Sources */,
@@ -614,8 +674,10 @@
 				1163C5A017DF161F0043E73D /* SPZBarReaderViewController.m in Sources */,
 				110B54DD17E6F9D000DF1C3A /* HTTPPoller.m in Sources */,
 				119C076617E320DA003AF6AA /* HTTPResponse.m in Sources */,
+				113137CA17F1D7ED00AA7DAB /* UIImage+Shopelia.m in Sources */,
 				118433B317E1F01E00425AEB /* productViewController.m in Sources */,
 				1183CD9617EB41DD00F1E66D /* SPCell.m in Sources */,
+				113137CE17F2EEC900AA7DAB /* SpinnerLayer.m in Sources */,
 				11C6E7E317E06F5600D66D96 /* UIColor+Shopelia.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

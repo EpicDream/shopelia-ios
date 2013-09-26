@@ -26,5 +26,24 @@
     return [UIColor colorWithRed:0.914 green:0.937 blue:0.937 alpha:1.0];
 }
 
+
++(UIColor *) shopeliaGreen {
+    return [UIColor colorWithRed:0.169 green:0.588 blue:0.510 alpha:1.0];
+}
+
+
++(UIColor *) shopeliaRed {
+    return [UIColor colorWithRed:0.910 green:0.298 blue:0.239 alpha:1.0];
+}
+
++(UIColor *) shopeliaDarkBlue {
+    return [UIColor colorWithRed:0.008 green:0.063 blue:0.216 alpha:1.0];
+}
+
+
++(UIColor *) shopeliaYellow {
+    return [UIColor colorWithRed:0.859 green:0.604 blue:0 alpha:1.0];
+}
+
 @end
 

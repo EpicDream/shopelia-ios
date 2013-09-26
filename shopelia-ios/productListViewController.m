@@ -13,6 +13,7 @@
 #import "HTTPResponse.h"
 
 
+
 @interface productListViewController ()
 @property UINib *cellNib;
 @end
@@ -41,6 +42,7 @@ static const int CELL_HEIGHT = 82;
 {
     [super viewDidLoad];
     //[self customBackButton];
+
     [self.productImageView setAsynchImageWithURL:[self.product valueForKey:@"image_url"]];
     
     self.cellNib = [UINib nibWithNibName:@"SPCell" bundle:nil];
@@ -50,7 +52,7 @@ static const int CELL_HEIGHT = 82;
     [self getAllProductInfosForUrls: self.urls
                 withCompletionBlock: ^(BOOL timeout, NSError *error, HTTPResponse *response) {
                     //NSLog(@"%@",response.responseJSON);
-                    //NSLog(@"%hhd", timeout);
+                    NSLog(@"%hhd", timeout);
                     if (!timeout) {
                         NSArray* resArray  = (NSArray *) response.responseJSON;
                         self.products = resArray;

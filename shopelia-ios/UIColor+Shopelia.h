@@ -14,5 +14,9 @@
 +(UIColor *) shopeliaLightBlue;
 +(UIColor *) shopeliaLightGray;
 +(UIColor *) shopeliaBackgroundColor;
++(UIColor *) shopeliaGreen ;
++(UIColor *) shopeliaRed;
++(UIColor *) shopeliaDarkBlue;
++(UIColor *) shopeliaYellow;
 
 @end

@@ -11,6 +11,8 @@
 #import "overlayView.h"
 #import "UIView+Shopelia.h"
 #import "imageView.h"
+#import "SpinnerView.h"
+
 
 
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO( v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
@@ -36,6 +38,8 @@
 {
     [super viewDidLoad]; // Do any additional setup after loading the view, typically from a nib.
     
+
+    
     UIImageView *logo = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"logo-word.png" ]];
     self.navigationItem.titleView = logo ;
     
@@ -54,6 +58,8 @@
     self.cameraOverlayView = view;
     //self.scanCrop = CGRectMake(0,0,0.5,0.5);
 
+    [SpinnerView loadIntoView: view];
+    
 
     // TODO: (optional) additional reader configuration here
     
