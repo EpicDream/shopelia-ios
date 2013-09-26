@@ -50,8 +50,7 @@
     [self drawEllipse:ctx];
         
     //call function to draw gradient
-    [self drawEllipseWithRectangles:ctx];
-    
+    [self drawEllipseWithRectangles:ctx];    
 }
 
 -(void)drawEllipse:(CGContextRef)context{

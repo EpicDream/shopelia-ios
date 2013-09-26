@@ -26,8 +26,6 @@
         self.colors = [NSMutableArray arrayWithObjects:[UIColor shopeliaGreen],[UIColor shopeliaBlue],[UIColor shopeliaRed],[UIColor shopeliaYellow],[UIColor shopeliaDarkBlue],nil];
         self.opaque = NO;
         //self.spinnerPosition = 0;
-
-        
     }
     return self;
 }
@@ -39,15 +37,16 @@
 
 
 + (SpinnerView *) loadIntoView:(UIView *)view {
-    SpinnerView* spinner = [[SpinnerView alloc] initWithFrame:view.frame];
+    
+    UIImageView* image = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"loader-icon.png"]];
+    SpinnerView* spinner = [[SpinnerView alloc] initWithFrame: CGRectMake((view.frame.size.width - image.frame.size.width)/2,(view.frame.size.height -image.frame.size.height)/2,image.frame.size.width,image.frame.size.height)];
     ((SpinnerLayer *) spinner.layer).currentColor = [spinner.colors objectAtIndex: 0];
     ((SpinnerLayer *) spinner.layer).nextColor = [spinner.colors objectAtIndex: 1];
     
 
-    
+    //spinner.center = view.center;
     // the image we're going to mask and shadow
-    UIImageView* image = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"loader-icon.png"]];
-    image.center = spinner.center;
+    //image.center = view.center;
     
     ((SpinnerLayer *) spinner.layer).ellipseFrame = CGRectMake(image.frame.origin.x,image.frame.origin.y,image.frame.size.width,image.frame.size.height);
     ((SpinnerLayer *) spinner.layer).mask = image.layer;
@@ -55,7 +54,7 @@
     spinner.iteration = 0;
     [spinner animatePositionOnLayer: ((SpinnerLayer *) spinner.layer) from:0 to:1];
     [view addSubview:spinner];
-
+ 
     return spinner;
 }
 
@@ -98,10 +97,6 @@
         ((SpinnerLayer *) self.layer).currentColor =  [self getNextColor:((SpinnerLayer *) self.layer).nextColor] ;
         [self animatePositionOnLayer: ((SpinnerLayer *) self.layer) from:1 to:0];
     }
-
-
-    
-    
 
 }
 

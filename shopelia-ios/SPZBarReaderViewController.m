@@ -11,8 +11,7 @@
 #import "overlayView.h"
 #import "UIView+Shopelia.h"
 #import "imageView.h"
-#import "SpinnerView.h"
-
+#import "loadingView.h"
 
 
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO( v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
@@ -38,6 +37,10 @@
 {
     [super viewDidLoad]; // Do any additional setup after loading the view, typically from a nib.
     
+    
+    self.productVC = [[productListViewController alloc] initWithNibName:@"productListViewController" bundle:nil];
+    [self.navigationController pushViewController:self.productVC animated:YES];
+    
 
     
     UIImageView *logo = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"logo-word.png" ]];
@@ -57,10 +60,7 @@
     overlayView *view = [[overlayView alloc] initWithFrame:self.readerView.frame];
     self.cameraOverlayView = view;
     //self.scanCrop = CGRectMake(0,0,0.5,0.5);
-
-    [SpinnerView loadIntoView: view];
     
-
     // TODO: (optional) additional reader configuration here
     
     // EXAMPLE: disable rarely used I2/5 to improve performance
@@ -103,48 +103,22 @@
     id<NSFastEnumeration> results =
     [info objectForKey: ZBarReaderControllerResults];
     ZBarSymbol *symbol = nil;
-    for(symbol in results)
-        // EXAMPLE: just grab the first barcode
+    NSLog(@"%@",results);
+    for(symbol in results) {
         break;
-    
-    [self getProductNameAndUrlsWithEAN: symbol.data];
+    }
+        // EXAMPLE: just grab the first barcode
+    self.productVC = [[productListViewController alloc] initWithNibName:@"productListViewController" bundle:nil];
+    self.productVC.eanData = symbol.data; 
+    [self.navigationController pushViewController:self.productVC animated:YES];
+
     
     // ADD: dismiss the controller (NB dismiss from the *reader*!)
     [reader dismissViewControllerAnimated:YES completion:nil];
 }
 
 
-- (void) getProductNameAndUrlsWithEAN: (NSString *) EAN {
-    NSDictionary *dict = [[NSBundle mainBundle] infoDictionary];
-    NSString *shopeliApiKey = [dict valueForKey:@"ShopeliaAPIKey"] ;
-    
-    NSString *url = API_URL;
-    url =[url stringByAppendingFormat:@"showcase/products/search?ean=%@&visitor=%@",EAN,@"false"];
 
-    HTTPRequest *request = [[HTTPRequest alloc] init];
-    [request setValue:shopeliApiKey forHTTPHeaderField:@"X-Shopelia-ApiKey"];
-    
-    [request setURL:[NSURL URLWithString:url]];
-    [request setHTTPMethod:@"GET"];
-    
-    [request startWithCompletion:^(NSError *error, HTTPResponse *response){
-        if (error == nil) {
-            ////NSLog(@"%@",response.responseJSON);
-            NSMutableArray *urls = [response.responseJSON objectForKey:@"urls"];
-            ////NSLog(@"%@",urls);
-            if (urls != nil) {
-                //self.productVC = [[productViewController alloc] initWithNibName:@"productViewController" bundle:nil];
-                self.productVC = [[productListViewController alloc] initWithNibName:@"productListViewController" bundle:nil];
-                self.productVC.product = response.responseJSON;
-                self.productVC.urls = urls;
-                [self.navigationController pushViewController:self.productVC animated:YES];
-            }
-        } else {
-            //NSLog(@"%@",error);
-        }
-    }];
- 
-}
 
 
 @end

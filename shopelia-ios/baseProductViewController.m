@@ -24,6 +24,7 @@
 @synthesize cheaperProduct;
 @synthesize product;
 @synthesize urls;
+@synthesize eanData;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -43,6 +44,28 @@
     self.navigationItem.titleView = logo ;
     
 }
+
+
+
+- (void) getProductNameAndUrlsWithEAN: (NSString *) EAN
+                  withCompletionBlock: (void (^)(NSError *error, id response))completionBlock {
+    NSDictionary *dict = [[NSBundle mainBundle] infoDictionary];
+    NSString *shopeliApiKey = [dict valueForKey:@"ShopeliaAPIKey"] ;
+    
+    NSString *url = API_URL;
+    url =[url stringByAppendingFormat:@"showcase/products/search?ean=%@&visitor=%@",EAN,@"false"];
+    
+    HTTPRequest *request = [[HTTPRequest alloc] init];
+    [request setValue:shopeliApiKey forHTTPHeaderField:@"X-Shopelia-ApiKey"];
+    
+    [request setURL:[NSURL URLWithString:url]];
+    [request setHTTPMethod:@"GET"];
+    
+    [request startWithCompletion:completionBlock];
+    
+}
+
+
 
 -(void) getAllProductInfosForUrls: (NSMutableArray*) productUrls
               withCompletionBlock: (void (^)(BOOL timeout, NSError *error, id response))completionBlock

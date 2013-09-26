@@ -23,6 +23,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *productTitle;
 @property (strong, nonatomic) IBOutlet imageView *productImageView;
 @property (strong, nonatomic) IBOutlet UITableView *priceTableView;
+@property (strong, nonatomic) IBOutlet UIImageView *separatorImageView;
 
 
 @end

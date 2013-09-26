@@ -11,6 +11,9 @@
 #import "UIColor+Shopelia.h"
 #import <ShopeliaSDK/ShopeliaSDK.h>
 #import "HTTPResponse.h"
+#import "SpinnerView.h"
+#import "loadingView.h"
+#import "UIView+Shopelia.h"
 
 
 
@@ -42,27 +45,56 @@ static const int CELL_HEIGHT = 82;
 {
     [super viewDidLoad];
     //[self customBackButton];
-
-    [self.productImageView setAsynchImageWithURL:[self.product valueForKey:@"image_url"]];
     
-    self.cellNib = [UINib nibWithNibName:@"SPCell" bundle:nil];
+    [SpinnerView loadIntoView: self.contentView];
+    loadingView *loadView = [[loadingView alloc] initWithFrame:self.contentView.frame];
+    [loadView setOrigY: ([[UIScreen mainScreen] bounds].size.height  - 44 - 20 - self.contentView.Height)/2];
+    [self.view addSubview:loadView];
+    self.productTitle.text = @"Shopelia Recherche Les produits";
     
-    self.productTitle.text =  [self.product valueForKey:@"name"];
-    self.priceTableView.contentInset = UIEdgeInsetsMake(0, 0,10, 0);
-    [self getAllProductInfosForUrls: self.urls
-                withCompletionBlock: ^(BOOL timeout, NSError *error, HTTPResponse *response) {
-                    //NSLog(@"%@",response.responseJSON);
-                    NSLog(@"%hhd", timeout);
-                    if (!timeout) {
-                        NSArray* resArray  = (NSArray *) response.responseJSON;
-                        self.products = resArray;
-                        [self comparePrices];
-                        [self.priceTableView reloadData];
-                    }
-                }];
-
+//    [self getProductNameAndUrlsWithEAN:self.eanData withCompletionBlock:^(NSError *error, HTTPResponse *response){
+//        if (error == nil) {
+//            [self getProductFrom:response];
+//        } else {
+//            NSLog(@"%@",error);
+//        }
+//    }];
+    
 }
 
+- (void) getProductFrom: (HTTPResponse *) response {
+    //NSLog(@"%@",response.responseJSON);
+    NSMutableArray *urlsArray = [response.responseJSON objectForKey:@"urls"];
+    //NSLog(@"%@",urls);
+    if (urlsArray != nil) {
+        self.product = response.responseJSON;
+        [self.productImageView setAsynchImageWithURL:[self.product valueForKey:@"image_url"]];
+        self.cellNib = [UINib nibWithNibName:@"SPCell" bundle:nil];
+        self.separatorImageView.hidden = NO;
+        self.productTitle.hidden = NO;
+        self.productTitle.text =  [self.product valueForKey:@"name"];
+        self.priceTableView.contentInset = UIEdgeInsetsMake(0, 0,10, 0);
+        
+        self.urls = urlsArray;
+        [self getAllProductInfosForUrls: urlsArray
+                    withCompletionBlock: ^(BOOL timeout, NSError *error, HTTPResponse *response) {
+                        //NSLog(@"%@",response.responseJSON);
+                        NSLog(@"%hhd", timeout);
+                        if (!timeout) {
+                            NSArray* resArray  = (NSArray *) response.responseJSON;
+                            self.products = resArray;
+                            [self comparePrices];
+                            [self.priceTableView reloadData];
+                        } else {
+                            NSLog(@"ERROR TimeOut");
+                        }
+                    }];
+        
+        
+    } else {
+        NSLog(@"ERROR: NO links");
+    }
+}
 
 
 - (void)viewDidAppear:(BOOL)animated {
