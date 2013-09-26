@@ -80,8 +80,8 @@
     CGContextRef newContext = UIGraphicsGetCurrentContext();
     
     // Translate and scale image to compnesate for Quartz's inverted coordinate system
-    CGContextTranslateCTM(newContext,0.0,self.frame.size.height);
-    CGContextScaleCTM(newContext, 1.0, -1.0);
+    //CGContextTranslateCTM(newContext,0.0,self.frame.size.height);
+    //CGContextScaleCTM(newContext, 1.0, -1.0);
     
     
     
@@ -111,6 +111,14 @@
 
 - (void) drawRectangles: (CGContextRef) context {
     
+    CGRect newRectangle = CGRectMake(self.ellipseFrame.origin.x, self.ellipseFrame.origin.y, self.ellipseFrame.size.width * self.spinnerPosition,  self.ellipseFrame.size.height);
+    const CGFloat* endComponents = CGColorGetComponents(nextColor.CGColor);
+    
+    CGContextSetRGBFillColor(context, endComponents[0] , endComponents[1],endComponents[2] ,CGColorGetAlpha(nextColor.CGColor));
+    CGContextSetRGBStrokeColor(context, endComponents[0] , endComponents[1],endComponents[2] ,CGColorGetAlpha(nextColor.CGColor));
+    CGContextFillRect(context, newRectangle);
+    
+    
     CGRect originalRectangle = CGRectMake(self.ellipseFrame.origin.x + self.spinnerPosition * self.ellipseFrame.size.width, self.ellipseFrame.origin.y, self.ellipseFrame.size.width * (1-self.spinnerPosition), self.ellipseFrame.size.height);
     const CGFloat* startComponents = CGColorGetComponents(currentColor.CGColor);
     
@@ -119,12 +127,7 @@
     CGContextFillRect(context, originalRectangle);
     
     
-    CGRect newRectangle = CGRectMake(self.ellipseFrame.origin.x, self.ellipseFrame.origin.y, self.ellipseFrame.size.width * self.spinnerPosition,  self.ellipseFrame.size.height);
-    const CGFloat* endComponents = CGColorGetComponents(nextColor.CGColor);
-    
-    CGContextSetRGBFillColor(context, endComponents[0] , endComponents[1],endComponents[2] ,CGColorGetAlpha(nextColor.CGColor));
-    CGContextSetRGBStrokeColor(context, endComponents[0] , endComponents[1],endComponents[2] ,CGColorGetAlpha(nextColor.CGColor));
-    CGContextFillRect(context, newRectangle);
+
  
 }
 

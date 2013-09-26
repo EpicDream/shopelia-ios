@@ -67,7 +67,7 @@
     anim.fromValue = [NSNumber numberWithDouble:start];
     anim.toValue = [NSNumber numberWithDouble:end];
     [layer addAnimation:anim forKey:@"animatePosition"];
-    layer.spinnerPosition = 1.0;
+    layer.spinnerPosition = end;
 }
 
 
@@ -92,12 +92,15 @@
     self.iteration += 1;
     
     if (self.iteration % 2 == 0) {
-        ((SpinnerLayer *) self.layer).nextColor =  [self getNextColor:((SpinnerLayer *) self.layer).nextColor];
+        ((SpinnerLayer *) self.layer).nextColor =  [self getNextColor:((SpinnerLayer *) self.layer).currentColor];
         [self animatePositionOnLayer: ((SpinnerLayer *) self.layer) from:0 to:1];
     } else {
         ((SpinnerLayer *) self.layer).currentColor =  [self getNextColor:((SpinnerLayer *) self.layer).nextColor] ;
         [self animatePositionOnLayer: ((SpinnerLayer *) self.layer) from:1 to:0];
     }
+
+
+    
     
 
 }
