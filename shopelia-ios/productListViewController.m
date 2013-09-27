@@ -46,11 +46,13 @@ static const int CELL_HEIGHT = 82;
     [super viewDidLoad];
     //[self customBackButton];
     
-    [SpinnerView loadIntoView: self.contentView];
-    loadingView *loadView = [[loadingView alloc] initWithFrame:self.contentView.frame];
-    [loadView setOrigY: ([[UIScreen mainScreen] bounds].size.height  - 44 - 20 - self.contentView.Height)/2];
+    //[SpinnerView loadIntoView: self.contentView];
+    CGRect loaderFrame = self.contentView.frame;
+    loaderFrame.size.height = 200;
+    loadingView *loadView = [[loadingView alloc] initWithFrame:loaderFrame];
+    [loadView setOrigY: ([[UIScreen mainScreen] bounds].size.height  - 44 - 20 - loadView.Height)/2];
     [self.view addSubview:loadView];
-    self.productTitle.text = @"Shopelia Recherche Les produits";
+    
     
 //    [self getProductNameAndUrlsWithEAN:self.eanData withCompletionBlock:^(NSError *error, HTTPResponse *response){
 //        if (error == nil) {

@@ -8,6 +8,9 @@
 
 #import "loadingView.h"
 #import "SpinnerView.h"
+#import "UIView+Shopelia.h"
+#import <OHAttributedLabel/OHASBasicHTMLParser.h>
+#import <OHAttributedLabel.h>
 
 
 @implementation loadingView
@@ -18,7 +21,6 @@
     if (self) {
         // Initialization code
         self.opaque = NO;
-         [SpinnerView loadIntoView: self];
     }
     return self;
 }
@@ -27,6 +29,31 @@
 - (void)drawRect:(CGRect)rect
 {
     [super drawRect:rect];
+    SpinnerView *spinner = [SpinnerView loadIntoView: self];
+    [spinner offsetFrameWithDx:0 dy:-30];
+    
+    OHAttributedLabel *searchLabel = [[OHAttributedLabel alloc] init];
+    searchLabel.Height = 50;
+    searchLabel.Width = 200;
+    [searchLabel setOrigX: (self.Width - searchLabel.Width)/2];
+    [searchLabel setOrigY: ((self.OrigY + self.Height) -  (spinner.Height + spinner.OrigY))/2 + searchLabel.Height/2];
+    
+    NSMutableAttributedString *search = [[NSMutableAttributedString alloc] initWithAttributedString:[OHASBasicHTMLParser attributedStringByProcessingMarkupInString: @"<font name='HelveticaNeue-Light' size='18'>Nous recherchons les <b> meilleurs prix</b>... </font>"]];
+    searchLabel.attributedText = search;
+    searchLabel.backgroundColor = [UIColor clearColor];
+    searchLabel.numberOfLines = 2;
+
+#if __IPHONE_OS_VERSION_MAX_ALLOWED < 60000
+    searchLabel.textAlignment = UITextAlignmentCenter;
+    searchLabel.lineBreakMode = UILineBreakModeWordWrap;
+#else
+    searchLabel.textAlignment = NSTextAlignmentCenter;
+    searchLabel.lineBreakMode = NSLineBreakByWordWrapping;
+
+#endif
+    
+    [self addSubview:searchLabel];
+
 }
 
 
