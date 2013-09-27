@@ -14,6 +14,7 @@
 #import "SpinnerView.h"
 #import "loadingView.h"
 #import "UIView+Shopelia.h"
+#import "errorViewController.h"
 
 
 
@@ -36,6 +37,7 @@ static const int CELL_HEIGHT = 82;
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        self.cellNib = [UINib nibWithNibName:@"SPCell" bundle:nil];
 
     }
     return self;
@@ -45,22 +47,32 @@ static const int CELL_HEIGHT = 82;
 {
     [super viewDidLoad];
     //[self customBackButton];
-    
-    //[SpinnerView loadIntoView: self.contentView];
     CGRect loaderFrame = self.contentView.frame;
     loaderFrame.size.height = 200;
     loadingView *loadView = [[loadingView alloc] initWithFrame:loaderFrame];
     [loadView setOrigY: ([[UIScreen mainScreen] bounds].size.height  - 44 - 20 - loadView.Height)/2];
     [self.view addSubview:loadView];
-    
-    
-//    [self getProductNameAndUrlsWithEAN:self.eanData withCompletionBlock:^(NSError *error, HTTPResponse *response){
-//        if (error == nil) {
-//            [self getProductFrom:response];
-//        } else {
-//            NSLog(@"%@",error);
-//        }
-//    }];
+
+    [self getProductNameAndUrlsWithEAN:self.eanData withCompletionBlock:^(NSError *error, HTTPResponse *response){
+        if (error == nil) {
+            self.priceTableView.hidden = NO;
+            self.priceTableView.contentInset = UIEdgeInsetsMake(0,0,10, 0);
+            [UIView transitionWithView:self.view
+                              duration:1.0
+                               options:UIViewAnimationOptionTransitionCrossDissolve | UIViewAnimationOptionCurveEaseInOut
+                            animations:^{
+                                self.priceTableView.hidden = NO;
+                                loadView.hidden = YES;
+                            } completion:nil];
+            [self getProductFrom:response];
+        } else {
+            errorViewController *errorVC = [[errorViewController alloc] initWithNibName:@"errorViewController" bundle:nil];
+            [self.navigationController pushViewController:errorVC animated:YES];
+            NSLog(@"%@",error);
+        }
+        [loadView removeFromSuperview];
+
+    }];
     
 }
 
@@ -71,12 +83,9 @@ static const int CELL_HEIGHT = 82;
     if (urlsArray != nil) {
         self.product = response.responseJSON;
         [self.productImageView setAsynchImageWithURL:[self.product valueForKey:@"image_url"]];
-        self.cellNib = [UINib nibWithNibName:@"SPCell" bundle:nil];
         self.separatorImageView.hidden = NO;
         self.productTitle.hidden = NO;
         self.productTitle.text =  [self.product valueForKey:@"name"];
-        self.priceTableView.contentInset = UIEdgeInsetsMake(0, 0,10, 0);
-        
         self.urls = urlsArray;
         [self getAllProductInfosForUrls: urlsArray
                     withCompletionBlock: ^(BOOL timeout, NSError *error, HTTPResponse *response) {
@@ -88,12 +97,17 @@ static const int CELL_HEIGHT = 82;
                             [self comparePrices];
                             [self.priceTableView reloadData];
                         } else {
+                            errorViewController *errorVC = [[errorViewController alloc] initWithNibName:@"errorViewController" bundle:nil];
+                            [self.navigationController pushViewController:errorVC animated:YES];
                             NSLog(@"ERROR TimeOut");
                         }
                     }];
         
         
     } else {
+        errorViewController *errorVC = [[errorViewController alloc] initWithNibName:@"errorViewController" bundle:nil];
+        errorVC.errorString = @"Ce produit n'est pas disponible chez nos marchands partenaires";
+        [self.navigationController pushViewController:errorVC animated:YES];
         NSLog(@"ERROR: NO links");
     }
 }
@@ -116,7 +130,12 @@ static const int CELL_HEIGHT = 82;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.products count];
+    
+    if ([self.products count] == 0) {
+        return  1;
+    } else {
+        return [self.products count];
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -126,7 +145,6 @@ static const int CELL_HEIGHT = 82;
     SPCell *cell = (SPCell*) [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil) {
-        NSLog(@"coucou");
         NSArray *topLevelObjects = [self.cellNib instantiateWithOwner:self options:nil];
 
         //[[NSBundle mainBundle] loadNibNamed:@"SPCell" owner:self options:nil];
@@ -147,20 +165,32 @@ static const int CELL_HEIGHT = 82;
                 [cell updateContentView];
 
     }
-    NSDictionary* prod = [self.products objectAtIndex:indexPath.row];
-    NSDictionary* version = [self getVersion:prod];
-    //NSLog(@"%@",version);
-    // Configure the cell...
-    float price = [[version valueForKey:@"price"] floatValue] + [[version valueForKey:@"price_shipping"] floatValue] - [[version valueForKey:@"cashfront_value"] floatValue] ;
-    cell.price.text = [NSString stringWithFormat:@"%0.2f€" ,(round(price * 100)/100)];
     
-    [cell formatMerchantUrl:prod];
-    [cell formatShipping];
-    cell.shippingInfos.text = [version valueForKey:@"shipping_info"];
-    [cell.shopeliaBtn addTarget:self action:@selector(shopeliaInit:) forControlEvents:UIControlEventTouchUpInside];
-    
-    
+    if ([self.products count] == 0) {
+        cell.price.hidden = YES;
+        cell.shippingInfos.hidden = YES;
+        cell.shippingPrice.hidden = YES;
+        cell.shopeliaBtn.hidden = YES;
+        cell.soldBy.hidden = YES;
+        SpinnerView* spinner = [SpinnerView loadIntoView: cell withSize:@"small"];
+        
+        
+        
+    } else {
+        NSDictionary* prod = [self.products objectAtIndex:indexPath.row];
+        NSDictionary* version = [self getVersion:prod];
+        //NSLog(@"%@",version);
+        // Configure the cell...
+        float price = [[version valueForKey:@"price"] floatValue] + [[version valueForKey:@"price_shipping"] floatValue] - [[version valueForKey:@"cashfront_value"] floatValue] ;
+        cell.price.text = [NSString stringWithFormat:@"%0.2f€" ,(round(price * 100)/100)];
+        
+        [cell formatMerchantUrl:prod];
+        [cell formatShipping];
+        cell.shippingInfos.text = [version valueForKey:@"shipping_info"];
+        [cell.shopeliaBtn addTarget:self action:@selector(shopeliaInit:) forControlEvents:UIControlEventTouchUpInside];
 
+    }
+    
     return cell;
     
 }

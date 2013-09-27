@@ -36,18 +36,17 @@
 }
 
 
-+ (SpinnerView *) loadIntoView:(UIView *)view {
-    
++ (SpinnerView *) loadIntoView:(UIView *)view withSize:(NSString *) size{
     UIImageView* image = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"loader-icon.png"]];
+
+    if ([size isEqualToString: @"small"]) {
+        image = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"loader-icon-small.png"]];
+    }
+    
     SpinnerView* spinner = [[SpinnerView alloc] initWithFrame: CGRectMake((view.frame.size.width - image.frame.size.width)/2,(view.frame.size.height -image.frame.size.height)/2,image.frame.size.width,image.frame.size.height)];
     ((SpinnerLayer *) spinner.layer).currentColor = [spinner.colors objectAtIndex: 0];
     ((SpinnerLayer *) spinner.layer).nextColor = [spinner.colors objectAtIndex: 1];
-    
-
-    //spinner.center = view.center;
-    // the image we're going to mask and shadow
-    //image.center = view.center;
-    
+        
     ((SpinnerLayer *) spinner.layer).ellipseFrame = CGRectMake(image.frame.origin.x,image.frame.origin.y,image.frame.size.width,image.frame.size.height);
     ((SpinnerLayer *) spinner.layer).mask = image.layer;
 
@@ -58,6 +57,13 @@
     return spinner;
 }
 
+
+
+- (void) removeSpinner {
+    [((SpinnerLayer *) self.layer) removeAllAnimations];
+    [super removeFromSuperview];
+
+}
 
 - (void) animatePositionOnLayer: (SpinnerLayer *) layer from: (double) start to: (double) end {
     CABasicAnimation *anim = [CABasicAnimation animationWithKeyPath:@"spinnerPosition"];
@@ -88,17 +94,20 @@
 }
 
 - (void) animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
-    self.iteration += 1;
-    
-    if (self.iteration % 2 == 0) {
-        ((SpinnerLayer *) self.layer).nextColor =  [self getNextColor:((SpinnerLayer *) self.layer).currentColor];
-        [self animatePositionOnLayer: ((SpinnerLayer *) self.layer) from:0 to:1];
-    } else {
-        ((SpinnerLayer *) self.layer).currentColor =  [self getNextColor:((SpinnerLayer *) self.layer).nextColor] ;
-        [self animatePositionOnLayer: ((SpinnerLayer *) self.layer) from:1 to:0];
+    if (flag) {
+        self.iteration += 1;
+        if (self.iteration % 2 == 0) {
+            ((SpinnerLayer *) self.layer).nextColor =  [self getNextColor:((SpinnerLayer *) self.layer).currentColor];
+            [self animatePositionOnLayer: ((SpinnerLayer *) self.layer) from:0 to:1];
+        } else {
+            ((SpinnerLayer *) self.layer).currentColor =  [self getNextColor:((SpinnerLayer *) self.layer).nextColor] ;
+            [self animatePositionOnLayer: ((SpinnerLayer *) self.layer) from:1 to:0];
+        }
+        
     }
-
+   
 }
+
 
 
 @end

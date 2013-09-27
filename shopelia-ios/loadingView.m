@@ -7,7 +7,6 @@
 //
 
 #import "loadingView.h"
-#import "SpinnerView.h"
 #import "UIView+Shopelia.h"
 #import <OHAttributedLabel/OHASBasicHTMLParser.h>
 #import <OHAttributedLabel.h>
@@ -15,11 +14,16 @@
 
 @implementation loadingView
 
+@synthesize spinner;
+
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+        spinner = [SpinnerView loadIntoView: self withSize:nil];
+
         self.opaque = NO;
     }
     return self;
@@ -29,7 +33,6 @@
 - (void)drawRect:(CGRect)rect
 {
     [super drawRect:rect];
-    SpinnerView *spinner = [SpinnerView loadIntoView: self];
     [spinner offsetFrameWithDx:0 dy:-30];
     
     OHAttributedLabel *searchLabel = [[OHAttributedLabel alloc] init];
@@ -54,6 +57,12 @@
     
     [self addSubview:searchLabel];
 
+}
+
+
+- (void) removeFromSuperview {
+    [super removeFromSuperview];
+    [spinner removeSpinner];
 }
 
 

@@ -12,6 +12,7 @@
 #import "UIView+Shopelia.h"
 #import "imageView.h"
 #import "loadingView.h"
+#import "errorViewController.h"
 
 
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO( v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
@@ -39,6 +40,7 @@
     
     
     self.productVC = [[productListViewController alloc] initWithNibName:@"productListViewController" bundle:nil];
+    self.productVC.eanData = @"9782914901185";
     [self.navigationController pushViewController:self.productVC animated:YES];
     
 

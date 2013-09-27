@@ -15,6 +15,8 @@
 @property (assign, nonatomic) int iteration;
 
 
-+ (SpinnerView *) loadIntoView: (UIView *) view; 
++ (SpinnerView *) loadIntoView:(UIView *)view withSize:(NSString *) size;
+
+- (void) removeSpinner;
 
 @end

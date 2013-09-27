@@ -8,7 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "backgroundView.h"
+#import "SpinnerView.h"
+
 
 @interface loadingView : backgroundView
+
+@property (strong,nonatomic) SpinnerView* spinner;
 
 @end
