@@ -55,14 +55,18 @@ static const int CELL_HEIGHT = 82;
 
     [self getProductNameAndUrlsWithEAN:self.eanData withCompletionBlock:^(NSError *error, HTTPResponse *response){
         if (error == nil) {
-            self.priceTableView.hidden = NO;
+            //self.priceTableView.hidden = NO;
             self.priceTableView.contentInset = UIEdgeInsetsMake(0,0,10, 0);
             [UIView transitionWithView:self.view
                               duration:1.0
-                               options:UIViewAnimationOptionTransitionCrossDissolve | UIViewAnimationOptionCurveEaseInOut
+                               options: UIViewAnimationOptionCurveEaseInOut
                             animations:^{
+                                CGAffineTransform translate = CGAffineTransformMakeTranslation(0, - self.priceTableView.Height);
+                                CGAffineTransform loadTranslate = CGAffineTransformMakeTranslation(0, - self.priceTableView.Height);
+
                                 self.priceTableView.hidden = NO;
-                                loadView.hidden = YES;
+                                loadView.transform = loadTranslate;
+                                self.priceTableView.transform = translate; //CGAffineTransformConcat(scale, translate);
                             } completion:nil];
             [self getProductFrom:response];
         } else {
@@ -80,7 +84,7 @@ static const int CELL_HEIGHT = 82;
     //NSLog(@"%@",response.responseJSON);
     NSMutableArray *urlsArray = [response.responseJSON objectForKey:@"urls"];
     //NSLog(@"%@",urls);
-    if (urlsArray != nil) {
+    if ([urlsArray count] != 0) {
         self.product = response.responseJSON;
         [self.productImageView setAsynchImageWithURL:[self.product valueForKey:@"image_url"]];
         self.separatorImageView.hidden = NO;

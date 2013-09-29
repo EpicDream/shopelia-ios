@@ -39,9 +39,10 @@
     [super viewDidLoad]; // Do any additional setup after loading the view, typically from a nib.
     
     
-    self.productVC = [[productListViewController alloc] initWithNibName:@"productListViewController" bundle:nil];
-    self.productVC.eanData = @"9782914901185";
-    [self.navigationController pushViewController:self.productVC animated:YES];
+//    self.productVC = [[productListViewController alloc] initWithNibName:@"productListViewController" bundle:nil];
+//    self.productVC.eanData = @"9782914901185";
+//    self.productVC.eanData = @"4005808227822";
+//    [self.navigationController pushViewController:self.productVC animated:YES];
     
 
     
