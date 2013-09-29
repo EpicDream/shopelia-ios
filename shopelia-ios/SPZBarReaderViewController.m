@@ -7,12 +7,12 @@
 //
 
 #import "SPZBarReaderViewController.h"
-#import "SPHTTPRequest.h"
-#import "SPHTTPPoller.h"
+#import "HTTPRequest.h"
 #import "overlayView.h"
 #import "UIView+Shopelia.h"
-#import "productViewController.h"
-#import "SPImageView.h"
+#import "imageView.h"
+#import "loadingView.h"
+#import "errorViewController.h"
 
 
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO( v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
@@ -38,6 +38,14 @@
 {
     [super viewDidLoad]; // Do any additional setup after loading the view, typically from a nib.
     
+    
+//    self.productVC = [[productListViewController alloc] initWithNibName:@"productListViewController" bundle:nil];
+//    self.productVC.eanData = @"9782914901185";
+//    self.productVC.eanData = @"4005808227822";
+//    [self.navigationController pushViewController:self.productVC animated:YES];
+    
+
+    
     UIImageView *logo = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"logo-word.png" ]];
     self.navigationItem.titleView = logo ;
     
@@ -47,11 +55,11 @@
     self.readerDelegate = self;
     self.supportedOrientationsMask = ZBarOrientationMaskAll;
     self.showsZBarControls = NO;
-    
+
     [self.readerView setFrameSizeWithW:UIScreen.mainScreen.bounds.size.width h:UIScreen.mainScreen.bounds.size.height];
 
     self.wantsFullScreenLayout = NO;
-    NSLog(@"%@",UIScreen.mainScreen);
+    //NSLog(@"%@",UIScreen.mainScreen);
     overlayView *view = [[overlayView alloc] initWithFrame:self.readerView.frame];
     self.cameraOverlayView = view;
     //self.scanCrop = CGRectMake(0,0,0.5,0.5);
@@ -64,6 +72,24 @@
                        to: 0];
 
 	// Do any additional setup after loading the view.
+    
+   }
+
+
+- (void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    overlayView *view = (overlayView *)self.cameraOverlayView;
+    CGFloat x,y,width,height;
+    
+    x = view.scanCrop.origin.y / self.readerView.bounds.size.width;
+    y = view.scanCrop.origin.x / self.readerView.bounds.size.height;
+    width = view.scanCrop.size.height / self.readerView.bounds.size.width;
+    height = view.scanCrop.size.width / self.readerView.bounds.size.height;
+    
+    
+    self.readerView.scanCrop = CGRectMake(x,y,width,height);
+    //NSLog(@"%@",view.scanCrop);
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -80,101 +106,22 @@
     id<NSFastEnumeration> results =
     [info objectForKey: ZBarReaderControllerResults];
     ZBarSymbol *symbol = nil;
-    for(symbol in results)
-        // EXAMPLE: just grab the first barcode
+    NSLog(@"%@",results);
+    for(symbol in results) {
         break;
-    
-    [self getProductNameAndUrlsWithEAN: symbol.data];
+    }
+        // EXAMPLE: just grab the first barcode
+    self.productVC = [[productListViewController alloc] initWithNibName:@"productListViewController" bundle:nil];
+    self.productVC.eanData = symbol.data; 
+    [self.navigationController pushViewController:self.productVC animated:YES];
+
     
     // ADD: dismiss the controller (NB dismiss from the *reader*!)
     [reader dismissViewControllerAnimated:YES completion:nil];
 }
 
 
-- (void) getProductNameAndUrlsWithEAN: (NSString *) EAN {
-    NSDictionary *dict = [[NSBundle mainBundle] infoDictionary];
-    NSString *shopeliApiKey = [dict valueForKey:@"ShopeliaAPIKey"] ;
-    
-    NSString *url = API_URL;
-    url =[url stringByAppendingFormat:@"showcase/products/search?ean=%@&visitor=%@",EAN,@"false"];
 
-    SPHTTPRequest *request = [[SPHTTPRequest alloc] init];
-    [request setValue:shopeliApiKey forHTTPHeaderField:@"X-Shopelia-ApiKey"];
-    
-    [request setURL:[NSURL URLWithString:url]];
-    [request setHTTPMethod:@"GET"];
-    
-    [request startWithCompletion:^(NSError *error, SPHTTPResponse *response){
-        if (error == nil) {
-            //NSLog(@"%@",response.responseJSON);
-            NSMutableArray *urls = [response.responseJSON objectForKey:@"urls"];
-            //NSLog(@"%@",urls);
-            if (urls != nil) {
-                self.productVC = [[productViewController alloc] initWithNibName:@"productViewController" bundle:nil];
-                self.productVC.product = response.responseJSON;
-                
-                //  = [UIImage imageWithData:[NSData dataWithContentsOfURL: [NSURL URLWithString:[response.responseJSON valueForKey:@"image_url"]]]];
-                //NSLog(@"%@",self.productVC.productImageView);
-                //self.productVC.productTitle.text  = [response.responseJSON valueForKey:@"name"];
-                [self getAllProductInfosForUrls:urls ];
-            }
-        } else {
-            NSLog(@"%@",error);
-        }
-    }];
- 
-}
-
-
--(void) getAllProductInfosForUrls: (NSMutableArray*) urls {
-
-
-    NSDictionary *dict = [[NSBundle mainBundle] infoDictionary];
-    NSString *shopeliApiKey = [dict valueForKey:@"ShopeliaAPIKey"] ;
-    SPHTTPRequest *request = [[SPHTTPRequest alloc] init];
-    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
-    
-    [params setObject:urls forKey: @"urls"];
-    NSLog(@"%@",params);
-    
-    NSData* jsonData = [NSJSONSerialization dataWithJSONObject:params
-                                                       options:NSJSONWritingPrettyPrinted error:nil];
-    
-    request.HTTPBody = jsonData;
-    [request setValue:shopeliApiKey forHTTPHeaderField:@"X-Shopelia-ApiKey"];
-    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    NSString *url =@"https://www.shopelia.com/api/products";
-    [request setURL:[NSURL URLWithString:url]];
-    [request setHTTPMethod:@"POST"];
-    NSLog(@"%@",request);
-    
-    [SPHTTPPoller pollRequest:request
-                      maxTime:60.0f
-              requestInterval:2.0f
-                 restartBlock:^(BOOL *restart, NSError *error, SPHTTPResponse *response) {
-                     NSLog(@"%@",response.responseJSON);
-                     *restart = NO;
-                     NSArray* resArray  = (NSArray *) response.responseJSON;
-                     for (int i = 0; i<[resArray count]; i++) {
-                         NSDictionary* product = [resArray objectAtIndex:i];
-                         *restart = *restart || ![[product valueForKey:@"ready"] boolValue];
-                         //NSLog(@"%hhd",[[product valueForKey:@"ready"] boolValue]);
-                         //NSLog(@"%hhd",*restart);
-
-                     }
-                     
-    }
-              completionBlock:^(BOOL timeout, NSError *error, SPHTTPResponse *response) {
-                  NSLog(@"%@",response.responseJSON);
-                  NSLog(@"%hhd", timeout);
-                  if (!timeout) {
-                      NSArray* resArray  = (NSArray *) response.responseJSON;
-                      self.productVC.products = resArray;                      
-                      [self.navigationController pushViewController:self.productVC animated:YES];
-                  }
-    }];
-    
-}
 
 
 @end

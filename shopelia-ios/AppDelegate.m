@@ -21,10 +21,10 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     self.viewController = [[SPZBarReaderViewController alloc] init];
-    //self.viewController = [[productViewController alloc] initWithNibName:@"productViewController" bundle:nil];
+    //self.viewController = [[productListViewController alloc] initWithNibName:@"productListViewController" bundle:nil];
 
 
-    SPNavigationController *navbar = [[SPNavigationController alloc] initWithRootViewController:self.viewController];
+    navigationController *navbar = [[navigationController alloc] initWithRootViewController:self.viewController];
 
     [[OHAttributedLabel appearance] setLinkColor:[UIColor colorWithRed:0.0 green:0.502 blue:0.647 alpha:1.0] ];
     

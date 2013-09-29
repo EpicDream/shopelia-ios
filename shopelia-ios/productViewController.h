@@ -7,20 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SPImageView.h"
+#import "imageView.h"
 #import "backgroundView.h"
+#import "baseProductViewController.h"
 
-@interface productViewController : UIViewController
+@interface productViewController : baseProductViewController
 
 @property (strong, nonatomic) IBOutlet backgroundView *contentView;
 @property (strong, nonatomic) IBOutlet UILabel *shippingPrice;
-@property (strong, nonatomic) NSArray* products;
-@property (strong, nonatomic) NSDictionary* cheaperProduct;
-@property (strong, nonatomic) NSDictionary* product;
 @property (strong, nonatomic) IBOutlet UILabel *price;
 @property (strong, nonatomic) IBOutlet UILabel *soldBy;
 @property (strong, nonatomic) IBOutlet UILabel *productTitle;
-@property (strong, nonatomic) IBOutlet SPImageView *productImageView;
+@property (strong, nonatomic) IBOutlet imageView *productImageView;
 
 
 
