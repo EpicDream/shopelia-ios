@@ -17,18 +17,23 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+        self.backgroundColor = [UIColor whiteColor];
     }
     return self;
 }
 
 - (void)drawRect:(CGRect)rect
 {    
-    //[[self layer] setCornerRadius:8.0f];
-    //self.layer.masksToBounds = YES;
-    //[[self layer] setBorderWidth:1.0];
-    //[[self layer] setBorderColor:[[UIColor redColor] CGColor]];
-
+    [self.layer setMasksToBounds:YES];
+    self.layer.cornerRadius = 4.0;
+    self.layer.borderColor = [UIColor shopeliaLightGray].CGColor;
+    self.layer.borderWidth = 1.0;
 }
+    
+    
+    
+    
+
 
 
 

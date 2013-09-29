@@ -1,0 +1,230 @@
+//
+//  productListViewController.m
+//  shopelia-ios
+//
+//  Created by Amine bellakrid on 9/18/13.
+//  Copyright (c) 2013 Amine bellakrid. All rights reserved.
+//
+
+#import "productListViewController.h"
+#import "SPCell.h"
+#import "UIColor+Shopelia.h"
+#import <ShopeliaSDK/ShopeliaSDK.h>
+#import "HTTPResponse.h"
+#import "SpinnerView.h"
+#import "loadingView.h"
+#import "UIView+Shopelia.h"
+#import "errorViewController.h"
+
+
+
+@interface productListViewController ()
+@property UINib *cellNib;
+@end
+
+@implementation productListViewController
+
+@synthesize shippingPrice;
+@synthesize productImageView;
+@synthesize priceTableView;
+@synthesize cellNib;
+
+static const int CELL_HEIGHT = 82;
+
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+        self.cellNib = [UINib nibWithNibName:@"SPCell" bundle:nil];
+
+    }
+    return self;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    //[self customBackButton];
+    CGRect loaderFrame = self.contentView.frame;
+    loaderFrame.size.height = 200;
+    loadingView *loadView = [[loadingView alloc] initWithFrame:loaderFrame];
+    [loadView setOrigY: ([[UIScreen mainScreen] bounds].size.height  - 44 - 20 - loadView.Height)/2];
+    [self.view addSubview:loadView];
+
+    [self getProductNameAndUrlsWithEAN:self.eanData withCompletionBlock:^(NSError *error, HTTPResponse *response){
+        if (error == nil) {
+            //self.priceTableView.hidden = NO;
+            self.priceTableView.contentInset = UIEdgeInsetsMake(0,0,10, 0);
+            [UIView transitionWithView:self.view
+                              duration:1.0
+                               options: UIViewAnimationOptionCurveEaseInOut
+                            animations:^{
+                                CGAffineTransform translate = CGAffineTransformMakeTranslation(0, - self.priceTableView.Height);
+                                CGAffineTransform loadTranslate = CGAffineTransformMakeTranslation(0, - self.priceTableView.Height);
+
+                                self.priceTableView.hidden = NO;
+                                loadView.transform = loadTranslate;
+                                self.priceTableView.transform = translate; //CGAffineTransformConcat(scale, translate);
+                            } completion:nil];
+            [self getProductFrom:response];
+        } else {
+            errorViewController *errorVC = [[errorViewController alloc] initWithNibName:@"errorViewController" bundle:nil];
+            [self.navigationController pushViewController:errorVC animated:YES];
+            NSLog(@"%@",error);
+        }
+        [loadView removeFromSuperview];
+
+    }];
+    
+}
+
+- (void) getProductFrom: (HTTPResponse *) response {
+    //NSLog(@"%@",response.responseJSON);
+    NSMutableArray *urlsArray = [response.responseJSON objectForKey:@"urls"];
+    //NSLog(@"%@",urls);
+    if ([urlsArray count] != 0) {
+        self.product = response.responseJSON;
+        [self.productImageView setAsynchImageWithURL:[self.product valueForKey:@"image_url"]];
+        self.separatorImageView.hidden = NO;
+        self.productTitle.hidden = NO;
+        self.productTitle.text =  [self.product valueForKey:@"name"];
+        self.urls = urlsArray;
+        [self getAllProductInfosForUrls: urlsArray
+                    withCompletionBlock: ^(BOOL timeout, NSError *error, HTTPResponse *response) {
+                        //NSLog(@"%@",response.responseJSON);
+                        NSLog(@"%hhd", timeout);
+                        if (!timeout) {
+                            NSArray* resArray  = (NSArray *) response.responseJSON;
+                            self.products = resArray;
+                            [self comparePrices];
+                            [self.priceTableView reloadData];
+                        } else {
+                            errorViewController *errorVC = [[errorViewController alloc] initWithNibName:@"errorViewController" bundle:nil];
+                            [self.navigationController pushViewController:errorVC animated:YES];
+                            NSLog(@"ERROR TimeOut");
+                        }
+                    }];
+        
+        
+    } else {
+        errorViewController *errorVC = [[errorViewController alloc] initWithNibName:@"errorViewController" bundle:nil];
+        errorVC.errorString = @"Ce produit n'est pas disponible chez nos marchands partenaires";
+        [self.navigationController pushViewController:errorVC animated:YES];
+        NSLog(@"ERROR: NO links");
+    }
+}
+
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
+    if ([self.products count] == 0) {
+        return  1;
+    } else {
+        return [self.products count];
+    }
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    static NSString *CellIdentifier = @"Cell";
+    
+    SPCell *cell = (SPCell*) [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    if (cell == nil) {
+        NSArray *topLevelObjects = [self.cellNib instantiateWithOwner:self options:nil];
+
+        //[[NSBundle mainBundle] loadNibNamed:@"SPCell" owner:self options:nil];
+        cell = (SPCell *)[topLevelObjects objectAtIndex:0];
+
+                int rowsInSection = [self tableView:tableView numberOfRowsInSection:indexPath.section];
+                if (rowsInSection == 1) {
+                    cell.position = CellPositionSingle;
+                } else {
+                    if (indexPath.row == 0) {
+                        cell.position = CellPositionTop;
+                    } else if (indexPath.row == rowsInSection - 1) {
+                        cell.position = CellPositionBottom;
+                    } else {
+                        cell.position = CellPositionMiddle;
+                    }
+                }
+                [cell updateContentView];
+
+    }
+    
+    if ([self.products count] == 0) {
+        cell.price.hidden = YES;
+        cell.shippingInfos.hidden = YES;
+        cell.shippingPrice.hidden = YES;
+        cell.shopeliaBtn.hidden = YES;
+        cell.soldBy.hidden = YES;
+        SpinnerView* spinner = [SpinnerView loadIntoView: cell withSize:@"small"];
+        
+        
+        
+    } else {
+        NSDictionary* prod = [self.products objectAtIndex:indexPath.row];
+        NSDictionary* version = [self getVersion:prod];
+        //NSLog(@"%@",version);
+        // Configure the cell...
+        float price = [[version valueForKey:@"price"] floatValue] + [[version valueForKey:@"price_shipping"] floatValue] - [[version valueForKey:@"cashfront_value"] floatValue] ;
+        cell.price.text = [NSString stringWithFormat:@"%0.2f€" ,(round(price * 100)/100)];
+        
+        [cell formatMerchantUrl:prod];
+        [cell formatShipping];
+        cell.shippingInfos.text = [version valueForKey:@"shipping_info"];
+        [cell.shopeliaBtn addTarget:self action:@selector(shopeliaInit:) forControlEvents:UIControlEventTouchUpInside];
+
+    }
+    
+    return cell;
+    
+}
+
+- (void)shopeliaInit:(id)sender {
+    //NSLog(@"%@",@"SHOPELIA INITIALISATION");
+    CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:self.priceTableView];
+    NSIndexPath *indexPath = [self.priceTableView indexPathForRowAtPoint:buttonPosition];
+    if (indexPath != nil)
+    {
+         NSDictionary *prod = [self.products objectAtIndex:indexPath.row];
+        Shopelia *shopelia = [[Shopelia alloc] init];
+        [shopelia prepareOrderWithProductURL:[NSURL URLWithString: [prod valueForKey:@"url"] ] completion:^(NSError *error) {
+                //NSLog(@"%@", error);
+            [shopelia checkoutPreparedOrderFromViewController:self animated:YES completion:nil];
+        }];
+    }
+    
+}
+
+
+#pragma mark - Table view delegate
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return CELL_HEIGHT;
+}
+
+
+
+
+
+
+@end
