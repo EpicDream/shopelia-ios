@@ -52,6 +52,7 @@ static const int CELL_HEIGHT = 82;
     loadingView *loadView = [[loadingView alloc] initWithFrame:loaderFrame];
     [loadView setOrigY: ([[UIScreen mainScreen] bounds].size.height  - 44 - 20 - loadView.Height)/2];
     [self.view addSubview:loadView];
+     self.priceTableView.transform = CGAffineTransformMakeTranslation(0, self.priceTableView.Height);
 
     [self getProductNameAndUrlsWithEAN:self.eanData withCompletionBlock:^(NSError *error, HTTPResponse *response){
         if (error == nil) {
@@ -61,12 +62,8 @@ static const int CELL_HEIGHT = 82;
                               duration:1.0
                                options: UIViewAnimationOptionCurveEaseInOut
                             animations:^{
-                                CGAffineTransform translate = CGAffineTransformMakeTranslation(0, - self.priceTableView.Height);
-                                CGAffineTransform loadTranslate = CGAffineTransformMakeTranslation(0, - self.priceTableView.Height);
-
                                 self.priceTableView.hidden = NO;
-                                loadView.transform = loadTranslate;
-                                self.priceTableView.transform = translate; //CGAffineTransformConcat(scale, translate);
+                                self.priceTableView.transform = CGAffineTransformIdentity;
                             } completion:nil];
             [self getProductFrom:response];
         } else {
