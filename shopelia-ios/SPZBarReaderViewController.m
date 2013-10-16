@@ -13,6 +13,7 @@
 #import "imageView.h"
 #import "loadingView.h"
 #import "errorViewController.h"
+#import <AudioToolbox/AudioToolbox.h>
 
 
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO( v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
@@ -55,6 +56,7 @@
     self.readerDelegate = self;
     self.supportedOrientationsMask = ZBarOrientationMaskAll;
     self.showsZBarControls = NO;
+    self.cameraFlashMode = UIImagePickerControllerCameraFlashModeAuto;
 
     [self.readerView setFrameSizeWithW:UIScreen.mainScreen.bounds.size.width h:UIScreen.mainScreen.bounds.size.height];
 
@@ -87,7 +89,7 @@
     height = view.scanCrop.size.width / self.readerView.bounds.size.height;
     
     
-    self.readerView.scanCrop = CGRectMake(x,y,width,height);
+//    self.readerView.scanCrop = CGRectMake(x,y,width,height);
     //NSLog(@"%@",view.scanCrop);
 
 }
@@ -110,6 +112,10 @@
     for(symbol in results) {
         break;
     }
+    
+    // vibrate
+    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+    
         // EXAMPLE: just grab the first barcode
     self.productVC = [[productListViewController alloc] initWithNibName:@"productListViewController" bundle:nil];
     self.productVC.eanData = symbol.data; 

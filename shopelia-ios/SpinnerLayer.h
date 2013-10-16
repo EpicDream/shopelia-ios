@@ -15,8 +15,6 @@
 @property (strong, nonatomic) UIColor *nextColor;
 @property (assign, nonatomic) CGRect ellipseFrame;
 
-
-- (void) animatePositionWithIndexColor: (int) i;
 - (id) initWithLayer:(id)layer ;
 
 @end

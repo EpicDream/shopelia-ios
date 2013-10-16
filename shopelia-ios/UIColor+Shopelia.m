@@ -19,11 +19,11 @@
 }
 
 +(UIColor *) shopeliaLightGray {
-    return [UIColor colorWithRed:0.667 green:0.667 blue:0.667 alpha:1.0];
+    return [UIColor colorWithRed:0.8 green:0.8 blue:0.80 alpha:1.0];
 }
 
 +(UIColor *) shopeliaBackgroundColor {
-    return [UIColor colorWithRed:0.914 green:0.937 blue:0.937 alpha:1.0];
+     return [UIColor colorWithRed:245.0f / 255.0f green:245.0f / 255.0f blue:245.0f / 255.0f alpha:1.0f];
 }
 
 
