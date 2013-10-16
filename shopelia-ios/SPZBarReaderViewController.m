@@ -69,9 +69,9 @@
     [self.cameraOverlayView setFrame:self.view.bounds];
     
     overlayView *view = (overlayView *)self.cameraOverlayView;
-    CGFloat rectangleX = (self.readerView.frame.size.width - view.scanRectangleSize.height) / 2.0f;
+    CGFloat rectangleX = (self.readerView.frame.size.width - view.scanRectangleSize.width) / 2.0f;
     CGFloat rectangleY = (self.readerView.frame.size.height - view.scanRectangleSize.width) / 2.0f;
-    CGFloat rectangleWidth = view.scanRectangleSize.height;
+    CGFloat rectangleWidth = view.scanRectangleSize.width;
     CGFloat rectangleHeight = view.scanRectangleSize.width;
     
     [self.readerView setScanCrop:CGRectMake(rectangleX / self.readerView.frame.size.width,
