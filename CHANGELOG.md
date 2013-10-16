@@ -1,7 +1,7 @@
 shopelia-ios
 ============
 
-1.0
+0.1
 ---
 * Initial application
 * TestFlight integration
