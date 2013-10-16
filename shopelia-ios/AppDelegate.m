@@ -18,6 +18,8 @@
     // Override point for customization after application launch.
     //[[UIApplication sharedApplication] setStatusBarStyle: UIStatusBarStyleBlackOpaque];
 
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     self.viewController = [[SPZBarReaderViewController alloc] init];

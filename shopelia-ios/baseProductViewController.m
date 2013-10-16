@@ -46,8 +46,6 @@
     
 }
 
-
-
 - (void) getProductNameAndUrlsWithEAN: (NSString *) EAN
                   withCompletionBlock: (void (^)(NSError *error, id response))completionBlock {
     NSDictionary *dict = [[NSBundle mainBundle] infoDictionary];

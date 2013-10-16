@@ -44,8 +44,6 @@
 		115E67B717E89A7900B88DCA /* back-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 115E67B517E89A7900B88DCA /* back-button@2x.png */; };
 		1163C5A017DF161F0043E73D /* SPZBarReaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1163C59F17DF161F0043E73D /* SPZBarReaderViewController.m */; };
 		1163C5A317DF1D070043E73D /* navigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1163C5A217DF1D070043E73D /* navigationController.m */; };
-		1163C5A617DF1F380043E73D /* navbar.png in Resources */ = {isa = PBXBuildFile; fileRef = 1163C5A417DF1F380043E73D /* navbar.png */; };
-		1163C5A717DF1F380043E73D /* navbar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1163C5A517DF1F380043E73D /* navbar@2x.png */; };
 		1163C5AF17DF5B6C0043E73D /* overlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1163C5AE17DF5B6C0043E73D /* overlayView.m */; };
 		116CD92917DE030100978733 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 116CD92417DE030000978733 /* AVFoundation.framework */; };
 		116CD92A17DE030100978733 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 116CD92517DE030000978733 /* CoreMedia.framework */; };
@@ -73,6 +71,10 @@
 		11C6E7EB17E07E8500D66D96 /* UIView+Shopelia.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C6E7EA17E07E8500D66D96 /* UIView+Shopelia.m */; };
 		11C6E7EE17E086AD00D66D96 /* bar-code.png in Resources */ = {isa = PBXBuildFile; fileRef = 11C6E7EC17E086AD00D66D96 /* bar-code.png */; };
 		11C6E7EF17E086AD00D66D96 /* bar-code@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 11C6E7ED17E086AD00D66D96 /* bar-code@2x.png */; };
+		3729038B180ED3ED00BC573D /* shopelia_topbar_background_high.png in Resources */ = {isa = PBXBuildFile; fileRef = 37290387180ED3ED00BC573D /* shopelia_topbar_background_high.png */; };
+		3729038C180ED3ED00BC573D /* shopelia_topbar_background_high@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 37290388180ED3ED00BC573D /* shopelia_topbar_background_high@2x.png */; };
+		3729038D180ED3ED00BC573D /* shopelia_topbar_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 37290389180ED3ED00BC573D /* shopelia_topbar_background.png */; };
+		3729038E180ED3ED00BC573D /* shopelia_topbar_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3729038A180ED3ED00BC573D /* shopelia_topbar_background@2x.png */; };
 		37862C76180E9553009E2B44 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37862C75180E9553009E2B44 /* AudioToolbox.framework */; };
 		37A2A2DF180E85670097952D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37A2A2DE180E85670097952D /* Images.xcassets */; };
 		37D5C97E180E805300216A31 /* ShopeliaSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 37D5C97C180E805300216A31 /* ShopeliaSDKResources.bundle */; };
@@ -148,8 +150,6 @@
 		1163C59F17DF161F0043E73D /* SPZBarReaderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPZBarReaderViewController.m; sourceTree = "<group>"; };
 		1163C5A117DF1D070043E73D /* navigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = navigationController.h; sourceTree = "<group>"; };
 		1163C5A217DF1D070043E73D /* navigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = navigationController.m; sourceTree = "<group>"; };
-		1163C5A417DF1F380043E73D /* navbar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navbar.png; sourceTree = "<group>"; };
-		1163C5A517DF1F380043E73D /* navbar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navbar@2x.png"; sourceTree = "<group>"; };
 		1163C5AD17DF5B6C0043E73D /* overlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = overlayView.h; sourceTree = "<group>"; };
 		1163C5AE17DF5B6C0043E73D /* overlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = overlayView.m; sourceTree = "<group>"; };
 		116CD92417DE030000978733 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -188,6 +188,10 @@
 		11C6E7EA17E07E8500D66D96 /* UIView+Shopelia.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Shopelia.m"; sourceTree = "<group>"; };
 		11C6E7EC17E086AD00D66D96 /* bar-code.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bar-code.png"; sourceTree = "<group>"; };
 		11C6E7ED17E086AD00D66D96 /* bar-code@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bar-code@2x.png"; sourceTree = "<group>"; };
+		37290387180ED3ED00BC573D /* shopelia_topbar_background_high.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shopelia_topbar_background_high.png; sourceTree = "<group>"; };
+		37290388180ED3ED00BC573D /* shopelia_topbar_background_high@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shopelia_topbar_background_high@2x.png"; sourceTree = "<group>"; };
+		37290389180ED3ED00BC573D /* shopelia_topbar_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shopelia_topbar_background.png; sourceTree = "<group>"; };
+		3729038A180ED3ED00BC573D /* shopelia_topbar_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shopelia_topbar_background@2x.png"; sourceTree = "<group>"; };
 		37862C75180E9553009E2B44 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		37A2A2DE180E85670097952D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		37D5C97C180E805300216A31 /* ShopeliaSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ShopeliaSDKResources.bundle; sourceTree = "<group>"; };
@@ -408,6 +412,10 @@
 			isa = PBXGroup;
 			children = (
 				37A2A2DE180E85670097952D /* Images.xcassets */,
+				37290387180ED3ED00BC573D /* shopelia_topbar_background_high.png */,
+				37290388180ED3ED00BC573D /* shopelia_topbar_background_high@2x.png */,
+				37290389180ED3ED00BC573D /* shopelia_topbar_background.png */,
+				3729038A180ED3ED00BC573D /* shopelia_topbar_background@2x.png */,
 				113591E317F5D39700C478A4 /* loader-icon-small.png */,
 				113591E417F5D39700C478A4 /* loader-icon-small@2x.png */,
 				113591DB17F58CD900C478A4 /* error-button.png */,
@@ -426,8 +434,6 @@
 				11C6E7ED17E086AD00D66D96 /* bar-code@2x.png */,
 				11C6E7E417E078BE00D66D96 /* logo-word.png */,
 				11C6E7E517E078BE00D66D96 /* logo-word@2x.png */,
-				1163C5A417DF1F380043E73D /* navbar.png */,
-				1163C5A517DF1F380043E73D /* navbar@2x.png */,
 			);
 			name = ShopeliaResources;
 			sourceTree = "<group>";
@@ -616,18 +622,21 @@
 				11C6E7EF17E086AD00D66D96 /* bar-code@2x.png in Resources */,
 				37D5C9A1180E818B00216A31 /* zbar-helpicons.png in Resources */,
 				115E67B117E8961D00B88DCA /* ic_purchase_white.png in Resources */,
-				1163C5A717DF1F380043E73D /* navbar@2x.png in Resources */,
+				3729038C180ED3ED00BC573D /* shopelia_topbar_background_high@2x.png in Resources */,
 				113591DE17F58CD900C478A4 /* error-button@2x.png in Resources */,
 				113591D617F57FCA00C478A4 /* errorViewController.xib in Resources */,
 				11C6E7EE17E086AD00D66D96 /* bar-code.png in Resources */,
+				3729038D180ED3ED00BC573D /* shopelia_topbar_background.png in Resources */,
 				113137C717F1D52300AA7DAB /* SpinnerView.xib in Resources */,
 				115E67B717E89A7900B88DCA /* back-button@2x.png in Resources */,
 				37D5C9A2180E818B00216A31 /* zbar-samples.png in Resources */,
 				1183CD9317EB365900F1E66D /* products.json in Resources */,
 				37A2A2DF180E85670097952D /* Images.xcassets in Resources */,
+				3729038B180ED3ED00BC573D /* shopelia_topbar_background_high.png in Resources */,
 				1183CD9817EB423600F1E66D /* SPCell.xib in Resources */,
 				1190AAE417E9CECE003E570E /* productListViewController.xib in Resources */,
 				11C6E7E717E078BE00D66D96 /* logo-word@2x.png in Resources */,
+				3729038E180ED3ED00BC573D /* shopelia_topbar_background@2x.png in Resources */,
 				11C6E7E617E078BE00D66D96 /* logo-word.png in Resources */,
 				118433B117E1F01E00425AEB /* green-button.png in Resources */,
 				113591DD17F58CD900C478A4 /* error-button.png in Resources */,
@@ -640,7 +649,6 @@
 				118433B217E1F01E00425AEB /* green-button@2x.png in Resources */,
 				113591E617F5D39700C478A4 /* loader-icon-small@2x.png in Resources */,
 				115E67B317E8966000B88DCA /* ic_purchase_white@2x.png in Resources */,
-				1163C5A617DF1F380043E73D /* navbar.png in Resources */,
 				113137B917F1CC8600AA7DAB /* loader-icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

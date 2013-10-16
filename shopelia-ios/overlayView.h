@@ -10,5 +10,6 @@
 
 @interface overlayView : UIView
 
-@property (assign, nonatomic) CGRect scanCrop;
+- (CGSize)scanRectangleSize;
+
 @end

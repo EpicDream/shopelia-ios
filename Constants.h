@@ -12,6 +12,10 @@
 extern NSString *const BASE_URL;
 extern NSString *const API_URL;
 
+
+#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO( v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+
+
 @interface Constants : NSObject
 
 

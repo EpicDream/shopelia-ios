@@ -12,8 +12,6 @@
 
 @implementation overlayView
 
-@synthesize scanCrop;
-
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -25,13 +23,16 @@
     return self;
 }
 
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
+- (CGSize)scanRectangleSize
+{
+    return CGSizeMake(290.0f, 130.0f);
+}
+
 - (void)drawRect:(CGRect)rect
 {
     
     //Adding Bottom View
-    UIView *bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, self.Height - (90+44+20), self.Width, 90)];
+    UIView *bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, self.Height - 90, self.Width, 90)];
 
     bottomView.backgroundColor = [UIColor whiteColor];
     [self addSubview:bottomView];
@@ -66,23 +67,17 @@
     topBorder.backgroundColor = [UIColor shopeliaBlue].CGColor;
     [bottomView.layer addSublayer:topBorder];
     
-
-
-    
     //Drawing central rectangle and transparent View
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetFillColorWithColor(context,[UIColor colorWithRed:0 green:0 blue:0 alpha:0.4].CGColor);
-    CGContextFillRect(context,self.frame);
+    CGContextFillRect(context, self.frame);
     CGContextSetLineWidth(context, 2.0);
     CGContextSetStrokeColorWithColor(context, [UIColor whiteColor].CGColor);
-    CGRect rectangle = CGRectMake((self.Width - 290)/2,(self.Height - (130+90+44+20))/2 ,290,130);
+    CGRect rectangle = CGRectMake((self.Width - self.scanRectangleSize.width) / 2, (self.Height - (self.scanRectangleSize.height + 90)) / 2 , self.scanRectangleSize.width, self.scanRectangleSize.height);
     CGContextAddRect(context, rectangle);
     CGContextStrokePath(context);
     CGContextClearRect(context,rectangle);
-    
-    self.scanCrop =rectangle;
-    
-    
+
     //Draw centeral blue line
     CGContextBeginPath(context);
     CGContextSetStrokeColorWithColor(context, [UIColor shopeliaLightBlue].CGColor);
@@ -107,10 +102,6 @@
     centralTextLabel.lineBreakMode = NSLineBreakByWordWrapping;
     centralTextLabel.numberOfLines = 2;
     [self addSubview:centralTextLabel];
-    
-    
-    
- 
 }
 
 @end
