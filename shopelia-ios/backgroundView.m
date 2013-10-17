@@ -29,12 +29,6 @@
     self.layer.borderColor = [UIColor shopeliaLightGray].CGColor;
     self.layer.borderWidth = 1.0;
 }
-    
-    
-    
-    
-
-
 
 
 @end

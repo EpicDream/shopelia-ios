@@ -7,6 +7,7 @@
 //
 
 #import "navigationController.h"
+#import "Constants.h"
 
 @interface navigationController ()
 
@@ -27,9 +28,12 @@
 {
     [super viewDidLoad];
     self.navigationBar.translucent = NO;
-	// Do any additional setup after loading the view.
-    [self.navigationBar setBackgroundImage:[UIImage imageNamed:@"navbar.png"] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationBar setShadowImage:[UIImage new]];
     
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0"))
+        [self.navigationBar setBackgroundImage:[UIImage imageNamed:@"shopelia_topbar_background_high.png"] forBarMetrics:UIBarMetricsDefault];
+    else
+        [self.navigationBar setBackgroundImage:[UIImage imageNamed:@"shopelia_topbar_background.png"] forBarMetrics:UIBarMetricsDefault];
 }
 
 

@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface UIImage (Shopelia)
-+ (UIImage *)imageNamed:(NSString *)name withColor:(UIColor *)color;
+
 + (UIImage *) changeColor: (UIImage *)image withColor: (UIColor *) color;
 @end

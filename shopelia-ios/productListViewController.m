@@ -20,6 +20,7 @@
 
 @interface productListViewController ()
 @property UINib *cellNib;
+@property loadingView *loadingView;
 @end
 
 @implementation productListViewController
@@ -46,35 +47,13 @@ static const int CELL_HEIGHT = 82;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //[self customBackButton];
+
     CGRect loaderFrame = self.contentView.frame;
     loaderFrame.size.height = 200;
-    loadingView *loadView = [[loadingView alloc] initWithFrame:loaderFrame];
-    [loadView setOrigY: ([[UIScreen mainScreen] bounds].size.height  - 44 - 20 - loadView.Height)/2];
-    [self.view addSubview:loadView];
+    self.loadingView = [[loadingView alloc] initWithFrame:loaderFrame];
+    [self.loadingView setOrigY: ([[UIScreen mainScreen] bounds].size.height  - 44 - 20 - self.loadingView.Height)/2];
+    [self.view addSubview:self.loadingView];
      self.priceTableView.transform = CGAffineTransformMakeTranslation(0, self.priceTableView.Height);
-
-    [self getProductNameAndUrlsWithEAN:self.eanData withCompletionBlock:^(NSError *error, HTTPResponse *response){
-        if (error == nil) {
-            //self.priceTableView.hidden = NO;
-            self.priceTableView.contentInset = UIEdgeInsetsMake(0,0,10, 0);
-            [UIView transitionWithView:self.view
-                              duration:1.0
-                               options: UIViewAnimationOptionCurveEaseInOut
-                            animations:^{
-                                self.priceTableView.hidden = NO;
-                                self.priceTableView.transform = CGAffineTransformIdentity;
-                            } completion:nil];
-            [self getProductFrom:response];
-        } else {
-            errorViewController *errorVC = [[errorViewController alloc] initWithNibName:@"errorViewController" bundle:nil];
-            [self.navigationController pushViewController:errorVC animated:YES];
-            NSLog(@"%@",error);
-        }
-        [loadView removeFromSuperview];
-
-    }];
-    
 }
 
 - (void) getProductFrom: (HTTPResponse *) response {
@@ -113,9 +92,32 @@ static const int CELL_HEIGHT = 82;
     }
 }
 
-
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    
+    if (self.loadingView.superview)
+    {
+        [self getProductNameAndUrlsWithEAN:self.eanData withCompletionBlock:^(NSError *error, HTTPResponse *response){
+            if (error == nil && [[response responseJSON] count] > 0) {
+                //self.priceTableView.hidden = NO;
+                self.priceTableView.contentInset = UIEdgeInsetsMake(0,0,10, 0);
+                [UIView transitionWithView:self.view
+                                  duration:1.0
+                                   options: UIViewAnimationOptionCurveEaseInOut
+                                animations:^{
+                                    self.priceTableView.hidden = NO;
+                                    self.priceTableView.transform = CGAffineTransformIdentity;
+                                } completion:nil];
+                [self getProductFrom:response];
+            } else {
+                errorViewController *errorVC = [[errorViewController alloc] initWithNibName:@"errorViewController" bundle:nil];
+                [self.navigationController pushViewController:errorVC animated:YES];
+                NSLog(@"%@",error);
+            }
+            [self.loadingView removeFromSuperview];
+            
+        }];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -173,10 +175,8 @@ static const int CELL_HEIGHT = 82;
         cell.shippingPrice.hidden = YES;
         cell.shopeliaBtn.hidden = YES;
         cell.soldBy.hidden = YES;
-        SpinnerView* spinner = [SpinnerView loadIntoView: cell withSize:@"small"];
-        
-        
-        
+        [SpinnerView loadIntoView: cell withSize:@"small"];
+   
     } else {
         NSDictionary* prod = [self.products objectAtIndex:indexPath.row];
         NSDictionary* version = [self getVersion:prod];

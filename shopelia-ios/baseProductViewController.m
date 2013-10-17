@@ -39,13 +39,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     [self customBackButton];
     UIImageView *logo = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"logo-word.png" ]];
     self.navigationItem.titleView = logo ;
     
 }
-
-
 
 - (void) getProductNameAndUrlsWithEAN: (NSString *) EAN
                   withCompletionBlock: (void (^)(NSError *error, id response))completionBlock {
