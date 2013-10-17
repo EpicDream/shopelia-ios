@@ -10,15 +10,25 @@
 #import "UIColor+Shopelia.h"
 #import "UIView+Shopelia.h"
 
+
 @implementation overlayView
 
 @synthesize scanCrop;
+@synthesize apiClient;
+@synthesize index;
+@synthesize tableview;
+@synthesize results;
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+        self.apiClient =
+        [ASAPIClient apiClientWithApplicationID:@"JUFLKNI0PS" apiKey:@"03832face9510ee5a495b06855dfa38b"];
+        
+        self.index = [self.apiClient getIndex:@"dataflux"];
+        NSLog(@"%@",self.index);
         self.opaque = NO;
         
     }
@@ -29,6 +39,21 @@
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect
 {
+    self.tableview =[[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.Width, ([self.results count] + 1) * 44 ) style:UITableViewStylePlain];
+    self.tableview.delegate =self;
+    self.tableview.dataSource =self;
+    
+
+    CGRect searchViewFrame = CGRectMake(0,70,320,44);
+    UIView *containerSearch = [[UIView alloc] initWithFrame: searchViewFrame];
+    UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0,70,320,44)];
+    
+    searchBar.delegate = self;
+    [containerSearch addSubview: searchBar];
+    [self.tableview setTableHeaderView:searchBar];
+    
+    
+    [self addSubview:tableview];
     
     //Adding Bottom View
     UIView *bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, self.Height - (90+44+20), self.Width, 90)];
@@ -75,7 +100,7 @@
     CGContextFillRect(context,self.frame);
     CGContextSetLineWidth(context, 2.0);
     CGContextSetStrokeColorWithColor(context, [UIColor whiteColor].CGColor);
-    CGRect rectangle = CGRectMake((self.Width - 290)/2,(self.Height - (130+90+44+20))/2 ,290,130);
+    CGRect rectangle = CGRectMake((self.Width - 290)/2,(self.Height - (130+90+44 * 2+20))/2 ,290,130);
     CGContextAddRect(context, rectangle);
     CGContextStrokePath(context);
     CGContextClearRect(context,rectangle);
@@ -111,6 +136,60 @@
     
     
  
+}
+#pragma mark - Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
+    return [self.results count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    static NSString *CellIdentifier = @"Cell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    
+    cell.textLabel.text = [[self.results objectAtIndex:indexPath.row] objectForKey:@"name"];
+    
+    return cell;
+    
+}
+
+
+#pragma mark - Table view delegate
+
+
+
+
+#pragma mark - Search bar delegate
+
+- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar {
+    NSLog(@"YES");
+        return YES;
+}
+
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    NSLog(@"allo");
+    [self.index search:[ASQuery queryWithFullTextQuery:searchText]
+              success:^(ASRemoteIndex *index, ASQuery *query, NSDictionary *result) {
+                  self.results = [result objectForKey: @"hits"];
+                  self.tableview.frame = CGRectMake(0, 0, self.Width, ([self.results count] + 1) * 44 );
+                  [self.tableview reloadData];
+              } failure:^(ASRemoteIndex *index, ASQuery *query, NSString *errorMessage) {
+                  NSLog(@"%@",errorMessage);
+              }];
+    
+
 }
 
 @end
