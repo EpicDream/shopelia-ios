@@ -10,7 +10,7 @@
 #import "HTTPRequest.h"
 #import "overlayView.h"
 #import "UIView+Shopelia.h"
-#import "imageView.h"
+#import "shopeliaImageView.h"
 #import "loadingView.h"
 #import "errorViewController.h"
 #import <AudioToolbox/AudioToolbox.h>

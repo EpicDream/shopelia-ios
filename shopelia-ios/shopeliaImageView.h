@@ -1,5 +1,5 @@
 //
-//  imageView.h
+//  shopeliaImageView.h
 //  shopelia-ios
 //
 //  Created by Amine bellakrid on 9/16/13.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface imageView : UIImageView
+@interface shopeliaImageView : UIImageView
 - (void)setAsynchImageWithURL:(NSString *)imageURL;
 @end

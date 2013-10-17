@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		110B54DD17E6F9D000DF1C3A /* HTTPPoller.m in Sources */ = {isa = PBXBuildFile; fileRef = 110B54DC17E6F9D000DF1C3A /* HTTPPoller.m */; };
-		110B54E017E7406E00DF1C3A /* imageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 110B54DF17E7406E00DF1C3A /* imageView.m */; };
 		110B54E317E740F700DF1C3A /* threadFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 110B54E217E740F700DF1C3A /* threadFactory.m */; };
 		110B54E617E7533900DF1C3A /* backgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 110B54E517E7533900DF1C3A /* backgroundView.m */; };
+		110BF64718100F00000CAC67 /* shopeliaImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 110BF64618100F00000CAC67 /* shopeliaImageView.m */; };
 		1128F8EF17EC608B0079EC11 /* SPCellContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1128F8EE17EC608B0079EC11 /* SPCellContentView.m */; };
 		113137B917F1CC8600AA7DAB /* loader-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 113137B517F1CC8600AA7DAB /* loader-icon.png */; };
 		113137BA17F1CC8600AA7DAB /* loader-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 113137B617F1CC8600AA7DAB /* loader-icon@2x.png */; };
@@ -103,12 +103,12 @@
 /* Begin PBXFileReference section */
 		110B54DB17E6F9D000DF1C3A /* HTTPPoller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPPoller.h; sourceTree = "<group>"; };
 		110B54DC17E6F9D000DF1C3A /* HTTPPoller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPPoller.m; sourceTree = "<group>"; };
-		110B54DE17E7406E00DF1C3A /* imageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = imageView.h; sourceTree = "<group>"; };
-		110B54DF17E7406E00DF1C3A /* imageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = imageView.m; sourceTree = "<group>"; };
 		110B54E117E740F700DF1C3A /* threadFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = threadFactory.h; sourceTree = "<group>"; };
 		110B54E217E740F700DF1C3A /* threadFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = threadFactory.m; sourceTree = "<group>"; };
 		110B54E417E7533900DF1C3A /* backgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = backgroundView.h; sourceTree = "<group>"; };
 		110B54E517E7533900DF1C3A /* backgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = backgroundView.m; sourceTree = "<group>"; };
+		110BF64518100F00000CAC67 /* shopeliaImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shopeliaImageView.h; sourceTree = "<group>"; };
+		110BF64618100F00000CAC67 /* shopeliaImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = shopeliaImageView.m; sourceTree = "<group>"; };
 		1128F8ED17EC608B0079EC11 /* SPCellContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPCellContentView.h; sourceTree = "<group>"; };
 		1128F8EE17EC608B0079EC11 /* SPCellContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPCellContentView.m; sourceTree = "<group>"; };
 		113137B517F1CC8600AA7DAB /* loader-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loader-icon.png"; sourceTree = "<group>"; };
@@ -306,6 +306,8 @@
 		113137BF17F1CCE800AA7DAB /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				110BF64518100F00000CAC67 /* shopeliaImageView.h */,
+				110BF64618100F00000CAC67 /* shopeliaImageView.m */,
 				113591D417F57FCA00C478A4 /* errorViewController.xib */,
 				110B54E417E7533900DF1C3A /* backgroundView.h */,
 				110B54E517E7533900DF1C3A /* backgroundView.m */,
@@ -313,8 +315,6 @@
 				1163C5AE17DF5B6C0043E73D /* overlayView.m */,
 				1190AAE217E9CECE003E570E /* productListViewController.xib */,
 				118433B017E1F01E00425AEB /* productViewController.xib */,
-				110B54DE17E7406E00DF1C3A /* imageView.h */,
-				110B54DF17E7406E00DF1C3A /* imageView.m */,
 				1183CD9417EB41DD00F1E66D /* SPCell.h */,
 				1183CD9517EB41DD00F1E66D /* SPCell.m */,
 				1183CD9717EB423600F1E66D /* SPCell.xib */,
@@ -736,7 +736,6 @@
 				113DDE3B17DDFA9A0056E126 /* main.m in Sources */,
 				1163C5AF17DF5B6C0043E73D /* overlayView.m in Sources */,
 				1183CD9117E9D58300F1E66D /* baseProductViewController.m in Sources */,
-				110B54E017E7406E00DF1C3A /* imageView.m in Sources */,
 				11C6E7EB17E07E8500D66D96 /* UIView+Shopelia.m in Sources */,
 				113591D517F57FCA00C478A4 /* errorViewController.m in Sources */,
 				110B54E317E740F700DF1C3A /* threadFactory.m in Sources */,
@@ -748,6 +747,7 @@
 				1190AAE317E9CECE003E570E /* productListViewController.m in Sources */,
 				119C074917E30DA5003AF6AA /* Constants.m in Sources */,
 				1163C5A017DF161F0043E73D /* SPZBarReaderViewController.m in Sources */,
+				110BF64718100F00000CAC67 /* shopeliaImageView.m in Sources */,
 				110B54DD17E6F9D000DF1C3A /* HTTPPoller.m in Sources */,
 				113591D117F4736800C478A4 /* loadingView.m in Sources */,
 				119C076617E320DA003AF6AA /* HTTPResponse.m in Sources */,

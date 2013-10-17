@@ -9,6 +9,8 @@
 #import "overlayView.h"
 #import "UIColor+Shopelia.h"
 #import "UIView+Shopelia.h"
+#import "shopeliaImageView.h"
+#import "threadFactory.h"
 
 
 @implementation overlayView
@@ -41,19 +43,19 @@
 
 - (void)drawRect:(CGRect)rect
 {
-    self.tableview =[[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.Width, ([self.results count] + 1) * 44 ) style:UITableViewStylePlain];
+    self.tableview =[[UITableView alloc] initWithFrame:CGRectMake(0, 44, self.Width, [self.results count]* 82) style:UITableViewStylePlain];
     self.tableview.delegate =self;
     self.tableview.dataSource =self;
     
-
     UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectZero];
     [searchBar sizeToFit];
+    [searchBar setHeight:44.0f];
     searchBar.translucent = NO;
     searchBar.delegate = self;
-    [self.tableview setTableHeaderView:searchBar];
+    [self addSubview:searchBar];
+    //self.tableview.tableHeaderView = searchBar ;
     
-    
-    [self addSubview:tableview];
+    [self addSubview:self.tableview];
     
     //Adding Bottom View
     UIView *bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, self.Height - 90, self.Width, 90)];
@@ -97,7 +99,7 @@
     CGContextFillRect(context, self.frame);
     CGContextSetLineWidth(context, 2.0);
     CGContextSetStrokeColorWithColor(context, [UIColor whiteColor].CGColor);
-    CGRect rectangle = CGRectMake((self.Width - self.scanRectangleSize.width) / 2, (self.Height  + searchBar.Height - (self.scanRectangleSize.height)) / 2, self.scanRectangleSize.width, self.scanRectangleSize.height);
+    CGRect rectangle = CGRectMake((self.Width - self.scanRectangleSize.width) / 2, (self.Height - (self.scanRectangleSize.height)) / 2, self.scanRectangleSize.width, self.scanRectangleSize.height);
     CGContextAddRect(context, rectangle);
     CGContextStrokePath(context);
     CGContextClearRect(context,rectangle);
@@ -148,17 +150,36 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    cell.textLabel.text = [[self.results objectAtIndex:indexPath.row] objectForKey:@"name"];
+    NSMutableArray *res = [[NSMutableArray alloc] initWithArray:self.results];
+
+    if ([res count] > 0) {
+        cell.textLabel.text = [[res objectAtIndex:indexPath.row] objectForKey:@"name"];
+        dispatch_async([threadFactory backgroundImagesDispatchQueue], ^{
+            NSURL *URL = [NSURL URLWithString:[[res objectAtIndex:indexPath.row] objectForKey:@"image_url"]];
+            NSData *data = [NSData dataWithContentsOfURL:URL];
+            UIImage *image = [UIImage imageWithData:data];
+            if (image)
+            {
+                dispatch_async([threadFactory mainDispatchQueue], ^{
+                    cell.imageView.image = image;
+                });
+            }
+        });
+
+    }
     
     return cell;
     
 }
 
 
+
+
 #pragma mark - Table view delegate
 
-
-
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 82;
+}
 
 #pragma mark - Search bar delegate
 
@@ -167,19 +188,34 @@
         return YES;
 }
 
+- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar {
+    
+}
+
+- (BOOL) searchBarShouldEndEditing:(UISearchBar *)searchBar {
+
+    return YES;
+}
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-    NSLog(@"allo");
-    [self.index search:[ASQuery queryWithFullTextQuery:searchText]
-              success:^(ASRemoteIndex *index, ASQuery *query, NSDictionary *result) {
-                  self.results = [result objectForKey: @"hits"];
-                  self.tableview.frame = CGRectMake(0, 0, self.Width, ([self.results count] + 1) * 44 );
-                  [self.tableview reloadData];
-              } failure:^(ASRemoteIndex *index, ASQuery *query, NSString *errorMessage) {
-                  NSLog(@"%@",errorMessage);
-              }];
-    
-
+    [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(algoliaSearch:)  userInfo:searchText repeats:NO];
+       NSLog(@"allo");
 }
+
+- (void) algoliaSearch: (NSTimer *) timer {
+    [self.index search:[ASQuery queryWithFullTextQuery:(NSString*)[timer userInfo]]
+               success:^(ASRemoteIndex *index, ASQuery *query, NSDictionary *result) {
+                   self.results = [result objectForKey: @"hits"];
+                   [self.tableview reloadData];
+                   self.tableview.frame = CGRectMake(0, 44, self.Width, [self.results count] * 82 );
+
+               } failure:^(ASRemoteIndex *index, ASQuery *query, NSString *errorMessage) {
+                   NSLog(@"%@",errorMessage);
+               }];
+    
+    [timer invalidate];
+}
+
+
 
 @end

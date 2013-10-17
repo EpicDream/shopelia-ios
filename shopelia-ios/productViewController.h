@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "imageView.h"
+#import "shopeliaImageView.h"
 #import "backgroundView.h"
 #import "baseProductViewController.h"
 
@@ -18,7 +18,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *price;
 @property (strong, nonatomic) IBOutlet UILabel *soldBy;
 @property (strong, nonatomic) IBOutlet UILabel *productTitle;
-@property (strong, nonatomic) IBOutlet imageView *productImageView;
+@property (strong, nonatomic) IBOutlet shopeliaImageView *productImageView;
 
 
 

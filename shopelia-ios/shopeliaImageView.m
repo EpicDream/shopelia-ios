@@ -1,15 +1,15 @@
 //
-//  imageView.m
+//  shopeliaImageView.m
 //  shopelia-ios
 //
 //  Created by Amine bellakrid on 9/16/13.
 //  Copyright (c) 2013 Amine bellakrid. All rights reserved.
 //
 
-#import "imageView.h"
+#import "shopeliaImageView.h"
 #import "threadFactory.h"
 
-@implementation imageView
+@implementation shopeliaImageView
 
 - (id)initWithFrame:(CGRect)frame
 {
