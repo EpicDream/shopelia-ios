@@ -1,4 +1,4 @@
-//
+ //
 //  AppDelegate.m
 //  shopelia-ios
 //
@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "OHAttributedLabel.h"
+#import "TestFlight.h"
 
 @implementation AppDelegate
 
@@ -18,6 +19,8 @@
     // Override point for customization after application launch.
     //[[UIApplication sharedApplication] setStatusBarStyle: UIStatusBarStyleBlackOpaque];
 
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     self.viewController = [[SPZBarReaderViewController alloc] init];
@@ -31,7 +34,9 @@
     self.window.rootViewController = navbar;
     [self.window makeKeyAndVisible];
 
-    
+    // TestFlight
+    [TestFlight takeOff:@"6cd79ccd-d2f3-4658-b4ba-4dc1a40bc089"];
+
     return YES;
 }
 							

@@ -13,9 +13,8 @@
 #import "imageView.h"
 #import "loadingView.h"
 #import "errorViewController.h"
-
-
-#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO( v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+#import <AudioToolbox/AudioToolbox.h>
+#import "Constants.h"
 
 @interface SPZBarReaderViewController ()
 
@@ -38,28 +37,15 @@
 {
     [super viewDidLoad]; // Do any additional setup after loading the view, typically from a nib.
     
-    
-//    self.productVC = [[productListViewController alloc] initWithNibName:@"productListViewController" bundle:nil];
-//    self.productVC.eanData = @"9782914901185";
-//    self.productVC.eanData = @"4005808227822";
-//    [self.navigationController pushViewController:self.productVC animated:YES];
-    
-
-    
     UIImageView *logo = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"logo-word.png" ]];
     self.navigationItem.titleView = logo ;
-    
-    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0"))
-        self.edgesForExtendedLayout = UIRectEdgeNone;
-    
+
     self.readerDelegate = self;
     self.supportedOrientationsMask = ZBarOrientationMaskAll;
     self.showsZBarControls = NO;
-
-    [self.readerView setFrameSizeWithW:UIScreen.mainScreen.bounds.size.width h:UIScreen.mainScreen.bounds.size.height];
+    self.cameraFlashMode = UIImagePickerControllerCameraFlashModeAuto;
 
     self.wantsFullScreenLayout = NO;
-    //NSLog(@"%@",UIScreen.mainScreen);
     overlayView *view = [[overlayView alloc] initWithFrame:self.readerView.frame];
     self.cameraOverlayView = view;
     //self.scanCrop = CGRectMake(0,0,0.5,0.5);
@@ -75,21 +61,23 @@
     
    }
 
-
-- (void) viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
+- (void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    
+    [self.readerView setFrameSizeWithW:self.view.bounds.size.width h:self.view.bounds.size.height - 90.0f];
+    [self.cameraOverlayView setFrame:self.view.bounds];
+    
     overlayView *view = (overlayView *)self.cameraOverlayView;
-    CGFloat x,y,width,height;
+    CGFloat rectangleX = (self.readerView.frame.size.width - view.scanRectangleSize.width) / 2.0f;
+    CGFloat rectangleY = (self.readerView.frame.size.height - view.scanRectangleSize.width) / 2.0f;
+    CGFloat rectangleWidth = view.scanRectangleSize.width;
+    CGFloat rectangleHeight = view.scanRectangleSize.width;
     
-    x = view.scanCrop.origin.y / self.readerView.bounds.size.width;
-    y = view.scanCrop.origin.x / self.readerView.bounds.size.height;
-    width = view.scanCrop.size.height / self.readerView.bounds.size.width;
-    height = view.scanCrop.size.width / self.readerView.bounds.size.height;
-    
-    
-    self.readerView.scanCrop = CGRectMake(x,y,width,height);
-    //NSLog(@"%@",view.scanCrop);
-
+    [self.readerView setScanCrop:CGRectMake(rectangleX / self.readerView.frame.size.width,
+                                            rectangleY / self.readerView.frame.size.height,
+                                            rectangleWidth / self.readerView.frame.size.width,
+                                            rectangleHeight / self.readerView.frame.size.height)];
 }
 
 - (void)didReceiveMemoryWarning
@@ -97,6 +85,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 #pragma Zbar Delegate Implementation
 
 - (void) imagePickerController: (UIImagePickerController*) reader
@@ -106,20 +95,18 @@
     id<NSFastEnumeration> results =
     [info objectForKey: ZBarReaderControllerResults];
     ZBarSymbol *symbol = nil;
-    NSLog(@"%@",results);
-    for(symbol in results) {
+
+    for (symbol in results) {
         break;
     }
-        // EXAMPLE: just grab the first barcode
+
+    // vibrate
+    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+    
     self.productVC = [[productListViewController alloc] initWithNibName:@"productListViewController" bundle:nil];
     self.productVC.eanData = symbol.data; 
     [self.navigationController pushViewController:self.productVC animated:YES];
-
-    
-    // ADD: dismiss the controller (NB dismiss from the *reader*!)
-    [reader dismissViewControllerAnimated:YES completion:nil];
 }
-
 
 
 

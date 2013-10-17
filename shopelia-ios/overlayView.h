@@ -12,11 +12,11 @@
 
 @interface overlayView : UIView <UISearchBarDelegate, UITableViewDataSource,UITableViewDelegate>
 
-@property (assign, nonatomic) CGRect scanCrop;
-
 @property (strong, nonatomic) ASAPIClient *apiClient;
 @property (strong, nonatomic) ASRemoteIndex *index ;
 
 @property (strong, nonatomic) UITableView *tableview;
 @property (strong, nonatomic) NSArray *results;
+- (CGSize)scanRectangleSize;
+
 @end
