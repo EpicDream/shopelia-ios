@@ -65,13 +65,13 @@
 {
     [super viewDidLayoutSubviews];
     
-    [self.readerView setFrameSizeWithW:self.view.bounds.size.width h:self.view.bounds.size.height];
+
+    [self.readerView setFrameSizeWithW:self.view.bounds.size.width h:self.view.bounds.size.height - 90.0f];
     [self.cameraOverlayView setFrame:self.view.bounds];
     
     overlayView *view = (overlayView *)self.cameraOverlayView;
-    CGFloat rectangleX = (self.readerView.frame.size.width - view.scanRectangleSize.width) / 2.0f + 44.0f;
-    CGFloat rectangleY = (self.readerView.frame.size.height - view.scanRectangleSize.width) / 2.0f + 44.0f;
-    CGFloat rectangleWidth = view.scanRectangleSize.width;
+    CGFloat rectangleX = (self.readerView.frame.size.width - view.scanRectangleSize.width) / 2.0f;
+    CGFloat rectangleY = (self.readerView.frame.size.height - view.scanRectangleSize.width) / 2.0f;    CGFloat rectangleWidth = view.scanRectangleSize.width;
     CGFloat rectangleHeight = view.scanRectangleSize.width;
     
     [self.readerView setScanCrop:CGRectMake(rectangleX / self.readerView.frame.size.width,
