@@ -875,6 +875,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					./ShopeliaSDK.embeddedframework,
@@ -883,9 +884,9 @@
 				GCC_PREFIX_HEADER = "shopelia-ios/shopelia-ios-Prefix.pch";
 				INFOPLIST_FILE = "shopelia-ios/shopelia-ios-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
+					"${inherited}",
+					./TestFlightSDK2.0.2,
 					./ZBarSDK,
-					"/Users/nicolas/devel/shopelia-ios/TestFlightSDK2.0.2",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -898,6 +899,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					./ShopeliaSDK.embeddedframework,
@@ -906,9 +908,9 @@
 				GCC_PREFIX_HEADER = "shopelia-ios/shopelia-ios-Prefix.pch";
 				INFOPLIST_FILE = "shopelia-ios/shopelia-ios-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
+					"${inherited}",
+					./TestFlightSDK2.0.2,
 					./ZBarSDK,
-					"/Users/nicolas/devel/shopelia-ios/TestFlightSDK2.0.2",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
