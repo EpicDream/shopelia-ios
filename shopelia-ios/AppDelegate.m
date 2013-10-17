@@ -36,8 +36,7 @@
 
     // TestFlight
     [TestFlight takeOff:@"6cd79ccd-d2f3-4658-b4ba-4dc1a40bc089"];
-    
-    
+
     return YES;
 }
 							
