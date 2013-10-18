@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "searchCellContentView.h"
+#import "shopeliaImageView.h"
 
 
 @interface searchCell : UITableViewCell
 @property (strong, nonatomic) IBOutlet UILabel *title;
 - (void) updateContentView;
+@property (strong, nonatomic) IBOutlet shopeliaImageView *productImageView;
 
 @end

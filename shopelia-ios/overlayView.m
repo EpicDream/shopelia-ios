@@ -12,6 +12,7 @@
 #import "shopeliaImageView.h"
 #import "threadFactory.h"
 #import "searchCell.h"
+#import "HTTPRequest.h"
 
 @interface overlayView ()
 @property UINib *searchCellNib;
@@ -33,7 +34,7 @@
         self.apiClient =
         [ASAPIClient apiClientWithApplicationID:@"JUFLKNI0PS" apiKey:@"03832face9510ee5a495b06855dfa38b"];
         
-        self.index = [self.apiClient getIndex:@"dataflux"];
+        self.index = [self.apiClient getIndex:@"products-feed-fr-new"];
         NSLog(@"%@",self.index);
         self.opaque = NO;
         
@@ -122,8 +123,8 @@
     [self addSubview:centralTextLabel];
     
     
-    //    self.tableview =[[UITableView alloc] initWithFrame:CGRectMake(0, 44, self.Width, [self.results count]* 82) style:UITableViewStylePlain];
-    self.tableview =[[UITableView alloc] initWithFrame:CGRectMake(0, 44, self.Width, 10 * 82) style:UITableViewStylePlain];
+    self.tableview =[[UITableView alloc] initWithFrame:CGRectMake(0, 44, self.Width, [self.results count]* 82) style:UITableViewStylePlain];
+    //self.tableview =[[UITableView alloc] initWithFrame:CGRectMake(0, 44, self.Width, 10 * 82) style:UITableViewStylePlain];
     
     self.tableview.delegate =self;
     self.tableview.dataSource =self;
@@ -136,8 +137,6 @@
     searchBar.translucent = NO;
     searchBar.delegate = self;
     [self addSubview:searchBar];
-    //self.tableview.tableHeaderView = searchBar ;
-    
     [self addSubview:self.tableview];
     
     
@@ -152,7 +151,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return 10; //[self.results count];
+    return [self.results count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -168,32 +167,46 @@
     }
 
     
-    cell.title.text = @"fkfblfbljfbljflbjfbjlfjblblfljrbfjlr";
-    
-//    NSMutableArray *res = [[NSMutableArray alloc] initWithArray:self.results];
-//
-//    if ([res count] > 0) {
-//        cell.textLabel.text = [[res objectAtIndex:indexPath.row] objectForKey:@"name"];
-//        dispatch_async([threadFactory backgroundImagesDispatchQueue], ^{
-//            NSURL *URL = [NSURL URLWithString:[[res objectAtIndex:indexPath.row] objectForKey:@"image_url"]];
-//            NSData *data = [NSData dataWithContentsOfURL:URL];
-//            UIImage *image = [UIImage imageWithData:data];
-//            if (image)
-//            {
-//                dispatch_async([threadFactory mainDispatchQueue], ^{
-//                    cell.imageView.image = image;
-//                });
-//            }
-//        });
-//
-//    }
+    NSMutableArray *res = [[NSMutableArray alloc] initWithArray:self.results];
+
+    if ([res count] > 0) {
+        cell.title.text = [[res objectAtIndex:indexPath.row] objectForKey:@"name"];
+        [cell.productImageView setAsynchImageWithURL:[[res objectAtIndex:indexPath.row] objectForKey:@"image_url"]];
+    }
     
     return cell;
     
 }
 
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSMutableArray *res = [[NSMutableArray alloc] initWithArray: self.results];
+    NSDictionary *dict = [[NSBundle mainBundle] infoDictionary];
+    NSString *shopeliApiKey = [dict valueForKey:@"ShopeliaAPIKey"] ;
+    HTTPRequest *request = [[HTTPRequest alloc] init];
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    
+    [params setObject:@"tracker" forKey: @"shopelia-ios-app"];
+    [params setObject:@"action" forKey: @"click"];
+    [params setObject:[[res objectAtIndex:indexPath.row] objectForKey:@"product_url"] forKey: @"urls"];
+    [params setObject:@"false" forKey: @"uuid"];
 
-
+    
+    //NSLog(@"%@",params);
+    
+    NSData* jsonData = [NSJSONSerialization dataWithJSONObject:params
+                                                       options:NSJSONWritingPrettyPrinted error:nil];
+    
+    request.HTTPBody = jsonData;
+    [request setValue:shopeliApiKey forHTTPHeaderField:@"X-Shopelia-ApiKey"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    NSString *url =@"https://www.shopelia.com/api/events";
+    [request setURL:[NSURL URLWithString:url]];
+    [request setHTTPMethod:@"POST"];
+    [request startWithCompletion:^(NSError *error, id response) {
+    }];
+    
+    
+}
 
 #pragma mark - Table view delegate
 
@@ -218,7 +231,7 @@
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-    //[NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(algoliaSearch:)  userInfo:searchText repeats:NO];
+    [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(algoliaSearch:)  userInfo:searchText repeats:NO];
        NSLog(@"allo");
 }
 
