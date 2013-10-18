@@ -11,6 +11,9 @@
 		110B54E317E740F700DF1C3A /* threadFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 110B54E217E740F700DF1C3A /* threadFactory.m */; };
 		110B54E617E7533900DF1C3A /* backgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 110B54E517E7533900DF1C3A /* backgroundView.m */; };
 		110BF64718100F00000CAC67 /* shopeliaImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 110BF64618100F00000CAC67 /* shopeliaImageView.m */; };
+		110BF64A18112734000CAC67 /* searchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 110BF64918112734000CAC67 /* searchCell.m */; };
+		110BF64C18112755000CAC67 /* searchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 110BF64B18112755000CAC67 /* searchCell.xib */; };
+		110BF64F18112A31000CAC67 /* searchCellContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 110BF64E18112A31000CAC67 /* searchCellContentView.m */; };
 		1128F8EF17EC608B0079EC11 /* SPCellContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1128F8EE17EC608B0079EC11 /* SPCellContentView.m */; };
 		113137B917F1CC8600AA7DAB /* loader-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 113137B517F1CC8600AA7DAB /* loader-icon.png */; };
 		113137BA17F1CC8600AA7DAB /* loader-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 113137B617F1CC8600AA7DAB /* loader-icon@2x.png */; };
@@ -109,6 +112,11 @@
 		110B54E517E7533900DF1C3A /* backgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = backgroundView.m; sourceTree = "<group>"; };
 		110BF64518100F00000CAC67 /* shopeliaImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shopeliaImageView.h; sourceTree = "<group>"; };
 		110BF64618100F00000CAC67 /* shopeliaImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = shopeliaImageView.m; sourceTree = "<group>"; };
+		110BF64818112734000CAC67 /* searchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = searchCell.h; sourceTree = "<group>"; };
+		110BF64918112734000CAC67 /* searchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = searchCell.m; sourceTree = "<group>"; };
+		110BF64B18112755000CAC67 /* searchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = searchCell.xib; sourceTree = "<group>"; };
+		110BF64D18112A31000CAC67 /* searchCellContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = searchCellContentView.h; sourceTree = "<group>"; };
+		110BF64E18112A31000CAC67 /* searchCellContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = searchCellContentView.m; sourceTree = "<group>"; };
 		1128F8ED17EC608B0079EC11 /* SPCellContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPCellContentView.h; sourceTree = "<group>"; };
 		1128F8EE17EC608B0079EC11 /* SPCellContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPCellContentView.m; sourceTree = "<group>"; };
 		113137B517F1CC8600AA7DAB /* loader-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loader-icon.png"; sourceTree = "<group>"; };
@@ -327,6 +335,11 @@
 				113137CD17F2EEC900AA7DAB /* SpinnerLayer.m */,
 				113591CF17F4736800C478A4 /* loadingView.h */,
 				113591D017F4736800C478A4 /* loadingView.m */,
+				110BF64818112734000CAC67 /* searchCell.h */,
+				110BF64918112734000CAC67 /* searchCell.m */,
+				110BF64B18112755000CAC67 /* searchCell.xib */,
+				110BF64D18112A31000CAC67 /* searchCellContentView.h */,
+				110BF64E18112A31000CAC67 /* searchCellContentView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -658,6 +671,7 @@
 				11C6E7EE17E086AD00D66D96 /* bar-code.png in Resources */,
 				3729038D180ED3ED00BC573D /* shopelia_topbar_background.png in Resources */,
 				113137C717F1D52300AA7DAB /* SpinnerView.xib in Resources */,
+				110BF64C18112755000CAC67 /* searchCell.xib in Resources */,
 				115E67B717E89A7900B88DCA /* back-button@2x.png in Resources */,
 				37D5C9A2180E818B00216A31 /* zbar-samples.png in Resources */,
 				1183CD9317EB365900F1E66D /* products.json in Resources */,
@@ -732,6 +746,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				113DDE3F17DDFA9A0056E126 /* AppDelegate.m in Sources */,
+				110BF64F18112A31000CAC67 /* searchCellContentView.m in Sources */,
 				113137C517F1D15F00AA7DAB /* SpinnerView.m in Sources */,
 				113DDE3B17DDFA9A0056E126 /* main.m in Sources */,
 				1163C5AF17DF5B6C0043E73D /* overlayView.m in Sources */,
@@ -750,6 +765,7 @@
 				110BF64718100F00000CAC67 /* shopeliaImageView.m in Sources */,
 				110B54DD17E6F9D000DF1C3A /* HTTPPoller.m in Sources */,
 				113591D117F4736800C478A4 /* loadingView.m in Sources */,
+				110BF64A18112734000CAC67 /* searchCell.m in Sources */,
 				119C076617E320DA003AF6AA /* HTTPResponse.m in Sources */,
 				113137CA17F1D7ED00AA7DAB /* UIImage+Shopelia.m in Sources */,
 				118433B317E1F01E00425AEB /* productViewController.m in Sources */,

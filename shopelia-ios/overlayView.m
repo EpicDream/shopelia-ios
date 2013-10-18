@@ -11,7 +11,11 @@
 #import "UIView+Shopelia.h"
 #import "shopeliaImageView.h"
 #import "threadFactory.h"
+#import "searchCell.h"
 
+@interface overlayView ()
+@property UINib *searchCellNib;
+@end
 
 @implementation overlayView
 
@@ -25,6 +29,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+        self.searchCellNib = [UINib nibWithNibName:@"searchCell" bundle:nil];
         self.apiClient =
         [ASAPIClient apiClientWithApplicationID:@"JUFLKNI0PS" apiKey:@"03832face9510ee5a495b06855dfa38b"];
         
@@ -43,9 +48,12 @@
 
 - (void)drawRect:(CGRect)rect
 {
-    self.tableview =[[UITableView alloc] initWithFrame:CGRectMake(0, 44, self.Width, [self.results count]* 82) style:UITableViewStylePlain];
+//    self.tableview =[[UITableView alloc] initWithFrame:CGRectMake(0, 44, self.Width, [self.results count]* 82) style:UITableViewStylePlain];
+    self.tableview =[[UITableView alloc] initWithFrame:CGRectMake(0, 44, self.Width, 10 * 82) style:UITableViewStylePlain];
+
     self.tableview.delegate =self;
     self.tableview.dataSource =self;
+    self.tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectZero];
     [searchBar sizeToFit];
@@ -137,36 +145,41 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return [self.results count];
+    return 10; //[self.results count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"searchCell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    searchCell *cell = (searchCell*) [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        NSArray *topLevelObjects = [self.searchCellNib instantiateWithOwner:self options:nil];
+        cell = (searchCell *)[topLevelObjects objectAtIndex:0];
+        [cell updateContentView];
     }
+
     
-    NSMutableArray *res = [[NSMutableArray alloc] initWithArray:self.results];
-
-    if ([res count] > 0) {
-        cell.textLabel.text = [[res objectAtIndex:indexPath.row] objectForKey:@"name"];
-        dispatch_async([threadFactory backgroundImagesDispatchQueue], ^{
-            NSURL *URL = [NSURL URLWithString:[[res objectAtIndex:indexPath.row] objectForKey:@"image_url"]];
-            NSData *data = [NSData dataWithContentsOfURL:URL];
-            UIImage *image = [UIImage imageWithData:data];
-            if (image)
-            {
-                dispatch_async([threadFactory mainDispatchQueue], ^{
-                    cell.imageView.image = image;
-                });
-            }
-        });
-
-    }
+    cell.title.text = @"fkfblfbljfbljflbjfbjlfjblblfljrbfjlr";
+    
+//    NSMutableArray *res = [[NSMutableArray alloc] initWithArray:self.results];
+//
+//    if ([res count] > 0) {
+//        cell.textLabel.text = [[res objectAtIndex:indexPath.row] objectForKey:@"name"];
+//        dispatch_async([threadFactory backgroundImagesDispatchQueue], ^{
+//            NSURL *URL = [NSURL URLWithString:[[res objectAtIndex:indexPath.row] objectForKey:@"image_url"]];
+//            NSData *data = [NSData dataWithContentsOfURL:URL];
+//            UIImage *image = [UIImage imageWithData:data];
+//            if (image)
+//            {
+//                dispatch_async([threadFactory mainDispatchQueue], ^{
+//                    cell.imageView.image = image;
+//                });
+//            }
+//        });
+//
+//    }
     
     return cell;
     
@@ -198,7 +211,7 @@
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-    [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(algoliaSearch:)  userInfo:searchText repeats:NO];
+    //[NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(algoliaSearch:)  userInfo:searchText repeats:NO];
        NSLog(@"allo");
 }
 
