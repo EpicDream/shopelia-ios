@@ -69,7 +69,6 @@
     self.tableview.dataSource =self;
     self.tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
     
-    
     UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectZero];
     [searchBar sizeToFit];
     [searchBar setHeight:44.0f];
@@ -99,6 +98,8 @@
                        to: 0];
 
    }
+
+
 
 - (void)viewDidLayoutSubviews
 {
@@ -286,6 +287,8 @@
                    self.results = [result objectForKey: @"hits"];
                    [self.tableview reloadData];
                    self.tableview.frame = CGRectMake(0, 44, self.cameraOverlayView.Width, [self.results count] * 82 );
+                   [self.cameraOverlayView bringSubviewToFront:self.tableview];
+                   
                    
                } failure:^(ASRemoteIndex *index, ASQuery *query, NSString *errorMessage) {
                    NSLog(@"%@",errorMessage);
