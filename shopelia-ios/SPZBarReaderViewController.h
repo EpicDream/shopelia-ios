@@ -10,9 +10,16 @@
 #import "HTTPClient.h"
 #import "productViewController.h"
 #import "productListViewController.h"
+#import "ASAPIClient.h"
 
 
-@interface SPZBarReaderViewController : ZBarReaderViewController <ZBarReaderDelegate>
+@interface SPZBarReaderViewController : ZBarReaderViewController <ZBarReaderDelegate,UISearchBarDelegate, UITableViewDataSource,UITableViewDelegate>
+
+@property (strong, nonatomic) ASAPIClient *apiClient;
+@property (strong, nonatomic) ASRemoteIndex *index ;
+
+@property (strong, nonatomic) UITableView *tableview;
+@property (strong, nonatomic) NSArray *results;
 
 @property (strong, nonatomic) HTTPClient *SPClient;
 //@property (strong,nonatomic) productViewController *productVC;

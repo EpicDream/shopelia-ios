@@ -7,16 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ASAPIClient.h"
 
 
-@interface overlayView : UIView <UISearchBarDelegate, UITableViewDataSource,UITableViewDelegate>
-
-@property (strong, nonatomic) ASAPIClient *apiClient;
-@property (strong, nonatomic) ASRemoteIndex *index ;
-
-@property (strong, nonatomic) UITableView *tableview;
-@property (strong, nonatomic) NSArray *results;
+@interface overlayView : UIView 
 - (CGSize)scanRectangleSize;
 
 @end
