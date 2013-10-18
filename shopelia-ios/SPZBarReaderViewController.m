@@ -63,7 +63,6 @@
     overlayView *view = [[overlayView alloc] initWithFrame:self.readerView.frame];
     
     self.tableview =[[UITableView alloc] initWithFrame:CGRectMake(0, 44, view.Width, [self.results count]* 82) style:UITableViewStylePlain];
-    //self.tableview =[[UITableView alloc] initWithFrame:CGRectMake(0, 44, self.Width, 10 * 82) style:UITableViewStylePlain];
     
     self.tableview.delegate =self;
     self.tableview.dataSource =self;
@@ -75,7 +74,7 @@
     searchBar.translucent = NO;
     searchBar.delegate = self;
     [view addSubview:searchBar];
-    [view addSubview:self.tableview];
+    [self.view addSubview:self.tableview];
     
     
     for(UIView *subView in searchBar.subviews) {
@@ -118,6 +117,8 @@
                                             rectangleY / self.readerView.frame.size.height,
                                             rectangleWidth / self.readerView.frame.size.width,
                                             rectangleHeight / self.readerView.frame.size.height)];
+    self.tableview.frame = CGRectMake(0, 44, self.cameraOverlayView.Width, self.cameraOverlayView.Height - 44 );
+    self.tableview.hidden = YES;
 }
 
 - (void)didReceiveMemoryWarning
@@ -128,7 +129,7 @@
 
 - (IBAction)textFieldFinished:(id)sender
 {
-     [sender resignFirstResponder];
+    [sender resignFirstResponder];
 }
 
 
@@ -274,7 +275,7 @@
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     if ([searchText length] < 2 ) {
         NSLog(@"allo");
-        self.tableview.frame = CGRectMake(0, 44, self.cameraOverlayView.Width,0);
+        self.tableview.hidden    = YES;
     } else {
         [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(algoliaSearch:)  userInfo:searchText repeats:NO];
     }
@@ -286,8 +287,12 @@
                success:^(ASRemoteIndex *index, ASQuery *query, NSDictionary *result) {
                    self.results = [result objectForKey: @"hits"];
                    [self.tableview reloadData];
-                   self.tableview.frame = CGRectMake(0, 44, self.cameraOverlayView.Width, [self.results count] * 82 );
-                   [self.cameraOverlayView bringSubviewToFront:self.tableview];
+                   if ([self.results count] == 0) {
+                       self.tableview.hidden = YES;
+                   } else {
+                       self.tableview.hidden = NO; 
+                   }
+                   [self.view bringSubviewToFront:self.tableview];
                    
                    
                } failure:^(ASRemoteIndex *index, ASQuery *query, NSString *errorMessage) {
