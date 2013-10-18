@@ -48,29 +48,13 @@
 
 - (void)drawRect:(CGRect)rect
 {
-//    self.tableview =[[UITableView alloc] initWithFrame:CGRectMake(0, 44, self.Width, [self.results count]* 82) style:UITableViewStylePlain];
-    self.tableview =[[UITableView alloc] initWithFrame:CGRectMake(0, 44, self.Width, 10 * 82) style:UITableViewStylePlain];
 
-    self.tableview.delegate =self;
-    self.tableview.dataSource =self;
-    self.tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
-    
-    UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectZero];
-    [searchBar sizeToFit];
-    [searchBar setHeight:44.0f];
-    searchBar.translucent = NO;
-    searchBar.delegate = self;
-    [self addSubview:searchBar];
-    //self.tableview.tableHeaderView = searchBar ;
-    
-    [self addSubview:self.tableview];
-    
     //Adding Bottom View
     UIView *bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, self.Height - 90, self.Width, 90)];
 
     bottomView.backgroundColor = [UIColor whiteColor];
     [self addSubview:bottomView];
-    
+    bottomView.tag = 1000;
     //Adding Bar code to bottom view
     
     UIImageView *barCode = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bar-code.png"]];
@@ -136,6 +120,29 @@
     centralTextLabel.lineBreakMode = NSLineBreakByWordWrapping;
     centralTextLabel.numberOfLines = 2;
     [self addSubview:centralTextLabel];
+    
+    
+    //    self.tableview =[[UITableView alloc] initWithFrame:CGRectMake(0, 44, self.Width, [self.results count]* 82) style:UITableViewStylePlain];
+    self.tableview =[[UITableView alloc] initWithFrame:CGRectMake(0, 44, self.Width, 10 * 82) style:UITableViewStylePlain];
+    
+    self.tableview.delegate =self;
+    self.tableview.dataSource =self;
+    self.tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+    
+    UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectZero];
+    [searchBar sizeToFit];
+    [searchBar setHeight:44.0f];
+    searchBar.translucent = NO;
+    searchBar.delegate = self;
+    [self addSubview:searchBar];
+    //self.tableview.tableHeaderView = searchBar ;
+    
+    [self addSubview:self.tableview];
+    
+    
+    
+    
 }
 #pragma mark - Table view data source
 
