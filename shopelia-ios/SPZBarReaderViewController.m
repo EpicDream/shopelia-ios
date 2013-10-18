@@ -42,7 +42,7 @@
         self.apiClient =
         [ASAPIClient apiClientWithApplicationID:@"JUFLKNI0PS" apiKey:@"03832face9510ee5a495b06855dfa38b"];
         
-        self.index = [self.apiClient getIndex:@"products-feed-fr-new"];
+        self.index = [self.apiClient getIndex:@"products-feed-fr"];
     }
     return self;
 }
@@ -78,6 +78,19 @@
     [view addSubview:searchBar];
     [view addSubview:self.tableview];
     
+    
+    for(UIView *subView in searchBar.subviews) {
+        if([subView conformsToProtocol:@protocol(UITextInputTraits)]) {
+            [(UITextField *)subView setKeyboardAppearance: UIKeyboardAppearanceAlert];
+            [(UITextField *)subView setReturnKeyType:UIReturnKeyDone];
+            [(UITextField *) subView addTarget:self
+        action:@selector(textFieldFinished:)
+        forControlEvents:UIControlEventEditingDidEndOnExit];
+
+        }
+    }
+    
+    
     self.cameraOverlayView = view;
     // TODO: (optional) additional reader configuration here
     // EXAMPLE: disable rarely used I2/5 to improve performance
@@ -111,6 +124,12 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (IBAction)textFieldFinished:(id)sender
+{
+     [sender resignFirstResponder];
+}
+
 
 #pragma Zbar Delegate Implementation
 
