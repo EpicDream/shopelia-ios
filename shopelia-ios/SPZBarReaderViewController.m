@@ -77,20 +77,14 @@
     searchBar.delegate = self;
     [view addSubview:searchBar];
     [view addSubview:self.tableview];
-
     
     self.cameraOverlayView = view;
-    //self.scanCrop = CGRectMake(0,0,0.5,0.5);
-    
     // TODO: (optional) additional reader configuration here
-    
     // EXAMPLE: disable rarely used I2/5 to improve performance
     [self.scanner setSymbology: ZBAR_I25
                    config: ZBAR_CFG_ENABLE
                        to: 0];
 
-	// Do any additional setup after loading the view.
-    
    }
 
 - (void)viewDidLayoutSubviews
@@ -124,11 +118,11 @@
  didFinishPickingMediaWithInfo: (NSDictionary*) info
 {
     // ADD: get the decode results
-    id<NSFastEnumeration> results =
+    id<NSFastEnumeration> res =
     [info objectForKey: ZBarReaderControllerResults];
     ZBarSymbol *symbol = nil;
 
-    for (symbol in results) {
+    for (symbol in res) {
         break;
     }
 
@@ -160,10 +154,11 @@
     if (cell == nil) {
         NSArray *topLevelObjects = [self.searchCellNib instantiateWithOwner:self options:nil];
         cell = (searchCell *)[topLevelObjects objectAtIndex:0];
+        
         [cell updateContentView];
     }
     
-    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     NSMutableArray *res = [[NSMutableArray alloc] initWithArray:self.results];
     
     if ([res count] > 0) {
@@ -179,6 +174,28 @@
     NSMutableArray *res = [[NSMutableArray alloc] initWithArray: self.results];
     NSString *product_url = [[res objectAtIndex:indexPath.row] objectForKey:@"product_url"];
     
+    
+    NSMutableArray *tagsArray = [[res objectAtIndex:indexPath.row] objectForKey:@"_tags"];
+    NSString *tmpstring = @"ean:";
+    NSRange tmprange;
+    for(NSString *tag in tagsArray) {
+        tmprange = [tag rangeOfString:tmpstring options:NSCaseInsensitiveSearch];
+        if (tmprange.location != NSNotFound) {
+            NSString *ean = [tag substringFromIndex:4];
+            self.productVC = [[productListViewController alloc] initWithNibName:@"productListViewController" bundle:nil];
+            self.productVC.eanData = ean;
+            [self.navigationController pushViewController:self.productVC animated:YES];
+            break;
+        } else {
+            [self requestProductFromShopeliaWithUrl:product_url];
+        }
+    }
+    
+    
+    
+}
+
+-(void) requestProductFromShopeliaWithUrl: (NSString *) product_url {
     NSDictionary *dict = [[NSBundle mainBundle] infoDictionary];
     NSString *shopeliApiKey = [dict valueForKey:@"ShopeliaAPIKey"] ;
     HTTPRequest *request = [[HTTPRequest alloc] init];
@@ -209,8 +226,7 @@
         //NSLog(@"%@", error);
         [shopelia checkoutPreparedOrderFromViewController:self animated:YES completion:nil];
     }];
-    
-    
+
 }
 
 #pragma mark - Table view delegate
@@ -236,8 +252,13 @@
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-    [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(algoliaSearch:)  userInfo:searchText repeats:NO];
-    NSLog(@"allo");
+    if ([searchText length] < 2 ) {
+        NSLog(@"allo");
+        self.tableview.frame = CGRectMake(0, 44, self.cameraOverlayView.Width,0);
+    } else {
+        [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(algoliaSearch:)  userInfo:searchText repeats:NO];
+    }
+
 }
 
 - (void) algoliaSearch: (NSTimer *) timer {
