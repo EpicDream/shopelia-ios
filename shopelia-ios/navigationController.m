@@ -28,6 +28,8 @@
 {
     [super viewDidLoad];
     self.navigationBar.translucent = NO;
+    [self.navigationBar setShadowImage:[UIImage new]];
+
     
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0"))
         [self.navigationBar setBackgroundImage:[UIImage imageNamed:@"shopelia_topbar_background_high.png"] forBarMetrics:UIBarMetricsDefault];

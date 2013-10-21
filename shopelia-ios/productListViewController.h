@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "backgroundView.h"
 #import "baseProductViewController.h"
-#import "imageView.h"
+#import "shopeliaImageView.h"
 #import "UIView+Shopelia.h"
 
 @interface productListViewController : baseProductViewController <UITableViewDataSource,UITableViewDelegate>
@@ -21,7 +21,7 @@
 @property (strong, nonatomic) UILabel *price;
 @property (strong, nonatomic) UILabel *soldBy;
 @property (strong, nonatomic) IBOutlet UILabel *productTitle;
-@property (strong, nonatomic) IBOutlet imageView *productImageView;
+@property (strong, nonatomic) IBOutlet shopeliaImageView *productImageView;
 @property (strong, nonatomic) IBOutlet UITableView *priceTableView;
 @property (strong, nonatomic) IBOutlet UIImageView *separatorImageView;
 

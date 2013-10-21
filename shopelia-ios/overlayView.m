@@ -11,23 +11,14 @@
 #import "UIView+Shopelia.h"
 
 
-@implementation overlayView
 
-@synthesize apiClient;
-@synthesize index;
-@synthesize tableview;
-@synthesize results;
+@implementation overlayView
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        self.apiClient =
-        [ASAPIClient apiClientWithApplicationID:@"JUFLKNI0PS" apiKey:@"03832face9510ee5a495b06855dfa38b"];
-        
-        self.index = [self.apiClient getIndex:@"dataflux"];
-        NSLog(@"%@",self.index);
         self.opaque = NO;
         
     }
@@ -41,28 +32,13 @@
 
 - (void)drawRect:(CGRect)rect
 {
-    self.tableview =[[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.Width, ([self.results count] + 1) * 44 ) style:UITableViewStylePlain];
-    self.tableview.delegate =self;
-    self.tableview.dataSource =self;
-    
 
-    CGRect searchViewFrame = CGRectMake(0,70,320,44);
-    UIView *containerSearch = [[UIView alloc] initWithFrame: searchViewFrame];
-    UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0,70,320,44)];
-    
-    searchBar.delegate = self;
-    [containerSearch addSubview: searchBar];
-    [self.tableview setTableHeaderView:searchBar];
-    
-    
-    [self addSubview:tableview];
-    
     //Adding Bottom View
     UIView *bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, self.Height - 90, self.Width, 90)];
 
     bottomView.backgroundColor = [UIColor whiteColor];
     [self addSubview:bottomView];
-    
+    bottomView.tag = 1000;
     //Adding Bar code to bottom view
     
     UIImageView *barCode = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bar-code.png"]];
@@ -99,7 +75,7 @@
     CGContextFillRect(context, self.frame);
     CGContextSetLineWidth(context, 2.0);
     CGContextSetStrokeColorWithColor(context, [UIColor whiteColor].CGColor);
-    CGRect rectangle = CGRectMake((self.Width - self.scanRectangleSize.width) / 2, (self.Height - (self.scanRectangleSize.height + 90)) / 2 , self.scanRectangleSize.width, self.scanRectangleSize.height);
+    CGRect rectangle = CGRectMake((self.Width - self.scanRectangleSize.width) / 2, (self.Height - (self.scanRectangleSize.height)) / 2, self.scanRectangleSize.width, self.scanRectangleSize.height);
     CGContextAddRect(context, rectangle);
     CGContextStrokePath(context);
     CGContextClearRect(context,rectangle);
@@ -114,7 +90,7 @@
     
     //Adding Text on top of central rectangle
     UILabel *centralTextLabel = [[UILabel alloc] initWithFrame:rectangle];
-    [centralTextLabel setOrigY:(rectangle.origin.y - rectangle.size.height)/2];
+    [centralTextLabel setOrigY: rectangle.origin.y - rectangle.size.height ];
     
     centralTextLabel.font =[UIFont fontWithName:@"Helvetica Neue" size:24.0];
     centralTextLabel.text = @"Profitez des prix exclusifs avec Shopelia";
@@ -129,59 +105,6 @@
     centralTextLabel.numberOfLines = 2;
     [self addSubview:centralTextLabel];
 }
-#pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
-    return [self.results count];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    static NSString *CellIdentifier = @"Cell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    }
-    
-    cell.textLabel.text = [[self.results objectAtIndex:indexPath.row] objectForKey:@"name"];
-    
-    return cell;
-    
-}
-
-
-#pragma mark - Table view delegate
-
-
-
-
-#pragma mark - Search bar delegate
-
-- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar {
-    NSLog(@"YES");
-        return YES;
-}
-
-
-- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-    NSLog(@"allo");
-    [self.index search:[ASQuery queryWithFullTextQuery:searchText]
-              success:^(ASRemoteIndex *index, ASQuery *query, NSDictionary *result) {
-                  self.results = [result objectForKey: @"hits"];
-                  self.tableview.frame = CGRectMake(0, 0, self.Width, ([self.results count] + 1) * 44 );
-                  [self.tableview reloadData];
-              } failure:^(ASRemoteIndex *index, ASQuery *query, NSString *errorMessage) {
-                  NSLog(@"%@",errorMessage);
-              }];
-    
-
-}
 
 @end
