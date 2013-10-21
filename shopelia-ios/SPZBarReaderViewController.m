@@ -10,6 +10,7 @@
 #import "HTTPRequest.h"
 #import "overlayView.h"
 #import "UIView+Shopelia.h"
+#import "UIColor+Shopelia.h"
 #import "shopeliaImageView.h"
 #import "loadingView.h"
 #import "errorViewController.h"
@@ -118,6 +119,7 @@
                                             rectangleWidth / self.readerView.frame.size.width,
                                             rectangleHeight / self.readerView.frame.size.height)];
     self.tableview.frame = CGRectMake(0, 44, self.cameraOverlayView.Width, self.cameraOverlayView.Height - 44 );
+    self.tableview.backgroundColor = [UIColor shopeliaBackgroundColor];
     self.tableview.hidden = YES;
 }
 

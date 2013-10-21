@@ -32,6 +32,8 @@
     [contentView setUserInteractionEnabled: NO];
     [contentView setNeedsDisplay];
     [self.contentView addSubview: contentView];
+    self.backgroundView = [[UIView alloc] initWithFrame:contentView.frame];
+    self.backgroundView.backgroundColor = [UIColor whiteColor];
 }
 
 
