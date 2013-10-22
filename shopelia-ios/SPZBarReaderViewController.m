@@ -22,8 +22,9 @@
 #import <ShopeliaSDK/ShopeliaSDK.h>
 
 
-@interface SPZBarReaderViewController ()
+@interface SPZBarReaderViewController () <UIGestureRecognizerDelegate>
 @property UINib *searchCellNib;
+@property (strong, nonatomic) UISearchBar *searchBar;
 @end
 
 @implementation SPZBarReaderViewController
@@ -61,66 +62,78 @@
     self.cameraFlashMode = UIImagePickerControllerCameraFlashModeAuto;
 
     self.wantsFullScreenLayout = NO;
-    overlayView *view = [[overlayView alloc] initWithFrame:self.readerView.frame];
     
-    self.tableview =[[UITableView alloc] initWithFrame:CGRectMake(0, 44, view.Width, [self.results count]* 82) style:UITableViewStylePlain];
+    self.tableview = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
     
-    self.tableview.delegate =self;
-    self.tableview.dataSource =self;
+    self.tableview.delegate = self;
+    self.tableview.dataSource = self;
     self.tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableview.hidden = YES;
+    self.tableview.backgroundColor = [UIColor shopeliaBackgroundColor];
     
-    UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectZero];
-    [searchBar sizeToFit];
-    [searchBar setHeight:44.0f];
-    searchBar.translucent = NO;
-    searchBar.delegate = self;
-    [view addSubview:searchBar];
-    [self.view addSubview:self.tableview];
+    self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectZero];
+    [self.searchBar sizeToFit];
+    [self.searchBar setHeight:44.0f];
+    self.searchBar.translucent = NO;
+    self.searchBar.delegate = self;
     
-    
-    for(UIView *subView in searchBar.subviews) {
-        if([subView conformsToProtocol:@protocol(UITextInputTraits)]) {
+    for (UIView *subView in self.searchBar.subviews)
+    {
+        if ([subView isKindOfClass:[UITextField class]])
+        {
             [(UITextField *)subView setKeyboardAppearance: UIKeyboardAppearanceAlert];
             [(UITextField *)subView setReturnKeyType:UIReturnKeyDone];
-            [(UITextField *) subView addTarget:self
-        action:@selector(textFieldFinished:)
-        forControlEvents:UIControlEventEditingDidEndOnExit];
-
+            [(UITextField *) subView addTarget:self action:@selector(textFieldFinished:) forControlEvents:UIControlEventEditingDidEndOnExit];
         }
     }
     
-    
+    overlayView *view = [[overlayView alloc] initWithFrame:CGRectZero];
     self.cameraOverlayView = view;
+    
     // TODO: (optional) additional reader configuration here
     // EXAMPLE: disable rarely used I2/5 to improve performance
     [self.scanner setSymbology: ZBAR_I25
                    config: ZBAR_CFG_ENABLE
                        to: 0];
 
-   }
 
+    [self.view addSubview:self.searchBar];
+    [self.view addSubview:self.tableview];
+    
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapGesture:)];
+    tapGesture.delegate = self;
+    [self.view addGestureRecognizer:tapGesture];
+}
 
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
+{
+    return self.tableview.hidden;
+}
+
+- (void)handleTapGesture:(UITapGestureRecognizer *)gesture
+{
+    [self.searchBar resignFirstResponder];
+}
 
 - (void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
     
 
-    [self.readerView setFrameSizeWithW:self.view.bounds.size.width h:self.view.bounds.size.height - 90.0f];
-    [self.cameraOverlayView setFrame:self.view.bounds];
+    [self.readerView setFrame:CGRectMake(0, self.searchBar.frame.size.height, self.view.bounds.size.width, self.view.bounds.size.height - self.searchBar.frame.size.height)];
+    [self.cameraOverlayView setFrame:CGRectMake(0, self.searchBar.frame.size.height, self.view.bounds.size.width, self.view.bounds.size.height - self.searchBar.frame.size.height)];
     
     overlayView *view = (overlayView *)self.cameraOverlayView;
     CGFloat rectangleX = (self.readerView.frame.size.width - view.scanRectangleSize.width) / 2.0f;
-    CGFloat rectangleY = (self.readerView.frame.size.height - view.scanRectangleSize.width) / 2.0f;    CGFloat rectangleWidth = view.scanRectangleSize.width;
+    CGFloat rectangleY = (self.readerView.frame.size.height - view.scanRectangleSize.width) / 2.0f;
+    CGFloat rectangleWidth = view.scanRectangleSize.width;
     CGFloat rectangleHeight = view.scanRectangleSize.width;
     
     [self.readerView setScanCrop:CGRectMake(rectangleX / self.readerView.frame.size.width,
                                             rectangleY / self.readerView.frame.size.height,
                                             rectangleWidth / self.readerView.frame.size.width,
                                             rectangleHeight / self.readerView.frame.size.height)];
-    self.tableview.frame = CGRectMake(0, 44, self.cameraOverlayView.Width, self.cameraOverlayView.Height - 44 );
-    self.tableview.backgroundColor = [UIColor shopeliaBackgroundColor];
-    self.tableview.hidden = YES;
+    self.tableview.frame = CGRectMake(0, self.searchBar.frame.size.height, self.view.Width, self.view.Height - self.searchBar.frame.size.height);
 }
 
 - (void)didReceiveMemoryWarning
@@ -258,15 +271,15 @@
     return 82;
 }
 
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    [self.searchBar resignFirstResponder];
+}
+
 #pragma mark - Search bar delegate
 
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar {
-    NSLog(@"YES");
     return YES;
-}
-
-- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar {
-    
 }
 
 - (BOOL) searchBarShouldEndEditing:(UISearchBar *)searchBar {
@@ -276,8 +289,7 @@
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     if ([searchText length] < 2 ) {
-        NSLog(@"allo");
-        self.tableview.hidden    = YES;
+        self.tableview.hidden = YES;
     } else {
         [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(algoliaSearch:)  userInfo:searchText repeats:NO];
     }

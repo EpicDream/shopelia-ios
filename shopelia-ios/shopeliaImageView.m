@@ -25,7 +25,10 @@
 - (void)setAsynchImageWithURL:(NSString *)imageURL
 {
     if (!imageURL)
+    {
+        self.image = nil;
         return ;
+    }
     
     dispatch_async([threadFactory backgroundImagesDispatchQueue], ^{
         NSURL *URL = [NSURL URLWithString:imageURL];
