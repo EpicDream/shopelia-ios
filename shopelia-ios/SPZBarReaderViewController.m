@@ -77,15 +77,11 @@
     self.searchBar.translucent = NO;
     self.searchBar.delegate = self;
     
-    for (UIView *subView in self.searchBar.subviews)
-    {
-        if ([subView isKindOfClass:[UITextField class]])
-        {
-            [(UITextField *)subView setKeyboardAppearance: UIKeyboardAppearanceAlert];
-            [(UITextField *)subView setReturnKeyType:UIReturnKeyDone];
-            [(UITextField *) subView addTarget:self action:@selector(textFieldFinished:) forControlEvents:UIControlEventEditingDidEndOnExit];
-        }
-    }
+    
+    UIControl <UITextInputTraits> *subView = [self firstSubviewConformingToProtocol:@protocol(UITextInputTraits) inView:self.searchBar];
+    [subView setKeyboardAppearance: UIKeyboardAppearanceAlert];
+    [subView setReturnKeyType:UIReturnKeyDone];
+    [subView addTarget:self action:@selector(textFieldFinished:) forControlEvents:UIControlEventEditingDidEndOnExit];
     
     overlayView *view = [[overlayView alloc] initWithFrame:CGRectZero];
     self.cameraOverlayView = view;
@@ -103,6 +99,20 @@
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapGesture:)];
     tapGesture.delegate = self;
     [self.view addGestureRecognizer:tapGesture];
+}
+
+- (id)firstSubviewConformingToProtocol:(Protocol *)pro inView:(UIView *)view
+{
+    if ([view conformsToProtocol: pro])
+        return view;
+    
+    for (UIView *sub in view.subviews) {
+        UIView *ret = [self firstSubviewConformingToProtocol:pro inView:sub];
+        if (ret)
+            return ret;
+    }
+    
+    return nil;
 }
 
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
@@ -134,6 +144,13 @@
                                             rectangleWidth / self.readerView.frame.size.width,
                                             rectangleHeight / self.readerView.frame.size.height)];
     self.tableview.frame = CGRectMake(0, self.searchBar.frame.size.height, self.view.Width, self.view.Height - self.searchBar.frame.size.height);
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+
+    [self.searchBar resignFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning
