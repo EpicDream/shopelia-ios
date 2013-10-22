@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "OHAttributedLabel.h"
 #import "TestFlight.h"
+#import <Appsee/Appsee.h>
 
 @implementation AppDelegate
 
@@ -38,6 +39,9 @@
 
     // TestFlight
     [TestFlight takeOff:@"6cd79ccd-d2f3-4658-b4ba-4dc1a40bc089"];
+    //Appsee
+    [Appsee start:@"ea3ce36414cb4d65b6075af47f38950b"];
+    //[Appsee setDebugToNSLog:YES];
 
     return YES;
 }
