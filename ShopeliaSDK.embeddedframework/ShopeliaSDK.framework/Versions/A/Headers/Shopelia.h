@@ -11,6 +11,9 @@
 
 @interface Shopelia : NSObject
 
+// string to represent the tracker used for the developer analytics 
+@property (strong, nonatomic) NSString *tracker;
+
 // returns the current framework version string
 + (NSString *)frameworkVersionString;
 

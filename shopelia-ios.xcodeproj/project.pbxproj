@@ -14,7 +14,6 @@
 		110BF64A18112734000CAC67 /* searchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 110BF64918112734000CAC67 /* searchCell.m */; };
 		110BF64C18112755000CAC67 /* searchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 110BF64B18112755000CAC67 /* searchCell.xib */; };
 		110BF64F18112A31000CAC67 /* searchCellContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 110BF64E18112A31000CAC67 /* searchCellContentView.m */; };
-		110BF6511816A26A000CAC67 /* Appsee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 110BF6501816A26A000CAC67 /* Appsee.framework */; };
 		110BF6531816A2B3000CAC67 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 110BF6521816A2B3000CAC67 /* SystemConfiguration.framework */; };
 		1128F8EF17EC608B0079EC11 /* SPCellContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1128F8EE17EC608B0079EC11 /* SPCellContentView.m */; };
 		113137B917F1CC8600AA7DAB /* loader-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 113137B517F1CC8600AA7DAB /* loader-icon.png */; };
@@ -84,6 +83,9 @@
 		372C32FA180EEB18008928B7 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 372C32F4180EEB18008928B7 /* README.md */; };
 		372C32FB180EEB18008928B7 /* release_notes.md in Resources */ = {isa = PBXBuildFile; fileRef = 372C32F5180EEB18008928B7 /* release_notes.md */; };
 		372C32FD180EEBA5008928B7 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 372C32FC180EEBA5008928B7 /* libz.dylib */; };
+		3768393F1816C26A008BFAA5 /* Appsee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3768393E1816C26A008BFAA5 /* Appsee.framework */; };
+		376839411816C479008BFAA5 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 376839401816C479008BFAA5 /* Accelerate.framework */; };
+		376839431816C496008BFAA5 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 376839421816C496008BFAA5 /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		37862C76180E9553009E2B44 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37862C75180E9553009E2B44 /* AudioToolbox.framework */; };
 		37A2A2DF180E85670097952D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37A2A2DE180E85670097952D /* Images.xcassets */; };
 		37D5C97E180E805300216A31 /* ShopeliaSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 37D5C97C180E805300216A31 /* ShopeliaSDKResources.bundle */; };
@@ -119,7 +121,6 @@
 		110BF64B18112755000CAC67 /* searchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = searchCell.xib; sourceTree = "<group>"; };
 		110BF64D18112A31000CAC67 /* searchCellContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = searchCellContentView.h; sourceTree = "<group>"; };
 		110BF64E18112A31000CAC67 /* searchCellContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = searchCellContentView.m; sourceTree = "<group>"; };
-		110BF6501816A26A000CAC67 /* Appsee.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Appsee.framework; sourceTree = "<group>"; };
 		110BF6521816A2B3000CAC67 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		1128F8ED17EC608B0079EC11 /* SPCellContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPCellContentView.h; sourceTree = "<group>"; };
 		1128F8EE17EC608B0079EC11 /* SPCellContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPCellContentView.m; sourceTree = "<group>"; };
@@ -215,6 +216,9 @@
 		372C32F7180EEB18008928B7 /* TestFlight+ManualSessions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+ManualSessions.h"; sourceTree = "<group>"; };
 		372C32F8180EEB18008928B7 /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
 		372C32FC180EEBA5008928B7 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		3768393E1816C26A008BFAA5 /* Appsee.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Appsee.framework; sourceTree = "<group>"; };
+		376839401816C479008BFAA5 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		376839421816C496008BFAA5 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		37862C75180E9553009E2B44 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		37A2A2DE180E85670097952D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		37D5C97C180E805300216A31 /* ShopeliaSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ShopeliaSDKResources.bundle; sourceTree = "<group>"; };
@@ -253,8 +257,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				376839431816C496008BFAA5 /* AdSupport.framework in Frameworks */,
+				376839411816C479008BFAA5 /* Accelerate.framework in Frameworks */,
 				110BF6531816A2B3000CAC67 /* SystemConfiguration.framework in Frameworks */,
-				110BF6511816A26A000CAC67 /* Appsee.framework in Frameworks */,
 				372C32FD180EEBA5008928B7 /* libz.dylib in Frameworks */,
 				37862C76180E9553009E2B44 /* AudioToolbox.framework in Frameworks */,
 				119C076C17E3685C003AF6AA /* libPods.a in Frameworks */,
@@ -264,6 +269,7 @@
 				116CD92B17DE030100978733 /* CoreVideo.framework in Frameworks */,
 				116CD92C17DE030100978733 /* libiconv.dylib in Frameworks */,
 				116CD92D17DE030100978733 /* QuartzCore.framework in Frameworks */,
+				3768393F1816C26A008BFAA5 /* Appsee.framework in Frameworks */,
 				113DDE3117DDFA9A0056E126 /* CoreGraphics.framework in Frameworks */,
 				372C32F9180EEB18008928B7 /* libTestFlight.a in Frameworks */,
 				113DDE3317DDFA9A0056E126 /* UIKit.framework in Frameworks */,
@@ -375,8 +381,10 @@
 		113DDE2D17DDFA9A0056E126 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				376839421816C496008BFAA5 /* AdSupport.framework */,
+				376839401816C479008BFAA5 /* Accelerate.framework */,
+				3768393E1816C26A008BFAA5 /* Appsee.framework */,
 				110BF6521816A2B3000CAC67 /* SystemConfiguration.framework */,
-				110BF6501816A26A000CAC67 /* Appsee.framework */,
 				372C32FC180EEBA5008928B7 /* libz.dylib */,
 				372C32F2180EEB18008928B7 /* TestFlightSDK2.0.2 */,
 				37862C75180E9553009E2B44 /* AudioToolbox.framework */,
@@ -900,15 +908,15 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					./ShopeliaSDK.embeddedframework,
-					"/Users/aminebellakrid/Documents/Geek/shopelia-ios",
+					"${PROJECT_DIR}",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "shopelia-ios/shopelia-ios-Prefix.pch";
 				INFOPLIST_FILE = "shopelia-ios/shopelia-ios-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"${inherited}",
-					./TestFlightSDK2.0.2,
-					./ZBarSDK,
+					"${PROJECT_DIR}/ZBarSDK",
+					"${PROJECT_DIR}/TestFlightSDK2.0.2",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "366C4249-72AA-49CD-82DA-514D59C328CF";
@@ -927,15 +935,15 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					./ShopeliaSDK.embeddedframework,
-					"/Users/aminebellakrid/Documents/Geek/shopelia-ios",
+					"${PROJECT_DIR}",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "shopelia-ios/shopelia-ios-Prefix.pch";
 				INFOPLIST_FILE = "shopelia-ios/shopelia-ios-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"${inherited}",
-					./TestFlightSDK2.0.2,
-					./ZBarSDK,
+					"${PROJECT_DIR}/ZBarSDK",
+					"${PROJECT_DIR}/TestFlightSDK2.0.2",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "B9A6EEFF-9F27-4A0C-927F-A9FC5F5DEF11";
