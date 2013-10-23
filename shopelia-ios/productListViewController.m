@@ -80,13 +80,32 @@ static const int CELL_HEIGHT = 100;
                     withCompletionBlock: ^(BOOL timeout, NSError *error, HTTPResponse *response) {
                         //NSLog(@"%@",response.responseJSON);
                         NSLog(@"%hhd", timeout);
-                        if (!timeout && response && [[response responseJSON] count] > 0) {
-                            NSArray* resArray  = (NSArray *) response.responseJSON;
+                        
+                        BOOL productsAreValid = YES;
+                        NSArray* resArray = (NSArray *)response.responseJSON;
+                        if (!resArray || ![resArray isKindOfClass:[NSArray class]])
+                            productsAreValid = NO;
+                        else
+                        {
+                            for (id product in resArray)
+                            {
+                                if ([[product objectForKey:@"versions"] count] == 0)
+                                {
+                                    productsAreValid = NO;
+                                    break;
+                                }
+                            }
+                        }
+                        
+                        
+                        if (!timeout && response && [[response responseJSON] count] > 0 && productsAreValid) {
+                            
                             self.products = resArray;
                             [self comparePrices];
                             [self.priceTableView reloadData];
                         } else {
                             errorViewController *errorVC = [[errorViewController alloc] initWithNibName:@"errorViewController" bundle:nil];
+                            errorVC.errorString = @"Nous n'avons pas trouvé de prix pour ce produit sur Internet.";
                             [self.navigationController pushViewController:errorVC animated:YES];
                             NSLog(@"ERROR TimeOut");
                         }
@@ -95,7 +114,7 @@ static const int CELL_HEIGHT = 100;
         
     } else {
         errorViewController *errorVC = [[errorViewController alloc] initWithNibName:@"errorViewController" bundle:nil];
-        errorVC.errorString = @"Ce produit n'est pas disponible chez nos marchands partenaires";
+        errorVC.errorString = @"Nous n'avons pas trouvé de prix pour ce produit sur Internet.";
         [self.navigationController pushViewController:errorVC animated:YES];
         NSLog(@"ERROR: NO links");
     }
@@ -120,6 +139,10 @@ static const int CELL_HEIGHT = 100;
                 [self getProductFrom:response];
             } else {
                 errorViewController *errorVC = [[errorViewController alloc] initWithNibName:@"errorViewController" bundle:nil];
+                if (self.fromScanner)
+                    errorVC.errorString = @"Nous n'avons pas trouvé le produit que vous venez de scanner.";
+                else
+                    errorVC.errorString = @"Nous n'avons pas trouvé le produit que vous recherchez.";
                 [self.navigationController pushViewController:errorVC animated:YES];
                 NSLog(@"%@",error);
             }

@@ -194,7 +194,8 @@
     AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
     
     self.productVC = [[productListViewController alloc] initWithNibName:@"productListViewController" bundle:nil];
-    self.productVC.eanData = symbol.data; 
+    self.productVC.eanData = symbol.data;
+    self.productVC.fromScanner = YES;
     [self.navigationController pushViewController:self.productVC animated:YES];
 }
 

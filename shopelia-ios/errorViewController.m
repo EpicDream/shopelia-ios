@@ -31,7 +31,7 @@
     self.navigationItem.hidesBackButton = YES;
     UIImageView *logo = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"logo-word.png" ]];
     self.navigationItem.titleView = logo ;
-    //self.errorText.text =self.errorString;
+    self.errorText.text = self.errorString;
     // Do any additional setup after loading the view from its nib.
 }
 

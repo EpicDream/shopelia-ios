@@ -24,6 +24,6 @@
 @property (strong, nonatomic) IBOutlet shopeliaImageView *productImageView;
 @property (strong, nonatomic) IBOutlet UITableView *priceTableView;
 @property (strong, nonatomic) IBOutlet UIImageView *separatorImageView;
-
+@property (assign, nonatomic) BOOL fromScanner;
 
 @end

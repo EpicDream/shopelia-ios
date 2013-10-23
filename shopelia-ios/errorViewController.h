@@ -12,6 +12,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *errorText;
 @property (strong, nonatomic) IBOutlet UIButton *errorBtn;
 @property (strong, nonatomic) NSString *errorString;
+
 - (IBAction)errorBtnAction:(id)sender;
 
 @end
