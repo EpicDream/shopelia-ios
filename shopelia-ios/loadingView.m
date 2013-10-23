@@ -41,7 +41,7 @@
     [searchLabel setOrigX: (self.Width - searchLabel.Width)/2];
     [searchLabel setOrigY: ((self.OrigY + self.Height) -  (spinner.Height + spinner.OrigY))/2 + searchLabel.Height/2];
     
-    NSMutableAttributedString *search = [[NSMutableAttributedString alloc] initWithAttributedString:[OHASBasicHTMLParser attributedStringByProcessingMarkupInString: @"<font name='HelveticaNeue-Light' size='18'>Recherche du produit en cours...</font>"]];
+    NSMutableAttributedString *search = [[NSMutableAttributedString alloc] initWithAttributedString:[OHASBasicHTMLParser attributedStringByProcessingMarkupInString: @"<font name='HelveticaNeue-Light' size='18'>Recherche du\nproduit en cours...</font>"]];
     searchLabel.attributedText = search;
     searchLabel.backgroundColor = [UIColor clearColor];
     searchLabel.numberOfLines = 2;

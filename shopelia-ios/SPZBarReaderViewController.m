@@ -83,6 +83,7 @@
     self.tableview.backgroundColor = [UIColor shopeliaBackgroundColor];
     
     self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectZero];
+    self.searchBar.placeholder = @"Rechercher un produit";
     [self.searchBar sizeToFit];
     [self.searchBar setHeight:44.0f];
     self.searchBar.translucent = NO;
