@@ -15,12 +15,13 @@
 #import "loadingView.h"
 #import "UIView+Shopelia.h"
 #import "errorViewController.h"
-
+#import "SPLoadingView.h"
 
 
 @interface productListViewController ()
 @property UINib *cellNib;
 @property loadingView *loadingView;
+@property (strong, nonatomic) SPLoadingView *blockingView;
 @end
 
 @implementation productListViewController
@@ -30,8 +31,16 @@
 @synthesize priceTableView;
 @synthesize cellNib;
 
-static const int CELL_HEIGHT = 82;
+static const int CELL_HEIGHT = 100;
 
+- (SPLoadingView *)blockingView
+{
+    if (!_blockingView)
+    {
+        _blockingView = [[SPLoadingView alloc] init];
+    }
+    return _blockingView;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -71,7 +80,7 @@ static const int CELL_HEIGHT = 82;
                     withCompletionBlock: ^(BOOL timeout, NSError *error, HTTPResponse *response) {
                         //NSLog(@"%@",response.responseJSON);
                         NSLog(@"%hhd", timeout);
-                        if (!timeout) {
+                        if (!timeout && response && [[response responseJSON] count] > 0) {
                             NSArray* resArray  = (NSArray *) response.responseJSON;
                             self.products = resArray;
                             [self comparePrices];
@@ -175,8 +184,17 @@ static const int CELL_HEIGHT = 82;
         cell.shippingPrice.hidden = YES;
         cell.shopeliaBtn.hidden = YES;
         cell.soldBy.hidden = YES;
-        [SpinnerView loadIntoView: cell withSize:@"small"];
-   
+        SpinnerView *spinnerView = [SpinnerView loadIntoView: cell withSize:@"small"];
+        CGRect frame = spinnerView.frame;
+        frame.origin.y -= 12;
+        spinnerView.frame = frame;
+        
+        UILabel *text = [[UILabel alloc] initWithFrame:CGRectMake(20, 65, cell.bounds.size.width - 40, 20)];
+        [text setBackgroundColor:[UIColor clearColor]];
+        [text setFont:[UIFont fontWithName:@"Helvetica-Light" size:14.0f]];
+        [text setText:@"Recherche des prix et disponibilités..."];
+        [text setTextAlignment:NSTextAlignmentCenter];
+        [cell addSubview:text];
     } else {
         NSDictionary* prod = [self.products objectAtIndex:indexPath.row];
         NSDictionary* version = [self getVersion:prod];
@@ -189,7 +207,7 @@ static const int CELL_HEIGHT = 82;
         [cell formatShipping];
         cell.shippingInfos.text = [version valueForKey:@"shipping_info"];
         [cell.shopeliaBtn addTarget:self action:@selector(shopeliaInit:) forControlEvents:UIControlEventTouchUpInside];
-
+        
     }
     
     return cell;
@@ -203,10 +221,28 @@ static const int CELL_HEIGHT = 82;
     if (indexPath != nil)
     {
          NSDictionary *prod = [self.products objectAtIndex:indexPath.row];
+        
         Shopelia *shopelia = [[Shopelia alloc] init];
+        [self.blockingView showInView:self.view];
         [shopelia prepareOrderWithProductURL:[NSURL URLWithString: [prod valueForKey:@"url"] ] completion:^(NSError *error) {
-                //NSLog(@"%@", error);
-            [shopelia checkoutPreparedOrderFromViewController:self animated:YES completion:nil];
+            if (!error)
+            {
+                [shopelia checkoutPreparedOrderFromViewController:self animated:YES completion:^{
+                    [self.blockingView hide];
+                }];
+            }
+            else
+            {
+                [self.blockingView hide];
+                
+                
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Shopelia"
+                                                                message:[error localizedDescription]
+                                                               delegate:nil
+                                                      cancelButtonTitle:nil
+                                                      otherButtonTitles:@"OK", nil];
+                [alert show];
+            }
         }];
     }
     

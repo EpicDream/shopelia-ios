@@ -20,11 +20,13 @@
 #import "searchCell.h"
 #import "HTTPRequest.h"
 #import <ShopeliaSDK/ShopeliaSDK.h>
+#import "SPLoadingView.h"
 
 
 @interface SPZBarReaderViewController () <UIGestureRecognizerDelegate>
 @property UINib *searchCellNib;
 @property (strong, nonatomic) UISearchBar *searchBar;
+@property (strong, nonatomic) SPLoadingView *blockingView;
 @end
 
 @implementation SPZBarReaderViewController
@@ -34,6 +36,15 @@
 @synthesize index;
 @synthesize tableview;
 @synthesize results;
+
+- (SPLoadingView *)blockingView
+{
+    if (!_blockingView)
+    {
+        _blockingView = [[SPLoadingView alloc] init];
+    }
+    return _blockingView;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -275,9 +286,26 @@
     }];
     
     Shopelia *shopelia = [[Shopelia alloc] init];
-    [shopelia prepareOrderWithProductURL:[NSURL URLWithString: product_url] completion:^(NSError *error) {
-        //NSLog(@"%@", error);
-        [shopelia checkoutPreparedOrderFromViewController:self animated:YES completion:nil];
+    [self.blockingView showInView:self.view];
+    [shopelia prepareOrderWithProductURL:[NSURL URLWithString:product_url] completion:^(NSError *error) {
+        if (!error)
+        {
+            [shopelia checkoutPreparedOrderFromViewController:self animated:YES completion:^{
+                [self.blockingView hide];
+            }];
+        }
+        else
+        {
+            [self.blockingView hide];
+            
+            
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Shopelia"
+                                                            message:[error localizedDescription]
+                                                           delegate:nil
+                                                  cancelButtonTitle:nil
+                                                  otherButtonTitles:@"OK", nil];
+            [alert show];
+        }
     }];
 
 }

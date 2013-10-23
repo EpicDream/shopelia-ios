@@ -91,20 +91,21 @@
     //NSLog(@"%@",request);
     
     [HTTPPoller pollRequest:request
-                    maxTime:10.0f
+                    maxTime:20.0f
             requestInterval:1.0f
                restartBlock:^(BOOL *restart, NSError *error, HTTPResponse *response) {
                    //NSLog(@"%@",response.responseJSON);
-                   *restart = NO;
-                   NSArray* resArray  = (NSArray *) response.responseJSON;
-                   for (int i = 0; i<[resArray count]; i++) {
+                   NSArray *resArray  = (NSArray *) response.responseJSON;
+                   for (int i = 0; i < [resArray count]; i++)
+                   {
                        NSDictionary* prod = [resArray objectAtIndex:i];
-                       *restart = *restart || ![[prod valueForKey:@"ready"] boolValue];
-                       //NSLog(@"%hhd",[[prod valueForKey:@"ready"] boolValue]);
-                       //NSLog(@"%hhd",*restart);
-                       
+                       if (![[prod valueForKey:@"ready"] boolValue])
+                       {
+                           *restart = YES;
+                           return ;
+                       }
                    }
-                   
+                   *restart = resArray.count > 0 ? NO : YES;
                }
             completionBlock: completionBlock];
     

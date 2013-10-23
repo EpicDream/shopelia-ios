@@ -62,7 +62,7 @@
         //Adding Text on top of central rectangle
         self.centralTextLabel = [[UILabel alloc] init];
         self.centralTextLabel.font =[UIFont fontWithName:@"Helvetica Neue" size:22.0];
-        self.centralTextLabel.text = @"Profitez de prix exclusifs avec Shopelia";
+        self.centralTextLabel.text = @"La façon la plus simple d’acheter avec votre mobile !";
 #if __IPHONE_OS_VERSION_MAX_ALLOWED < 60000
         centralTextLabel.textAlignment = UITextAlignmentCenter;
 #else
@@ -86,7 +86,7 @@
 - (void)layoutSubviews
 {
     self.bottomView.frame = CGRectMake(0, self.Height - 90, self.Width, 90);
-    self.centralTextLabel.frame = CGRectMake(20, (((self.Height - 90 - self.scanRectangleSize.height) / 2.0f) - 55) / 2, self.Width - 40, 55);
+    self.centralTextLabel.frame = CGRectMake(10, (((self.Height - 90 - self.scanRectangleSize.height) / 2.0f) - 55) / 2, self.Width - 20, 55);
 }
 
 - (void)drawRect:(CGRect)rect
