@@ -52,7 +52,7 @@
     NSString *shopeliApiKey = [dict valueForKey:@"ShopeliaAPIKey"] ;
     
     NSString *url = API_URL;
-    url =[url stringByAppendingFormat:@"showcase/products/search?ean=%@&visitor=%@",EAN,@"false"];
+    url =[url stringByAppendingFormat:@"showcase/products/search?ean=%@&visitor=%@&tracker=shopelia-ios",EAN,@"false"];
     
     HTTPRequest *request = [[HTTPRequest alloc] init];
     [request setValue:shopeliApiKey forHTTPHeaderField:@"X-Shopelia-ApiKey"];

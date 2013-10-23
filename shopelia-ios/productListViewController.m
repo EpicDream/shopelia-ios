@@ -16,7 +16,7 @@
 #import "UIView+Shopelia.h"
 #import "errorViewController.h"
 #import "SPLoadingView.h"
-
+#import "HTTPRequest.h"
 
 @interface productListViewController ()
 @property UINib *cellNib;
@@ -125,6 +125,8 @@ static const int CELL_HEIGHT = 100;
     
     if (self.loadingView.superview)
     {
+        
+        
         [self getProductNameAndUrlsWithEAN:self.eanData withCompletionBlock:^(NSError *error, HTTPResponse *response){
             if (error == nil && [[response responseJSON] count] > 0) {
                 //self.priceTableView.hidden = NO;
@@ -244,6 +246,30 @@ static const int CELL_HEIGHT = 100;
     if (indexPath != nil)
     {
          NSDictionary *prod = [self.products objectAtIndex:indexPath.row];
+        
+        // send event
+        NSDictionary *dict = [[NSBundle mainBundle] infoDictionary];
+        NSString *shopeliApiKey = [dict valueForKey:@"ShopeliaAPIKey"] ;
+        HTTPRequest *request = [[HTTPRequest alloc] init];
+        NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+        [params setObject:@"shopelia-ios" forKey:@"tracker"];
+        [params setObject:@"click" forKey: @"action"];
+        [params setObject:@[[prod valueForKey:@"url"]] forKey: @"urls"];
+        [params setObject:@"false" forKey: @"uuid"];
+        //NSLog(@"%@",params);
+        NSData* jsonData = [NSJSONSerialization dataWithJSONObject:params
+                                                           options:NSJSONWritingPrettyPrinted error:nil];
+        
+        request.HTTPBody = jsonData;
+        [request setValue:shopeliApiKey forHTTPHeaderField:@"X-Shopelia-ApiKey"];
+        [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+        NSString *url =@"https://www.shopelia.com/api/events";
+        [request setURL:[NSURL URLWithString:url]];
+        [request setHTTPMethod:@"POST"];
+        [request startWithCompletion:^(NSError *error, id response) {
+        
+        }];
+
         
         Shopelia *shopelia = [[Shopelia alloc] init];
         [self.blockingView showInView:self.view];
