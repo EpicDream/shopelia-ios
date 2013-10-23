@@ -266,9 +266,9 @@
     HTTPRequest *request = [[HTTPRequest alloc] init];
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     
-    [params setObject:@"tracker" forKey: @"shopelia-ios-app"];
-    [params setObject:@"action" forKey: @"click"];
-    [params setObject:product_url forKey: @"urls"];
+    [params setObject:@"shopelia-ios" forKey:@"tracker"];
+    [params setObject:@"click" forKey: @"action"];
+    [params setObject:@[product_url] forKey: @"urls"];
     [params setObject:@"false" forKey: @"uuid"];
     
     
