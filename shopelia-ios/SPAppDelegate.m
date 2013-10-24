@@ -1,43 +1,42 @@
- //
-//  AppDelegate.m
+//
+//  SPAppDelegate.m
 //  shopelia-ios
 //
 //  Created by Amine bellakrid on 9/9/13.
 //  Copyright (c) 2013 Amine bellakrid. All rights reserved.
 //
 
-#import "AppDelegate.h"
+#import "SPAppDelegate.h"
 #import "OHAttributedLabel.h"
 #import "TestFlight.h"
+#import "SPBarcodeScanViewController.h"
+#import "SPZBarReaderViewController.h"
 
-@implementation AppDelegate
-
-@synthesize viewController;
+@implementation SPAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
-    //[[UIApplication sharedApplication] setStatusBarStyle: UIStatusBarStyleBlackOpaque];
-
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-    
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    
-    self.viewController = [[SPZBarReaderViewController alloc] init];
-    //self.viewController = [[productListViewController alloc] initWithNibName:@"productListViewController" bundle:nil];
-
-
-    navigationController *navbar = [[navigationController alloc] initWithRootViewController:self.viewController];
-    [[UISearchBar appearance] setBackgroundImage:[UIImage imageNamed:@"shopelia_topbar_background.png"]];
-
-
-    [[OHAttributedLabel appearance] setLinkColor:[UIColor colorWithRed:0.0 green:0.502 blue:0.647 alpha:1.0] ];
-    
-    self.window.rootViewController = navbar;
-    [self.window makeKeyAndVisible];
-
-    // TestFlight
+    // launch TestFight
+    [TestFlight setOptions:@{TFOptionLogToConsole : @NO, TFOptionLogToSTDERR : @NO, TFOptionLogOnCheckpoint : @NO}];
     [TestFlight takeOff:@"6cd79ccd-d2f3-4658-b4ba-4dc1a40bc089"];
+    
+    // appearance
+    [[OHAttributedLabel appearance] setLinkColor:[SPVisualFactory linkTextColor]];
+    
+    // create default view controllers
+    SPNavigationController *navigationController = [[SPNavigationController alloc] init];
+    
+    //SPZBarReaderViewController *viewController = [[SPZBarReaderViewController alloc] init];
+    //[[UISearchBar appearance] setBackgroundImage:[SPVisualFactory cachedImageNamed:@"shopelia_topbar_background.png"]];
+    
+    SPBarcodeScanViewController *viewController = [[SPBarcodeScanViewController alloc] init];
+    
+    [navigationController setViewControllers:@[viewController]];
+    
+    // create default window
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.rootViewController = navigationController;
+    [self.window makeKeyAndVisible];
 
     return YES;
 }

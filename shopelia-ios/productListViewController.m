@@ -15,7 +15,6 @@
 #import "loadingView.h"
 #import "UIView+Shopelia.h"
 #import "errorViewController.h"
-#import "SPLoadingView.h"
 #import "HTTPRequest.h"
 
 @interface productListViewController ()

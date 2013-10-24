@@ -15,13 +15,9 @@
 #import "loadingView.h"
 #import "errorViewController.h"
 #import <AudioToolbox/AudioToolbox.h>
-#import "Constants.h"
 #import "threadFactory.h"
 #import "searchCell.h"
 #import "HTTPRequest.h"
-#import <ShopeliaSDK/ShopeliaSDK.h>
-#import "SPLoadingView.h"
-
 
 @interface SPZBarReaderViewController () <UIGestureRecognizerDelegate>
 @property UINib *searchCellNib;

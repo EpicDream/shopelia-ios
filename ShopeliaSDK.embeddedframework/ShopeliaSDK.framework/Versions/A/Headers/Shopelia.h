@@ -14,6 +14,9 @@
 // string to represent the tracker used for the developer analytics 
 @property (strong, nonatomic) NSString *tracker;
 
+// returns whether the framework is able to checkout orders based the current iOS version
++ (BOOL)canCheckoutOrders;
+
 // returns the current framework version string
 + (NSString *)frameworkVersionString;
 

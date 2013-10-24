@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Amine bellakrid. All rights reserved.
 //
 
-#import "Constants.h"
+#import "SPConstants.h"
 
 NSString *const BASE_URL = @"https://shopelia.com/";
 NSString *const API_URL = @"https://shopelia.com/api/";
