@@ -1,0 +1,13 @@
+/* 
+  shopelia-ios.strings
+  shopelia-ios
+
+  Created by Nicolas on 24/10/2013.
+  Copyright (c) 2013 Shopelia. All rights reserved.
+*/
+
+"CenterBarCodeInZone" = "Centrez le code-barre dans la zone ci-dessus";
+
+"SearchAProduct" = "Rechercher un produit";
+
+"TheEasiestWayToBuyFromYourMobile" = "La façon la plus simple d'acheter avec votre mobile !";
