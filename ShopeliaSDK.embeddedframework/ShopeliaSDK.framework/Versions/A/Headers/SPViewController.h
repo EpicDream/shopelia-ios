@@ -10,6 +10,7 @@
 #import "SPOrder.h"
 #import "SPFunctions.h"
 #import "SPScrollView.h"
+#import "SPTableView.h"
 #import "SPParams.h"
 #import "SPAPIV1Client.h"
 #import "SPAPIV2Client.h"
@@ -68,6 +69,7 @@ typedef enum
 @property (strong, nonatomic) SPParams *params;
 
 @property (strong, nonatomic) SPScrollView *scrollView;
+@property (strong, nonatomic) SPTableView *tableView;
 @property (strong, nonatomic) SPLoadingView *loadingView;
 
 @property (assign, nonatomic) BOOL hidesCancelButton;

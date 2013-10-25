@@ -76,7 +76,6 @@
 		11C6E7EE17E086AD00D66D96 /* bar-code.png in Resources */ = {isa = PBXBuildFile; fileRef = 11C6E7EC17E086AD00D66D96 /* bar-code.png */; };
 		11C6E7EF17E086AD00D66D96 /* bar-code@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 11C6E7ED17E086AD00D66D96 /* bar-code@2x.png */; };
 		3705528F181928D300826EA0 /* SPBarcodeScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3705528D181928D300826EA0 /* SPBarcodeScanViewController.m */; };
-		37055290181928D300826EA0 /* SPBarcodeScanViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3705528E181928D300826EA0 /* SPBarcodeScanViewController.xib */; };
 		372C32F9180EEB18008928B7 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 372C32F3180EEB18008928B7 /* libTestFlight.a */; };
 		372C32FA180EEB18008928B7 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 372C32F4180EEB18008928B7 /* README.md */; };
 		372C32FB180EEB18008928B7 /* release_notes.md in Resources */ = {isa = PBXBuildFile; fileRef = 372C32F5180EEB18008928B7 /* release_notes.md */; };
@@ -86,6 +85,15 @@
 		376839471816CF0C008BFAA5 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 376839461816CF0C008BFAA5 /* CoreTelephony.framework */; };
 		37862C76180E9553009E2B44 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37862C75180E9553009E2B44 /* AudioToolbox.framework */; };
 		37A2A2DF180E85670097952D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37A2A2DE180E85670097952D /* Images.xcassets */; };
+		37A83AA8181A85710077B517 /* SPProductSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A83AA7181A85710077B517 /* SPProductSearchViewController.m */; };
+		37A83AB9181A9B870077B517 /* SPPopableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A83AB8181A9B870077B517 /* SPPopableViewController.m */; };
+		37A83ACB181A9DDC0077B517 /* back_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 37A83AC6181A9DDC0077B517 /* back_arrow.png */; };
+		37A83ACC181A9DDC0077B517 /* back_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 37A83AC7181A9DDC0077B517 /* back_arrow@2x.png */; };
+		37A83ACD181A9DDC0077B517 /* bar_code.png in Resources */ = {isa = PBXBuildFile; fileRef = 37A83AC8181A9DDC0077B517 /* bar_code.png */; };
+		37A83ACE181A9DDC0077B517 /* bar_code@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 37A83AC9181A9DDC0077B517 /* bar_code@2x.png */; };
+		37A83ACF181A9DDC0077B517 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37A83ACA181A9DDC0077B517 /* Storyboard.storyboard */; };
+		37A83AD5181AA29E0077B517 /* SPTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A83AD4181AA29E0077B517 /* SPTableViewCell.m */; };
+		37A83ADB181AA3010077B517 /* SPProductSearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A83ADA181AA3010077B517 /* SPProductSearchCell.m */; };
 		37D5C97E180E805300216A31 /* ShopeliaSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 37D5C97C180E805300216A31 /* ShopeliaSDKResources.bundle */; };
 		37D5C97F180E805300216A31 /* ShopeliaSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37D5C97D180E805300216A31 /* ShopeliaSDK.framework */; };
 		37D5C99E180E818B00216A31 /* libzbar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 37D5C998180E818B00216A31 /* libzbar.a */; };
@@ -96,8 +104,6 @@
 		37E2243C181957AE001DD2A2 /* SPSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E2243B181957AE001DD2A2 /* SPSearchBar.m */; };
 		37E2244618196DD2001DD2A2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 37E2244418196DD2001DD2A2 /* Localizable.strings */; };
 		37E2244918197028001DD2A2 /* SPBarcodeOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E2244818197028001DD2A2 /* SPBarcodeOverlayView.m */; };
-		37E2244D18197D86001DD2A2 /* bar_code.png in Resources */ = {isa = PBXBuildFile; fileRef = 37E2244B18197D86001DD2A2 /* bar_code.png */; };
-		37E2244E18197D86001DD2A2 /* bar_code@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 37E2244C18197D86001DD2A2 /* bar_code@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -208,7 +214,6 @@
 		11C6E7ED17E086AD00D66D96 /* bar-code@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bar-code@2x.png"; sourceTree = "<group>"; };
 		3705528C181928D300826EA0 /* SPBarcodeScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPBarcodeScanViewController.h; sourceTree = "<group>"; };
 		3705528D181928D300826EA0 /* SPBarcodeScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPBarcodeScanViewController.m; sourceTree = "<group>"; };
-		3705528E181928D300826EA0 /* SPBarcodeScanViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPBarcodeScanViewController.xib; sourceTree = "<group>"; };
 		372C32F3180EEB18008928B7 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
 		372C32F4180EEB18008928B7 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		372C32F5180EEB18008928B7 /* release_notes.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes.md; sourceTree = "<group>"; };
@@ -221,6 +226,19 @@
 		376839461816CF0C008BFAA5 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		37862C75180E9553009E2B44 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		37A2A2DE180E85670097952D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		37A83AA6181A85710077B517 /* SPProductSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPProductSearchViewController.h; sourceTree = "<group>"; };
+		37A83AA7181A85710077B517 /* SPProductSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPProductSearchViewController.m; sourceTree = "<group>"; };
+		37A83AB7181A9B870077B517 /* SPPopableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPPopableViewController.h; sourceTree = "<group>"; };
+		37A83AB8181A9B870077B517 /* SPPopableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPPopableViewController.m; sourceTree = "<group>"; };
+		37A83AC6181A9DDC0077B517 /* back_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_arrow.png; sourceTree = "<group>"; };
+		37A83AC7181A9DDC0077B517 /* back_arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back_arrow@2x.png"; sourceTree = "<group>"; };
+		37A83AC8181A9DDC0077B517 /* bar_code.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bar_code.png; sourceTree = "<group>"; };
+		37A83AC9181A9DDC0077B517 /* bar_code@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bar_code@2x.png"; sourceTree = "<group>"; };
+		37A83ACA181A9DDC0077B517 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Storyboard.storyboard; path = "shopelia-ios/Resources/Storyboard.storyboard"; sourceTree = "<group>"; };
+		37A83AD3181AA29E0077B517 /* SPTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPTableViewCell.h; sourceTree = "<group>"; };
+		37A83AD4181AA29E0077B517 /* SPTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPTableViewCell.m; sourceTree = "<group>"; };
+		37A83AD9181AA3010077B517 /* SPProductSearchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPProductSearchCell.h; sourceTree = "<group>"; };
+		37A83ADA181AA3010077B517 /* SPProductSearchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPProductSearchCell.m; sourceTree = "<group>"; };
 		37D5C97C180E805300216A31 /* ShopeliaSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ShopeliaSDKResources.bundle; sourceTree = "<group>"; };
 		37D5C97D180E805300216A31 /* ShopeliaSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShopeliaSDK.framework; sourceTree = "<group>"; };
 		37D5C984180E818B00216A31 /* Decoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Decoder.h; sourceTree = "<group>"; };
@@ -255,8 +273,6 @@
 		37E2244518196DD2001DD2A2 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		37E2244718197028001DD2A2 /* SPBarcodeOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPBarcodeOverlayView.h; sourceTree = "<group>"; };
 		37E2244818197028001DD2A2 /* SPBarcodeOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPBarcodeOverlayView.m; sourceTree = "<group>"; };
-		37E2244B18197D86001DD2A2 /* bar_code.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bar_code.png; sourceTree = "<group>"; };
-		37E2244C18197D86001DD2A2 /* bar_code@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bar_code@2x.png"; sourceTree = "<group>"; };
 		3B7A37F016854B728B7C63DE /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		BE7EC3D152B545618C950648 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -335,10 +351,8 @@
 		113137BF17F1CCE800AA7DAB /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				37E2243A181957AE001DD2A2 /* SPSearchBar.h */,
-				37E2243B181957AE001DD2A2 /* SPSearchBar.m */,
-				37E2244718197028001DD2A2 /* SPBarcodeOverlayView.h */,
-				37E2244818197028001DD2A2 /* SPBarcodeOverlayView.m */,
+				37A83AD6181AA2AF0077B517 /* Custom Views */,
+				37A83AD7181AA2BC0077B517 /* Content Views */,
 				110BF64518100F00000CAC67 /* shopeliaImageView.h */,
 				110BF64618100F00000CAC67 /* shopeliaImageView.m */,
 				113591D417F57FCA00C478A4 /* errorViewController.xib */,
@@ -372,13 +386,13 @@
 		113DDE2217DDFA9A0056E126 = {
 			isa = PBXGroup;
 			children = (
+				37A83ACA181A9DDC0077B517 /* Storyboard.storyboard */,
 				113DDE3D17DDFA9A0056E126 /* SPAppDelegate.h */,
 				113DDE3E17DDFA9A0056E126 /* SPAppDelegate.m */,
 				119C074717E30DA5003AF6AA /* SPConstants.h */,
 				119C074817E30DA5003AF6AA /* SPConstants.m */,
 				113DDE3417DDFA9A0056E126 /* shopelia-ios */,
 				113DDE5317DDFA9B0056E126 /* shopelia-iosTests */,
-				37E2244A18197D86001DD2A2 /* Resources */,
 				113DDE2D17DDFA9A0056E126 /* Frameworks */,
 				113DDE2C17DDFA9A0056E126 /* Products */,
 				3B7A37F016854B728B7C63DE /* Pods.xcconfig */,
@@ -424,12 +438,12 @@
 		113DDE3417DDFA9A0056E126 /* shopelia-ios */ = {
 			isa = PBXGroup;
 			children = (
-				377F3A40181916B500C0ECF5 /* Models */,
 				377F3A3F181916AF00C0ECF5 /* View Controllers */,
 				113137BF17F1CCE800AA7DAB /* Views */,
 				113137BE17F1CCCC00AA7DAB /* Controllers */,
 				113137BD17F1CCA900AA7DAB /* Categories */,
 				1183CD9217EB365900F1E66D /* products.json */,
+				37A83AC5181A9DDC0077B517 /* Resources */,
 				116CD95617DF085500978733 /* Images */,
 				119C076717E3216C003AF6AA /* HTTP */,
 				110B54E117E740F700DF1C3A /* threadFactory.h */,
@@ -526,18 +540,63 @@
 		377F3A3F181916AF00C0ECF5 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				3705528C181928D300826EA0 /* SPBarcodeScanViewController.h */,
-				3705528D181928D300826EA0 /* SPBarcodeScanViewController.m */,
-				3705528E181928D300826EA0 /* SPBarcodeScanViewController.xib */,
+				37A83ABA181A9B970077B517 /* Base View Controllers */,
+				37A83AD8181AA2D20077B517 /* Content View Controllers */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
 		};
-		377F3A40181916B500C0ECF5 /* Models */ = {
+		37A83ABA181A9B970077B517 /* Base View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				37A83AB7181A9B870077B517 /* SPPopableViewController.h */,
+				37A83AB8181A9B870077B517 /* SPPopableViewController.m */,
 			);
-			name = Models;
+			name = "Base View Controllers";
+			sourceTree = "<group>";
+		};
+		37A83AC5181A9DDC0077B517 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				37A83AC6181A9DDC0077B517 /* back_arrow.png */,
+				37A83AC7181A9DDC0077B517 /* back_arrow@2x.png */,
+				37A83AC8181A9DDC0077B517 /* bar_code.png */,
+				37A83AC9181A9DDC0077B517 /* bar_code@2x.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		37A83AD6181AA2AF0077B517 /* Custom Views */ = {
+			isa = PBXGroup;
+			children = (
+				37E2243A181957AE001DD2A2 /* SPSearchBar.h */,
+				37E2243B181957AE001DD2A2 /* SPSearchBar.m */,
+				37A83AD3181AA29E0077B517 /* SPTableViewCell.h */,
+				37A83AD4181AA29E0077B517 /* SPTableViewCell.m */,
+			);
+			name = "Custom Views";
+			sourceTree = "<group>";
+		};
+		37A83AD7181AA2BC0077B517 /* Content Views */ = {
+			isa = PBXGroup;
+			children = (
+				37E2244718197028001DD2A2 /* SPBarcodeOverlayView.h */,
+				37E2244818197028001DD2A2 /* SPBarcodeOverlayView.m */,
+				37A83AD9181AA3010077B517 /* SPProductSearchCell.h */,
+				37A83ADA181AA3010077B517 /* SPProductSearchCell.m */,
+			);
+			name = "Content Views";
+			sourceTree = "<group>";
+		};
+		37A83AD8181AA2D20077B517 /* Content View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3705528C181928D300826EA0 /* SPBarcodeScanViewController.h */,
+				3705528D181928D300826EA0 /* SPBarcodeScanViewController.m */,
+				37A83AA6181A85710077B517 /* SPProductSearchViewController.h */,
+				37A83AA7181A85710077B517 /* SPProductSearchViewController.m */,
+			);
+			name = "Content View Controllers";
 			sourceTree = "<group>";
 		};
 		37D5C97A180E805300216A31 /* ShopeliaSDK.embeddedframework */ = {
@@ -617,15 +676,6 @@
 				37D5C99B180E818B00216A31 /* zbar-help.html */,
 				37D5C99C180E818B00216A31 /* zbar-helpicons.png */,
 				37D5C99D180E818B00216A31 /* zbar-samples.png */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
-		37E2244A18197D86001DD2A2 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				37E2244B18197D86001DD2A2 /* bar_code.png */,
-				37E2244C18197D86001DD2A2 /* bar_code@2x.png */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -717,14 +767,12 @@
 				113591D917F58AD800C478A4 /* error-logo-icon.png in Resources */,
 				37D5C97E180E805300216A31 /* ShopeliaSDKResources.bundle in Resources */,
 				118433B417E1F01E00425AEB /* productViewController.xib in Resources */,
-				37055290181928D300826EA0 /* SPBarcodeScanViewController.xib in Resources */,
+				37A83ACB181A9DDC0077B517 /* back_arrow.png in Resources */,
 				11C6E7EF17E086AD00D66D96 /* bar-code@2x.png in Resources */,
 				372C32FB180EEB18008928B7 /* release_notes.md in Resources */,
 				37E2244618196DD2001DD2A2 /* Localizable.strings in Resources */,
 				37D5C9A1180E818B00216A31 /* zbar-helpicons.png in Resources */,
 				372C32FA180EEB18008928B7 /* README.md in Resources */,
-				37E2244D18197D86001DD2A2 /* bar_code.png in Resources */,
-				37E2244E18197D86001DD2A2 /* bar_code@2x.png in Resources */,
 				115E67B117E8961D00B88DCA /* ic_purchase_white.png in Resources */,
 				113591DE17F58CD900C478A4 /* error-button@2x.png in Resources */,
 				113591D617F57FCA00C478A4 /* errorViewController.xib in Resources */,
@@ -739,11 +787,15 @@
 				1190AAE417E9CECE003E570E /* productListViewController.xib in Resources */,
 				11C6E7E717E078BE00D66D96 /* logo-word@2x.png in Resources */,
 				11C6E7E617E078BE00D66D96 /* logo-word.png in Resources */,
+				37A83ACE181A9DDC0077B517 /* bar_code@2x.png in Resources */,
 				118433B117E1F01E00425AEB /* green-button.png in Resources */,
 				113591DD17F58CD900C478A4 /* error-button.png in Resources */,
+				37A83ACC181A9DDC0077B517 /* back_arrow@2x.png in Resources */,
 				37D5C99F180E818B00216A31 /* zbar-back.png in Resources */,
+				37A83ACF181A9DDC0077B517 /* Storyboard.storyboard in Resources */,
 				113591DA17F58AD800C478A4 /* error-logo-icon@2x.png in Resources */,
 				113DDE3917DDFA9A0056E126 /* InfoPlist.strings in Resources */,
+				37A83ACD181A9DDC0077B517 /* bar_code.png in Resources */,
 				113137BA17F1CC8600AA7DAB /* loader-icon@2x.png in Resources */,
 				115E67B617E89A7900B88DCA /* back-button.png in Resources */,
 				113591E517F5D39700C478A4 /* loader-icon-small.png in Resources */,
@@ -806,6 +858,7 @@
 				110BF64F18112A31000CAC67 /* searchCellContentView.m in Sources */,
 				113137C517F1D15F00AA7DAB /* SpinnerView.m in Sources */,
 				113DDE3B17DDFA9A0056E126 /* main.m in Sources */,
+				37A83AA8181A85710077B517 /* SPProductSearchViewController.m in Sources */,
 				1163C5AF17DF5B6C0043E73D /* overlayView.m in Sources */,
 				1183CD9117E9D58300F1E66D /* baseProductViewController.m in Sources */,
 				11C6E7EB17E07E8500D66D96 /* UIView+Shopelia.m in Sources */,
@@ -817,8 +870,11 @@
 				119C076517E320DA003AF6AA /* HTTPRequest.m in Sources */,
 				119C076417E320DA003AF6AA /* HTTPClient.m in Sources */,
 				1128F8EF17EC608B0079EC11 /* SPCellContentView.m in Sources */,
+				37A83ADB181AA3010077B517 /* SPProductSearchCell.m in Sources */,
 				1190AAE317E9CECE003E570E /* productListViewController.m in Sources */,
+				37A83AD5181AA29E0077B517 /* SPTableViewCell.m in Sources */,
 				3705528F181928D300826EA0 /* SPBarcodeScanViewController.m in Sources */,
+				37A83AB9181A9B870077B517 /* SPPopableViewController.m in Sources */,
 				119C074917E30DA5003AF6AA /* SPConstants.m in Sources */,
 				1163C5A017DF161F0043E73D /* SPZBarReaderViewController.m in Sources */,
 				110BF64718100F00000CAC67 /* shopeliaImageView.m in Sources */,

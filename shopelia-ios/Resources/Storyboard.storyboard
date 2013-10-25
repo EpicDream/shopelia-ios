@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="IZ0-BQ-Mn5">
+    <dependencies>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
+    </dependencies>
+    <scenes>
+        <!--Barcode Scan View Controller-->
+        <scene sceneID="kTP-ne-fLV">
+            <objects>
+                <viewController id="3ec-8e-h4F" customClass="SPBarcodeScanViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kxU-7Q-7tf"/>
+                        <viewControllerLayoutGuide type="bottom" id="oNA-f3-AYA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="z2u-mx-YAF" customClass="SPBackgroundView">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" placeholder="_search_a_product_" translatesAutoresizingMaskIntoConstraints="NO" id="v07-BV-tgI" customClass="SPSearchBar">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="G6p-eU-KFb"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <view clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Efx-po-5Eq" userLabel="Scan Container View">
+                                <rect key="frame" x="0.0" y="44" width="320" height="282"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4NF-pw-TJP" customClass="ZBarReaderView">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="282"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pK7-CD-5xr" customClass="SPBarcodeOverlayView">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="282"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="4NF-pw-TJP" secondAttribute="trailing" id="7hc-Ri-JjB"/>
+                                    <constraint firstAttribute="trailing" secondItem="4NF-pw-TJP" secondAttribute="trailing" id="Mav-K2-R3a"/>
+                                    <constraint firstItem="4NF-pw-TJP" firstAttribute="leading" secondItem="Efx-po-5Eq" secondAttribute="leading" id="Mhm-3F-la6"/>
+                                    <constraint firstItem="pK7-CD-5xr" firstAttribute="top" secondItem="Efx-po-5Eq" secondAttribute="top" id="OSf-E8-xTV"/>
+                                    <constraint firstItem="4NF-pw-TJP" firstAttribute="leading" secondItem="Efx-po-5Eq" secondAttribute="leading" id="Qm7-Bt-phi"/>
+                                    <constraint firstItem="pK7-CD-5xr" firstAttribute="top" secondItem="Efx-po-5Eq" secondAttribute="top" id="YkJ-D4-QXA"/>
+                                    <constraint firstItem="pK7-CD-5xr" firstAttribute="leading" secondItem="Efx-po-5Eq" secondAttribute="leading" id="bMT-TU-cYc"/>
+                                    <constraint firstAttribute="trailing" secondItem="pK7-CD-5xr" secondAttribute="trailing" id="gtc-2B-baz"/>
+                                    <constraint firstItem="4NF-pw-TJP" firstAttribute="top" secondItem="Efx-po-5Eq" secondAttribute="top" id="h76-IA-cJS"/>
+                                    <constraint firstAttribute="bottom" secondItem="4NF-pw-TJP" secondAttribute="bottom" id="m8M-Q3-jNc"/>
+                                    <constraint firstItem="4NF-pw-TJP" firstAttribute="top" secondItem="Efx-po-5Eq" secondAttribute="top" id="o7S-RA-XMD"/>
+                                    <constraint firstItem="pK7-CD-5xr" firstAttribute="leading" secondItem="Efx-po-5Eq" secondAttribute="leading" id="pMc-Oj-9pL"/>
+                                    <constraint firstAttribute="bottom" secondItem="pK7-CD-5xr" secondAttribute="bottom" id="pag-ke-ptE"/>
+                                    <constraint firstAttribute="bottom" secondItem="pK7-CD-5xr" secondAttribute="bottom" id="tcM-hI-wen"/>
+                                    <constraint firstAttribute="trailing" secondItem="pK7-CD-5xr" secondAttribute="trailing" id="vng-ZH-GrX"/>
+                                    <constraint firstAttribute="bottom" secondItem="4NF-pw-TJP" secondAttribute="bottom" id="xaP-6a-mNh"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6zr-eV-3vs" userLabel="Footer">
+                                <rect key="frame" x="0.0" y="326" width="320" height="90"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vws-FR-1u5" userLabel="Separator">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="4"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="4" id="AZR-60-jLJ"/>
+                                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="4" id="LVi-Ld-qBA"/>
+                                            <constraint firstAttribute="height" constant="4" id="cGu-ZQ-uE4"/>
+                                        </constraints>
+                                    </view>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bar_code.png" translatesAutoresizingMaskIntoConstraints="NO" id="SQt-8k-ttN">
+                                        <rect key="frame" x="10" y="15" width="116" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="_center_bar_code_" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="158" translatesAutoresizingMaskIntoConstraints="NO" id="agV-4W-AKP" customClass="SPSmallLabel">
+                                        <rect key="frame" x="143" y="15" width="158" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="vws-FR-1u5" firstAttribute="top" secondItem="6zr-eV-3vs" secondAttribute="top" id="1B8-3S-aRh"/>
+                                    <constraint firstAttribute="height" constant="90" id="B0q-wZ-JqU"/>
+                                    <constraint firstAttribute="trailing" secondItem="vws-FR-1u5" secondAttribute="trailing" id="Ety-Rp-76g"/>
+                                    <constraint firstItem="vws-FR-1u5" firstAttribute="leading" secondItem="6zr-eV-3vs" secondAttribute="leading" id="rKp-pM-oJG"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="oNA-f3-AYA" firstAttribute="top" secondItem="6zr-eV-3vs" secondAttribute="bottom" id="0Qs-K1-5Cv"/>
+                            <constraint firstAttribute="trailing" secondItem="v07-BV-tgI" secondAttribute="trailing" id="0zF-8T-imc"/>
+                            <constraint firstAttribute="trailing" secondItem="Efx-po-5Eq" secondAttribute="trailing" id="2W5-AE-6xi"/>
+                            <constraint firstItem="Efx-po-5Eq" firstAttribute="top" secondItem="v07-BV-tgI" secondAttribute="bottom" id="8UG-xe-JQS"/>
+                            <constraint firstItem="6zr-eV-3vs" firstAttribute="top" secondItem="Efx-po-5Eq" secondAttribute="bottom" id="A89-ET-uEL"/>
+                            <constraint firstAttribute="trailing" secondItem="6zr-eV-3vs" secondAttribute="trailing" id="Eot-3c-Zs6"/>
+                            <constraint firstItem="Efx-po-5Eq" firstAttribute="top" secondItem="v07-BV-tgI" secondAttribute="bottom" id="HSC-eF-I6J"/>
+                            <constraint firstItem="Efx-po-5Eq" firstAttribute="leading" secondItem="z2u-mx-YAF" secondAttribute="leading" id="OkQ-z4-T4M"/>
+                            <constraint firstItem="6zr-eV-3vs" firstAttribute="top" secondItem="Efx-po-5Eq" secondAttribute="bottom" id="Y3t-0x-V5F"/>
+                            <constraint firstItem="v07-BV-tgI" firstAttribute="leading" secondItem="z2u-mx-YAF" secondAttribute="leading" id="afF-Hd-5ni"/>
+                            <constraint firstItem="v07-BV-tgI" firstAttribute="top" secondItem="kxU-7Q-7tf" secondAttribute="bottom" id="d85-eK-7be"/>
+                            <constraint firstItem="6zr-eV-3vs" firstAttribute="leading" secondItem="z2u-mx-YAF" secondAttribute="leading" id="nP1-xR-gtq"/>
+                        </constraints>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <navigationItem key="navigationItem" id="1aX-XR-OCP"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="hidesCancelButton" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outlet property="centerLabel" destination="agV-4W-AKP" id="M5j-9W-7sd"/>
+                        <outlet property="footerSeparatorView" destination="vws-FR-1u5" id="jHt-nW-tDv"/>
+                        <outlet property="readerOverlayView" destination="pK7-CD-5xr" id="inu-w9-6zt"/>
+                        <outlet property="readerView" destination="4NF-pw-TJP" id="aor-Oh-WOQ"/>
+                        <outlet property="searchBar" destination="v07-BV-tgI" id="QN6-OO-d0w"/>
+                        <segue destination="zeF-zw-pSs" kind="push" identifier="SHOW_PRODUCT_SEARCH" id="mRe-eh-b02"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c7w-Kn-7RV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="748" y="247"/>
+        </scene>
+        <!--Product Search View Controller-->
+        <scene sceneID="5nI-5A-D1C">
+            <objects>
+                <viewController id="zeF-zw-pSs" customClass="SPProductSearchViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1Wr-GE-Xdq"/>
+                        <viewControllerLayoutGuide type="bottom" id="Cwi-b6-qUo"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="suG-dj-wlt" customClass="SPBackgroundView">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="90" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Zgp-li-4yB" customClass="SPTableView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="1KC-sR-QCQ" userLabel="Header" customClass="SPVerticalLayoutView">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="250"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zlh-LK-5rj" customClass="SPVerticalLayoutView">
+                                            <rect key="frame" x="10" y="10" width="300" height="235"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0fn-NT-Joh" customClass="SPFieldImageView">
+                                                    <rect key="frame" x="0.0" y="0.0" width="300" height="235"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                </imageView>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Je suis un texte super long qui va prendre beaucoup de place et qui va surrement me casser les couilles plus tard" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="260" translatesAutoresizingMaskIntoConstraints="NO" id="tRH-hX-Q2B" customClass="SPExtraLargeLabel">
+                                                    <rect key="frame" x="20" y="163" width="260" height="52"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bar-code.png" translatesAutoresizingMaskIntoConstraints="NO" id="ALT-Xg-Hb0" customClass="SPImageView">
+                                                    <rect key="frame" x="20" y="20" width="260" height="135"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </view>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                </view>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="ocO-yU-LcW" userLabel="Footer" customClass="SPView">
+                                    <rect key="frame" x="0.0" y="362" width="320" height="5"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </view>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SPProductSearchCell" rowHeight="90" id="mjF-GK-189" customClass="SPProductSearchCell">
+                                        <rect key="frame" x="0.0" y="272" width="320" height="90"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mjF-GK-189" id="6hq-Cx-fvQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="90"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A9E-j4-jiZ" customClass="SPView">
+                                                    <rect key="frame" x="10" y="5" width="300" height="80"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1mK-JX-wxJ" customClass="SPFieldImageView">
+                                                            <rect key="frame" x="0.0" y="0.0" width="300" height="80"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        </imageView>
+                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MHr-bP-YpQ" customClass="SPLargeButton">
+                                                            <rect key="frame" x="200" y="20" width="80" height="40"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                            <state key="normal" title="Voir">
+                                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                            </state>
+                                                        </button>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AOK-St-PBd" customClass="SPExtraLargeLabel">
+                                                            <rect key="frame" x="20" y="20" width="172" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstItem="1mK-JX-wxJ" firstAttribute="leading" secondItem="A9E-j4-jiZ" secondAttribute="leading" id="AXO-n5-A9Z"/>
+                                                        <constraint firstAttribute="trailing" secondItem="1mK-JX-wxJ" secondAttribute="trailing" id="ZhV-4w-bnV"/>
+                                                        <constraint firstAttribute="bottom" secondItem="1mK-JX-wxJ" secondAttribute="bottom" id="fH0-JT-8YX"/>
+                                                        <constraint firstItem="1mK-JX-wxJ" firstAttribute="top" secondItem="A9E-j4-jiZ" secondAttribute="top" id="pKC-f3-QYQ"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="A9E-j4-jiZ" secondAttribute="bottom" constant="5" id="7Ti-4S-y0u"/>
+                                                <constraint firstItem="A9E-j4-jiZ" firstAttribute="top" secondItem="6hq-Cx-fvQ" secondAttribute="top" constant="5" id="C5R-PR-uJv"/>
+                                                <constraint firstItem="A9E-j4-jiZ" firstAttribute="leading" secondItem="6hq-Cx-fvQ" secondAttribute="leading" constant="10" id="GaQ-Qf-TFy"/>
+                                                <constraint firstAttribute="trailing" secondItem="A9E-j4-jiZ" secondAttribute="trailing" constant="10" id="bdW-Fk-EP6"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="zeF-zw-pSs" id="rF9-nK-3ZE"/>
+                                    <outlet property="delegate" destination="zeF-zw-pSs" id="jgd-JW-4Dl"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Zgp-li-4yB" firstAttribute="leading" secondItem="suG-dj-wlt" secondAttribute="leading" id="1o5-qf-OHl"/>
+                            <constraint firstItem="Zgp-li-4yB" firstAttribute="top" secondItem="1Wr-GE-Xdq" secondAttribute="bottom" id="Hyd-uX-vxC"/>
+                            <constraint firstAttribute="trailing" secondItem="Zgp-li-4yB" secondAttribute="trailing" id="ZC0-XW-7YH"/>
+                            <constraint firstItem="Cwi-b6-qUo" firstAttribute="top" secondItem="Zgp-li-4yB" secondAttribute="bottom" id="oc5-ta-sba"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="JPo-pU-o2g"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="hidesCancelButton" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outlet property="headerContainerView" destination="zlh-LK-5rj" id="mza-XM-fp8"/>
+                        <outlet property="headerFieldImageView" destination="0fn-NT-Joh" id="ufG-nP-3JX"/>
+                        <outlet property="headerView" destination="1KC-sR-QCQ" id="eCh-T5-l27"/>
+                        <outlet property="productTitleLabel" destination="tRH-hX-Q2B" id="U7I-NP-8Bd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2IF-5h-VlN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1184" y="247"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="5eT-m6-fWw">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="IZ0-BQ-Mn5" customClass="SPNavigationController" sceneMemberID="viewController">
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <toolbarItems/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" translucent="NO" prompted="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="cFA-T5-Rwz" customClass="SPNavigationBar">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Kwa-Y8-QCU">
+                        <rect key="frame" x="0.0" y="416" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="3ec-8e-h4F" kind="relationship" relationship="rootViewController" id="AaZ-X1-fMy"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SLE-a0-Xnb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="314" y="247"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="bar-code.png" width="116" height="60"/>
+        <image name="bar_code.png" width="116" height="60"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination"/>
+    </simulatedMetricsContainer>
+</document>

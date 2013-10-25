@@ -141,5 +141,6 @@
 #import "SPViewUppercase.h"
 #import "SPVisualFactory.h"
 #import "SPWebNavigatorViewController.h"
+#import "SPTableView.h"
 
 #endif

@@ -10,6 +10,8 @@
 
 @implementation SPSearchBar
 
+#pragma mark - Customization
+
 - (void)customize
 {
     // background image

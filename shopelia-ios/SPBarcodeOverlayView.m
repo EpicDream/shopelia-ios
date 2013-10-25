@@ -29,7 +29,7 @@
     [self.centralTextLabel setTextColor:[UIColor whiteColor]];
     [self.centralTextLabel setTextAlignment:NSTextAlignmentCenter];
     [self.centralTextLabel setNumberOfLines:0];
-    [self.centralTextLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:22.0f]];
+    [self.centralTextLabel setFont:[UIFont fontWithName:[SPVisualFactory regularFontName] size:20.0f]];
     [self.centralTextLabel setBackgroundColor:[UIColor clearColor]];
     [self addSubview:self.centralTextLabel];
 }
