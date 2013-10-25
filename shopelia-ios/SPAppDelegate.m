@@ -26,10 +26,10 @@
     // create default view controllers
     SPNavigationController *navigationController = [[SPNavigationController alloc] init];
     
-    //SPZBarReaderViewController *viewController = [[SPZBarReaderViewController alloc] init];
-    //[[UISearchBar appearance] setBackgroundImage:[SPVisualFactory cachedImageNamed:@"shopelia_topbar_background.png"]];
+    SPZBarReaderViewController *viewController = [[SPZBarReaderViewController alloc] init];
+    [[UISearchBar appearance] setBackgroundImage:[SPVisualFactory cachedImageNamed:@"shopelia_topbar_background.png"]];
     
-    SPBarcodeScanViewController *viewController = [[SPBarcodeScanViewController alloc] init];
+    //SPBarcodeScanViewController *viewController = [[SPBarcodeScanViewController alloc] init];
     
     [navigationController setViewControllers:@[viewController]];
     
