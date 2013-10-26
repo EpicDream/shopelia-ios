@@ -14,7 +14,7 @@
                         <viewControllerLayoutGuide type="bottom" id="oNA-f3-AYA"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="z2u-mx-YAF" customClass="SPBackgroundView">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" placeholder="_search_a_product_" translatesAutoresizingMaskIntoConstraints="NO" id="v07-BV-tgI" customClass="SPSearchBar">
@@ -26,16 +26,16 @@
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <view clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Efx-po-5Eq" userLabel="Scan Container View">
-                                <rect key="frame" x="0.0" y="44" width="320" height="282"/>
+                                <rect key="frame" x="0.0" y="44" width="320" height="370"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4NF-pw-TJP" customClass="ZBarReaderView">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="282"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="370"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
                                     <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pK7-CD-5xr" customClass="SPBarcodeOverlayView">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="282"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="370"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
@@ -61,7 +61,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6zr-eV-3vs" userLabel="Footer">
-                                <rect key="frame" x="0.0" y="326" width="320" height="90"/>
+                                <rect key="frame" x="0.0" y="414" width="320" height="90"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vws-FR-1u5" userLabel="Separator">
@@ -139,11 +139,11 @@
                         <viewControllerLayoutGuide type="bottom" id="Cwi-b6-qUo"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="suG-dj-wlt" customClass="SPBackgroundView">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="120" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Zgp-li-4yB" customClass="SPTableView">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="1KC-sR-QCQ" userLabel="Header" customClass="SPView">
@@ -216,35 +216,36 @@
                                                     <rect key="frame" x="10" y="5" width="300" height="110"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1mK-JX-wxJ" customClass="SPFieldImageView">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="853" translatesAutoresizingMaskIntoConstraints="NO" id="1mK-JX-wxJ" customClass="SPFieldImageView">
                                                             <rect key="frame" x="0.0" y="0.0" width="300" height="110"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         </imageView>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MHr-bP-YpQ" customClass="SPLargeButton">
-                                                            <rect key="frame" x="200" y="20" width="80" height="40"/>
+                                                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="493" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MHr-bP-YpQ" customClass="SPLargeButton">
+                                                            <rect key="frame" x="169" y="20" width="111" height="40"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="40" id="bw9-lk-8Nn"/>
+                                                                <constraint firstAttribute="height" constant="40" id="6Ca-E5-h6j"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                            <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                                             <state key="normal" title="Voir l'offre">
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
                                                         </button>
-                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20,45" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AOK-St-PBd" customClass="SPExtraLargeLabel">
-                                                            <rect key="frame" x="20" y="20" width="170" height="24"/>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="20,45€" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AOK-St-PBd" customClass="SPExtraLargeLabel">
+                                                            <rect key="frame" x="20" y="20" width="139" height="23"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="24" id="2dx-7h-bbC"/>
+                                                                <constraint firstAttribute="height" constant="23" id="2dx-7h-bbC"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Livraison incluse" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9UT-kb-AHS" customClass="SPExtraSmallLabel">
-                                                            <rect key="frame" x="20" y="46" width="170" height="15"/>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="853" text="Livraison incluse" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9UT-kb-AHS" customClass="SPExtraSmallLabel">
+                                                            <rect key="frame" x="20" y="45" width="139" height="15"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
@@ -254,8 +255,16 @@
                                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Livré super rapidement parce que moi je déconne pas" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="170" translatesAutoresizingMaskIntoConstraints="NO" id="eaK-gi-cpM" customClass="SPExtraSmallLabel">
-                                                            <rect key="frame" x="20" y="63" width="170" height="27"/>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="693" text="Livré super rapidement parce que moi je déconne pas wepok wpeok pweokf wpokf wopef" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="140" translatesAutoresizingMaskIntoConstraints="NO" id="eaK-gi-cpM" customClass="SPExtraSmallLabel">
+                                                            <rect key="frame" x="20" y="62" width="140" height="28"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="par amazon.com" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kml-E3-iqL" customClass="SPExtraSmallLabel">
+                                                            <rect key="frame" x="170" y="65" width="110" height="21"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -269,21 +278,25 @@
                                                         <constraint firstItem="MHr-bP-YpQ" firstAttribute="top" secondItem="A9E-j4-jiZ" secondAttribute="top" constant="20" id="EIW-43-NbG"/>
                                                         <constraint firstAttribute="bottom" secondItem="eaK-gi-cpM" secondAttribute="bottom" constant="20" id="Eil-qd-i3D"/>
                                                         <constraint firstItem="1mK-JX-wxJ" firstAttribute="top" secondItem="A9E-j4-jiZ" secondAttribute="top" id="El9-Rf-HBJ"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Kml-E3-iqL" secondAttribute="trailing" constant="20" id="GXv-pb-Ut3"/>
                                                         <constraint firstAttribute="bottom" secondItem="1mK-JX-wxJ" secondAttribute="bottom" id="Ojv-Yl-YGW"/>
+                                                        <constraint firstItem="Kml-E3-iqL" firstAttribute="width" secondItem="MHr-bP-YpQ" secondAttribute="width" id="Q9V-aD-roh"/>
                                                         <constraint firstItem="MHr-bP-YpQ" firstAttribute="leading" secondItem="9UT-kb-AHS" secondAttribute="trailing" constant="10" id="RKw-aS-bfd"/>
                                                         <constraint firstItem="eaK-gi-cpM" firstAttribute="top" secondItem="9UT-kb-AHS" secondAttribute="bottom" constant="2" id="YOZ-pV-yKo"/>
                                                         <constraint firstAttribute="trailing" secondItem="1mK-JX-wxJ" secondAttribute="trailing" id="ZhV-4w-bnV"/>
+                                                        <constraint firstItem="Kml-E3-iqL" firstAttribute="top" secondItem="MHr-bP-YpQ" secondAttribute="bottom" constant="5" id="dJK-DK-Tco"/>
                                                         <constraint firstAttribute="bottom" secondItem="1mK-JX-wxJ" secondAttribute="bottom" id="fH0-JT-8YX"/>
                                                         <constraint firstAttribute="trailing" secondItem="1mK-JX-wxJ" secondAttribute="trailing" id="g9n-x9-LFt"/>
                                                         <constraint firstItem="9UT-kb-AHS" firstAttribute="top" secondItem="AOK-St-PBd" secondAttribute="bottom" constant="2" id="mCN-kQ-85X"/>
+                                                        <constraint firstItem="AOK-St-PBd" firstAttribute="width" secondItem="9UT-kb-AHS" secondAttribute="width" id="mSC-L8-qgk"/>
                                                         <constraint firstItem="1mK-JX-wxJ" firstAttribute="top" secondItem="A9E-j4-jiZ" secondAttribute="top" id="pKC-f3-QYQ"/>
                                                         <constraint firstAttribute="trailing" secondItem="MHr-bP-YpQ" secondAttribute="trailing" constant="20" id="qpv-Jc-YuA"/>
                                                         <constraint firstItem="MHr-bP-YpQ" firstAttribute="leading" secondItem="AOK-St-PBd" secondAttribute="trailing" constant="10" id="sBb-2q-kTg"/>
+                                                        <constraint firstItem="Kml-E3-iqL" firstAttribute="leading" secondItem="eaK-gi-cpM" secondAttribute="trailing" constant="10" id="sBd-ZN-Cg1"/>
                                                         <constraint firstItem="AOK-St-PBd" firstAttribute="leading" secondItem="A9E-j4-jiZ" secondAttribute="leading" constant="20" id="sQ7-LO-LZB"/>
                                                         <constraint firstItem="1mK-JX-wxJ" firstAttribute="leading" secondItem="A9E-j4-jiZ" secondAttribute="leading" id="tOC-gI-Rp7"/>
                                                         <constraint firstItem="9UT-kb-AHS" firstAttribute="leading" secondItem="A9E-j4-jiZ" secondAttribute="leading" constant="20" id="uQf-5g-fyA"/>
                                                         <constraint firstItem="eaK-gi-cpM" firstAttribute="leading" secondItem="A9E-j4-jiZ" secondAttribute="leading" constant="20" id="v8Y-TH-Gnh"/>
-                                                        <constraint firstItem="MHr-bP-YpQ" firstAttribute="leading" secondItem="eaK-gi-cpM" secondAttribute="trailing" constant="10" id="vPi-hC-omv"/>
                                                         <constraint firstItem="AOK-St-PBd" firstAttribute="top" secondItem="A9E-j4-jiZ" secondAttribute="top" constant="20" id="zt7-1Z-G4J"/>
                                                     </constraints>
                                                 </view>
@@ -300,7 +313,8 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="priceLabel" destination="AOK-St-PBd" id="5Wv-gz-tgF"/>
+                                            <outlet property="priceLabel" destination="AOK-St-PBd" id="OnE-Br-Qpm"/>
+                                            <outlet property="shippingInfoLabel" destination="eaK-gi-cpM" id="fRB-ln-Ge4"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -363,6 +377,6 @@
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
 </document>
