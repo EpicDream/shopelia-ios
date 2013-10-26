@@ -11,5 +11,6 @@
 @interface SPProductSearchCell : SPTableViewCell
 
 @property (weak, nonatomic) IBOutlet SPLabel *priceLabel;
+@property (weak, nonatomic) IBOutlet SPLabel *shippingInfoLabel;
 
 @end
