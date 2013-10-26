@@ -12,13 +12,22 @@
 #define TABLE_VIEW_PRODUCT_CELL_IDENFITIER @"SPProductSearchCell"
 
 @interface SPProductSearchViewController () <UITableViewDataSource, UITableViewDelegate>
-@property (weak, nonatomic) IBOutlet SPLayoutView *headerView;
-@property (weak, nonatomic) IBOutlet SPLayoutView *headerContainerView;
-@property (weak, nonatomic) IBOutlet SPImageView *headerFieldImageView;
-@property (weak, nonatomic) IBOutlet SPLabel *productTitleLabel;
+@property (weak, nonatomic) IBOutlet SPView *headerView;
+@property (strong, nonatomic) SPProductSearchCell *offscreenCell;
 @end
 
 @implementation SPProductSearchViewController
+
+#pragma mark - Lazy intantiation
+
+- (SPProductSearchCell *)offscreenCell
+{
+    if (!_offscreenCell)
+    {
+        _offscreenCell = [[SPProductSearchCell alloc] init];
+    }
+    return _offscreenCell;
+}
 
 #pragma mark - UITableView delegate
 
@@ -43,51 +52,17 @@
 {
     SPProductSearchCell *cell = [tableView dequeueReusableCellWithIdentifier:TABLE_VIEW_PRODUCT_CELL_IDENFITIER];
     [self customizeView:cell];
+    [self translateView:cell];
     
     return cell;
 }
 
 #pragma mark - Interface
 
-+ (CGSize)sizeForText:(NSString *)text width:(CGFloat)width font:(UIFont *)font lineBreakMode:(NSLineBreakMode)lineBreakMode;
-{
-    CGSize constraintSize = CGSizeMake(width, CGFLOAT_MAX);
-    CGSize computedSize = CGSizeZero;
-    
-    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0"))
-    {
-        NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-        paragraphStyle.lineBreakMode = lineBreakMode;
-        paragraphStyle.lineSpacing = font.lineHeight;
-        
-        NSStringDrawingContext *context = [[NSStringDrawingContext alloc] init];
-        
-        computedSize = [text boundingRectWithSize:constraintSize
-                                          options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading
-                                       attributes:@{
-                                                    NSFontAttributeName : font,
-                                                    NSParagraphStyleAttributeName : paragraphStyle
-                                                    }
-                                          context:context].size;
-    }
-    else
-    {
-        computedSize = [text sizeWithFont:font constrainedToSize:constraintSize lineBreakMode:lineBreakMode];
-    }
-    computedSize.height = ceil(computedSize.height);
-    computedSize.width = ceil(computedSize.width);
-    return computedSize;
-}
-
-
 - (void)setupUI
 {
     [super setupUI];
     
-    self.headerView.layoutPadding = UIEdgeInsetsMake(10.0f, 10.0f, 10.0f, 10.0f);
-    self.headerContainerView.layoutPadding = UIEdgeInsetsMake(20.0f, 20.0f, 20.0f, 20.0f);
-    self.headerContainerView.excludedLayoutSubviews = @[self.headerFieldImageView];
-    self.productTitleLabel.layoutAutoresizesHeight = YES;
 }
 
 #pragma mark - Layout
@@ -97,10 +72,8 @@
     [super viewDidLayoutSubviews];
     
     CGRect frame = self.headerView.frame;
-    frame.size.height = self.headerView.estimatedContentSize.height;
+    frame.size.height = [self.headerView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
     self.headerView.frame = frame;
-    
-    self.headerFieldImageView.frame = self.headerContainerView.bounds;
 }
 
 #pragma mark - View lifecycle
