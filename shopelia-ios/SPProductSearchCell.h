@@ -8,7 +8,7 @@
 
 #import "SPTableViewCell.h"
 
-@interface SPProductSearchCell : SPTableViewCell
+@interface SPProductSearchCell : SPTableViewCell <SPViewCustomization>
 
 @property (weak, nonatomic) IBOutlet SPLabel *priceLabel;
 @property (weak, nonatomic) IBOutlet SPLabel *shippingInfoLabel;

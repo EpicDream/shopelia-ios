@@ -10,10 +10,25 @@
 
 @implementation SPProductSearchCell
 
+#pragma mark - Customization
+
+- (void)customize
+{
+    self.priceLabel.textColor = [SPVisualFactory validColor];
+}
+
+#pragma mark - Lifecycle
+
+- (void)initialize
+{
+    [SPViewController customizeView:self];
+}
+
 - (void)awakeFromNib
 {
     [super awakeFromNib];
 
+    [self initialize];
 }
 
 @end
