@@ -51,19 +51,16 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     SPProductSearchCell *cell = [tableView dequeueReusableCellWithIdentifier:TABLE_VIEW_PRODUCT_CELL_IDENFITIER];
-    
-    [self customizeView:cell];
+
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     SPProductSearchCell *cell = [tableView dequeueReusableCellWithIdentifier:TABLE_VIEW_PRODUCT_CELL_IDENFITIER];
-    
-    [self customizeView:cell];
+   
     [cell.contentView setNeedsLayout];
     [cell.contentView layoutIfNeeded];
-    
     CGFloat height = [cell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
     return height;
 }
