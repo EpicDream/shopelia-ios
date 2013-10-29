@@ -6,10 +6,11 @@
 //  Copyright (c) 2013 Shopelia. All rights reserved.
 //
 
+#import <AudioToolbox/AudioToolbox.h>
 #import "SPBarcodeScanViewController.h"
 #import "SPSearchBar.h"
 #import "SPBarcodeOverlayView.h"
-#import <AudioToolbox/AudioToolbox.h>
+#import "SPProductSearchViewController.h"
 
 #define PRODUCT_SEARCH_SEGUE_NAME @"SHOW_PRODUCT_SEARCH"
 
@@ -19,9 +20,23 @@
 @property (weak, nonatomic) IBOutlet UIView *footerSeparatorView;
 @property (weak, nonatomic) IBOutlet SPSearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet SPLabel *centerLabel;
+@property (strong, nonatomic) NSString *lastBarcode;
+@property (assign, nonatomic) BOOL lastBarcodeWasFromScanner;
 @end
 
 @implementation SPBarcodeScanViewController
+
+#pragma mark - Segues
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:PRODUCT_SEARCH_SEGUE_NAME])
+    {
+        SPProductSearchViewController *vc = (SPProductSearchViewController *)segue.destinationViewController;
+        vc.barcode = self.lastBarcode;
+        vc.fromScanner = self.lastBarcodeWasFromScanner;
+    }
+}
 
 #pragma mark - ZBarReaderViewDelegate delegate
 
@@ -40,7 +55,9 @@
     AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
     
     // fetch product
-    [self performSegueWithIdentifier:PRODUCT_SEARCH_SEGUE_NAME sender:[symbol data]];
+    self.lastBarcode = [symbol data];
+    self.lastBarcodeWasFromScanner = YES;
+    [self performSegueWithIdentifier:PRODUCT_SEARCH_SEGUE_NAME sender:self];
 }
 
 #pragma mark - Interface
@@ -102,28 +119,29 @@
     
     // configure zbar symbols
     [self.readerView.scanner setSymbology:0 config:ZBAR_CFG_ENABLE to:NO];
-    [self.readerView.scanner setSymbology:ZBAR_UPCA config:ZBAR_CFG_ENABLE to:YES];
-    [self.readerView.scanner setSymbology:ZBAR_UPCE config:ZBAR_CFG_ENABLE to:YES];
     [self.readerView.scanner setSymbology:ZBAR_EAN13 config:ZBAR_CFG_ENABLE to:YES];
+    [self.readerView setTrackingColor:[SPVisualFactory validColor]];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
-    [self.readerView start];
+    [self.readerView performSelector:@selector(start) withObject:nil afterDelay:0.00f];
     
     [self performSelector:@selector(test) withObject:nil afterDelay:1.0f];
 }
 
 - (void)test
 {
-     [self performSegueWithIdentifier:PRODUCT_SEARCH_SEGUE_NAME sender:@"4015672106192"];
+    self.lastBarcode = @"0609465362465";
+    self.lastBarcodeWasFromScanner = YES;
+    [self performSegueWithIdentifier:PRODUCT_SEARCH_SEGUE_NAME sender:self];
 }
 
-- (void)viewDidDisappear:(BOOL)animated
+- (void)viewWillDisappear:(BOOL)animated
 {
-    [super viewDidDisappear:animated];
+    [super viewWillDisappear:animated];
     
     [self.readerView stop];
 }

@@ -12,5 +12,6 @@
 @interface SPProductSearchViewController : SPPopableViewController
 
 @property (strong, nonatomic) NSString *barcode;
+@property (assign, nonatomic) BOOL fromScanner;
 
 @end
