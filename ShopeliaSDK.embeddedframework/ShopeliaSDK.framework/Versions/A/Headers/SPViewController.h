@@ -68,6 +68,9 @@ typedef enum
 // customizes the given view
 + (void)customizeView:(UIView *)view;
 
+// translates the given view
++ (void)translateView:(UIView *)view;
+
 @property (strong, nonatomic) SPOrder *order;
 @property (strong, nonatomic) SPParams *params;
 

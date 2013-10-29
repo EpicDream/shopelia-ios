@@ -16,4 +16,7 @@
 // returns a new instance of the receiver loaded from its nib
 + (instancetype)instanciateFromNib;
 
+// returns a new instance of the receiver loaded from its nib in a particular bundle
++ (instancetype)instanciateFromNibInBundle:(NSBundle *)bundle;
+
 @end
