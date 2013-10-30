@@ -26,7 +26,7 @@
     // background color
     self.backgroundColor = [SPVisualFactory navigationBarBackgroundColor];
     
-    
+    self.tintColor = [SPVisualFactory navigationBarBackgroundColor];
 }
 
 @end

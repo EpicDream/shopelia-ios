@@ -8,9 +8,9 @@
 
 #import <AudioToolbox/AudioToolbox.h>
 #import "SPBarcodeScanViewController.h"
-#import "SPSearchBar.h"
 #import "SPBarcodeOverlayView.h"
 #import "SPProductSearchViewController.h"
+#import "SPAlgoliaSearchViewController.h"
 
 #define PRODUCT_SEARCH_SEGUE_NAME @"SHOW_PRODUCT_SEARCH"
 
@@ -18,13 +18,24 @@
 @property (weak, nonatomic) IBOutlet ZBarReaderView *readerView;
 @property (weak, nonatomic) IBOutlet SPBarcodeOverlayView *readerOverlayView;
 @property (weak, nonatomic) IBOutlet UIView *footerSeparatorView;
-@property (weak, nonatomic) IBOutlet SPSearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet SPLabel *centerLabel;
 @property (strong, nonatomic) NSString *lastBarcode;
 @property (assign, nonatomic) BOOL lastBarcodeWasFromScanner;
+@property (strong, nonatomic) SPAlgoliaSearchViewController *algoliaSearchViewController;
 @end
 
 @implementation SPBarcodeScanViewController
+
+#pragma mark - Lazy instanciation
+
+- (SPAlgoliaSearchViewController *)algoliaSearchViewController
+{
+    if (!_algoliaSearchViewController)
+    {
+        _algoliaSearchViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SPAlgoliaSearchViewController"];
+    }
+    return _algoliaSearchViewController;
+}
 
 #pragma mark - Segues
 
@@ -69,26 +80,10 @@
     self.footerSeparatorView.backgroundColor = [SPVisualFactory navigationBarBackgroundColor];
     self.centerLabel.textColor = [SPVisualFactory navigationBarBackgroundColor];
     self.centerLabel.text = NSLocalizedString(@"CenterBarCodeInZone", nil);
-    self.searchBar.placeholder = NSLocalizedString(@"SearchAProduct", nil);
     
-    // configure search bar
-    UIControl <UITextInputTraits> *subView = [self firstSubviewConformingToProtocol:@protocol(UITextInputTraits) inView:self.searchBar];
-    [subView setKeyboardAppearance: UIKeyboardAppearanceAlert];
-    [subView setReturnKeyType:UIReturnKeyDone];
-}
-
-- (id)firstSubviewConformingToProtocol:(Protocol *)pro inView:(UIView *)view
-{
-    if ([view conformsToProtocol: pro])
-        return view;
-    
-    for (UIView *sub in view.subviews) {
-        UIView *ret = [self firstSubviewConformingToProtocol:pro inView:sub];
-        if (ret)
-            return ret;
-    }
-    
-    return nil;
+    // add Algolia search view controller
+    [self addChildViewController:self.algoliaSearchViewController];
+    [self.view addSubview:self.algoliaSearchViewController.view];
 }
 
 #pragma mark - Layout
@@ -107,6 +102,9 @@
                                             rectangleY / self.readerView.frame.size.height,
                                             rectangleWidth / self.readerView.frame.size.width,
                                             rectangleHeight / self.readerView.frame.size.height)];
+    
+    // resize algolia search view
+    self.algoliaSearchViewController.view.frame = self.view.bounds;
 }
 
 #pragma mark - View lifecycle
@@ -128,8 +126,6 @@
     [super viewWillAppear:animated];
     
     [self.readerView performSelector:@selector(start) withObject:nil afterDelay:0.00f];
-    
-    [self performSelector:@selector(test) withObject:nil afterDelay:1.0f];
 }
 
 - (void)test

@@ -30,7 +30,6 @@
 		113DDE2F17DDFA9A0056E126 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 113DDE2E17DDFA9A0056E126 /* Foundation.framework */; };
 		113DDE3117DDFA9A0056E126 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 113DDE3017DDFA9A0056E126 /* CoreGraphics.framework */; };
 		113DDE3317DDFA9A0056E126 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 113DDE3217DDFA9A0056E126 /* UIKit.framework */; };
-		113DDE3917DDFA9A0056E126 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 113DDE3717DDFA9A0056E126 /* InfoPlist.strings */; };
 		113DDE3B17DDFA9A0056E126 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 113DDE3A17DDFA9A0056E126 /* main.m */; };
 		113DDE3F17DDFA9A0056E126 /* SPAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 113DDE3E17DDFA9A0056E126 /* SPAppDelegate.m */; };
 		113DDE4E17DDFA9B0056E126 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 113DDE4D17DDFA9B0056E126 /* XCTest.framework */; };
@@ -92,6 +91,9 @@
 		37A83ACF181A9DDC0077B517 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37A83ACA181A9DDC0077B517 /* Storyboard.storyboard */; };
 		37A83AD5181AA29E0077B517 /* SPTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A83AD4181AA29E0077B517 /* SPTableViewCell.m */; };
 		37A83ADB181AA3010077B517 /* SPProductSearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A83ADA181AA3010077B517 /* SPProductSearchCell.m */; };
+		37AD7760181FC76A00E1EE0D /* SPAlgoliaSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37AD775F181FC76A00E1EE0D /* SPAlgoliaSearchViewController.m */; };
+		37AD7763181FCB0000E1EE0D /* SPAlgoliaSearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 37AD7762181FCB0000E1EE0D /* SPAlgoliaSearchCell.m */; };
+		37AD7766181FED3600E1EE0D /* SPAlgoliaAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 37AD7765181FED3600E1EE0D /* SPAlgoliaAPIClient.m */; };
 		37CDECC5181C51E50065A99D /* SPConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 37CDECC4181C51E50065A99D /* SPConstants.m */; };
 		37D5C97E180E805300216A31 /* ShopeliaSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 37D5C97C180E805300216A31 /* ShopeliaSDKResources.bundle */; };
 		37D5C97F180E805300216A31 /* ShopeliaSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37D5C97D180E805300216A31 /* ShopeliaSDK.framework */; };
@@ -253,6 +255,12 @@
 		37A83AD4181AA29E0077B517 /* SPTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPTableViewCell.m; sourceTree = "<group>"; };
 		37A83AD9181AA3010077B517 /* SPProductSearchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPProductSearchCell.h; sourceTree = "<group>"; };
 		37A83ADA181AA3010077B517 /* SPProductSearchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPProductSearchCell.m; sourceTree = "<group>"; };
+		37AD775E181FC76A00E1EE0D /* SPAlgoliaSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPAlgoliaSearchViewController.h; sourceTree = "<group>"; };
+		37AD775F181FC76A00E1EE0D /* SPAlgoliaSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPAlgoliaSearchViewController.m; sourceTree = "<group>"; };
+		37AD7761181FCB0000E1EE0D /* SPAlgoliaSearchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPAlgoliaSearchCell.h; sourceTree = "<group>"; };
+		37AD7762181FCB0000E1EE0D /* SPAlgoliaSearchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPAlgoliaSearchCell.m; sourceTree = "<group>"; };
+		37AD7764181FED3600E1EE0D /* SPAlgoliaAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPAlgoliaAPIClient.h; sourceTree = "<group>"; };
+		37AD7765181FED3600E1EE0D /* SPAlgoliaAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPAlgoliaAPIClient.m; sourceTree = "<group>"; };
 		37CDECC3181C51E50065A99D /* SPConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPConstants.h; path = "shopelia-ios/SPConstants.h"; sourceTree = "<group>"; };
 		37CDECC4181C51E50065A99D /* SPConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPConstants.m; path = "shopelia-ios/SPConstants.m"; sourceTree = "<group>"; };
 		37D5C97C180E805300216A31 /* ShopeliaSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ShopeliaSDKResources.bundle; sourceTree = "<group>"; };
@@ -284,7 +292,6 @@
 		37D5C99D180E818B00216A31 /* zbar-samples.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zbar-samples.png"; sourceTree = "<group>"; };
 		37E2243A181957AE001DD2A2 /* SPSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSearchBar.h; sourceTree = "<group>"; };
 		37E2243B181957AE001DD2A2 /* SPSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSearchBar.m; sourceTree = "<group>"; };
-		37E2243D181958E4001DD2A2 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		37E2243E181958E4001DD2A2 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		37E2244518196DD2001DD2A2 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		37E2244718197028001DD2A2 /* SPBarcodeOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPBarcodeOverlayView.h; sourceTree = "<group>"; };
@@ -467,8 +474,8 @@
 		113DDE3417DDFA9A0056E126 /* shopelia-ios */ = {
 			isa = PBXGroup;
 			children = (
-				375333A1181FA732004BAB46 /* SPShopeliaManager.h */,
-				375333A2181FA732004BAB46 /* SPShopeliaManager.m */,
+				3756880B182104610018B57E /* Helpers */,
+				3756880A1821045B0018B57E /* Model Objects */,
 				377F3A3F181916AF00C0ECF5 /* View Controllers */,
 				37FEA95D181E77CC0004E85B /* HTTP Requests */,
 				113137BF17F1CCE800AA7DAB /* Views */,
@@ -489,7 +496,6 @@
 			isa = PBXGroup;
 			children = (
 				113DDE3617DDFA9A0056E126 /* shopelia-ios-Info.plist */,
-				113DDE3717DDFA9A0056E126 /* InfoPlist.strings */,
 				37E2244418196DD2001DD2A2 /* Localizable.strings */,
 				113DDE3A17DDFA9A0056E126 /* main.m */,
 				113DDE3C17DDFA9A0056E126 /* shopelia-ios-Prefix.pch */,
@@ -581,8 +587,26 @@
 				37FEA95F181E780C0004E85B /* SPAPIClient+BarcodeSearch.m */,
 				373E2E9E181EAB5A00C575B0 /* SPAPIClient+ProductPrices.h */,
 				373E2E9F181EAB5A00C575B0 /* SPAPIClient+ProductPrices.m */,
+				37AD7764181FED3600E1EE0D /* SPAlgoliaAPIClient.h */,
+				37AD7765181FED3600E1EE0D /* SPAlgoliaAPIClient.m */,
 			);
 			name = Client;
+			sourceTree = "<group>";
+		};
+		3756880A1821045B0018B57E /* Model Objects */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Model Objects";
+			sourceTree = "<group>";
+		};
+		3756880B182104610018B57E /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				375333A1181FA732004BAB46 /* SPShopeliaManager.h */,
+				375333A2181FA732004BAB46 /* SPShopeliaManager.m */,
+			);
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 		377F3A3F181916AF00C0ECF5 /* View Controllers */ = {
@@ -648,6 +672,8 @@
 				37FEA945181E6EB00004E85B /* SPErrorMessageView.h */,
 				37FEA946181E6EB00004E85B /* SPErrorMessageView.m */,
 				37FEA948181E6EEE0004E85B /* SPErrorMessageView.xib */,
+				37AD7761181FCB0000E1EE0D /* SPAlgoliaSearchCell.h */,
+				37AD7762181FCB0000E1EE0D /* SPAlgoliaSearchCell.m */,
 			);
 			name = "Content Views";
 			sourceTree = "<group>";
@@ -659,6 +685,8 @@
 				3705528D181928D300826EA0 /* SPBarcodeScanViewController.m */,
 				37A83AA6181A85710077B517 /* SPProductSearchViewController.h */,
 				37A83AA7181A85710077B517 /* SPProductSearchViewController.m */,
+				37AD775E181FC76A00E1EE0D /* SPAlgoliaSearchViewController.h */,
+				37AD775F181FC76A00E1EE0D /* SPAlgoliaSearchViewController.m */,
 			);
 			name = "Content View Controllers";
 			sourceTree = "<group>";
@@ -864,7 +892,6 @@
 				37D5C99F180E818B00216A31 /* zbar-back.png in Resources */,
 				37FEA95A181E746B0004E85B /* error_button_background_focus@2x.png in Resources */,
 				37A83ACF181A9DDC0077B517 /* Storyboard.storyboard in Resources */,
-				113DDE3917DDFA9A0056E126 /* InfoPlist.strings in Resources */,
 				37FEA949181E6EEE0004E85B /* SPErrorMessageView.xib in Resources */,
 				37A83ACD181A9DDC0077B517 /* bar_code.png in Resources */,
 				113137BA17F1CC8600AA7DAB /* loader-icon@2x.png in Resources */,
@@ -939,11 +966,13 @@
 				11C6E7EB17E07E8500D66D96 /* UIView+Shopelia.m in Sources */,
 				113591D517F57FCA00C478A4 /* errorViewController.m in Sources */,
 				37E2243C181957AE001DD2A2 /* SPSearchBar.m in Sources */,
+				37AD7763181FCB0000E1EE0D /* SPAlgoliaSearchCell.m in Sources */,
 				110B54E317E740F700DF1C3A /* threadFactory.m in Sources */,
 				110B54E617E7533900DF1C3A /* backgroundView.m in Sources */,
 				37CDECC5181C51E50065A99D /* SPConstants.m in Sources */,
 				1163C5A317DF1D070043E73D /* navigationController.m in Sources */,
 				119C076517E320DA003AF6AA /* HTTPRequest.m in Sources */,
+				37AD7760181FC76A00E1EE0D /* SPAlgoliaSearchViewController.m in Sources */,
 				119C076417E320DA003AF6AA /* HTTPClient.m in Sources */,
 				1128F8EF17EC608B0079EC11 /* SPCellContentView.m in Sources */,
 				373E2E96181E805900C575B0 /* SPAPIFetchProductWithBarCodeError.m in Sources */,
@@ -959,6 +988,7 @@
 				110BF64718100F00000CAC67 /* shopeliaImageView.m in Sources */,
 				110B54DD17E6F9D000DF1C3A /* HTTPPoller.m in Sources */,
 				113591D117F4736800C478A4 /* loadingView.m in Sources */,
+				37AD7766181FED3600E1EE0D /* SPAlgoliaAPIClient.m in Sources */,
 				373E2EA6181EAD0B00C575B0 /* SPAPIFetchProductPricesError.m in Sources */,
 				110BF64A18112734000CAC67 /* searchCell.m in Sources */,
 				119C076617E320DA003AF6AA /* HTTPResponse.m in Sources */,
@@ -992,14 +1022,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		113DDE3717DDFA9A0056E126 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				37E2243D181958E4001DD2A2 /* fr */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 		113DDE5617DDFA9B0056E126 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
