@@ -48,11 +48,8 @@
 		116CD92C17DE030100978733 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 116CD92717DE030100978733 /* libiconv.dylib */; };
 		116CD92D17DE030100978733 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 116CD92817DE030100978733 /* QuartzCore.framework */; };
 		1183CD9117E9D58300F1E66D /* baseProductViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1183CD9017E9D58300F1E66D /* baseProductViewController.m */; };
-		1183CD9317EB365900F1E66D /* products.json in Resources */ = {isa = PBXBuildFile; fileRef = 1183CD9217EB365900F1E66D /* products.json */; };
 		1183CD9617EB41DD00F1E66D /* SPCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1183CD9517EB41DD00F1E66D /* SPCell.m */; };
 		1183CD9817EB423600F1E66D /* SPCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1183CD9717EB423600F1E66D /* SPCell.xib */; };
-		118433B117E1F01E00425AEB /* green-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 118433AC17E1F01E00425AEB /* green-button.png */; };
-		118433B217E1F01E00425AEB /* green-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 118433AD17E1F01E00425AEB /* green-button@2x.png */; };
 		118433B317E1F01E00425AEB /* productViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 118433AF17E1F01E00425AEB /* productViewController.m */; };
 		118433B417E1F01E00425AEB /* productViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 118433B017E1F01E00425AEB /* productViewController.xib */; };
 		1190AAE317E9CECE003E570E /* productListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1190AAE117E9CECE003E570E /* productListViewController.m */; };
@@ -77,6 +74,7 @@
 		373E2EA0181EAB5A00C575B0 /* SPAPIClient+ProductPrices.m in Sources */ = {isa = PBXBuildFile; fileRef = 373E2E9F181EAB5A00C575B0 /* SPAPIClient+ProductPrices.m */; };
 		373E2EA6181EAD0B00C575B0 /* SPAPIFetchProductPricesError.m in Sources */ = {isa = PBXBuildFile; fileRef = 373E2EA5181EAD0B00C575B0 /* SPAPIFetchProductPricesError.m */; };
 		375333A3181FA732004BAB46 /* SPShopeliaManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 375333A2181FA732004BAB46 /* SPShopeliaManager.m */; };
+		3756880E182108F90018B57E /* SPAlgoliaSearchResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 3756880D182108F90018B57E /* SPAlgoliaSearchResult.m */; };
 		376839411816C479008BFAA5 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 376839401816C479008BFAA5 /* Accelerate.framework */; };
 		376839431816C496008BFAA5 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 376839421816C496008BFAA5 /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		376839471816CF0C008BFAA5 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 376839461816CF0C008BFAA5 /* CoreTelephony.framework */; };
@@ -188,12 +186,9 @@
 		116CD92817DE030100978733 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		1183CD8F17E9D58300F1E66D /* baseProductViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = baseProductViewController.h; sourceTree = "<group>"; };
 		1183CD9017E9D58300F1E66D /* baseProductViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = baseProductViewController.m; sourceTree = "<group>"; };
-		1183CD9217EB365900F1E66D /* products.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = products.json; sourceTree = "<group>"; };
 		1183CD9417EB41DD00F1E66D /* SPCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPCell.h; sourceTree = "<group>"; };
 		1183CD9517EB41DD00F1E66D /* SPCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPCell.m; sourceTree = "<group>"; };
 		1183CD9717EB423600F1E66D /* SPCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPCell.xib; sourceTree = "<group>"; };
-		118433AC17E1F01E00425AEB /* green-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "green-button.png"; sourceTree = "<group>"; };
-		118433AD17E1F01E00425AEB /* green-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "green-button@2x.png"; sourceTree = "<group>"; };
 		118433AE17E1F01E00425AEB /* productViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = productViewController.h; sourceTree = "<group>"; };
 		118433AF17E1F01E00425AEB /* productViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = productViewController.m; sourceTree = "<group>"; };
 		118433B017E1F01E00425AEB /* productViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = productViewController.xib; sourceTree = "<group>"; };
@@ -237,6 +232,8 @@
 		373E2EA5181EAD0B00C575B0 /* SPAPIFetchProductPricesError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPAPIFetchProductPricesError.m; sourceTree = "<group>"; };
 		375333A1181FA732004BAB46 /* SPShopeliaManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPShopeliaManager.h; sourceTree = "<group>"; };
 		375333A2181FA732004BAB46 /* SPShopeliaManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPShopeliaManager.m; sourceTree = "<group>"; };
+		3756880C182108F90018B57E /* SPAlgoliaSearchResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPAlgoliaSearchResult.h; sourceTree = "<group>"; };
+		3756880D182108F90018B57E /* SPAlgoliaSearchResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPAlgoliaSearchResult.m; sourceTree = "<group>"; };
 		376839401816C479008BFAA5 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		376839421816C496008BFAA5 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		376839461816CF0C008BFAA5 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
@@ -481,7 +478,6 @@
 				113137BF17F1CCE800AA7DAB /* Views */,
 				113137BE17F1CCCC00AA7DAB /* Controllers */,
 				113137BD17F1CCA900AA7DAB /* Categories */,
-				1183CD9217EB365900F1E66D /* products.json */,
 				37A83AC5181A9DDC0077B517 /* Resources */,
 				116CD95617DF085500978733 /* Images */,
 				119C076717E3216C003AF6AA /* HTTP */,
@@ -531,8 +527,6 @@
 				113137B617F1CC8600AA7DAB /* loader-icon@2x.png */,
 				115E67B217E8966000B88DCA /* ic_purchase_white@2x.png */,
 				115E67AF17E8961D00B88DCA /* ic_purchase_white.png */,
-				118433AC17E1F01E00425AEB /* green-button.png */,
-				118433AD17E1F01E00425AEB /* green-button@2x.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -596,6 +590,8 @@
 		3756880A1821045B0018B57E /* Model Objects */ = {
 			isa = PBXGroup;
 			children = (
+				3756880C182108F90018B57E /* SPAlgoliaSearchResult.h */,
+				3756880D182108F90018B57E /* SPAlgoliaSearchResult.m */,
 			);
 			name = "Model Objects";
 			sourceTree = "<group>";
@@ -878,7 +874,6 @@
 				113137C717F1D52300AA7DAB /* SpinnerView.xib in Resources */,
 				110BF64C18112755000CAC67 /* searchCell.xib in Resources */,
 				37D5C9A2180E818B00216A31 /* zbar-samples.png in Resources */,
-				1183CD9317EB365900F1E66D /* products.json in Resources */,
 				37A2A2DF180E85670097952D /* Images.xcassets in Resources */,
 				1183CD9817EB423600F1E66D /* SPCell.xib in Resources */,
 				1190AAE417E9CECE003E570E /* productListViewController.xib in Resources */,
@@ -886,7 +881,6 @@
 				37A83ACE181A9DDC0077B517 /* bar_code@2x.png in Resources */,
 				37FEA95C181E746B0004E85B /* error_button_background_normal@2x.png in Resources */,
 				37FEA951181E715F0004E85B /* error_logo_icon@2x.png in Resources */,
-				118433B117E1F01E00425AEB /* green-button.png in Resources */,
 				37FEA950181E715F0004E85B /* error_logo_icon.png in Resources */,
 				37A83ACC181A9DDC0077B517 /* back_arrow@2x.png in Resources */,
 				37D5C99F180E818B00216A31 /* zbar-back.png in Resources */,
@@ -897,7 +891,6 @@
 				113137BA17F1CC8600AA7DAB /* loader-icon@2x.png in Resources */,
 				37FEA959181E746B0004E85B /* error_button_background_focus.png in Resources */,
 				113591E517F5D39700C478A4 /* loader-icon-small.png in Resources */,
-				118433B217E1F01E00425AEB /* green-button@2x.png in Resources */,
 				113591E617F5D39700C478A4 /* loader-icon-small@2x.png in Resources */,
 				115E67B317E8966000B88DCA /* ic_purchase_white@2x.png in Resources */,
 				113137B917F1CC8600AA7DAB /* loader-icon.png in Resources */,
@@ -962,6 +955,7 @@
 				37A83AA8181A85710077B517 /* SPProductSearchViewController.m in Sources */,
 				1163C5AF17DF5B6C0043E73D /* overlayView.m in Sources */,
 				1183CD9117E9D58300F1E66D /* baseProductViewController.m in Sources */,
+				3756880E182108F90018B57E /* SPAlgoliaSearchResult.m in Sources */,
 				373E2E92181E7BE000C575B0 /* SPAPIClient+Tracker.m in Sources */,
 				11C6E7EB17E07E8500D66D96 /* UIView+Shopelia.m in Sources */,
 				113591D517F57FCA00C478A4 /* errorViewController.m in Sources */,

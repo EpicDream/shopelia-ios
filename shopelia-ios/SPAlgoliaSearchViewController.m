@@ -11,13 +11,14 @@
 #import "SPAlgoliaSearchCell.h"
 #import "SPAlgoliaAPIClient.h"
 #import "SPShopeliaManager.h"
+#import "SPAlgoliaSearchResult.h"
 
 #define TABLE_VIEW_ALGOLIA_SEARCH_CELL_IDENTIFIER @"SPAlgoliaSearchCell"
 
 @interface SPAlgoliaSearchViewController ()  <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 @property (weak, nonatomic) IBOutlet SPSearchBar *searchBar;
 @property (strong, nonatomic) NSTimer *searchTimer;
-@property (strong, nonatomic) NSArray *products;
+@property (strong, nonatomic) NSArray *searchResults;
 @property (assign, nonatomic) NSUInteger currentPageNumber;
 @end
 
@@ -32,7 +33,7 @@
                                                       completion:^(BOOL success, NSArray *products) {
         if (success)
         {
-            self.products = products;
+            self.searchResults = products;
             [self.tableView reloadData];
             [self updateTableViewVisibility];
         }
@@ -64,7 +65,7 @@
     }
     else
     {
-        self.products = @[];
+        self.searchResults = @[];
         [self.tableView reloadData];
         [self updateTableViewVisibility];
     }
@@ -74,10 +75,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    SPProduct *product = [self.products objectAtIndex:indexPath.row];
+    SPAlgoliaSearchResult *searchResult = [self.searchResults objectAtIndex:indexPath.row];
     
-    // show shopelia SDK
-    [SPShopeliaManager showShopeliaSDKForURL:product.URL fromViewController:self];
+    // notify delegate
+    [self.delegate algoliaSearchViewController:self didSelectSearchResult:searchResult];
 }
 
 #pragma mark - UITableView data source
@@ -89,17 +90,17 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.products.count;
+    return self.searchResults.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     SPAlgoliaSearchCell *cell = [tableView dequeueReusableCellWithIdentifier:TABLE_VIEW_ALGOLIA_SEARCH_CELL_IDENTIFIER];
-    SPProduct *product = [self.products objectAtIndex:indexPath.row];
+    SPAlgoliaSearchResult *searchResult = [self.searchResults objectAtIndex:indexPath.row];
     
-    cell.productTitleLabel.text = product.name;
+    cell.productTitleLabel.text = searchResult.product.name;
     [cell.productImageView setImage:nil];
-    [cell.productImageView setAsynchImageWithURL:product.imageURL];
+    [cell.productImageView setAsynchImageWithURL:searchResult.product.imageURL];
     return cell;
 }
 
@@ -144,7 +145,7 @@
 
 - (void)updateTableViewVisibility
 {
-    if (self.products.count > 0)
+    if (self.searchResults.count > 0)
     {
         self.tableView.hidden = NO;
     }

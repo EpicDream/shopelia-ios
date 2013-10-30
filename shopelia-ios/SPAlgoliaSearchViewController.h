@@ -7,8 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SPAlgoliaSearchResult.h"
+
+@class SPAlgoliaSearchViewController;
+
+@protocol SPAlgoliaSearchViewControllerDelegate <NSObject>
+
+- (void)algoliaSearchViewController:(SPAlgoliaSearchViewController *)vc didSelectSearchResult:(SPAlgoliaSearchResult *)searchResult;
+
+@end
 
 @interface SPAlgoliaSearchViewController : SPViewController
 
+@property (weak, nonatomic) id <SPAlgoliaSearchViewControllerDelegate> delegate;
 
 @end

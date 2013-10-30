@@ -8,6 +8,7 @@
 
 #import "SPAlgoliaAPIClient.h"
 #import "ASAPIClient.h"
+#import "SPAlgoliaSearchResult.h"
 
 @interface SPAlgoliaAPIClient ()
 @property (strong, nonatomic) ASAPIClient *APIClient;
@@ -43,7 +44,7 @@
     [self.remoteIndex cancelPreviousSearches];
 }
 
-- (void)searchProductsWithQuery:(NSString *)query page:(NSUInteger)page completion:(void (^)(BOOL success, NSArray *products))completion
+- (void)searchProductsWithQuery:(NSString *)query page:(NSUInteger)page completion:(void (^)(BOOL success, NSArray *searchResults))completion
 {
     // cancel previous searches
     [self cancelSearches];
@@ -53,18 +54,18 @@
                      success:^(ASRemoteIndex *index, ASQuery *query, NSDictionary *result) {
                          
                          // create products
-                         NSMutableArray *products = [[NSMutableArray alloc] init];
+                         NSMutableArray *searchResults = [[NSMutableArray alloc] init];
                          for (NSDictionary *productJSON in [result objectForKey:@"hits"])
                          {
                              if (![productJSON isKindOfClass:[NSDictionary class]])
                                  continue ;
                              
-                             SPProduct *product = [[SPProduct alloc] initWithMinimalJSON:productJSON];
-                             if ([product isValid])
-                                 [products addObject:product];
+                             SPAlgoliaSearchResult *searchResult = [[SPAlgoliaSearchResult alloc] initWithJSON:productJSON];
+                             if ([searchResult isValid])
+                                 [searchResults addObject:searchResult];
                          }
                          if (completion)
-                             completion(YES, products);
+                             completion(YES, searchResults);
                      }
                      failure:^(ASRemoteIndex *index, ASQuery *query, NSString *errorMessage) {
                          

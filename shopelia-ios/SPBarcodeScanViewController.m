@@ -11,10 +11,11 @@
 #import "SPBarcodeOverlayView.h"
 #import "SPProductSearchViewController.h"
 #import "SPAlgoliaSearchViewController.h"
+#import "SPShopeliaManager.h"
 
 #define PRODUCT_SEARCH_SEGUE_NAME @"SHOW_PRODUCT_SEARCH"
 
-@interface SPBarcodeScanViewController () <ZBarReaderViewDelegate>
+@interface SPBarcodeScanViewController () <ZBarReaderViewDelegate, SPAlgoliaSearchViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet ZBarReaderView *readerView;
 @property (weak, nonatomic) IBOutlet SPBarcodeOverlayView *readerOverlayView;
 @property (weak, nonatomic) IBOutlet UIView *footerSeparatorView;
@@ -33,6 +34,7 @@
     if (!_algoliaSearchViewController)
     {
         _algoliaSearchViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SPAlgoliaSearchViewController"];
+        _algoliaSearchViewController.delegate = self;
     }
     return _algoliaSearchViewController;
 }
@@ -49,7 +51,24 @@
     }
 }
 
-#pragma mark - ZBarReaderViewDelegate delegate
+#pragma mark - SPAlgoliaSearchViewController delegate
+
+- (void)algoliaSearchViewController:(SPAlgoliaSearchViewController *)vc didSelectSearchResult:(SPAlgoliaSearchResult *)searchResult
+{
+    if (searchResult.barcode)
+    {
+        // fetch product
+        self.lastBarcode = searchResult.barcode;
+        self.lastBarcodeWasFromScanner = NO;
+        [self performSegueWithIdentifier:PRODUCT_SEARCH_SEGUE_NAME sender:self];
+    }
+    else
+    {
+        [SPShopeliaManager showShopeliaSDKForURL:searchResult.product.URL fromViewController:self];
+    }
+}
+
+#pragma mark - ZBarReaderView delegate
 
 - (void)readerView:(ZBarReaderView *)readerView didReadSymbols:(ZBarSymbolSet *)symbols fromImage:(UIImage *)image
 {
@@ -126,13 +145,6 @@
     [super viewWillAppear:animated];
     
     [self.readerView performSelector:@selector(start) withObject:nil afterDelay:0.00f];
-}
-
-- (void)test
-{
-    self.lastBarcode = @"0609465362465";
-    self.lastBarcodeWasFromScanner = YES;
-    [self performSegueWithIdentifier:PRODUCT_SEARCH_SEGUE_NAME sender:self];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
