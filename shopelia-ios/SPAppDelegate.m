@@ -7,10 +7,8 @@
 //
 
 #import "SPAppDelegate.h"
-#import "OHAttributedLabel.h"
 #import "TestFlight.h"
 #import "SPBarcodeScanViewController.h"
-#import "SPZBarReaderViewController.h"
 
 @implementation SPAppDelegate
 
@@ -18,7 +16,7 @@
 {
     // launch TestFight
     [TestFlight setOptions:@{TFOptionLogToConsole : @NO, TFOptionLogToSTDERR : @NO, TFOptionLogOnCheckpoint : @NO}];
-    [TestFlight takeOff:@"6cd79ccd-d2f3-4658-b4ba-4dc1a40bc089"];
+    [TestFlight takeOff:SPTestFlightApplicationToken];
 
     return YES;
 }

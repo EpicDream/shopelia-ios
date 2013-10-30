@@ -23,7 +23,7 @@
 {
     if (!_APIClient)
     {
-        _APIClient = [ASAPIClient apiClientWithApplicationID:@"JUFLKNI0PS" apiKey:@"03832face9510ee5a495b06855dfa38b"];
+        _APIClient = [ASAPIClient apiClientWithApplicationID:SPAlgoliaApplicationID apiKey:SPAlgoliaAPIKey];
     }
     return _APIClient;
 }

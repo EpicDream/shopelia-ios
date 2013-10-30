@@ -1,22 +1,12 @@
 //
-//  Constants.h
+//  SPConstants.h
 //  shopelia-ios
 //
 //  Created by Amine bellakrid on 9/13/13.
 //  Copyright (c) 2013 Amine bellakrid. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#define SPTestFlightApplicationToken @"6cd79ccd-d2f3-4658-b4ba-4dc1a40bc089"
 
-
-extern NSString *const BASE_URL;
-extern NSString *const API_URL;
-
-
-#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO( v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
-
-
-@interface Constants : NSObject
-
-
-@end
+#define SPAlgoliaApplicationID @"JUFLKNI0PS"
+#define SPAlgoliaAPIKey @"03832face9510ee5a495b06855dfa38b"
