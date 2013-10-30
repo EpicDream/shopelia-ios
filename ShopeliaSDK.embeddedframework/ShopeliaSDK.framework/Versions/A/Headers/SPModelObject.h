@@ -7,11 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SPJSONFactory.h"
 
 @interface SPModelObject : NSObject
 
 // inits the receiver with the given JSON info
-- (id)initWithJSON:(NSDictionary *)json;
+- (id)initWithJSON:(NSDictionary *)JSON;
 
 // configures the receiver with the given JSON infos
 - (BOOL)configureWithJSON:(NSDictionary *)JSON;
