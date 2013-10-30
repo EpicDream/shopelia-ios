@@ -7,10 +7,8 @@
 //
 
 #import "SPAppDelegate.h"
-#import "OHAttributedLabel.h"
 #import "TestFlight.h"
 #import "SPBarcodeScanViewController.h"
-#import "SPZBarReaderViewController.h"
 
 @implementation SPAppDelegate
 
@@ -18,25 +16,7 @@
 {
     // launch TestFight
     [TestFlight setOptions:@{TFOptionLogToConsole : @NO, TFOptionLogToSTDERR : @NO, TFOptionLogOnCheckpoint : @NO}];
-    [TestFlight takeOff:@"6cd79ccd-d2f3-4658-b4ba-4dc1a40bc089"];
-    
-    // appearance
-    [[OHAttributedLabel appearance] setLinkColor:[SPVisualFactory linkTextColor]];
-    
-    // create default view controllers
-    SPNavigationController *navigationController = [[SPNavigationController alloc] init];
-    
-    SPZBarReaderViewController *viewController = [[SPZBarReaderViewController alloc] init];
-    [[UISearchBar appearance] setBackgroundImage:[SPVisualFactory cachedImageNamed:@"shopelia_topbar_background.png"]];
-    
-    //SPBarcodeScanViewController *viewController = [[SPBarcodeScanViewController alloc] init];
-    
-    [navigationController setViewControllers:@[viewController]];
-    
-    // create default window
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.rootViewController = navigationController;
-    [self.window makeKeyAndVisible];
+    [TestFlight takeOff:SPTestFlightApplicationToken];
 
     return YES;
 }

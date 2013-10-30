@@ -6,22 +6,69 @@
 //  Copyright (c) 2013 Shopelia. All rights reserved.
 //
 
-#import "SPBarcodeScanViewController.h"
-#import "SPSearchBar.h"
-#import "SPBarcodeOverlayView.h"
 #import <AudioToolbox/AudioToolbox.h>
+#import "SPBarcodeScanViewController.h"
+#import "SPBarcodeOverlayView.h"
+#import "SPProductSearchViewController.h"
+#import "SPAlgoliaSearchViewController.h"
+#import "SPShopeliaManager.h"
 
-@interface SPBarcodeScanViewController () <ZBarReaderViewDelegate>
+#define PRODUCT_SEARCH_SEGUE_NAME @"SHOW_PRODUCT_SEARCH"
+
+@interface SPBarcodeScanViewController () <ZBarReaderViewDelegate, SPAlgoliaSearchViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet ZBarReaderView *readerView;
 @property (weak, nonatomic) IBOutlet SPBarcodeOverlayView *readerOverlayView;
 @property (weak, nonatomic) IBOutlet UIView *footerSeparatorView;
-@property (weak, nonatomic) IBOutlet SPSearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet SPLabel *centerLabel;
+@property (strong, nonatomic) NSString *lastBarcode;
+@property (assign, nonatomic) BOOL lastBarcodeWasFromScanner;
+@property (strong, nonatomic) SPAlgoliaSearchViewController *algoliaSearchViewController;
 @end
 
 @implementation SPBarcodeScanViewController
 
-#pragma mark - ZBarReaderViewDelegate delegate
+#pragma mark - Lazy instanciation
+
+- (SPAlgoliaSearchViewController *)algoliaSearchViewController
+{
+    if (!_algoliaSearchViewController)
+    {
+        _algoliaSearchViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SPAlgoliaSearchViewController"];
+        _algoliaSearchViewController.delegate = self;
+    }
+    return _algoliaSearchViewController;
+}
+
+#pragma mark - Segues
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:PRODUCT_SEARCH_SEGUE_NAME])
+    {
+        SPProductSearchViewController *vc = (SPProductSearchViewController *)segue.destinationViewController;
+        vc.barcode = self.lastBarcode;
+        vc.fromScanner = self.lastBarcodeWasFromScanner;
+    }
+}
+
+#pragma mark - SPAlgoliaSearchViewController delegate
+
+- (void)algoliaSearchViewController:(SPAlgoliaSearchViewController *)vc didSelectSearchResult:(SPAlgoliaSearchResult *)searchResult
+{
+    if (searchResult.barcode)
+    {
+        // fetch product
+        self.lastBarcode = searchResult.barcode;
+        self.lastBarcodeWasFromScanner = NO;
+        [self performSegueWithIdentifier:PRODUCT_SEARCH_SEGUE_NAME sender:self];
+    }
+    else
+    {
+        [SPShopeliaManager showShopeliaSDKForURL:searchResult.product.URL fromViewController:self];
+    }
+}
+
+#pragma mark - ZBarReaderView delegate
 
 - (void)readerView:(ZBarReaderView *)readerView didReadSymbols:(ZBarSymbolSet *)symbols fromImage:(UIImage *)image
 {
@@ -30,14 +77,17 @@
     for (symbol in symbols)
         break;
     
-    // if we don't have a symbol
-    if (!symbol)
+    // if we don't have a symbol data
+    if (!symbol.data)
         return ;
     
     // vibrate
     AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
     
     // fetch product
+    self.lastBarcode = [symbol data];
+    self.lastBarcodeWasFromScanner = YES;
+    [self performSegueWithIdentifier:PRODUCT_SEARCH_SEGUE_NAME sender:self];
 }
 
 #pragma mark - Interface
@@ -49,43 +99,57 @@
     self.footerSeparatorView.backgroundColor = [SPVisualFactory navigationBarBackgroundColor];
     self.centerLabel.textColor = [SPVisualFactory navigationBarBackgroundColor];
     self.centerLabel.text = NSLocalizedString(@"CenterBarCodeInZone", nil);
-    self.searchBar.placeholder = NSLocalizedString(@"SearchAProduct", nil);
-    self.readerView.readerDelegate = self;
     
-    // configure zbar symbols
-    [self.readerView.scanner setSymbology:0 config:ZBAR_CFG_ENABLE to:NO];
-    [self.readerView.scanner setSymbology:ZBAR_UPCA config:ZBAR_CFG_ENABLE to:YES];
-    [self.readerView.scanner setSymbology:ZBAR_UPCE config:ZBAR_CFG_ENABLE to:YES];
-    [self.readerView.scanner setSymbology:ZBAR_EAN13 config:ZBAR_CFG_ENABLE to:YES];
+    // add Algolia search view controller
+    [self addChildViewController:self.algoliaSearchViewController];
+    [self.view addSubview:self.algoliaSearchViewController.view];
+}
+
+#pragma mark - Layout
+
+- (void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    
+    // compute scan crop
+    CGFloat rectangleX = (self.readerView.frame.size.width - self.readerOverlayView.scanSize.width) / 2.0f;
+    CGFloat rectangleY = (self.readerView.frame.size.height - self.readerOverlayView.scanSize.width) / 2.0f;
+    CGFloat rectangleWidth = self.readerOverlayView.scanSize.width;
+    CGFloat rectangleHeight = self.readerOverlayView.scanSize.width;
+    
+    [self.readerView setScanCrop:CGRectMake(rectangleX / self.readerView.frame.size.width,
+                                            rectangleY / self.readerView.frame.size.height,
+                                            rectangleWidth / self.readerView.frame.size.width,
+                                            rectangleHeight / self.readerView.frame.size.height)];
+    
+    // resize algolia search view
+    self.algoliaSearchViewController.view.frame = self.view.bounds;
 }
 
 #pragma mark - View lifecycle
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    self.readerView.readerDelegate = self;
+    
+    // configure zbar symbols
+    [self.readerView.scanner setSymbology:0 config:ZBAR_CFG_ENABLE to:NO];
+    [self.readerView.scanner setSymbology:ZBAR_EAN13 config:ZBAR_CFG_ENABLE to:YES];
+    [self.readerView setTrackingColor:[SPVisualFactory validColor]];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
-    [self.readerView start];
+    [self.readerView performSelector:@selector(start) withObject:nil afterDelay:0.00f];
 }
 
-- (void)viewDidDisappear:(BOOL)animated
+- (void)viewWillDisappear:(BOOL)animated
 {
-    [super viewDidDisappear:animated];
+    [super viewWillDisappear:animated];
     
     [self.readerView stop];
 }

@@ -76,10 +76,15 @@
 // changes the current selected version hash given a new option value
 - (void)selectProductOptionValue:(SPProductOptionValue *)optionValue forOptionIndex:(NSInteger)optionIndex;
 
+// inits the receiver with the minimal JSON in parameter
+- (id)initWithMinimalJSON:(NSDictionary *)JSON;
+
 @property (assign, nonatomic) NSUInteger selectedVersionHash;
 @property (strong, nonatomic) SPMerchant *merchant;
 @property (strong, nonatomic) NSURL *URL;
 @property (strong, nonatomic) NSNumber *ID;
 @property (strong, nonatomic) SPCurrency *currency;
+@property (strong, nonatomic) NSString *brand;
+@property (assign, nonatomic, getter = isAvailableFromSaturn) BOOL availableFromSaturn;
 
 @end

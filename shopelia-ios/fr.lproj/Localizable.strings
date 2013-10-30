@@ -6,8 +6,24 @@
   Copyright (c) 2013 Shopelia. All rights reserved.
 */
 
+"ErrorUnableToFetchThisSearchedProduct" = "Nous n'avons pas trouvé le produit que vous recherchez.";
+
+"ErrorUnableToFetchThisScannedProduct" = "Nous n'avons pas trouvé le produit que vous venez de scanner.";
+
+"ErrorUnableToFindPricesForThisProductOnline" = "Nous n'avons pas trouvé de prix pour ce produit sur Internet.";
+
 "CenterBarCodeInZone" = "Centrez le code-barre dans la zone ci-dessus";
 
 "SearchAProduct" = "Rechercher un produit";
 
 "TheEasiestWayToBuyFromYourMobile" = "La façon la plus simple d'acheter avec votre mobile !";
+
+"IncludedDelivery" = "Livraison incluse.";
+
+"ProductSearchInProgress" = "Recherche du produit en cours...";
+
+"Back" = "Retour";
+
+"By%@" = "par %@";
+
+"SearchingForPricesAndAvailabilities" = "Recherche des prix et disponibilités...";

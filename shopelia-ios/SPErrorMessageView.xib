@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4510" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="1" customClass="SPErrorMessageView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0OF-sC-01c" customClass="SPFieldImageView">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="error_logo_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="pDc-Pm-6p8">
+                    <rect key="frame" x="121" y="40" width="78" height="78"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="78" id="9pP-PA-274"/>
+                        <constraint firstAttribute="width" constant="78" id="N9h-tV-oAz"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_error_message_" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="ei3-rB-z0n" customClass="SPLargeLabel">
+                    <rect key="frame" x="20" y="138" width="280" height="78"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K1K-CO-911" customClass="SPLargeImportantButton">
+                    <rect key="frame" x="20" y="236" width="280" height="44"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="Byv-3I-6WX"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" title="Back">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="ei3-rB-z0n" secondAttribute="trailing" constant="20" id="6Kc-mg-NM7"/>
+                <constraint firstAttribute="trailing" secondItem="K1K-CO-911" secondAttribute="trailing" constant="20" id="6vR-e8-c5M"/>
+                <constraint firstItem="0OF-sC-01c" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="I9b-9g-w98"/>
+                <constraint firstItem="pDc-Pm-6p8" firstAttribute="top" secondItem="1" secondAttribute="top" constant="40" id="Sr8-yb-ZAy"/>
+                <constraint firstItem="0OF-sC-01c" firstAttribute="top" secondItem="1" secondAttribute="top" id="bDi-mD-dlV"/>
+                <constraint firstItem="K1K-CO-911" firstAttribute="top" secondItem="ei3-rB-z0n" secondAttribute="bottom" constant="20" id="bbn-PN-iEh"/>
+                <constraint firstAttribute="centerX" secondItem="pDc-Pm-6p8" secondAttribute="centerX" id="coO-We-iMI"/>
+                <constraint firstAttribute="bottom" secondItem="0OF-sC-01c" secondAttribute="bottom" id="dHo-d5-llo"/>
+                <constraint firstAttribute="trailing" secondItem="0OF-sC-01c" secondAttribute="trailing" id="lkM-WB-38f"/>
+                <constraint firstItem="ei3-rB-z0n" firstAttribute="top" secondItem="pDc-Pm-6p8" secondAttribute="bottom" constant="20" id="pTv-5h-xsN"/>
+                <constraint firstAttribute="bottom" secondItem="K1K-CO-911" secondAttribute="bottom" constant="40" id="qQr-Zf-bmu"/>
+                <constraint firstItem="K1K-CO-911" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="20" id="sGn-NQ-keL"/>
+                <constraint firstItem="ei3-rB-z0n" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="20" id="tO4-CJ-jYq"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="actionButton" destination="K1K-CO-911" id="fqf-Ic-C9O"/>
+                <outlet property="messageLabel" destination="ei3-rB-z0n" id="O5t-Ka-Mqs"/>
+            </connections>
+        </view>
+    </objects>
+    <resources>
+        <image name="error_logo_icon.png" width="78" height="78"/>
+    </resources>
+</document>

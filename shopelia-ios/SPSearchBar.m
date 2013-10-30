@@ -10,6 +10,8 @@
 
 @implementation SPSearchBar
 
+#pragma mark - Customization
+
 - (void)customize
 {
     // background image
@@ -24,7 +26,7 @@
     // background color
     self.backgroundColor = [SPVisualFactory navigationBarBackgroundColor];
     
-    
+    self.tintColor = [SPVisualFactory navigationBarBackgroundColor];
 }
 
 @end
