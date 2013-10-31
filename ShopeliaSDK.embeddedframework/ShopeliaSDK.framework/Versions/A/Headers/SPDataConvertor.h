@@ -31,4 +31,7 @@
 // returns the trimmed parameter string
 + (NSString *)stringByTrimmingString:(NSString *)string;
 
+// returns a string representation of any NSData
++ (NSString *)stringFromData:(NSData *)data;
+
 @end
