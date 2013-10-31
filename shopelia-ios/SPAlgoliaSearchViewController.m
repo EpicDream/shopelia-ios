@@ -12,8 +12,10 @@
 #import "SPAlgoliaAPIClient.h"
 #import "SPShopeliaManager.h"
 #import "SPAlgoliaSearchResult.h"
+#import "SPAlgoliaNoResultsCell.h"
 
 #define TABLE_VIEW_ALGOLIA_SEARCH_CELL_IDENTIFIER @"SPAlgoliaSearchCell"
+#define TABLE_VIEW_ALGOLIA_NO_RESULTS_CELL_IDENTIFIER @"SPAlgoliaNoResultsCell"
 
 @interface SPAlgoliaSearchViewController ()  <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 @property (weak, nonatomic) IBOutlet SPSearchBar *searchBar;
@@ -75,10 +77,20 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if ([self shouldDisplayNoResultsCell])
+        return;
+    
     SPAlgoliaSearchResult *searchResult = [self.searchResults objectAtIndex:indexPath.row];
     
     // notify delegate
     [self.delegate algoliaSearchViewController:self didSelectSearchResult:searchResult];
+}
+
+- (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([self shouldDisplayNoResultsCell])
+        return NO;
+    return YES;
 }
 
 #pragma mark - UITableView data source
@@ -90,11 +102,20 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    if ([self shouldDisplayNoResultsCell])
+        return 1;
+    
     return self.searchResults.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if ([self shouldDisplayNoResultsCell])
+    {
+        SPAlgoliaNoResultsCell *cell = [tableView dequeueReusableCellWithIdentifier:TABLE_VIEW_ALGOLIA_NO_RESULTS_CELL_IDENTIFIER];
+        return cell;
+    }
+    
     SPAlgoliaSearchCell *cell = [tableView dequeueReusableCellWithIdentifier:TABLE_VIEW_ALGOLIA_SEARCH_CELL_IDENTIFIER];
     SPAlgoliaSearchResult *searchResult = [self.searchResults objectAtIndex:indexPath.row];
     
@@ -125,7 +146,7 @@
     [subView setReturnKeyType:UIReturnKeyDone];
     
     self.tableView.backgroundColor = [SPVisualFactory defaultBackgroundColor];
-    self.tableView.hidden = YES;
+    [self updateTableViewVisibility];
 }
 
 - (id)firstSubviewConformingToProtocol:(Protocol *)pro inView:(UIView *)view
@@ -145,7 +166,7 @@
 
 - (void)updateTableViewVisibility
 {
-    if (self.searchResults.count > 0)
+    if ([self shouldDisplayNoResultsCell] || self.searchResults.count > 0)
     {
         self.tableView.hidden = NO;
     }
@@ -153,6 +174,11 @@
     {
         self.tableView.hidden = YES;
     }
+}
+
+- (BOOL)shouldDisplayNoResultsCell
+{
+    return (self.searchResults.count == 0 && [SPDataConvertor stringByTrimmingString:self.searchBar.text].length >= 3);
 }
 
 #pragma mark - Lifecycle

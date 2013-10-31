@@ -1,24 +1,24 @@
 //
-//  SPAlgoliaSearchCell.m
+//  SPAlgoliaNoResultsCell.m
 //  shopelia-ios
 //
-//  Created by Nicolas on 29/10/2013.
+//  Created by Nicolas on 30/10/2013.
 //  Copyright (c) 2013 Shopelia. All rights reserved.
 //
 
-#import "SPAlgoliaSearchCell.h"
+#import "SPAlgoliaNoResultsCell.h"
 
-@interface SPAlgoliaSearchCell ()
-@property (weak, nonatomic) IBOutlet SPFieldImageView *fieldImageView;
+@interface SPAlgoliaNoResultsCell ()
+@property (weak, nonatomic) IBOutlet SPLabel *noResultsLabel;
 @end
 
-@implementation SPAlgoliaSearchCell
+@implementation SPAlgoliaNoResultsCell
 
 #pragma mark - Customization
 
 - (void)customize
 {
-    
+    self.noResultsLabel.text = NSLocalizedString(@"NoResultsForThisQuery", nil);
 }
 
 #pragma mark - Lifecycle

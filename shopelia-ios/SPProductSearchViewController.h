@@ -6,10 +6,9 @@
 //  Copyright (c) 2013 Shopelia. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import "SPPopableViewController.h"
+#import "SPContainerViewController.h"
 
-@interface SPProductSearchViewController : SPPopableViewController
+@interface SPProductSearchViewController : SPContainerViewController
 
 @property (strong, nonatomic) NSString *barcode;
 @property (assign, nonatomic) BOOL fromScanner;

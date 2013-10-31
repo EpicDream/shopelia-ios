@@ -10,63 +10,15 @@
 #import "SPBarcodeScanViewController.h"
 #import "SPBarcodeOverlayView.h"
 #import "SPProductSearchViewController.h"
-#import "SPAlgoliaSearchViewController.h"
-#import "SPShopeliaManager.h"
 
-#define PRODUCT_SEARCH_SEGUE_NAME @"SHOW_PRODUCT_SEARCH"
-
-@interface SPBarcodeScanViewController () <ZBarReaderViewDelegate, SPAlgoliaSearchViewControllerDelegate>
+@interface SPBarcodeScanViewController () <ZBarReaderViewDelegate>
 @property (weak, nonatomic) IBOutlet ZBarReaderView *readerView;
 @property (weak, nonatomic) IBOutlet SPBarcodeOverlayView *readerOverlayView;
 @property (weak, nonatomic) IBOutlet UIView *footerSeparatorView;
 @property (weak, nonatomic) IBOutlet SPLabel *centerLabel;
-@property (strong, nonatomic) NSString *lastBarcode;
-@property (assign, nonatomic) BOOL lastBarcodeWasFromScanner;
-@property (strong, nonatomic) SPAlgoliaSearchViewController *algoliaSearchViewController;
 @end
 
 @implementation SPBarcodeScanViewController
-
-#pragma mark - Lazy instanciation
-
-- (SPAlgoliaSearchViewController *)algoliaSearchViewController
-{
-    if (!_algoliaSearchViewController)
-    {
-        _algoliaSearchViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SPAlgoliaSearchViewController"];
-        _algoliaSearchViewController.delegate = self;
-    }
-    return _algoliaSearchViewController;
-}
-
-#pragma mark - Segues
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([segue.identifier isEqualToString:PRODUCT_SEARCH_SEGUE_NAME])
-    {
-        SPProductSearchViewController *vc = (SPProductSearchViewController *)segue.destinationViewController;
-        vc.barcode = self.lastBarcode;
-        vc.fromScanner = self.lastBarcodeWasFromScanner;
-    }
-}
-
-#pragma mark - SPAlgoliaSearchViewController delegate
-
-- (void)algoliaSearchViewController:(SPAlgoliaSearchViewController *)vc didSelectSearchResult:(SPAlgoliaSearchResult *)searchResult
-{
-    if (searchResult.barcode)
-    {
-        // fetch product
-        self.lastBarcode = searchResult.barcode;
-        self.lastBarcodeWasFromScanner = NO;
-        [self performSegueWithIdentifier:PRODUCT_SEARCH_SEGUE_NAME sender:self];
-    }
-    else
-    {
-        [SPShopeliaManager showShopeliaSDKForURL:searchResult.product.URL fromViewController:self];
-    }
-}
 
 #pragma mark - ZBarReaderView delegate
 
@@ -85,9 +37,10 @@
     AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
     
     // fetch product
-    self.lastBarcode = [symbol data];
-    self.lastBarcodeWasFromScanner = YES;
-    [self performSegueWithIdentifier:PRODUCT_SEARCH_SEGUE_NAME sender:self];
+    SPProductSearchViewController *productSearchViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SPProductSearchViewController"];
+    productSearchViewController.barcode = symbol.data;
+    productSearchViewController.fromScanner = NO;
+    [self.navigationController pushViewController:productSearchViewController animated:YES];
 }
 
 #pragma mark - Interface
@@ -99,10 +52,6 @@
     self.footerSeparatorView.backgroundColor = [SPVisualFactory navigationBarBackgroundColor];
     self.centerLabel.textColor = [SPVisualFactory navigationBarBackgroundColor];
     self.centerLabel.text = NSLocalizedString(@"CenterBarCodeInZone", nil);
-    
-    // add Algolia search view controller
-    [self addChildViewController:self.algoliaSearchViewController];
-    [self.view addSubview:self.algoliaSearchViewController.view];
 }
 
 #pragma mark - Layout
@@ -121,9 +70,6 @@
                                             rectangleY / self.readerView.frame.size.height,
                                             rectangleWidth / self.readerView.frame.size.width,
                                             rectangleHeight / self.readerView.frame.size.height)];
-    
-    // resize algolia search view
-    self.algoliaSearchViewController.view.frame = self.view.bounds;
 }
 
 #pragma mark - View lifecycle

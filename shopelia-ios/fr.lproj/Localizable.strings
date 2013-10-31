@@ -27,3 +27,5 @@
 "By%@" = "par %@";
 
 "SearchingForPricesAndAvailabilities" = "Recherche des prix et disponibilités...";
+
+"NoResultsForThisQuery" = "Aucun résultat pour cette recherche";

@@ -17,6 +17,13 @@
     return (self.product.isValid);
 }
 
+- (BOOL)isEqual:(SPAlgoliaSearchResult *)object
+{
+    if (self.barcode == nil || object.barcode == nil)
+        return NO;
+    return [object.barcode isEqualToString:self.barcode];
+}
+
 #pragma mark - JSON
 
 - (BOOL)configureWithJSON:(NSDictionary *)JSON
