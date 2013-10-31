@@ -18,22 +18,9 @@
 
 - (void)customize
 {
-    self.noResultsLabel.text = NSLocalizedString(@"NoResultsForThisQuery", nil);
-}
-
-#pragma mark - Lifecycle
-
-- (void)initialize
-{
-    [SPViewController customizeView:self];
-    [SPViewController translateView:self];
-}
-
-- (void)awakeFromNib
-{
-    [super awakeFromNib];
+    [super customize];
     
-    [self initialize];
+    self.noResultsLabel.text = NSLocalizedString(@"NoResultsForThisQuery", nil);
 }
 
 @end

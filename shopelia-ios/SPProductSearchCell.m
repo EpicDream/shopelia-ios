@@ -28,26 +28,13 @@
 
 - (void)customize
 {
+    [super customize];
+    
     self.priceLabel.textColor = [SPVisualFactory validColor];
     self.shippingPriceLabel.text = NSLocalizedString(@"IncludedDelivery", nil);
     [self.merchantButton setTitleColor:[SPVisualFactory linkTextColor] forState:UIControlStateNormal];
     [self.merchantButton setTitleColor:[SPColor darkerColorForColor:[SPVisualFactory linkTextColor]] forState:UIControlStateHighlighted];
     [[self.merchantButton titleLabel] setFont:[UIFont fontWithName:self.merchantButton.titleLabel.font.fontName size:10.0f]];
-}
-
-#pragma mark - Lifecycle
-
-- (void)initialize
-{
-    [SPViewController customizeView:self];
-    [SPViewController translateView:self];
-}
-
-- (void)awakeFromNib
-{
-    [super awakeFromNib];
-
-    [self initialize];
 }
 
 @end

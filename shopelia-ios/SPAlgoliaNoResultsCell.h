@@ -8,6 +8,6 @@
 
 #import "SPTableViewCell.h"
 
-@interface SPAlgoliaNoResultsCell : SPTableViewCell <SPViewCustomization>
+@interface SPAlgoliaNoResultsCell : SPTableViewCell
 
 @end

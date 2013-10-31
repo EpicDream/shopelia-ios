@@ -23,12 +23,27 @@
     }
 }
 
+#pragma mark - Customization
+
+- (void)customize
+{
+    self.backgroundColor = [UIColor clearColor];
+    self.contentView.backgroundColor = [UIColor clearColor];
+}
+
+#pragma mark - Translation
+
+- (void)translate
+{
+    
+}
+
 #pragma mark - Lifecycle
 
 - (void)awakeFromNib
 {
-    self.backgroundColor = [UIColor clearColor];
-    self.contentView.backgroundColor = [UIColor clearColor];
+    [SPViewController customizeView:self];
+    [SPViewController translateView:self];
 }
 
 @end

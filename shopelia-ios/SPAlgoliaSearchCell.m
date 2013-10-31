@@ -14,26 +14,5 @@
 
 @implementation SPAlgoliaSearchCell
 
-#pragma mark - Customization
-
-- (void)customize
-{
-    
-}
-
-#pragma mark - Lifecycle
-
-- (void)initialize
-{
-    [SPViewController customizeView:self];
-    [SPViewController translateView:self];
-}
-
-- (void)awakeFromNib
-{
-    [super awakeFromNib];
-    
-    [self initialize];
-}
 
 @end

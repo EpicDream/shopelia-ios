@@ -8,6 +8,6 @@
 
 #import "SPTableViewCell.h"
 
-@interface SPProductSearchInProgressCell : SPTableViewCell <SPViewCustomization>
+@interface SPProductSearchInProgressCell : SPTableViewCell
 
 @end

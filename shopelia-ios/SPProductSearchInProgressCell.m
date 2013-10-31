@@ -18,22 +18,9 @@
 
 - (void)customize
 {
-    self.textLabel.text = NSLocalizedString(@"SearchingForPricesAndAvailabilities", nil);
-}
-
-#pragma mark - Lifecycle
-
-- (void)initialize
-{
-    [SPViewController customizeView:self];
-    [SPViewController translateView:self];
-}
-
-- (void)awakeFromNib
-{
-    [super awakeFromNib];
+    [super customize];
     
-    [self initialize];
+    self.textLabel.text = NSLocalizedString(@"SearchingForPricesAndAvailabilities", nil);
 }
 
 @end
