@@ -78,7 +78,7 @@ typedef enum
 @property (strong, nonatomic) SPTableView *tableView;
 @property (strong, nonatomic) SPLoadingView *loadingView;
 
-@property (assign, nonatomic) BOOL hidesCancelButton;
+@property (assign, nonatomic) BOOL showsCancelButton;
 @property (assign, nonatomic) SPViewControllerPresentationMode presentationMode;
 
 @end
