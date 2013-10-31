@@ -7,8 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SPWaitingMessageView.h"
+#import "SPErrorMessageView.h"
 
 @interface SPContainerViewController : SPViewController
+
+@property (strong, nonatomic) SPWaitingMessageView *waitingMessageView;
+@property (strong, nonatomic) SPErrorMessageView *errorMessageView;
 
 @property (assign, nonatomic) BOOL showsAlgoliaSearch;
 @property (assign, nonatomic) BOOL showsGeorge;

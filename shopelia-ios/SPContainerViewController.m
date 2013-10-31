@@ -28,6 +28,24 @@
     return _algoliaSearchViewController;
 }
 
+- (SPWaitingMessageView *)waitingMessageView
+{
+    if (!_waitingMessageView)
+    {
+        _waitingMessageView = [SPWaitingMessageView instanciateFromNibInBundle:[NSBundle mainBundle]];
+    }
+    return _waitingMessageView;
+}
+
+- (SPErrorMessageView *)errorMessageView
+{
+    if (!_errorMessageView)
+    {
+        _errorMessageView = [SPErrorMessageView instanciateFromNibInBundle:[NSBundle mainBundle]];
+    }
+    return _errorMessageView;
+}
+
 #pragma mark - SPAlgoliaSearchViewController delegate
 
 - (void)algoliaSearchViewController:(SPAlgoliaSearchViewController *)vc didSelectSearchResult:(SPAlgoliaSearchResult *)searchResult
@@ -79,6 +97,22 @@
         // resize algolia search view
         self.algoliaSearchViewController.view.frame = self.view.bounds;
     }
+    
+    CGFloat height = 0.0f;
+    
+    // resize waiting view
+    height = [self.waitingMessageView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
+    self.waitingMessageView.frame = CGRectMake(10.0f,
+                                               (self.view.bounds.size.height - height) / 2.0f,
+                                               self.view.bounds.size.width - 20.0f,
+                                               height);
+    
+    // resize error message view
+    height = [self.errorMessageView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
+    self.errorMessageView.frame = CGRectMake(10.0f,
+                                             (self.view.bounds.size.height - height) / 2.0f,
+                                             self.view.bounds.size.width - 20.0f,
+                                             height);
 }
 
 @end

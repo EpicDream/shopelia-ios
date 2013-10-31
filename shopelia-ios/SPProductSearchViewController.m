@@ -8,8 +8,6 @@
 
 #import "SPProductSearchViewController.h"
 #import "SPProductSearchCell.h"
-#import "SPSearchInProgressView.h"
-#import "SPErrorMessageView.h"
 #import "SPAPIClient+BarcodeSearch.h"
 #import "SPAPIClient+ProductPrices.h"
 #import "SPProductSearchInProgressCell.h"
@@ -23,36 +21,13 @@
 @property (weak, nonatomic) IBOutlet SPImageView *productImageView;
 
 @property (strong, nonatomic) NSDictionary *product;
-@property (strong, nonatomic) NSArray *products;
-@property (strong, nonatomic) SPSearchInProgressView *searchInProgressView;
-@property (strong, nonatomic) SPErrorMessageView *errorMessageView;
+@property (strong, nonatomic) NSArray *products; // of SPProducts
 @property (strong, nonatomic) SPAPIRequest *productRequest;
 @property (strong, nonatomic) SPAPIRequest *pricesRequest;
 @property (strong, nonatomic) NSMutableArray *cellHeightsCache;
 @end
 
 @implementation SPProductSearchViewController
-
-#pragma mark - Lazy instantiation
-
-- (SPSearchInProgressView *)searchInProgressView
-{
-    if (!_searchInProgressView)
-    {
-        _searchInProgressView = [SPSearchInProgressView instanciateFromNibInBundle:[NSBundle mainBundle]];
-    }
-    return _searchInProgressView;
-}
-
-- (SPErrorMessageView *)errorMessageView
-{
-    if (!_errorMessageView)
-    {
-        _errorMessageView = [SPErrorMessageView instanciateFromNibInBundle:[NSBundle mainBundle]];
-        [_errorMessageView.actionButton addTarget:self action:@selector(cancelViewController) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _errorMessageView;
-}
 
 #pragma mark - Actions
 
@@ -147,26 +122,30 @@
 - (void)setupUI
 {
     [super setupUI];
+    
+    [self.errorMessageView.actionButton addTarget:self action:@selector(cancelViewController) forControlEvents:UIControlEventTouchUpInside];
+    [self.errorMessageView.actionButton setTitle:NSLocalizedString(@"Back", nil) forState:UIControlStateNormal];
+    [self.waitingMessageView.messageLabel setText:NSLocalizedString(@"ProductSearchInProgress", nil)];
 }
 
 - (void)setupUIForProductRequest
 {
     [self.tableView setHidden:YES];
-    [self.view addSubview:self.searchInProgressView];
+    [self.view addSubview:self.waitingMessageView];
     [self.errorMessageView removeFromSuperview];
 }
 
 - (void)setupUIForPricesRequest
 {
     [self.tableView setHidden:NO];
-    [self.searchInProgressView removeFromSuperview];
+    [self.waitingMessageView removeFromSuperview];
     [self.errorMessageView removeFromSuperview];
 }
 
 - (void)setupUIForErrorMessage
 {
     [self.tableView setHidden:YES];
-    [self.searchInProgressView removeFromSuperview];
+    [self.waitingMessageView removeFromSuperview];
     [self.view addSubview:self.errorMessageView];
 }
 
@@ -176,32 +155,12 @@
     [self.productImageView setAsynchImageWithURL:[NSURL URLWithString:[self.product objectForKey:@"image_url"]]];
 }
 
-#pragma mark - Layout
-
-- (void)viewDidLayoutSubviews
-{
-    [super viewDidLayoutSubviews];
-    
-    CGRect frame;
-    frame = self.searchInProgressView.frame;
-    frame.size.height = [self.searchInProgressView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
-    frame.size.width = self.view.bounds.size.width - 20.0f;
-    frame.origin.x = 10.0f;
-    frame.origin.y = (self.view.bounds.size.height - frame.size.height) / 2.0f;
-    self.searchInProgressView.frame = frame;
-    
-    frame = self.errorMessageView.frame;
-    frame.size.height = [self.errorMessageView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
-    frame.size.width = self.view.bounds.size.width - 20.0f;
-    frame.origin.x = 10.0f;
-    frame.origin.y = (self.view.bounds.size.height - frame.size.height) / 2.0f;
-    self.errorMessageView.frame = frame;
-}
-
 #pragma mark - Requests
 
 - (void)startProductRequest
 {
+    [self stopProductRequest];
+    
     self.productRequest = [[SPAPIV1Client sharedInstance] fetchProductWithBarcode:self.barcode
                                                 fromScanner:self.fromScanner
                                                  completion:^(SPAPIError *error, NSDictionary *product) {
@@ -241,15 +200,13 @@
 
 - (void)startPricesRequest
 {
-    NSArray *productURLs = [self.product objectForKey:@"urls"];
+    [self stopPricesRequest];
     
+    NSArray *productURLs = [self.product objectForKey:@"urls"];
     self.pricesRequest = [[SPAPIV1Client sharedInstance] fetchProductPrices:productURLs completion:^(BOOL timeout, SPAPIError *error, NSArray *products) {
         if (timeout || error || products.count == 0)
         {
-            if (timeout)
-                self.errorMessageView.messageLabel.text = NSLocalizedString(@"ErrorUnableToFindPricesForThisProductOnline", nil);
-            else
-                self.errorMessageView.messageLabel.text = error.localizedMessage;
+            self.errorMessageView.messageLabel.text = NSLocalizedString(@"ErrorUnableToFindPricesForThisProductOnline", nil);
             [self setupUIForErrorMessage];
         }
         else

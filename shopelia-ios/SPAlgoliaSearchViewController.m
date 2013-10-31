@@ -20,7 +20,7 @@
 @interface SPAlgoliaSearchViewController ()  <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 @property (weak, nonatomic) IBOutlet SPSearchBar *searchBar;
 @property (strong, nonatomic) NSTimer *searchTimer;
-@property (strong, nonatomic) NSArray *searchResults;
+@property (strong, nonatomic) NSArray *searchResults; // of SPAlgoliaSearchResult
 @property (assign, nonatomic) NSUInteger currentPageNumber;
 @end
 
