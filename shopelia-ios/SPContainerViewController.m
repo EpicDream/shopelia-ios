@@ -11,7 +11,7 @@
 #import "SPProductSearchViewController.h"
 #import "SPShopeliaManager.h"
 
-@interface SPContainerViewController () <SPAlgoliaSearchViewControllerDelegate>
+@interface SPContainerViewController () <SPAlgoliaSearchViewControllerDelegate, UIScrollViewDelegate>
 @property (strong, nonatomic) SPAlgoliaSearchViewController *algoliaSearchViewController;
 @end
 
@@ -44,6 +44,13 @@
     {
         [SPShopeliaManager showShopeliaSDKForURL:searchResult.product.URL fromViewController:self];
     }
+}
+
+#pragma mark - UIScrollView delegate
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    [[SPViewController firstResponderInView:self.view] resignFirstResponder];
 }
 
 #pragma mark - Interface
