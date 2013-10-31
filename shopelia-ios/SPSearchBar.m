@@ -45,7 +45,7 @@
     [super layoutSubviews];
     
     UITextField *control = [SPViewController firstSubviewOfClass:[UITextField class] inView:self];
-    control.frame = CGRectMake(0, 2, self.bounds.size.width, self.bounds.size.height - 4);
+    control.frame = CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height);
     control.font = [UIFont fontWithName:[SPVisualFactory lightFontName] size:14.0f];
     control.textColor = [SPVisualFactory normalTextColor];
 }
