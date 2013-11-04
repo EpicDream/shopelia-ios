@@ -34,8 +34,14 @@
 // returns the total price (price + shipping price)
 - (NSDecimalNumber *)totalPrice;
 
+// returns the rounded total price
+- (NSDecimalNumber *)roundedTotalPrice;
+
 // returns the total price as a formatted string with current locale and product currency
 - (NSString *)formattedTotalPrice;
+
+// returns the rounded total price as a formatted string with current locale and product currency
+- (NSString *)formattedRoundedTotalPrice;
 
 // returns the expected total price (total price - cash front)
 - (NSDecimalNumber *)expectedTotalPrice;
@@ -67,6 +73,9 @@
 // returns the product image URL
 - (NSURL *)imageURL;
 
+// returns the product image size
+- (CGSize)imageSize;
+
 // returns the product shipping info
 - (NSString *)shippingInfo;
 
@@ -77,7 +86,7 @@
 - (void)selectProductOptionValue:(SPProductOptionValue *)optionValue forOptionIndex:(NSInteger)optionIndex;
 
 // inits the receiver with the minimal JSON in parameter
-- (id)initWithMinimalJSON:(NSDictionary *)JSON;
+- (id)initWithMinimalJSON:(NSDictionary *)JSON pricesDivider:(NSDecimalNumber *)divider;
 
 @property (assign, nonatomic) NSUInteger selectedVersionHash;
 @property (strong, nonatomic) SPMerchant *merchant;

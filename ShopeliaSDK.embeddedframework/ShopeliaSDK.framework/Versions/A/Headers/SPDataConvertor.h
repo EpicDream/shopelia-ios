@@ -34,4 +34,7 @@
 // returns a string representation of any NSData
 + (NSString *)stringFromData:(NSData *)data;
 
+// returns a rounded decimal number
++ (NSDecimalNumber *)roundedDecimalNumber:(NSDecimalNumber *)decimalNumber roundingMode:(NSRoundingMode)roundingMode scale:(short)scale;
+
 @end
