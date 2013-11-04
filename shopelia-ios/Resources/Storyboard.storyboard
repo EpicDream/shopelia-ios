@@ -376,30 +376,110 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="hSI-Zk-zzQ" customClass="SPTableView">
-                                <rect key="frame" x="0.0" y="0.0" width="160" height="416"/>
+                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="vLm-Fc-sbj" customClass="SPCollectionView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </tableView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="8rl-Kt-6Cj" customClass="SPTableView">
-                                <rect key="frame" x="160" y="0.0" width="160" height="416"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </tableView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <collectionViewLayout key="collectionViewLayout" id="tHm-wf-4E8" customClass="CHTCollectionViewWaterfallLayout">
+                                    <connections>
+                                        <outlet property="delegate" destination="lNn-TN-2mi" id="FQx-5p-h0S"/>
+                                    </connections>
+                                </collectionViewLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SPInspirationalCollectionProductCell" id="pOi-bo-f9p" customClass="SPInspirationalCollectionProductCell">
+                                        <rect key="frame" x="0.0" y="0.0" width="145" height="200"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="145" height="200"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gq5-hS-XLC" customClass="SPImageView">
+                                                    <rect key="frame" x="0.0" y="0.0" width="145" height="200"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                </imageView>
+                                                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4NJ-Z5-uCa" customClass="SPSimpleButton">
+                                                    <rect key="frame" x="62" y="167" width="83" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="Y1t-eJ-bMe"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="6" maxY="0.0"/>
+                                                    <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                    <state key="normal" title="_buy_" image="shopelia_logo_dark.png">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_price_" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MVz-jV-Lqe" customClass="SPLabel">
+                                                    <rect key="frame" x="0.0" y="167" width="60" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="60" id="82R-rm-T5R"/>
+                                                        <constraint firstAttribute="height" constant="30" id="oFz-eg-LQQ"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="separator.png" translatesAutoresizingMaskIntoConstraints="NO" id="upm-dX-ae3">
+                                                    <rect key="frame" x="60" y="169" width="2" height="28"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="2" id="8Yw-HM-PIt"/>
+                                                        <constraint firstAttribute="height" constant="28" id="P9y-z1-bEN"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="2" id="qL2-r9-Kv1"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dl8-4v-bQB" customClass="SPImageView">
+                                                    <rect key="frame" x="10" y="10" width="125" height="147"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="dl8-4v-bQB" firstAttribute="top" secondItem="pOi-bo-f9p" secondAttribute="top" constant="10" id="12W-WA-uPh"/>
+                                            <constraint firstItem="upm-dX-ae3" firstAttribute="leading" secondItem="MVz-jV-Lqe" secondAttribute="trailing" id="1SN-OM-KU6"/>
+                                            <constraint firstAttribute="bottom" secondItem="MVz-jV-Lqe" secondAttribute="bottom" constant="3" id="41d-Yd-NoF"/>
+                                            <constraint firstItem="gq5-hS-XLC" firstAttribute="top" secondItem="pOi-bo-f9p" secondAttribute="top" id="85S-IM-AQq"/>
+                                            <constraint firstAttribute="bottom" secondItem="4NJ-Z5-uCa" secondAttribute="bottom" constant="3" id="Iay-AS-Gp1"/>
+                                            <constraint firstAttribute="trailing" secondItem="dl8-4v-bQB" secondAttribute="trailing" constant="10" id="KtO-7q-4gW"/>
+                                            <constraint firstItem="gq5-hS-XLC" firstAttribute="leading" secondItem="pOi-bo-f9p" secondAttribute="leading" id="Kz6-je-w3V"/>
+                                            <constraint firstAttribute="trailing" secondItem="4NJ-Z5-uCa" secondAttribute="trailing" id="W7d-LS-EOL"/>
+                                            <constraint firstItem="4NJ-Z5-uCa" firstAttribute="leading" secondItem="upm-dX-ae3" secondAttribute="trailing" id="dK1-5V-6yx"/>
+                                            <constraint firstItem="MVz-jV-Lqe" firstAttribute="leading" secondItem="pOi-bo-f9p" secondAttribute="leading" id="pmv-Na-WwB"/>
+                                            <constraint firstItem="MVz-jV-Lqe" firstAttribute="top" secondItem="dl8-4v-bQB" secondAttribute="bottom" constant="10" id="uxf-QW-dIz"/>
+                                            <constraint firstAttribute="bottom" secondItem="gq5-hS-XLC" secondAttribute="bottom" id="vaQ-82-nHQ"/>
+                                            <constraint firstAttribute="trailing" secondItem="gq5-hS-XLC" secondAttribute="trailing" id="w1c-nI-3KH"/>
+                                            <constraint firstAttribute="bottom" secondItem="upm-dX-ae3" secondAttribute="bottom" constant="3" id="waq-If-V4P"/>
+                                            <constraint firstItem="dl8-4v-bQB" firstAttribute="leading" secondItem="pOi-bo-f9p" secondAttribute="leading" constant="10" id="yqW-SD-JUd"/>
+                                        </constraints>
+                                        <size key="customSize" width="145" height="200"/>
+                                        <connections>
+                                            <outlet property="buyButton" destination="4NJ-Z5-uCa" id="LJ1-uD-5oL"/>
+                                            <outlet property="cardImageView" destination="gq5-hS-XLC" id="grt-2Z-iHy"/>
+                                            <outlet property="priceLabel" destination="MVz-jV-Lqe" id="N5x-cY-xDE"/>
+                                            <outlet property="productImageView" destination="dl8-4v-bQB" id="9L2-7N-peu"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="lNn-TN-2mi" id="cYZ-ft-33X"/>
+                                    <outlet property="delegate" destination="lNn-TN-2mi" id="ZgR-cp-ASl"/>
+                                </connections>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="8rl-Kt-6Cj" secondAttribute="trailing" id="LmY-Lx-igm"/>
-                            <constraint firstItem="8rl-Kt-6Cj" firstAttribute="top" secondItem="V6C-hA-ihf" secondAttribute="bottom" id="Nhj-yf-buL"/>
-                            <constraint firstItem="hSI-Zk-zzQ" firstAttribute="top" secondItem="V6C-hA-ihf" secondAttribute="bottom" id="Qzx-NR-orr"/>
-                            <constraint firstItem="hSI-Zk-zzQ" firstAttribute="width" secondItem="8rl-Kt-6Cj" secondAttribute="width" id="VX1-5m-HqA"/>
-                            <constraint firstItem="hSI-Zk-zzQ" firstAttribute="leading" secondItem="pmH-ru-vBk" secondAttribute="leading" id="lxD-cq-SBm"/>
-                            <constraint firstItem="NgO-3o-zDw" firstAttribute="top" secondItem="hSI-Zk-zzQ" secondAttribute="bottom" id="mwN-Yv-mJT"/>
-                            <constraint firstItem="NgO-3o-zDw" firstAttribute="top" secondItem="8rl-Kt-6Cj" secondAttribute="bottom" id="rEC-7O-H2z"/>
-                            <constraint firstItem="8rl-Kt-6Cj" firstAttribute="leading" secondItem="hSI-Zk-zzQ" secondAttribute="trailing" id="xPW-oI-zyX"/>
+                            <constraint firstItem="vLm-Fc-sbj" firstAttribute="leading" secondItem="pmH-ru-vBk" secondAttribute="leading" id="616-ft-5XX"/>
+                            <constraint firstItem="vLm-Fc-sbj" firstAttribute="top" secondItem="V6C-hA-ihf" secondAttribute="bottom" id="EFx-k1-puF"/>
+                            <constraint firstAttribute="trailing" secondItem="vLm-Fc-sbj" secondAttribute="trailing" id="HTt-aT-FAc"/>
+                            <constraint firstItem="NgO-3o-zDw" firstAttribute="top" secondItem="vLm-Fc-sbj" secondAttribute="bottom" id="z7d-ma-wiH"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="0MS-m9-s5E"/>
+                    <connections>
+                        <outlet property="collectionView" destination="vLm-Fc-sbj" id="76T-G1-JfP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UHt-bd-asc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -735,6 +815,8 @@
         <image name="error_logo_icon.png" width="50" height="50"/>
         <image name="scan_icon_active.png" width="22" height="19"/>
         <image name="scan_icon_inactive.png" width="22" height="19"/>
+        <image name="separator.png" width="2" height="1"/>
+        <image name="shopelia_logo_dark.png" width="20" height="26"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

@@ -1,26 +1,24 @@
 //
-//  SPTableViewCell.m
+//  SPCollectionViewCell.m
 //  shopelia-ios
 //
-//  Created by Nicolas on 25/10/2013.
+//  Created by Nicolas on 04/11/2013.
 //  Copyright (c) 2013 Shopelia. All rights reserved.
 //
 
-#import "SPTableViewCell.h"
+#import "SPCollectionViewCell.h"
 
-@implementation SPTableViewCell
+@implementation SPCollectionViewCell
 
 #pragma mark - Cell
 
-- (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated
+- (void)setHighlighted:(BOOL)highlighted
 {
-    [super setHighlighted:highlighted animated:animated];
+    [super setHighlighted:highlighted];
     
     for (id subview in self.contentView.subviews)
     {
-        if ([subview respondsToSelector:@selector(setHighlighted:animated:)])
-            [subview setHighlighted:highlighted animated:animated];
-        else if ([subview respondsToSelector:@selector(setHighlighted:)])
+        if ([subview respondsToSelector:@selector(setHighlighted:)])
             [subview setHighlighted:highlighted];
     }
 }
@@ -47,5 +45,6 @@
     [SPViewController customizeView:self];
     [SPViewController translateView:self];
 }
+
 
 @end

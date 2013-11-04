@@ -32,7 +32,7 @@
     
     if (configure)
     {
-        self.product = [[SPProduct alloc] initWithMinimalJSON:JSON];
+        self.product = [[SPProduct alloc] initWithMinimalJSON:JSON pricesDivider:[NSDecimalNumber decimalNumberWithString:@"100"]];
         
         for (NSString *string in [JSON objectForKey:@"_tags"])
         {

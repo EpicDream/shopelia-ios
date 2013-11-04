@@ -14,6 +14,8 @@
 
 "ErrorUnableToFetchInspirationalCollections" = "Nous n'avons pas réussi à récupérer les collections de produits.";
 
+"ErrorUnableToFetchInspirationalCollectionProducts" = "Nous n'avons pas réussi à récupérer les produits de cette collection.";
+
 "CenterBarCodeInZone" = "Centrez le code-barre dans la zone ci-dessus";
 
 "SearchAProduct" = "Rechercher un produit";
@@ -34,4 +36,8 @@
 
 "PleaseWaitWhileLoadingCollections" = "Veuillez patienter pendant\nle chargement des collections...";
 
+"PleaseWaitWhileLoadingProducts" = "Veuillez patienter pendant\nle chargement des produits...";
+
 "Retry" = "Réessayer";
+
+"Buy" = "Acheter";
