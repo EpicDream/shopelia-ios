@@ -311,30 +311,20 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FoO-Pk-tIN" customClass="SPCardImageView">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FoO-Pk-tIN" customClass="SPImageView">
                                                     <rect key="frame" x="10" y="0.0" width="300" height="90"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </imageView>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_title_" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pLT-id-5gH" customClass="SPExtraExtraLargeLabel">
-                                                    <rect key="frame" x="30" y="20" width="260" height="50"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="FoO-Pk-tIN" secondAttribute="trailing" constant="10" id="4LO-DU-p99"/>
-                                                <constraint firstItem="pLT-id-5gH" firstAttribute="leading" secondItem="GhF-cN-4OT" secondAttribute="leading" constant="30" id="Du0-2u-aMV"/>
                                                 <constraint firstAttribute="bottom" secondItem="FoO-Pk-tIN" secondAttribute="bottom" constant="10" id="FD3-OD-BxW"/>
                                                 <constraint firstItem="FoO-Pk-tIN" firstAttribute="leading" secondItem="GhF-cN-4OT" secondAttribute="leading" constant="10" id="OQ5-IF-gsi"/>
                                                 <constraint firstItem="FoO-Pk-tIN" firstAttribute="top" secondItem="GhF-cN-4OT" secondAttribute="top" id="bTt-Gh-CQj"/>
-                                                <constraint firstItem="pLT-id-5gH" firstAttribute="top" secondItem="GhF-cN-4OT" secondAttribute="top" constant="20" id="kX7-JZ-pPS"/>
-                                                <constraint firstAttribute="bottom" secondItem="pLT-id-5gH" secondAttribute="bottom" constant="30" id="lJh-K4-PqE"/>
-                                                <constraint firstAttribute="trailing" secondItem="pLT-id-5gH" secondAttribute="trailing" constant="30" id="vwW-pZ-fnD"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="titleLabel" destination="pLT-id-5gH" id="XAj-dq-SWZ"/>
+                                            <outlet property="collectionImageView" destination="FoO-Pk-tIN" id="MUZ-dN-N7J"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

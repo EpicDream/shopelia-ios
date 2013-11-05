@@ -7,9 +7,10 @@
 //
 
 #import "SPTableViewCell.h"
+#import "SPInspirationalCollection.h"
 
 @interface SPInspirationalCollectionCell : SPTableViewCell
 
-@property (weak, nonatomic) IBOutlet SPLabel *titleLabel;
+- (void)configureWithInspirationalCollection:(SPInspirationalCollection *)collection;
 
 @end

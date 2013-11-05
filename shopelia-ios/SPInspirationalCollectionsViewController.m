@@ -56,7 +56,7 @@
     SPInspirationalCollectionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SPInspirationalCollectionCell"];
     SPInspirationalCollection *collection = [self.collections objectAtIndex:indexPath.row];
     
-    cell.titleLabel.text = collection.name;
+    [cell configureWithInspirationalCollection:collection];
     return cell;
 }
 

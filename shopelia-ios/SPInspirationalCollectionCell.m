@@ -8,8 +8,15 @@
 
 #import "SPInspirationalCollectionCell.h"
 
+@interface SPInspirationalCollectionCell ()
+@property (weak, nonatomic) IBOutlet SPImageView *collectionImageView;
+@end
+
 @implementation SPInspirationalCollectionCell
 
-
+- (void)configureWithInspirationalCollection:(SPInspirationalCollection *)collection
+{
+    [self.collectionImageView setAsynchImageWithURL:collection.imageURL];
+}
 
 @end
