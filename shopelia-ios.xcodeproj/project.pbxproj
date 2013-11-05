@@ -107,8 +107,6 @@
 		37AEE4BD1822B28D009BC5FF /* SPMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 37AEE4BC1822B28D009BC5FF /* SPMessageView.m */; };
 		37AEE4C01822B964009BC5FF /* SPAPIFetchInspirationalCollectionsError.m in Sources */ = {isa = PBXBuildFile; fileRef = 37AEE4BF1822B964009BC5FF /* SPAPIFetchInspirationalCollectionsError.m */; };
 		37AEE4C31822C89D009BC5FF /* SPInspirationalCollectionProductsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37AEE4C21822C89D009BC5FF /* SPInspirationalCollectionProductsViewController.m */; };
-		37B09BE21828E0520004E3DF /* SPDataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 37B09BE11828E0520004E3DF /* SPDataCache.m */; };
-		37B09BE51828E0830004E3DF /* SPDataCacheEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 37B09BE41828E0830004E3DF /* SPDataCacheEntry.m */; };
 		37B09BEF1828E6620004E3DF /* ASAPIClient+Network.m in Sources */ = {isa = PBXBuildFile; fileRef = 37B09BE81828E6620004E3DF /* ASAPIClient+Network.m */; };
 		37B09BF01828E6620004E3DF /* ASAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 37B09BEA1828E6620004E3DF /* ASAPIClient.m */; };
 		37B09BF11828E6620004E3DF /* ASQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 37B09BEC1828E6620004E3DF /* ASQuery.m */; };
@@ -295,10 +293,6 @@
 		37AEE4BF1822B964009BC5FF /* SPAPIFetchInspirationalCollectionsError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPAPIFetchInspirationalCollectionsError.m; sourceTree = "<group>"; };
 		37AEE4C11822C89D009BC5FF /* SPInspirationalCollectionProductsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPInspirationalCollectionProductsViewController.h; sourceTree = "<group>"; };
 		37AEE4C21822C89D009BC5FF /* SPInspirationalCollectionProductsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPInspirationalCollectionProductsViewController.m; sourceTree = "<group>"; };
-		37B09BE01828E0520004E3DF /* SPDataCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPDataCache.h; sourceTree = "<group>"; };
-		37B09BE11828E0520004E3DF /* SPDataCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPDataCache.m; sourceTree = "<group>"; };
-		37B09BE31828E0830004E3DF /* SPDataCacheEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPDataCacheEntry.h; sourceTree = "<group>"; };
-		37B09BE41828E0830004E3DF /* SPDataCacheEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPDataCacheEntry.m; sourceTree = "<group>"; };
 		37B09BE71828E6620004E3DF /* ASAPIClient+Network.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ASAPIClient+Network.h"; sourceTree = "<group>"; };
 		37B09BE81828E6620004E3DF /* ASAPIClient+Network.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ASAPIClient+Network.m"; sourceTree = "<group>"; };
 		37B09BE91828E6620004E3DF /* ASAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASAPIClient.h; sourceTree = "<group>"; };
@@ -584,10 +578,6 @@
 				375333A2181FA732004BAB46 /* SPShopeliaManager.m */,
 				378B9A551827DA5F0031F2F4 /* CHTCollectionViewWaterfallLayout.h */,
 				378B9A561827DA5F0031F2F4 /* CHTCollectionViewWaterfallLayout.m */,
-				37B09BE01828E0520004E3DF /* SPDataCache.h */,
-				37B09BE11828E0520004E3DF /* SPDataCache.m */,
-				37B09BE31828E0830004E3DF /* SPDataCacheEntry.h */,
-				37B09BE41828E0830004E3DF /* SPDataCacheEntry.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -1036,7 +1026,6 @@
 				37B09C0E1828E67D0004E3DF /* AFURLResponseSerialization.m in Sources */,
 				113DDE3B17DDFA9A0056E126 /* main.m in Sources */,
 				37AEE4AF1822784E009BC5FF /* SPInspirationalCollectionsViewController.m in Sources */,
-				37B09BE51828E0830004E3DF /* SPDataCacheEntry.m in Sources */,
 				37A83AA8181A85710077B517 /* SPProductSearchViewController.m in Sources */,
 				37B09C0C1828E67D0004E3DF /* AFURLConnectionOperation.m in Sources */,
 				37B09C0F1828E67D0004E3DF /* AFURLSessionManager.m in Sources */,
@@ -1061,7 +1050,6 @@
 				378B9A571827DA5F0031F2F4 /* CHTCollectionViewWaterfallLayout.m in Sources */,
 				373E2E96181E805900C575B0 /* SPAPIFetchProductWithBarCodeError.m in Sources */,
 				37AEE4A91822768F009BC5FF /* SPAPIClient+InspirationalCollections.m in Sources */,
-				37B09BE21828E0520004E3DF /* SPDataCache.m in Sources */,
 				37A83ADB181AA3010077B517 /* SPProductSearchCell.m in Sources */,
 				378B9A44182792D90031F2F4 /* SPInspirationalCollectionProductCell.m in Sources */,
 				37A83AD5181AA29E0077B517 /* SPTableViewCell.m in Sources */,
