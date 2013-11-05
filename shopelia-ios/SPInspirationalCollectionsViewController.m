@@ -60,6 +60,18 @@
     return cell;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    SPInspirationalCollection *collection = [self.collections objectAtIndex:indexPath.row];
+    
+    if (collection.imageSize.width > 0)
+    {
+        CGFloat imageHeight = ceil(collection.imageSize.height * ((tableView.bounds.size.width - 22.0f) / collection.imageSize.width));
+        return imageHeight + 10.0f;
+    }
+    return 100.0f;
+}
+
 #pragma mark - Interface
 
 - (void)setupUI

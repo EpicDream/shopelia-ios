@@ -77,6 +77,9 @@
 		376839411816C479008BFAA5 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 376839401816C479008BFAA5 /* Accelerate.framework */; };
 		376839431816C496008BFAA5 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 376839421816C496008BFAA5 /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		376839471816CF0C008BFAA5 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 376839461816CF0C008BFAA5 /* CoreTelephony.framework */; };
+		376F2607182971DD003DE2E3 /* SPImageProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 376F2606182971DD003DE2E3 /* SPImageProcessor.m */; };
+		376F260A18298327003DE2E3 /* card_background_mask.png in Resources */ = {isa = PBXBuildFile; fileRef = 376F260818298327003DE2E3 /* card_background_mask.png */; };
+		376F260B18298327003DE2E3 /* card_background_mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 376F260918298327003DE2E3 /* card_background_mask@2x.png */; };
 		37862C76180E9553009E2B44 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37862C75180E9553009E2B44 /* AudioToolbox.framework */; };
 		378B9A3E18278D530031F2F4 /* SPCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 378B9A3D18278D530031F2F4 /* SPCollectionView.m */; };
 		378B9A41182792500031F2F4 /* SPCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 378B9A40182792500031F2F4 /* SPCollectionViewCell.m */; };
@@ -243,6 +246,10 @@
 		376839401816C479008BFAA5 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		376839421816C496008BFAA5 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		376839461816CF0C008BFAA5 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		376F2605182971DD003DE2E3 /* SPImageProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPImageProcessor.h; sourceTree = "<group>"; };
+		376F2606182971DD003DE2E3 /* SPImageProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPImageProcessor.m; sourceTree = "<group>"; };
+		376F260818298327003DE2E3 /* card_background_mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = card_background_mask.png; sourceTree = "<group>"; };
+		376F260918298327003DE2E3 /* card_background_mask@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "card_background_mask@2x.png"; sourceTree = "<group>"; };
 		37862C75180E9553009E2B44 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		378B9A3C18278D530031F2F4 /* SPCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPCollectionView.h; sourceTree = "<group>"; };
 		378B9A3D18278D530031F2F4 /* SPCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPCollectionView.m; sourceTree = "<group>"; };
@@ -578,6 +585,8 @@
 				375333A2181FA732004BAB46 /* SPShopeliaManager.m */,
 				378B9A551827DA5F0031F2F4 /* CHTCollectionViewWaterfallLayout.h */,
 				378B9A561827DA5F0031F2F4 /* CHTCollectionViewWaterfallLayout.m */,
+				376F2605182971DD003DE2E3 /* SPImageProcessor.h */,
+				376F2606182971DD003DE2E3 /* SPImageProcessor.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -593,6 +602,8 @@
 		3756882518210F500018B57E /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				376F260818298327003DE2E3 /* card_background_mask.png */,
+				376F260918298327003DE2E3 /* card_background_mask@2x.png */,
 				374EB51918283E59000B4D55 /* loader_icon.png */,
 				374EB51A18283E59000B4D55 /* loader_icon@2x.png */,
 				378B9A5C1827E1C40031F2F4 /* separator.png */,
@@ -986,6 +997,8 @@
 				37A2A2DF180E85670097952D /* Images.xcassets in Resources */,
 				37D5C99F180E818B00216A31 /* zbar-back.png in Resources */,
 				3756883118210F500018B57E /* back_arrow.png in Resources */,
+				376F260B18298327003DE2E3 /* card_background_mask@2x.png in Resources */,
+				376F260A18298327003DE2E3 /* card_background_mask.png in Resources */,
 				37A83ACF181A9DDC0077B517 /* Storyboard.storyboard in Resources */,
 				37FEA949181E6EEE0004E85B /* SPErrorMessageView.xib in Resources */,
 				3756883718210F500018B57E /* error_button_background_normal.png in Resources */,
@@ -1073,6 +1086,7 @@
 				37AEE4C31822C89D009BC5FF /* SPInspirationalCollectionProductsViewController.m in Sources */,
 				113137CE17F2EEC900AA7DAB /* SpinnerLayer.m in Sources */,
 				37AEE4B818229E86009BC5FF /* SPWaitingMessageView.m in Sources */,
+				376F2607182971DD003DE2E3 /* SPImageProcessor.m in Sources */,
 				37AEE4B218227861009BC5FF /* SPInspirationalCollectionCell.m in Sources */,
 				37B09BF11828E6620004E3DF /* ASQuery.m in Sources */,
 				11C6E7E317E06F5600D66D96 /* UIColor+Shopelia.m in Sources */,

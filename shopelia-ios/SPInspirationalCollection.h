@@ -13,5 +13,6 @@
 @property (strong, nonatomic) NSString *UUID;
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSURL *imageURL;
+@property (assign, nonatomic) CGSize imageSize;
 
 @end

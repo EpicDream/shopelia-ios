@@ -28,6 +28,17 @@
         self.name = [SPJSONFactory stringValueForJSONObject:[JSON objectForKey:@"name"]];
         self.UUID = [SPJSONFactory stringValueForJSONObject:[JSON objectForKey:@"uuid"]];
         self.imageURL = [SPJSONFactory URLValueForJSONObject:[JSON objectForKey:@"image_url"]];
+    
+        // image size
+        NSString *imageSize = [SPJSONFactory stringValueForJSONObject:[JSON objectForKey:@"image_size"]];
+        CGSize readImageSize = CGSizeZero;
+        NSArray *components = [imageSize componentsSeparatedByString:@"x"];
+        if (components.count == 2)
+        {
+            readImageSize.width = [[components objectAtIndex:0] floatValue];
+            readImageSize.height = [[components objectAtIndex:1] floatValue];
+        }
+        self.imageSize = readImageSize;
     }
     return configure;
 }

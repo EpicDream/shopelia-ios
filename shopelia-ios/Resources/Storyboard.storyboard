@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="IZ0-BQ-Mn5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="IZ0-BQ-Mn5">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3746"/>
     </dependencies>
     <scenes>
         <!--Barcode Scan View Controller-->
@@ -311,19 +311,33 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FoO-Pk-tIN" customClass="SPImageView">
-                                                    <rect key="frame" x="10" y="0.0" width="300" height="90"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                </imageView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nDx-5a-BIC">
+                                                    <rect key="frame" x="11" y="0.0" width="298" height="90"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FoO-Pk-tIN" customClass="SPImageView">
+                                                            <rect key="frame" x="0.0" y="0.0" width="298" height="90"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" red="0.41149371603260865" green="0.41149371603260865" blue="0.41149371603260865" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstItem="FoO-Pk-tIN" firstAttribute="top" secondItem="nDx-5a-BIC" secondAttribute="top" id="7BQ-zV-ay4"/>
+                                                        <constraint firstItem="FoO-Pk-tIN" firstAttribute="leading" secondItem="nDx-5a-BIC" secondAttribute="leading" id="GFu-03-Lrt"/>
+                                                        <constraint firstAttribute="trailing" secondItem="FoO-Pk-tIN" secondAttribute="trailing" id="I9W-DE-p3V"/>
+                                                        <constraint firstAttribute="bottom" secondItem="FoO-Pk-tIN" secondAttribute="bottom" id="W3j-ah-5s7"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="FoO-Pk-tIN" secondAttribute="trailing" constant="10" id="4LO-DU-p99"/>
-                                                <constraint firstAttribute="bottom" secondItem="FoO-Pk-tIN" secondAttribute="bottom" constant="10" id="FD3-OD-BxW"/>
-                                                <constraint firstItem="FoO-Pk-tIN" firstAttribute="leading" secondItem="GhF-cN-4OT" secondAttribute="leading" constant="10" id="OQ5-IF-gsi"/>
-                                                <constraint firstItem="FoO-Pk-tIN" firstAttribute="top" secondItem="GhF-cN-4OT" secondAttribute="top" id="bTt-Gh-CQj"/>
+                                                <constraint firstAttribute="trailing" secondItem="nDx-5a-BIC" secondAttribute="trailing" constant="11" id="DEP-pO-feU"/>
+                                                <constraint firstItem="nDx-5a-BIC" firstAttribute="top" secondItem="GhF-cN-4OT" secondAttribute="top" id="KOC-Bc-IFA"/>
+                                                <constraint firstAttribute="bottom" secondItem="nDx-5a-BIC" secondAttribute="bottom" constant="10" id="o1K-0W-smp"/>
+                                                <constraint firstItem="nDx-5a-BIC" firstAttribute="leading" secondItem="GhF-cN-4OT" secondAttribute="leading" constant="11" id="pf4-Xx-lns"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="collectionContainerView" destination="nDx-5a-BIC" id="91w-Y1-9Ys"/>
                                             <outlet property="collectionImageView" destination="FoO-Pk-tIN" id="MUZ-dN-N7J"/>
                                         </connections>
                                     </tableViewCell>

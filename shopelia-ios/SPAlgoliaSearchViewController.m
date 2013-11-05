@@ -59,7 +59,7 @@
     if (trimmedText.length >= 3)
     {
         // reschelude new search
-        self.searchTimer = [NSTimer scheduledTimerWithTimeInterval:0.1f
+        self.searchTimer = [NSTimer scheduledTimerWithTimeInterval:0.3f
                                                             target:self
                                                           selector:@selector(searchTimerFired:)
                                                           userInfo:trimmedText
