@@ -37,4 +37,7 @@
 // returns a rounded decimal number
 + (NSDecimalNumber *)roundedDecimalNumber:(NSDecimalNumber *)decimalNumber roundingMode:(NSRoundingMode)roundingMode scale:(short)scale;
 
+// returns a SHA1 hash from a given string
++ (NSString *)SHA1fromString:(NSString *)string;
+
 @end
