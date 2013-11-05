@@ -145,5 +145,6 @@
 #import "SPDataCache.h"
 #import "SPDataCacheEntry.h"
 #import "SPMetadataFactory.h"
+#import "SPRemoteImageLoader.h"
 
 #endif
