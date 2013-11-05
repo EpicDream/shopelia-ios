@@ -33,7 +33,6 @@
 		116CD92B17DE030100978733 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 116CD92617DE030000978733 /* CoreVideo.framework */; };
 		116CD92C17DE030100978733 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 116CD92717DE030100978733 /* libiconv.dylib */; };
 		116CD92D17DE030100978733 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 116CD92817DE030100978733 /* QuartzCore.framework */; };
-		119C076C17E3685C003AF6AA /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 119C076B17E3685C003AF6AA /* libPods.a */; };
 		11C6E7E317E06F5600D66D96 /* UIColor+Shopelia.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C6E7E217E06F5600D66D96 /* UIColor+Shopelia.m */; };
 		11C6E7EB17E07E8500D66D96 /* UIView+Shopelia.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C6E7EA17E07E8500D66D96 /* UIView+Shopelia.m */; };
 		3705528F181928D300826EA0 /* SPBarcodeScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3705528D181928D300826EA0 /* SPBarcodeScanViewController.m */; };
@@ -108,6 +107,21 @@
 		37AEE4BD1822B28D009BC5FF /* SPMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 37AEE4BC1822B28D009BC5FF /* SPMessageView.m */; };
 		37AEE4C01822B964009BC5FF /* SPAPIFetchInspirationalCollectionsError.m in Sources */ = {isa = PBXBuildFile; fileRef = 37AEE4BF1822B964009BC5FF /* SPAPIFetchInspirationalCollectionsError.m */; };
 		37AEE4C31822C89D009BC5FF /* SPInspirationalCollectionProductsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37AEE4C21822C89D009BC5FF /* SPInspirationalCollectionProductsViewController.m */; };
+		37B09BE21828E0520004E3DF /* SPDataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 37B09BE11828E0520004E3DF /* SPDataCache.m */; };
+		37B09BE51828E0830004E3DF /* SPDataCacheEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 37B09BE41828E0830004E3DF /* SPDataCacheEntry.m */; };
+		37B09BEF1828E6620004E3DF /* ASAPIClient+Network.m in Sources */ = {isa = PBXBuildFile; fileRef = 37B09BE81828E6620004E3DF /* ASAPIClient+Network.m */; };
+		37B09BF01828E6620004E3DF /* ASAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 37B09BEA1828E6620004E3DF /* ASAPIClient.m */; };
+		37B09BF11828E6620004E3DF /* ASQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 37B09BEC1828E6620004E3DF /* ASQuery.m */; };
+		37B09BF21828E6620004E3DF /* ASRemoteIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = 37B09BEE1828E6620004E3DF /* ASRemoteIndex.m */; };
+		37B09C071828E67D0004E3DF /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 37B09BF51828E67D0004E3DF /* AFHTTPRequestOperation.m */; };
+		37B09C081828E67D0004E3DF /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 37B09BF71828E67D0004E3DF /* AFHTTPRequestOperationManager.m */; };
+		37B09C091828E67D0004E3DF /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 37B09BF91828E67D0004E3DF /* AFHTTPSessionManager.m */; };
+		37B09C0A1828E67D0004E3DF /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 37B09BFC1828E67D0004E3DF /* AFNetworkReachabilityManager.m */; };
+		37B09C0B1828E67D0004E3DF /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 37B09BFE1828E67D0004E3DF /* AFSecurityPolicy.m */; };
+		37B09C0C1828E67D0004E3DF /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 37B09C001828E67D0004E3DF /* AFURLConnectionOperation.m */; };
+		37B09C0D1828E67D0004E3DF /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 37B09C021828E67D0004E3DF /* AFURLRequestSerialization.m */; };
+		37B09C0E1828E67D0004E3DF /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 37B09C041828E67D0004E3DF /* AFURLResponseSerialization.m */; };
+		37B09C0F1828E67D0004E3DF /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 37B09C061828E67D0004E3DF /* AFURLSessionManager.m */; };
 		37D5C97E180E805300216A31 /* ShopeliaSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 37D5C97C180E805300216A31 /* ShopeliaSDKResources.bundle */; };
 		37D5C97F180E805300216A31 /* ShopeliaSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37D5C97D180E805300216A31 /* ShopeliaSDK.framework */; };
 		37D5C99E180E818B00216A31 /* libzbar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 37D5C998180E818B00216A31 /* libzbar.a */; };
@@ -167,7 +181,6 @@
 		116CD92617DE030000978733 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		116CD92717DE030100978733 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 		116CD92817DE030100978733 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		119C076B17E3685C003AF6AA /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "Pods/build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
 		11C6E7E117E06F5600D66D96 /* UIColor+Shopelia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Shopelia.h"; sourceTree = "<group>"; };
 		11C6E7E217E06F5600D66D96 /* UIColor+Shopelia.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Shopelia.m"; sourceTree = "<group>"; };
 		11C6E7E917E07E8500D66D96 /* UIView+Shopelia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Shopelia.h"; sourceTree = "<group>"; };
@@ -282,6 +295,37 @@
 		37AEE4BF1822B964009BC5FF /* SPAPIFetchInspirationalCollectionsError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPAPIFetchInspirationalCollectionsError.m; sourceTree = "<group>"; };
 		37AEE4C11822C89D009BC5FF /* SPInspirationalCollectionProductsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPInspirationalCollectionProductsViewController.h; sourceTree = "<group>"; };
 		37AEE4C21822C89D009BC5FF /* SPInspirationalCollectionProductsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPInspirationalCollectionProductsViewController.m; sourceTree = "<group>"; };
+		37B09BE01828E0520004E3DF /* SPDataCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPDataCache.h; sourceTree = "<group>"; };
+		37B09BE11828E0520004E3DF /* SPDataCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPDataCache.m; sourceTree = "<group>"; };
+		37B09BE31828E0830004E3DF /* SPDataCacheEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPDataCacheEntry.h; sourceTree = "<group>"; };
+		37B09BE41828E0830004E3DF /* SPDataCacheEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPDataCacheEntry.m; sourceTree = "<group>"; };
+		37B09BE71828E6620004E3DF /* ASAPIClient+Network.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ASAPIClient+Network.h"; sourceTree = "<group>"; };
+		37B09BE81828E6620004E3DF /* ASAPIClient+Network.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ASAPIClient+Network.m"; sourceTree = "<group>"; };
+		37B09BE91828E6620004E3DF /* ASAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASAPIClient.h; sourceTree = "<group>"; };
+		37B09BEA1828E6620004E3DF /* ASAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASAPIClient.m; sourceTree = "<group>"; };
+		37B09BEB1828E6620004E3DF /* ASQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASQuery.h; sourceTree = "<group>"; };
+		37B09BEC1828E6620004E3DF /* ASQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASQuery.m; sourceTree = "<group>"; };
+		37B09BED1828E6620004E3DF /* ASRemoteIndex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASRemoteIndex.h; sourceTree = "<group>"; };
+		37B09BEE1828E6620004E3DF /* ASRemoteIndex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASRemoteIndex.m; sourceTree = "<group>"; };
+		37B09BF41828E67D0004E3DF /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
+		37B09BF51828E67D0004E3DF /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
+		37B09BF61828E67D0004E3DF /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
+		37B09BF71828E67D0004E3DF /* AFHTTPRequestOperationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperationManager.m; sourceTree = "<group>"; };
+		37B09BF81828E67D0004E3DF /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPSessionManager.h; sourceTree = "<group>"; };
+		37B09BF91828E67D0004E3DF /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPSessionManager.m; sourceTree = "<group>"; };
+		37B09BFA1828E67D0004E3DF /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworking.h; sourceTree = "<group>"; };
+		37B09BFB1828E67D0004E3DF /* AFNetworkReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkReachabilityManager.h; sourceTree = "<group>"; };
+		37B09BFC1828E67D0004E3DF /* AFNetworkReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkReachabilityManager.m; sourceTree = "<group>"; };
+		37B09BFD1828E67D0004E3DF /* AFSecurityPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFSecurityPolicy.h; sourceTree = "<group>"; };
+		37B09BFE1828E67D0004E3DF /* AFSecurityPolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFSecurityPolicy.m; sourceTree = "<group>"; };
+		37B09BFF1828E67D0004E3DF /* AFURLConnectionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLConnectionOperation.h; sourceTree = "<group>"; };
+		37B09C001828E67D0004E3DF /* AFURLConnectionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLConnectionOperation.m; sourceTree = "<group>"; };
+		37B09C011828E67D0004E3DF /* AFURLRequestSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLRequestSerialization.h; sourceTree = "<group>"; };
+		37B09C021828E67D0004E3DF /* AFURLRequestSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLRequestSerialization.m; sourceTree = "<group>"; };
+		37B09C031828E67D0004E3DF /* AFURLResponseSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLResponseSerialization.h; sourceTree = "<group>"; };
+		37B09C041828E67D0004E3DF /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLResponseSerialization.m; sourceTree = "<group>"; };
+		37B09C051828E67D0004E3DF /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
+		37B09C061828E67D0004E3DF /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
 		37CDECC3181C51E50065A99D /* SPConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPConstants.h; path = "shopelia-ios/SPConstants.h"; sourceTree = "<group>"; };
 		37D5C97C180E805300216A31 /* ShopeliaSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ShopeliaSDKResources.bundle; sourceTree = "<group>"; };
 		37D5C97D180E805300216A31 /* ShopeliaSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShopeliaSDK.framework; sourceTree = "<group>"; };
@@ -323,7 +367,6 @@
 		37FEA953181E71910004E85B /* SPLargeImportantButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPLargeImportantButton.m; sourceTree = "<group>"; };
 		37FEA95E181E780C0004E85B /* SPAPIClient+BarcodeSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SPAPIClient+BarcodeSearch.h"; sourceTree = "<group>"; };
 		37FEA95F181E780C0004E85B /* SPAPIClient+BarcodeSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SPAPIClient+BarcodeSearch.m"; sourceTree = "<group>"; };
-		3B7A37F016854B728B7C63DE /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		BE7EC3D152B545618C950648 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -338,7 +381,6 @@
 				110BF6531816A2B3000CAC67 /* SystemConfiguration.framework in Frameworks */,
 				372C32FD180EEBA5008928B7 /* libz.dylib in Frameworks */,
 				37862C76180E9553009E2B44 /* AudioToolbox.framework in Frameworks */,
-				119C076C17E3685C003AF6AA /* libPods.a in Frameworks */,
 				116CD92917DE030100978733 /* AVFoundation.framework in Frameworks */,
 				37D5C97F180E805300216A31 /* ShopeliaSDK.framework in Frameworks */,
 				116CD92A17DE030100978733 /* CoreMedia.framework in Frameworks */,
@@ -390,7 +432,6 @@
 				113DDE5317DDFA9B0056E126 /* shopelia-iosTests */,
 				113DDE2D17DDFA9A0056E126 /* Frameworks */,
 				113DDE2C17DDFA9A0056E126 /* Products */,
-				3B7A37F016854B728B7C63DE /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -411,7 +452,6 @@
 				376839401816C479008BFAA5 /* Accelerate.framework */,
 				110BF6521816A2B3000CAC67 /* SystemConfiguration.framework */,
 				37862C75180E9553009E2B44 /* AudioToolbox.framework */,
-				119C076B17E3685C003AF6AA /* libPods.a */,
 				116CD92417DE030000978733 /* AVFoundation.framework */,
 				116CD92517DE030000978733 /* CoreMedia.framework */,
 				116CD92617DE030000978733 /* CoreVideo.framework */,
@@ -422,6 +462,8 @@
 				113DDE4D17DDFA9B0056E126 /* XCTest.framework */,
 				372C32FC180EEBA5008928B7 /* libz.dylib */,
 				116CD92717DE030100978733 /* libiconv.dylib */,
+				37B09BF31828E67D0004E3DF /* AFNetworking */,
+				37B09BE61828E6620004E3DF /* AlgoliaSearchClient */,
 				37D5C980180E818B00216A31 /* ZBarSDK */,
 				372C32F2180EEB18008928B7 /* TestFlightSDK2.0.2 */,
 				37D5C97A180E805300216A31 /* ShopeliaSDK.embeddedframework */,
@@ -542,6 +584,10 @@
 				375333A2181FA732004BAB46 /* SPShopeliaManager.m */,
 				378B9A551827DA5F0031F2F4 /* CHTCollectionViewWaterfallLayout.h */,
 				378B9A561827DA5F0031F2F4 /* CHTCollectionViewWaterfallLayout.m */,
+				37B09BE01828E0520004E3DF /* SPDataCache.h */,
+				37B09BE11828E0520004E3DF /* SPDataCache.m */,
+				37B09BE31828E0830004E3DF /* SPDataCacheEntry.h */,
+				37B09BE41828E0830004E3DF /* SPDataCacheEntry.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -705,6 +751,47 @@
 			name = Base;
 			sourceTree = "<group>";
 		};
+		37B09BE61828E6620004E3DF /* AlgoliaSearchClient */ = {
+			isa = PBXGroup;
+			children = (
+				37B09BE71828E6620004E3DF /* ASAPIClient+Network.h */,
+				37B09BE81828E6620004E3DF /* ASAPIClient+Network.m */,
+				37B09BE91828E6620004E3DF /* ASAPIClient.h */,
+				37B09BEA1828E6620004E3DF /* ASAPIClient.m */,
+				37B09BEB1828E6620004E3DF /* ASQuery.h */,
+				37B09BEC1828E6620004E3DF /* ASQuery.m */,
+				37B09BED1828E6620004E3DF /* ASRemoteIndex.h */,
+				37B09BEE1828E6620004E3DF /* ASRemoteIndex.m */,
+			);
+			path = AlgoliaSearchClient;
+			sourceTree = "<group>";
+		};
+		37B09BF31828E67D0004E3DF /* AFNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				37B09BF41828E67D0004E3DF /* AFHTTPRequestOperation.h */,
+				37B09BF51828E67D0004E3DF /* AFHTTPRequestOperation.m */,
+				37B09BF61828E67D0004E3DF /* AFHTTPRequestOperationManager.h */,
+				37B09BF71828E67D0004E3DF /* AFHTTPRequestOperationManager.m */,
+				37B09BF81828E67D0004E3DF /* AFHTTPSessionManager.h */,
+				37B09BF91828E67D0004E3DF /* AFHTTPSessionManager.m */,
+				37B09BFA1828E67D0004E3DF /* AFNetworking.h */,
+				37B09BFB1828E67D0004E3DF /* AFNetworkReachabilityManager.h */,
+				37B09BFC1828E67D0004E3DF /* AFNetworkReachabilityManager.m */,
+				37B09BFD1828E67D0004E3DF /* AFSecurityPolicy.h */,
+				37B09BFE1828E67D0004E3DF /* AFSecurityPolicy.m */,
+				37B09BFF1828E67D0004E3DF /* AFURLConnectionOperation.h */,
+				37B09C001828E67D0004E3DF /* AFURLConnectionOperation.m */,
+				37B09C011828E67D0004E3DF /* AFURLRequestSerialization.h */,
+				37B09C021828E67D0004E3DF /* AFURLRequestSerialization.m */,
+				37B09C031828E67D0004E3DF /* AFURLResponseSerialization.h */,
+				37B09C041828E67D0004E3DF /* AFURLResponseSerialization.m */,
+				37B09C051828E67D0004E3DF /* AFURLSessionManager.h */,
+				37B09C061828E67D0004E3DF /* AFURLSessionManager.m */,
+			);
+			path = AFNetworking;
+			sourceTree = "<group>";
+		};
 		37D5C97A180E805300216A31 /* ShopeliaSDK.embeddedframework */ = {
 			isa = PBXGroup;
 			children = (
@@ -802,11 +889,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 113DDE5D17DDFA9B0056E126 /* Build configuration list for PBXNativeTarget "shopelia-ios" */;
 			buildPhases = (
-				9C308851A1984C689EEF03BD /* Check Pods Manifest.lock */,
 				113DDE2717DDFA9A0056E126 /* Sources */,
 				113DDE2817DDFA9A0056E126 /* Frameworks */,
 				113DDE2917DDFA9A0056E126 /* Resources */,
-				F586330180944B1AAC5D2537 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -936,69 +1021,47 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		9C308851A1984C689EEF03BD /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		F586330180944B1AAC5D2537 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		113DDE2717DDFA9A0056E126 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37B09C071828E67D0004E3DF /* AFHTTPRequestOperation.m in Sources */,
 				37FEA947181E6EB00004E85B /* SPErrorMessageView.m in Sources */,
 				113DDE3F17DDFA9A0056E126 /* SPAppDelegate.m in Sources */,
 				37AEE4B518229697009BC5FF /* SPInspirationalCollection.m in Sources */,
 				378B9A41182792500031F2F4 /* SPCollectionViewCell.m in Sources */,
 				373D53BB181ECE0A00337724 /* SPProductSearchInProgressCell.m in Sources */,
 				113137C517F1D15F00AA7DAB /* SpinnerView.m in Sources */,
+				37B09C0E1828E67D0004E3DF /* AFURLResponseSerialization.m in Sources */,
 				113DDE3B17DDFA9A0056E126 /* main.m in Sources */,
 				37AEE4AF1822784E009BC5FF /* SPInspirationalCollectionsViewController.m in Sources */,
+				37B09BE51828E0830004E3DF /* SPDataCacheEntry.m in Sources */,
 				37A83AA8181A85710077B517 /* SPProductSearchViewController.m in Sources */,
+				37B09C0C1828E67D0004E3DF /* AFURLConnectionOperation.m in Sources */,
+				37B09C0F1828E67D0004E3DF /* AFURLSessionManager.m in Sources */,
 				37AEE4C01822B964009BC5FF /* SPAPIFetchInspirationalCollectionsError.m in Sources */,
 				37568852182144FE0018B57E /* SPCardImageView.m in Sources */,
 				37568860182162100018B57E /* SPCardButton.m in Sources */,
 				3756880E182108F90018B57E /* SPAlgoliaSearchResult.m in Sources */,
 				3756884B18213CD40018B57E /* SPAlgoliaSearchBackgroundView.m in Sources */,
+				37B09BF01828E6620004E3DF /* ASAPIClient.m in Sources */,
 				374EB51518283C74000B4D55 /* SPShopeliaSpinnerView.m in Sources */,
 				3756885D1821553A0018B57E /* SPAlgoliaNoResultsCell.m in Sources */,
 				37AEE4BD1822B28D009BC5FF /* SPMessageView.m in Sources */,
+				37B09BF21828E6620004E3DF /* ASRemoteIndex.m in Sources */,
 				373E2E92181E7BE000C575B0 /* SPAPIClient+Tracker.m in Sources */,
 				11C6E7EB17E07E8500D66D96 /* UIView+Shopelia.m in Sources */,
+				37B09BEF1828E6620004E3DF /* ASAPIClient+Network.m in Sources */,
 				37E2243C181957AE001DD2A2 /* SPSearchBar.m in Sources */,
 				37AD7763181FCB0000E1EE0D /* SPAlgoliaSearchCell.m in Sources */,
+				37B09C0D1828E67D0004E3DF /* AFURLRequestSerialization.m in Sources */,
 				37AD7760181FC76A00E1EE0D /* SPAlgoliaSearchViewController.m in Sources */,
+				37B09C081828E67D0004E3DF /* AFHTTPRequestOperationManager.m in Sources */,
 				378B9A571827DA5F0031F2F4 /* CHTCollectionViewWaterfallLayout.m in Sources */,
 				373E2E96181E805900C575B0 /* SPAPIFetchProductWithBarCodeError.m in Sources */,
 				37AEE4A91822768F009BC5FF /* SPAPIClient+InspirationalCollections.m in Sources */,
+				37B09BE21828E0520004E3DF /* SPDataCache.m in Sources */,
 				37A83ADB181AA3010077B517 /* SPProductSearchCell.m in Sources */,
 				378B9A44182792D90031F2F4 /* SPInspirationalCollectionProductCell.m in Sources */,
 				37A83AD5181AA29E0077B517 /* SPTableViewCell.m in Sources */,
@@ -1010,16 +1073,20 @@
 				37AEE49F18225856009BC5FF /* SPContainerViewController.m in Sources */,
 				37AD7766181FED3600E1EE0D /* SPAlgoliaAPIClient.m in Sources */,
 				373E2EA6181EAD0B00C575B0 /* SPAPIFetchProductPricesError.m in Sources */,
+				37B09C0A1828E67D0004E3DF /* AFNetworkReachabilityManager.m in Sources */,
 				113137CA17F1D7ED00AA7DAB /* UIImage+Shopelia.m in Sources */,
 				375333A3181FA732004BAB46 /* SPShopeliaManager.m in Sources */,
 				373E2EA0181EAB5A00C575B0 /* SPAPIClient+ProductPrices.m in Sources */,
 				37E2244918197028001DD2A2 /* SPBarcodeOverlayView.m in Sources */,
+				37B09C091828E67D0004E3DF /* AFHTTPSessionManager.m in Sources */,
 				378B9A511827C4F20031F2F4 /* SPFetchInspirationalCollectionProductsError.m in Sources */,
+				37B09C0B1828E67D0004E3DF /* AFSecurityPolicy.m in Sources */,
 				378B9A3E18278D530031F2F4 /* SPCollectionView.m in Sources */,
 				37AEE4C31822C89D009BC5FF /* SPInspirationalCollectionProductsViewController.m in Sources */,
 				113137CE17F2EEC900AA7DAB /* SpinnerLayer.m in Sources */,
 				37AEE4B818229E86009BC5FF /* SPWaitingMessageView.m in Sources */,
 				37AEE4B218227861009BC5FF /* SPInspirationalCollectionCell.m in Sources */,
+				37B09BF11828E6620004E3DF /* ASQuery.m in Sources */,
 				11C6E7E317E06F5600D66D96 /* UIColor+Shopelia.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1132,7 +1199,6 @@
 		};
 		113DDE5E17DDFA9B0056E126 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3B7A37F016854B728B7C63DE /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1173,7 +1239,6 @@
 		};
 		113DDE5F17DDFA9B0056E126 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3B7A37F016854B728B7C63DE /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1207,7 +1272,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2BD0EADF-67F2-4EBB-A809-28E041C3785C";
+				PROVISIONING_PROFILE = "B9A6EEFF-9F27-4A0C-927F-A9FC5F5DEF11";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
