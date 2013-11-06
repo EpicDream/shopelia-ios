@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 Shopelia. All rights reserved.
 //
 
-@interface SPBarcodeScanViewController : SPViewController
+#import "SPContainerViewController.h"
+
+@interface SPBarcodeScanViewController : SPContainerViewController
 
 @end

@@ -14,20 +14,6 @@
 
 @implementation SPErrorMessageView
 
-#pragma mark - Lifecycle
 
-- (void)initialize
-{
-    [SPViewController customizeView:self];
-    
-    [self.actionButton setTitle:NSLocalizedString(@"Back", nil) forState:UIControlStateNormal];
-}
-
-- (void)awakeFromNib
-{
-    [super awakeFromNib];
-    
-    [self initialize];
-}
 
 @end

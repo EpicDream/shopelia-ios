@@ -15,7 +15,7 @@
 + (NSString *)cardExpiryDateFormat;
 
 // returns a string that represents a number formatted as a price
-+ (NSString *)priceStringFromNumber:(NSNumber *)number currency:(SPCurrency *)currency;
++ (NSString *)priceStringFromNumber:(NSNumber *)number currency:(SPCurrency *)currency decimalsNumber:(NSUInteger)decimal;
 
 // returns a string that represents a secured card number (with XX)
 + (NSString *)securedCardNumberStringFromCardNumber:(NSString *)number;

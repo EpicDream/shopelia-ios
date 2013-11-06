@@ -6,11 +6,10 @@
 //  Copyright (c) 2013 Shopelia. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "SPMessageView.h"
 
-@interface SPErrorMessageView : SPView
+@interface SPErrorMessageView : SPMessageView
 
-@property (weak, nonatomic) IBOutlet SPLabel *messageLabel;
 @property (weak, nonatomic) IBOutlet SPButton *actionButton;
 
 @end

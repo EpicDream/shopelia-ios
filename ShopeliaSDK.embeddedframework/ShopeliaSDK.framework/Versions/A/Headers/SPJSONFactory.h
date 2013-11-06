@@ -25,4 +25,10 @@
 // returns the bool value of a JSON object
 + (BOOL)boolValueForJSONObject:(id)object;
 
+// returns a NSData version of the JSON object
++ (NSData *)dataFromJSONObject:(id)object;
+
+// returns a JSON object from NSData
++ (id)JSONObjectFromData:(NSData *)data;
+
 @end

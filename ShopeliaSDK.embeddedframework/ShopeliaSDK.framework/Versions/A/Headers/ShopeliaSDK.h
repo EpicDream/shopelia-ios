@@ -35,7 +35,6 @@
 #import "SPBackgroundView.h"
 #import "SPBarButtonItem.h"
 #import "SPButton.h"
-#import "SPCacheManager.h"
 #import "SPCheckmarkButton.h"
 #import "SPColor.h"
 #import "SPConditionWebNavigatorViewController.h"
@@ -143,5 +142,9 @@
 #import "SPWebNavigatorViewController.h"
 #import "SPTableView.h"
 #import "SPJSONFactory.h"
+#import "SPDataCache.h"
+#import "SPDataCacheEntry.h"
+#import "SPMetadataFactory.h"
+#import "SPRemoteImageLoader.h"
 
 #endif

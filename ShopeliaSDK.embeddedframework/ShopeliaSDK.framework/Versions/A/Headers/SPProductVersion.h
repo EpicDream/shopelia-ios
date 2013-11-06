@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 Shopelia. All rights reserved.
 //
 
+#import <UIKit/UIKit.h>
 #import "SPModelObject.h"
 #import "SPProductOptionValue.h"
 
@@ -25,6 +26,7 @@
 @property (strong, nonatomic) NSDecimalNumber *shippingPrice;
 @property (strong, nonatomic) NSString *shippingInfo;
 @property (strong, nonatomic) NSURL *imageURL;
+@property (assign, nonatomic) CGSize imageSize;
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSNumber *ID;
 @property (strong, nonatomic) NSString *definition;

@@ -8,7 +8,7 @@
 
 #import "SPTableViewCell.h"
 
-@interface SPProductSearchCell : SPTableViewCell <SPViewCustomization>
+@interface SPProductSearchCell : SPTableViewCell
 
 - (void)configureWithProduct:(SPProduct *)product;
 

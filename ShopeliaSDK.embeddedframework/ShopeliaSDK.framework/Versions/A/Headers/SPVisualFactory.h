@@ -14,7 +14,6 @@
 
 + (UIImage *)cachedImageNamed:(NSString *)name;
 
-+ (void)loadFontNamed:(NSString *)name ofType:(NSString *)type;
 + (NSString *)regularFontName;
 + (NSString *)lightFontName;
 + (NSString *)boldFontName;

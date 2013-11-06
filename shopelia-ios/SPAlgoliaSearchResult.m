@@ -17,6 +17,13 @@
     return (self.product.isValid);
 }
 
+- (BOOL)isEqual:(SPAlgoliaSearchResult *)object
+{
+    if (self.barcode == nil || object.barcode == nil)
+        return NO;
+    return [object.barcode isEqualToString:self.barcode];
+}
+
 #pragma mark - JSON
 
 - (BOOL)configureWithJSON:(NSDictionary *)JSON
@@ -25,7 +32,7 @@
     
     if (configure)
     {
-        self.product = [[SPProduct alloc] initWithMinimalJSON:JSON];
+        self.product = [[SPProduct alloc] initWithMinimalJSON:JSON pricesDivider:[NSDecimalNumber decimalNumberWithString:@"100"]];
         
         for (NSString *string in [JSON objectForKey:@"_tags"])
         {

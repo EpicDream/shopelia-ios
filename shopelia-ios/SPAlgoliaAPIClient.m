@@ -61,7 +61,7 @@
                                  continue ;
                              
                              SPAlgoliaSearchResult *searchResult = [[SPAlgoliaSearchResult alloc] initWithJSON:productJSON];
-                             if ([searchResult isValid])
+                             if ([searchResult isValid] && ![searchResults containsObject:searchResult])
                                  [searchResults addObject:searchResult];
                          }
                          if (completion)

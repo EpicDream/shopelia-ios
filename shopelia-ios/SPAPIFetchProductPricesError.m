@@ -36,8 +36,7 @@
                 for (NSDictionary *productJSON in JSON)
                 {
                     if (![productJSON isKindOfClass:[NSDictionary class]] ||
-                        [[productJSON objectForKey:@"ready"] boolValue] == 0 ||
-                        [[productJSON objectForKey:@"versions"] count] == 0)
+                        [[productJSON objectForKey:@"ready"] boolValue] == 0)
                     {
                         hasError = YES;
                         break ;
