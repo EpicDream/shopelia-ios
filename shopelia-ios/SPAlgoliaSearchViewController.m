@@ -30,6 +30,10 @@
 
 - (void)searchTimerFired:(NSTimer *)timer
 {
+    // cancel previous searches
+    [[SPAlgoliaAPIClient sharedInstance] cancelSearches];
+    
+    // launch new search
     [[SPAlgoliaAPIClient sharedInstance] searchProductsWithQuery:timer.userInfo
                                                             page:self.currentPageNumber
                                                       completion:^(BOOL success, NSArray *products) {
@@ -38,6 +42,10 @@
             self.searchResults = products;
             [self.tableView reloadData];
             [self updateTableViewVisibility];
+        }
+        else
+        {
+            
         }
     }];
     
