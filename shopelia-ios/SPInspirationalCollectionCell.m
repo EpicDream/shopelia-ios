@@ -11,7 +11,8 @@
 
 @interface SPInspirationalCollectionCell ()
 @property (weak, nonatomic) IBOutlet SPImageView *collectionImageView;
-@property (weak, nonatomic) IBOutlet UIView *collectionContainerView;
+@property (weak, nonatomic) IBOutlet SPImageView *cacheImageView;
+@property (weak, nonatomic) IBOutlet UIView *darkView;
 @property (strong, nonatomic) SPInspirationalCollection *collection;
 @end
 
@@ -28,9 +29,23 @@
     [[SPRemoteImageLoader sharedInstance] fetchImageForURL:collection.imageURL completion:^(NSURL *imageURL, UIImage *image) {
         if ([self.collection.imageURL isEqual:imageURL])
         {
-            self.collectionImageView.image = image;//[SPImageProcessor cardImage:image];
+            self.collectionImageView.image = image;
         }
     }];
+}
+
+- (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated
+{
+    [super setHighlighted:highlighted animated:animated];
+    
+    self.darkView.hidden = !highlighted;
+}
+
+- (void)prepareForReuse
+{
+    [super prepareForReuse];
+    
+    self.darkView.hidden = YES;
 }
 
 #pragma mark - Lifecycle
@@ -39,16 +54,7 @@
 {
     [super awakeFromNib];
     
-    CGFloat cornerRadius = 1.5f;
-    self.collectionContainerView.layer.shadowColor = [UIColor blackColor].CGColor;
-    self.collectionContainerView.layer.shadowOffset = CGSizeMake(0, 1);
-    self.collectionContainerView.layer.shadowOpacity = 0.4f;
-    self.collectionContainerView.layer.shadowRadius = 0.5f;
-    self.collectionContainerView.layer.masksToBounds = NO;
-    self.collectionContainerView.layer.cornerRadius = cornerRadius;
-    self.collectionImageView.layer.cornerRadius = cornerRadius;
-    self.collectionContainerView.layer.shouldRasterize = YES;
-    self.collectionContainerView.layer.rasterizationScale = [[UIScreen mainScreen] scale];
+    self.cacheImageView.image = [[UIImage imageNamed:@"card_background_cache.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(10.0f, 10.0f, 10.0f, 10.0f)];
 }
 
 @end

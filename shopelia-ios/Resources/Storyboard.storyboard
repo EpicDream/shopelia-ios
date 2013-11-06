@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="IZ0-BQ-Mn5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="IZ0-BQ-Mn5">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3746"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
     </dependencies>
     <scenes>
         <!--Barcode Scan View Controller-->
@@ -311,34 +311,39 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nDx-5a-BIC">
-                                                    <rect key="frame" x="11" y="0.0" width="298" height="90"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FoO-Pk-tIN" customClass="SPImageView">
+                                                    <rect key="frame" x="10" y="0.0" width="300" height="90"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                </imageView>
+                                                <view hidden="YES" opaque="NO" alpha="0.20000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DfJ-GL-urR">
+                                                    <rect key="frame" x="10" y="0.0" width="300" height="90"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FoO-Pk-tIN" customClass="SPImageView">
-                                                            <rect key="frame" x="0.0" y="0.0" width="298" height="90"/>
-                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                        </imageView>
-                                                    </subviews>
-                                                    <color key="backgroundColor" red="0.41149371603260865" green="0.41149371603260865" blue="0.41149371603260865" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <constraints>
-                                                        <constraint firstItem="FoO-Pk-tIN" firstAttribute="top" secondItem="nDx-5a-BIC" secondAttribute="top" id="7BQ-zV-ay4"/>
-                                                        <constraint firstItem="FoO-Pk-tIN" firstAttribute="leading" secondItem="nDx-5a-BIC" secondAttribute="leading" id="GFu-03-Lrt"/>
-                                                        <constraint firstAttribute="trailing" secondItem="FoO-Pk-tIN" secondAttribute="trailing" id="I9W-DE-p3V"/>
-                                                        <constraint firstAttribute="bottom" secondItem="FoO-Pk-tIN" secondAttribute="bottom" id="W3j-ah-5s7"/>
-                                                    </constraints>
+                                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 </view>
+                                                <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jtB-wK-RLU" customClass="SPImageView">
+                                                    <rect key="frame" x="10" y="0.0" width="300" height="90"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="nDx-5a-BIC" secondAttribute="trailing" constant="11" id="DEP-pO-feU"/>
-                                                <constraint firstItem="nDx-5a-BIC" firstAttribute="top" secondItem="GhF-cN-4OT" secondAttribute="top" id="KOC-Bc-IFA"/>
-                                                <constraint firstAttribute="bottom" secondItem="nDx-5a-BIC" secondAttribute="bottom" constant="10" id="o1K-0W-smp"/>
-                                                <constraint firstItem="nDx-5a-BIC" firstAttribute="leading" secondItem="GhF-cN-4OT" secondAttribute="leading" constant="11" id="pf4-Xx-lns"/>
+                                                <constraint firstItem="FoO-Pk-tIN" firstAttribute="top" secondItem="GhF-cN-4OT" secondAttribute="top" id="2YD-ay-f0h"/>
+                                                <constraint firstItem="FoO-Pk-tIN" firstAttribute="leading" secondItem="GhF-cN-4OT" secondAttribute="leading" constant="10" id="5ch-68-HNV"/>
+                                                <constraint firstItem="DfJ-GL-urR" firstAttribute="leading" secondItem="GhF-cN-4OT" secondAttribute="leading" constant="10" id="BPo-AT-8sp"/>
+                                                <constraint firstItem="jtB-wK-RLU" firstAttribute="leading" secondItem="GhF-cN-4OT" secondAttribute="leading" constant="10" id="G6r-9O-LQK"/>
+                                                <constraint firstAttribute="bottom" secondItem="DfJ-GL-urR" secondAttribute="bottom" constant="10" id="HQb-Vj-RjL"/>
+                                                <constraint firstAttribute="bottom" secondItem="jtB-wK-RLU" secondAttribute="bottom" constant="10" id="I6V-TY-3w2"/>
+                                                <constraint firstAttribute="trailing" secondItem="FoO-Pk-tIN" secondAttribute="trailing" constant="10" id="Nzy-JX-HlD"/>
+                                                <constraint firstAttribute="bottom" secondItem="FoO-Pk-tIN" secondAttribute="bottom" constant="10" id="ViV-Un-t7y"/>
+                                                <constraint firstItem="DfJ-GL-urR" firstAttribute="top" secondItem="GhF-cN-4OT" secondAttribute="top" id="afG-RT-gbM"/>
+                                                <constraint firstAttribute="trailing" secondItem="jtB-wK-RLU" secondAttribute="trailing" constant="10" id="ap8-TV-uCf"/>
+                                                <constraint firstAttribute="trailing" secondItem="DfJ-GL-urR" secondAttribute="trailing" constant="10" id="eso-bO-4P7"/>
+                                                <constraint firstItem="jtB-wK-RLU" firstAttribute="top" secondItem="GhF-cN-4OT" secondAttribute="top" id="oMO-JJ-ld4"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="collectionContainerView" destination="nDx-5a-BIC" id="91w-Y1-9Ys"/>
+                                            <outlet property="cacheImageView" destination="jtB-wK-RLU" id="NW3-Bh-VD8"/>
                                             <outlet property="collectionImageView" destination="FoO-Pk-tIN" id="MUZ-dN-N7J"/>
+                                            <outlet property="darkView" destination="DfJ-GL-urR" id="mgR-UV-rcM"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

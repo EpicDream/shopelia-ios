@@ -11,6 +11,5 @@
 @interface SPImageProcessor : NSObject
 
 + (UIImage *)resizedImage:(UIImage *)image toSize:(CGSize)size;
-+ (UIImage *)cardImage:(UIImage *)image;
 
 @end

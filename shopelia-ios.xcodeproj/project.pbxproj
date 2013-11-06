@@ -74,6 +74,8 @@
 		37568864182163580018B57E /* scan_icon_inactive@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 37568862182163580018B57E /* scan_icon_inactive@2x.png */; };
 		37568867182164380018B57E /* scan_icon_active.png in Resources */ = {isa = PBXBuildFile; fileRef = 37568865182164380018B57E /* scan_icon_active.png */; };
 		37568868182164380018B57E /* scan_icon_active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 37568866182164380018B57E /* scan_icon_active@2x.png */; };
+		375F71D5182A356A00BAEA58 /* card_background_cache.png in Resources */ = {isa = PBXBuildFile; fileRef = 375F71D3182A356A00BAEA58 /* card_background_cache.png */; };
+		375F71D6182A356A00BAEA58 /* card_background_cache@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 375F71D4182A356A00BAEA58 /* card_background_cache@2x.png */; };
 		376839411816C479008BFAA5 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 376839401816C479008BFAA5 /* Accelerate.framework */; };
 		376839431816C496008BFAA5 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 376839421816C496008BFAA5 /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		376839471816CF0C008BFAA5 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 376839461816CF0C008BFAA5 /* CoreTelephony.framework */; };
@@ -243,6 +245,8 @@
 		37568862182163580018B57E /* scan_icon_inactive@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scan_icon_inactive@2x.png"; sourceTree = "<group>"; };
 		37568865182164380018B57E /* scan_icon_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scan_icon_active.png; sourceTree = "<group>"; };
 		37568866182164380018B57E /* scan_icon_active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scan_icon_active@2x.png"; sourceTree = "<group>"; };
+		375F71D3182A356A00BAEA58 /* card_background_cache.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = card_background_cache.png; sourceTree = "<group>"; };
+		375F71D4182A356A00BAEA58 /* card_background_cache@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "card_background_cache@2x.png"; sourceTree = "<group>"; };
 		376839401816C479008BFAA5 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		376839421816C496008BFAA5 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		376839461816CF0C008BFAA5 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
@@ -602,6 +606,8 @@
 		3756882518210F500018B57E /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				375F71D3182A356A00BAEA58 /* card_background_cache.png */,
+				375F71D4182A356A00BAEA58 /* card_background_cache@2x.png */,
 				376F260818298327003DE2E3 /* card_background_mask.png */,
 				376F260918298327003DE2E3 /* card_background_mask@2x.png */,
 				374EB51918283E59000B4D55 /* loader_icon.png */,
@@ -972,6 +978,7 @@
 				37D5C9A0180E818B00216A31 /* zbar-help.html in Resources */,
 				37568864182163580018B57E /* scan_icon_inactive@2x.png in Resources */,
 				378B9A5B1827DDA00031F2F4 /* shopelia_logo_dark@2x.png in Resources */,
+				375F71D5182A356A00BAEA58 /* card_background_cache.png in Resources */,
 				37D5C97E180E805300216A31 /* ShopeliaSDKResources.bundle in Resources */,
 				37568868182164380018B57E /* scan_icon_active@2x.png in Resources */,
 				378B9A5A1827DDA00031F2F4 /* shopelia_logo_dark.png in Resources */,
@@ -999,6 +1006,7 @@
 				3756883118210F500018B57E /* back_arrow.png in Resources */,
 				376F260B18298327003DE2E3 /* card_background_mask@2x.png in Resources */,
 				376F260A18298327003DE2E3 /* card_background_mask.png in Resources */,
+				375F71D6182A356A00BAEA58 /* card_background_cache@2x.png in Resources */,
 				37A83ACF181A9DDC0077B517 /* Storyboard.storyboard in Resources */,
 				37FEA949181E6EEE0004E85B /* SPErrorMessageView.xib in Resources */,
 				3756883718210F500018B57E /* error_button_background_normal.png in Resources */,
