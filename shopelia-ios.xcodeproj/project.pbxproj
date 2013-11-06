@@ -8,10 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		110BF6531816A2B3000CAC67 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 110BF6521816A2B3000CAC67 /* SystemConfiguration.framework */; };
-		113137C517F1D15F00AA7DAB /* SpinnerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 113137C417F1D15F00AA7DAB /* SpinnerView.m */; };
-		113137C717F1D52300AA7DAB /* SpinnerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 113137C617F1D52300AA7DAB /* SpinnerView.xib */; };
-		113137CA17F1D7ED00AA7DAB /* UIImage+Shopelia.m in Sources */ = {isa = PBXBuildFile; fileRef = 113137C917F1D7ED00AA7DAB /* UIImage+Shopelia.m */; };
-		113137CE17F2EEC900AA7DAB /* SpinnerLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 113137CD17F2EEC900AA7DAB /* SpinnerLayer.m */; };
 		113DDE2F17DDFA9A0056E126 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 113DDE2E17DDFA9A0056E126 /* Foundation.framework */; };
 		113DDE3117DDFA9A0056E126 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 113DDE3017DDFA9A0056E126 /* CoreGraphics.framework */; };
 		113DDE3317DDFA9A0056E126 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 113DDE3217DDFA9A0056E126 /* UIKit.framework */; };
@@ -28,7 +24,6 @@
 		116CD92C17DE030100978733 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 116CD92717DE030100978733 /* libiconv.dylib */; };
 		116CD92D17DE030100978733 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 116CD92817DE030100978733 /* QuartzCore.framework */; };
 		11C6E7E317E06F5600D66D96 /* UIColor+Shopelia.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C6E7E217E06F5600D66D96 /* UIColor+Shopelia.m */; };
-		11C6E7EB17E07E8500D66D96 /* UIView+Shopelia.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C6E7EA17E07E8500D66D96 /* UIView+Shopelia.m */; };
 		3705528F181928D300826EA0 /* SPBarcodeScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3705528D181928D300826EA0 /* SPBarcodeScanViewController.m */; };
 		372C32F9180EEB18008928B7 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 372C32F3180EEB18008928B7 /* libTestFlight.a */; };
 		372C32FA180EEB18008928B7 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 372C32F4180EEB18008928B7 /* README.md */; };
@@ -117,13 +112,6 @@
 
 /* Begin PBXFileReference section */
 		110BF6521816A2B3000CAC67 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		113137C317F1D15F00AA7DAB /* SpinnerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpinnerView.h; sourceTree = "<group>"; };
-		113137C417F1D15F00AA7DAB /* SpinnerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpinnerView.m; sourceTree = "<group>"; };
-		113137C617F1D52300AA7DAB /* SpinnerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpinnerView.xib; sourceTree = "<group>"; };
-		113137C817F1D7ED00AA7DAB /* UIImage+Shopelia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Shopelia.h"; sourceTree = "<group>"; };
-		113137C917F1D7ED00AA7DAB /* UIImage+Shopelia.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Shopelia.m"; sourceTree = "<group>"; };
-		113137CC17F2EEC900AA7DAB /* SpinnerLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpinnerLayer.h; sourceTree = "<group>"; };
-		113137CD17F2EEC900AA7DAB /* SpinnerLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpinnerLayer.m; sourceTree = "<group>"; };
 		113DDE2B17DDFA9A0056E126 /* shopelia-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "shopelia-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		113DDE2E17DDFA9A0056E126 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		113DDE3017DDFA9A0056E126 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -144,8 +132,6 @@
 		116CD92817DE030100978733 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		11C6E7E117E06F5600D66D96 /* UIColor+Shopelia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Shopelia.h"; sourceTree = "<group>"; };
 		11C6E7E217E06F5600D66D96 /* UIColor+Shopelia.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Shopelia.m"; sourceTree = "<group>"; };
-		11C6E7E917E07E8500D66D96 /* UIView+Shopelia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Shopelia.h"; sourceTree = "<group>"; };
-		11C6E7EA17E07E8500D66D96 /* UIView+Shopelia.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Shopelia.m"; sourceTree = "<group>"; };
 		3705528C181928D300826EA0 /* SPBarcodeScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPBarcodeScanViewController.h; sourceTree = "<group>"; };
 		3705528D181928D300826EA0 /* SPBarcodeScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPBarcodeScanViewController.m; sourceTree = "<group>"; };
 		372C32F3180EEB18008928B7 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
@@ -346,10 +332,6 @@
 			children = (
 				11C6E7E117E06F5600D66D96 /* UIColor+Shopelia.h */,
 				11C6E7E217E06F5600D66D96 /* UIColor+Shopelia.m */,
-				11C6E7E917E07E8500D66D96 /* UIView+Shopelia.h */,
-				11C6E7EA17E07E8500D66D96 /* UIView+Shopelia.m */,
-				113137C817F1D7ED00AA7DAB /* UIImage+Shopelia.h */,
-				113137C917F1D7ED00AA7DAB /* UIImage+Shopelia.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -597,11 +579,6 @@
 				37A83AD4181AA29E0077B517 /* SPTableViewCell.m */,
 				37FEA952181E71910004E85B /* SPLargeImportantButton.h */,
 				37FEA953181E71910004E85B /* SPLargeImportantButton.m */,
-				113137C317F1D15F00AA7DAB /* SpinnerView.h */,
-				113137C417F1D15F00AA7DAB /* SpinnerView.m */,
-				113137C617F1D52300AA7DAB /* SpinnerView.xib */,
-				113137CC17F2EEC900AA7DAB /* SpinnerLayer.h */,
-				113137CD17F2EEC900AA7DAB /* SpinnerLayer.m */,
 				37568850182144FE0018B57E /* SPCardImageView.h */,
 				37568851182144FE0018B57E /* SPCardImageView.m */,
 				3756885E182162100018B57E /* SPCardButton.h */,
@@ -855,7 +832,6 @@
 				37AEE4BA18229E9B009BC5FF /* SPWaitingMessageView.xib in Resources */,
 				37E2244618196DD2001DD2A2 /* Localizable.strings in Resources */,
 				372C32FA180EEB18008928B7 /* README.md in Resources */,
-				113137C717F1D52300AA7DAB /* SpinnerView.xib in Resources */,
 				37A83ACF181A9DDC0077B517 /* Storyboard.storyboard in Resources */,
 				37FEA949181E6EEE0004E85B /* SPErrorMessageView.xib in Resources */,
 			);
@@ -882,7 +858,6 @@
 				37AEE4B518229697009BC5FF /* SPInspirationalCollection.m in Sources */,
 				378B9A41182792500031F2F4 /* SPCollectionViewCell.m in Sources */,
 				373D53BB181ECE0A00337724 /* SPProductSearchInProgressCell.m in Sources */,
-				113137C517F1D15F00AA7DAB /* SpinnerView.m in Sources */,
 				37B09C0E1828E67D0004E3DF /* AFURLResponseSerialization.m in Sources */,
 				113DDE3B17DDFA9A0056E126 /* main.m in Sources */,
 				37AEE4AF1822784E009BC5FF /* SPInspirationalCollectionsViewController.m in Sources */,
@@ -900,7 +875,6 @@
 				37AEE4BD1822B28D009BC5FF /* SPMessageView.m in Sources */,
 				37B09BF21828E6620004E3DF /* ASRemoteIndex.m in Sources */,
 				373E2E92181E7BE000C575B0 /* SPAPIClient+Tracker.m in Sources */,
-				11C6E7EB17E07E8500D66D96 /* UIView+Shopelia.m in Sources */,
 				37B09BEF1828E6620004E3DF /* ASAPIClient+Network.m in Sources */,
 				37E2243C181957AE001DD2A2 /* SPSearchBar.m in Sources */,
 				37AD7763181FCB0000E1EE0D /* SPAlgoliaSearchCell.m in Sources */,
@@ -922,7 +896,6 @@
 				37AD7766181FED3600E1EE0D /* SPAlgoliaAPIClient.m in Sources */,
 				373E2EA6181EAD0B00C575B0 /* SPAPIFetchProductPricesError.m in Sources */,
 				37B09C0A1828E67D0004E3DF /* AFNetworkReachabilityManager.m in Sources */,
-				113137CA17F1D7ED00AA7DAB /* UIImage+Shopelia.m in Sources */,
 				375333A3181FA732004BAB46 /* SPShopeliaManager.m in Sources */,
 				373E2EA0181EAB5A00C575B0 /* SPAPIClient+ProductPrices.m in Sources */,
 				37E2244918197028001DD2A2 /* SPBarcodeOverlayView.m in Sources */,
@@ -931,7 +904,6 @@
 				37B09C0B1828E67D0004E3DF /* AFSecurityPolicy.m in Sources */,
 				378B9A3E18278D530031F2F4 /* SPCollectionView.m in Sources */,
 				37AEE4C31822C89D009BC5FF /* SPInspirationalCollectionProductsViewController.m in Sources */,
-				113137CE17F2EEC900AA7DAB /* SpinnerLayer.m in Sources */,
 				37AEE4B818229E86009BC5FF /* SPWaitingMessageView.m in Sources */,
 				376F2607182971DD003DE2E3 /* SPImageProcessor.m in Sources */,
 				37AEE4B218227861009BC5FF /* SPInspirationalCollectionCell.m in Sources */,
