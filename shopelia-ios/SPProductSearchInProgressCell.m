@@ -9,7 +9,7 @@
 #import "SPProductSearchInProgressCell.h"
 
 @interface SPProductSearchInProgressCell ()
-@property (weak, nonatomic) IBOutlet SPLabel *textLabel;
+
 @end
 
 @implementation SPProductSearchInProgressCell

@@ -57,6 +57,24 @@
     [self presentViewController:navigationController animated:YES completion:nil];
 }
 
+#pragma mark - UITableView delegate
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([cell isKindOfClass:[SPProductSearchInProgressCell class]])
+    {
+        [((SPProductSearchInProgressCell *)cell).spinner startAnimating];
+    }
+}
+
+- (void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([cell isKindOfClass:[SPProductSearchInProgressCell class]])
+    {
+        [((SPProductSearchInProgressCell *)cell).spinner stopAnimating];
+    }
+}
+
 #pragma mark - UITableView data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -79,13 +97,11 @@
     if (self.product.count == 0)
     {
         SPProductSearchInProgressCell *cell = [tableView dequeueReusableCellWithIdentifier:TABLE_VIEW_SEARCH_IN_PROGRESS_IDENTIFIER];
-        
         return cell;
     }
     
     SPProductSearchCell *cell = [tableView dequeueReusableCellWithIdentifier:TABLE_VIEW_PRODUCT_CELL_IDENFITIER];
     SPProduct *product = [self.products objectAtIndex:indexPath.row];
-    
     [cell configureWithProduct:product];
     [cell.actionButton setTag:indexPath.row + 1000];
     [cell.merchantButton setTag:indexPath.row + 2000];
@@ -100,7 +116,7 @@
     
     // searching cell
     if (self.product.count == 0)
-        return 100.0f;
+        return 132.0f;
         
     if ([[self.cellHeightsCache objectAtIndex:indexPath.row] class] == [NSNull class])
     {
