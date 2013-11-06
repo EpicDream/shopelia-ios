@@ -46,9 +46,6 @@
 
 - (void)searchProductsWithQuery:(NSString *)query page:(NSUInteger)page completion:(void (^)(BOOL success, NSArray *searchResults))completion
 {
-    // cancel previous searches
-    [self cancelSearches];
-    
     // perform search
     [self.remoteIndex search:[ASQuery queryWithFullTextQuery:query]
                      success:^(ASRemoteIndex *index, ASQuery *query, NSDictionary *result) {

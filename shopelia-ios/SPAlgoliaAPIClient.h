@@ -11,5 +11,6 @@
 @interface SPAlgoliaAPIClient : SPSingletonObject
 
 - (void)searchProductsWithQuery:(NSString *)query page:(NSUInteger)page completion:(void (^)(BOOL success, NSArray *searchResults))completion;
+- (void)cancelSearches;
 
 @end
