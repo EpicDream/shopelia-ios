@@ -8,7 +8,7 @@
 
 #import "SPInspirationalCollectionProductsViewController.h"
 #import "SPCollectionView.h"
-#import "SPInspirationalCollectionProductCell.h"
+#import "SPGridCollectionViewCell.h"
 #import "SPAPIClient+InspirationalCollections.h"
 #import "CHTCollectionViewWaterfallLayout.h"
 #import "SPShopeliaManager.h"
@@ -58,7 +58,7 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    SPInspirationalCollectionProductCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SPInspirationalCollectionProductCell" forIndexPath:indexPath];
+    SPGridCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SPGridCollectionViewCell" forIndexPath:indexPath];
     SPProduct *product = [self.products objectAtIndex:indexPath.row];
     
     [cell configureWithProduct:product];
