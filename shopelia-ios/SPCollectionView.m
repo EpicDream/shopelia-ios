@@ -15,6 +15,7 @@
 - (void)initialize
 {
     self.backgroundColor = [UIColor clearColor];
+    self.alwaysBounceVertical = YES;
 }
 
 - (void)awakeFromNib
