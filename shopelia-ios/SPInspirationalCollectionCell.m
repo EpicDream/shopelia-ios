@@ -24,6 +24,8 @@
 {
     self.collection = collection;
     
+    self.collectionImageView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.6f];
+    
     // fetch image
     self.collectionImageView.image = nil;
     [[SPRemoteImageLoader sharedInstance] fetchImageForURL:collection.imageURL completion:^(NSURL *imageURL, UIImage *image) {
