@@ -10,3 +10,5 @@
 
 #define SPAlgoliaApplicationID @"JUFLKNI0PS"
 #define SPAlgoliaAPIKey @"03832face9510ee5a495b06855dfa38b"
+
+#define SPCrashlyticsAPIKey @"cb362aa8849172fa6dc917f1f48b657e7ae58e99"

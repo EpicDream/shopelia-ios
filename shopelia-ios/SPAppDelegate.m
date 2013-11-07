@@ -18,6 +18,9 @@
     [TestFlight setOptions:@{TFOptionLogToConsole : @NO, TFOptionLogToSTDERR : @NO, TFOptionLogOnCheckpoint : @NO}];
     [TestFlight takeOff:SPTestFlightApplicationToken];
 
+    // launch Crashlytics
+    [Crashlytics startWithAPIKey:SPCrashlyticsAPIKey];
+    
     return YES;
 }
 							

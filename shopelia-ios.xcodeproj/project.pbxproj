@@ -90,6 +90,7 @@
 		37D5C97F180E805300216A31 /* ShopeliaSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37D5C97D180E805300216A31 /* ShopeliaSDK.framework */; };
 		37D5C99E180E818B00216A31 /* libzbar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 37D5C998180E818B00216A31 /* libzbar.a */; };
 		37D5C9A0180E818B00216A31 /* zbar-help.html in Resources */ = {isa = PBXBuildFile; fileRef = 37D5C99B180E818B00216A31 /* zbar-help.html */; };
+		37DBED56182BFCCF007A9C66 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37DBED55182BFCCF007A9C66 /* Crashlytics.framework */; };
 		37E2243C181957AE001DD2A2 /* SPSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E2243B181957AE001DD2A2 /* SPSearchBar.m */; };
 		37E2244618196DD2001DD2A2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 37E2244418196DD2001DD2A2 /* Localizable.strings */; };
 		37E2244918197028001DD2A2 /* SPBarcodeOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E2244818197028001DD2A2 /* SPBarcodeOverlayView.m */; };
@@ -270,6 +271,7 @@
 		37D5C997180E818B00216A31 /* ZBarSymbol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBarSymbol.h; sourceTree = "<group>"; };
 		37D5C998180E818B00216A31 /* libzbar.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libzbar.a; sourceTree = "<group>"; };
 		37D5C99B180E818B00216A31 /* zbar-help.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "zbar-help.html"; sourceTree = "<group>"; };
+		37DBED55182BFCCF007A9C66 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		37E2243A181957AE001DD2A2 /* SPSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSearchBar.h; sourceTree = "<group>"; };
 		37E2243B181957AE001DD2A2 /* SPSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSearchBar.m; sourceTree = "<group>"; };
 		37E2243E181958E4001DD2A2 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -300,6 +302,7 @@
 				37D5C97F180E805300216A31 /* ShopeliaSDK.framework in Frameworks */,
 				116CD92A17DE030100978733 /* CoreMedia.framework in Frameworks */,
 				116CD92B17DE030100978733 /* CoreVideo.framework in Frameworks */,
+				37DBED56182BFCCF007A9C66 /* Crashlytics.framework in Frameworks */,
 				116CD92C17DE030100978733 /* libiconv.dylib in Frameworks */,
 				116CD92D17DE030100978733 /* QuartzCore.framework in Frameworks */,
 				113DDE3117DDFA9A0056E126 /* CoreGraphics.framework in Frameworks */,
@@ -360,6 +363,7 @@
 		113DDE2D17DDFA9A0056E126 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				37DBED55182BFCCF007A9C66 /* Crashlytics.framework */,
 				376839461816CF0C008BFAA5 /* CoreTelephony.framework */,
 				376839421816C496008BFAA5 /* AdSupport.framework */,
 				376839401816C479008BFAA5 /* Accelerate.framework */,
@@ -744,6 +748,7 @@
 				113DDE2717DDFA9A0056E126 /* Sources */,
 				113DDE2817DDFA9A0056E126 /* Frameworks */,
 				113DDE2917DDFA9A0056E126 /* Resources */,
+				37DBED54182BFC9A007A9C66 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -839,6 +844,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		37DBED54182BFC9A007A9C66 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Crashlytics.framework/run cb362aa8849172fa6dc917f1f48b657e7ae58e99\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		113DDE2717DDFA9A0056E126 /* Sources */ = {
@@ -1021,6 +1042,7 @@
 					"$(inherited)",
 					./ShopeliaSDK.embeddedframework,
 					"${PROJECT_DIR}",
+					"/Users/nicolas/devel/shopelia-ios",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "shopelia-ios/shopelia-ios-Prefix.pch";
@@ -1061,6 +1083,7 @@
 					"$(inherited)",
 					./ShopeliaSDK.embeddedframework,
 					"${PROJECT_DIR}",
+					"/Users/nicolas/devel/shopelia-ios",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "shopelia-ios/shopelia-ios-Prefix.pch";
