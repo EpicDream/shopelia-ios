@@ -30,7 +30,7 @@
     SPProduct *product = [self.products objectAtIndex:indexPath.row];
     
     CGFloat imageHeight = 100.0f;
-    if (product.imageSize.width > 0)
+    if (product.imageSize.width > 0 && product.imageSize.height)
         imageHeight = ceil(product.imageSize.height * ((PRODUCT_CELL_WIDTH - 20.0f) / product.imageSize.width));
     return 30.0f + 10.0f + imageHeight + 10.0f;
 }
