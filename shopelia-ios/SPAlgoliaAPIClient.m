@@ -13,6 +13,7 @@
 @interface SPAlgoliaAPIClient ()
 @property (strong, nonatomic) ASAPIClient *APIClient;
 @property (strong, nonatomic) ASRemoteIndex *remoteIndex;
+@property (assign, nonatomic, getter = isSearching) BOOL searching;
 @end
 
 @implementation SPAlgoliaAPIClient
@@ -42,13 +43,22 @@
 - (void)cancelSearches
 {
     [self.remoteIndex cancelPreviousSearches];
+    self.searching = NO;
 }
 
-- (void)searchProductsWithQuery:(NSString *)query page:(NSUInteger)page completion:(void (^)(BOOL success, NSArray *searchResults))completion
+- (void)searchProductsWithQuery:(NSString *)query page:(NSUInteger)page completion:(void (^)(BOOL success, NSArray *searchResults, NSUInteger pagesNumber))completion
 {
     // perform search
-    [self.remoteIndex search:[ASQuery queryWithFullTextQuery:query]
+    ASQuery *algoliaQuery = [ASQuery queryWithFullTextQuery:query];
+    algoliaQuery.page = page;
+    
+    self.searching = YES;
+    [self.remoteIndex search:algoliaQuery
                      success:^(ASRemoteIndex *index, ASQuery *query, NSDictionary *result) {
+                         self.searching = NO;
+
+                         NSUInteger nbPages = 0;
+                         nbPages = [[result objectForKey:@"nbPages"] integerValue];
                          
                          // create products
                          NSMutableArray *searchResults = [[NSMutableArray alloc] init];
@@ -62,13 +72,14 @@
                                  [searchResults addObject:searchResult];
                          }
                          if (completion)
-                             completion(YES, searchResults);
+                             completion(YES, searchResults, nbPages);
                      }
                      failure:^(ASRemoteIndex *index, ASQuery *query, NSString *errorMessage) {
+                         self.searching = NO;
                          
                          // notify
                          if (completion)
-                             completion(NO, nil);
+                             completion(NO, nil, 0);
                      }];
 }
 
