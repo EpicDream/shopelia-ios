@@ -8,50 +8,81 @@
 
 #import "SPAlgoliaSearchViewController.h"
 #import "SPSearchBar.h"
-#import "SPAlgoliaSearchCell.h"
 #import "SPAlgoliaAPIClient.h"
 #import "SPShopeliaManager.h"
 #import "SPAlgoliaSearchResult.h"
-#import "SPAlgoliaNoResultsCell.h"
+#import "SPGridCollectionViewCell.h"
+#import "SPCollectionView.h"
+#import "CHTCollectionViewWaterfallLayout.h"
 
-#define TABLE_VIEW_ALGOLIA_SEARCH_CELL_IDENTIFIER @"SPAlgoliaSearchCell"
-#define TABLE_VIEW_ALGOLIA_NO_RESULTS_CELL_IDENTIFIER @"SPAlgoliaNoResultsCell"
+#define PRODUCT_CELL_WIDTH 145.0f
 
-@interface SPAlgoliaSearchViewController ()  <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
+@interface SPAlgoliaSearchViewController ()  <UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate>
 @property (weak, nonatomic) IBOutlet SPSearchBar *searchBar;
 @property (strong, nonatomic) NSTimer *searchTimer;
 @property (strong, nonatomic) NSArray *searchResults; // of SPAlgoliaSearchResult
 @property (assign, nonatomic) NSUInteger currentPageNumber;
+@property (assign, nonatomic) NSUInteger totalPagesNumber;
+@property (weak, nonatomic) IBOutlet SPCollectionView *collectionView;
+@property (strong, nonatomic) NSString *lastSearchQuery;
 @end
 
 @implementation SPAlgoliaSearchViewController
 
 #pragma mark - Algolia search
 
-- (void)searchTimerFired:(NSTimer *)timer
+- (void)performAlgoliaSearch:(NSString *)query appendResults:(BOOL)append pageNumber:(NSUInteger)page
 {
     // cancel previous searches
     [[SPAlgoliaAPIClient sharedInstance] cancelSearches];
     
+    if (query.length < 3)
+    {
+        self.searchResults = @[];
+        [self.collectionView reloadData];
+        [self updateCollectionViewVisibility];
+        return ;
+    }
+    
     // launch new search
-    [[SPAlgoliaAPIClient sharedInstance] searchProductsWithQuery:timer.userInfo
-                                                            page:self.currentPageNumber
-                                                      completion:^(BOOL success, NSArray *products) {
-        if (success)
+    [[SPAlgoliaAPIClient sharedInstance] searchProductsWithQuery:query page:page completion:^(BOOL success, NSArray *searchResults, NSUInteger pagesNumber) {
+    
+        if (success && pagesNumber > 0)
         {
-            self.searchResults = products;
-            [self.tableView reloadData];
-            [self updateTableViewVisibility];
+            self.totalPagesNumber = pagesNumber;
+
+            if (append)
+            {
+                // append results
+                NSMutableArray *array = [NSMutableArray arrayWithArray:self.searchResults ? self.searchResults : @[]];
+                [array addObjectsFromArray:searchResults];
+                self.searchResults = array;
+            }
+            else
+            {
+                // replace results
+                [self.collectionView setContentOffset:CGPointMake(0, 0)];
+                self.searchResults = searchResults;
+            }
         }
         else
         {
-            
+            self.searchResults = nil;
         }
+        
+        [self.collectionView reloadData];
+        [self updateCollectionViewVisibility];
     }];
-    
+}
+
+- (void)searchTimerFired:(NSTimer *)timer
+{
     // destroy timer
     [timer invalidate];
     self.searchTimer = nil;
+    
+    // perform query
+    [self performAlgoliaSearch:self.lastSearchQuery appendResults:NO pageNumber:self.currentPageNumber];
 }
 
 #pragma mark - UISearchBar delegate
@@ -60,76 +91,64 @@
 {
     // invalidate timer
     [self.searchTimer invalidate];
+    self.searchTimer = nil;
     
-    // search string
-    NSString *trimmedText = [SPDataConvertor stringByTrimmingString:searchText];
+    // search params
+    self.lastSearchQuery = [SPDataConvertor stringByTrimmingString:searchText];
+    self.currentPageNumber = 0;
+    self.totalPagesNumber = 0;
     
-    if (trimmedText.length >= 3)
-    {
-        // reschelude new search
-        self.searchTimer = [NSTimer scheduledTimerWithTimeInterval:0.3f
-                                                            target:self
-                                                          selector:@selector(searchTimerFired:)
-                                                          userInfo:trimmedText
-                                                           repeats:NO];
-    }
-    else
-    {
-        self.searchResults = @[];
-        [self.tableView reloadData];
-        [self updateTableViewVisibility];
-    }
+    // reschelude new search
+    self.searchTimer = [NSTimer timerWithTimeInterval:0.3f target:self selector:@selector(searchTimerFired:) userInfo:nil repeats:NO];
+    [[NSRunLoop currentRunLoop] addTimer:self.searchTimer forMode:NSRunLoopCommonModes];
 }
 
-#pragma mark - UITableView delegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-    if ([self shouldDisplayNoResultsCell])
-        return;
-    
+    [searchBar resignFirstResponder];
+}
+
+#pragma mark - CHTCollectionViewWaterfallLayout delegate
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(CHTCollectionViewWaterfallLayout *)collectionViewLayout heightForItemAtIndexPath:(NSIndexPath *)indexPath
+{
     SPAlgoliaSearchResult *searchResult = [self.searchResults objectAtIndex:indexPath.row];
+    SPProduct *product = searchResult.product;
     
-    // notify delegate
+    CGFloat imageHeight = 100.0f;
+    if (product.imageSize.width > 0 && product.imageSize.height)
+        imageHeight = ceil(product.imageSize.height * ((PRODUCT_CELL_WIDTH - 20.0f) / product.imageSize.width));
+    return 30.0f + 10.0f + imageHeight + 10.0f;
+}
+
+#pragma mark - UICollectionView delegate
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    SPAlgoliaSearchResult *searchResult = [self.searchResults objectAtIndex:indexPath.row];
+
     [self.delegate algoliaSearchViewController:self didSelectSearchResult:searchResult];
 }
 
-- (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if ([self shouldDisplayNoResultsCell])
-        return NO;
-    return YES;
-}
+#pragma mark - UICollectionView data source
 
-#pragma mark - UITableView data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    if ([self shouldDisplayNoResultsCell])
-        return 1;
-    
     return self.searchResults.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([self shouldDisplayNoResultsCell])
-    {
-        SPAlgoliaNoResultsCell *cell = [tableView dequeueReusableCellWithIdentifier:TABLE_VIEW_ALGOLIA_NO_RESULTS_CELL_IDENTIFIER];
-        return cell;
-    }
-    
-    SPAlgoliaSearchCell *cell = [tableView dequeueReusableCellWithIdentifier:TABLE_VIEW_ALGOLIA_SEARCH_CELL_IDENTIFIER];
+    SPGridCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SPGridCollectionViewCell" forIndexPath:indexPath];
     SPAlgoliaSearchResult *searchResult = [self.searchResults objectAtIndex:indexPath.row];
+    SPProduct *product = searchResult.product;
     
-    cell.productTitleLabel.text = searchResult.product.name;
-    [cell.productImageView setImage:nil];
-    [cell.productImageView setAsynchImageWithURL:searchResult.product.imageURL];
+    [cell configureWithProduct:product];
     return cell;
 }
 
@@ -138,6 +157,19 @@
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
     [self.searchBar resignFirstResponder];
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if (scrollView.contentSize.height > 0 &&
+        (scrollView.contentOffset.y + scrollView.bounds.size.height) >= (scrollView.contentSize.height * 0.80f) &&
+        ![[SPAlgoliaAPIClient sharedInstance] isSearching] &&
+        (self.currentPageNumber + 1) < self.totalPagesNumber)
+    {
+        // perform query
+        self.currentPageNumber++;
+        [self performAlgoliaSearch:self.lastSearchQuery appendResults:YES pageNumber:self.currentPageNumber];
+    }
 }
 
 #pragma mark - Interface
@@ -153,18 +185,23 @@
     [subView setKeyboardAppearance: UIKeyboardAppearanceAlert];
     [subView setReturnKeyType:UIReturnKeyDone];
     
-    self.tableView.backgroundColor = [SPVisualFactory defaultBackgroundColor];
-    [self updateTableViewVisibility];
+    CHTCollectionViewWaterfallLayout *collectionViewLayout = (CHTCollectionViewWaterfallLayout *)self.collectionView.collectionViewLayout;
+    [collectionViewLayout setItemWidth:PRODUCT_CELL_WIDTH];
+    [collectionViewLayout setColumnCount:2];
+    [collectionViewLayout setSectionInset:UIEdgeInsetsMake(64.0f, 10.0f, 10.0f, 10.0f)];
+    
+    self.collectionView.backgroundColor = [SPVisualFactory defaultBackgroundColor];
+    [self updateCollectionViewVisibility];
 }
 
-- (id)firstSubviewConformingToProtocol:(Protocol *)pro inView:(UIView *)view
+- (id)firstSubviewConformingToProtocol:(Protocol *)protocol inView:(UIView *)view
 {
-    if ([view conformsToProtocol: pro])
+    if ([view conformsToProtocol:protocol])
         return view;
     
     for (UIView *sub in view.subviews)
     {
-        UIView *ret = [self firstSubviewConformingToProtocol:pro inView:sub];
+        UIView *ret = [self firstSubviewConformingToProtocol:protocol inView:sub];
         if (ret)
             return ret;
     }
@@ -172,21 +209,21 @@
     return nil;
 }
 
-- (void)updateTableViewVisibility
+- (void)updateCollectionViewVisibility
 {
     if ([self shouldDisplayNoResultsCell] || self.searchResults.count > 0)
     {
-        self.tableView.hidden = NO;
+        self.collectionView.hidden = NO;
     }
     else
     {
-        self.tableView.hidden = YES;
+        self.collectionView.hidden = YES;
     }
 }
 
 - (BOOL)shouldDisplayNoResultsCell
 {
-    return (self.searchResults.count == 0 && [SPDataConvertor stringByTrimmingString:self.searchBar.text].length >= 3);
+    return (self.searchResults.count == 0 && self.lastSearchQuery.length >= 3);
 }
 
 #pragma mark - Lifecycle
