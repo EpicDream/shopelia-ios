@@ -16,6 +16,8 @@
 {
     self.backgroundColor = [UIColor clearColor];
     self.alwaysBounceVertical = YES;
+    self.showsHorizontalScrollIndicator = NO;
+    self.showsVerticalScrollIndicator = NO;
 }
 
 - (void)awakeFromNib
