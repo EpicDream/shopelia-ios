@@ -12,7 +12,7 @@
 
 @implementation SPShopeliaManager
 
-+ (void)showShopeliaSDKForURL:(NSURL *)url fromViewController:(SPViewController *)viewController
++ (void)showShopeliaSDKForURL:(NSURL *)url fromViewController:(SPViewController *)viewController completion:(void (^)(void))completion
 {
     // send view event
     SPAPIClient *client = [SPAPIV1Client sharedInstance];
@@ -32,12 +32,18 @@
         if (!error)
         {
             [shopelia checkoutPreparedOrderFromViewController:viewController animated:YES completion:^{
-                 [viewController showLoadingView:NO];
+                [viewController showLoadingView:NO];
+                
+                if (completion)
+                    completion();
             }];
         }
         else
         {
             [viewController showLoadingView:NO];
+            
+            if (completion)
+                completion();
             
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Shopelia"
                                                             message:[error localizedDescription]
@@ -47,6 +53,11 @@
             [alert show];
         }
     }];
+}
+
++ (void)showShopeliaSDKForURL:(NSURL *)url fromViewController:(SPViewController *)viewController
+{
+    [self showShopeliaSDKForURL:url fromViewController:viewController completion:nil];
 }
 
 @end

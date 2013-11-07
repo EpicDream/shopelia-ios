@@ -10,6 +10,7 @@
 
 @interface SPShopeliaManager : NSObject
 
++ (void)showShopeliaSDKForURL:(NSURL *)url fromViewController:(SPViewController *)viewController completion:(void (^)(void))completion;
 + (void)showShopeliaSDKForURL:(NSURL *)url fromViewController:(SPViewController *)viewController;
 
 @end

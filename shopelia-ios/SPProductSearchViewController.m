@@ -227,16 +227,28 @@
         }
         else
         {
-            // update model
-            self.products = products;
-            
-            // cell height cache
-            self.cellHeightsCache = [[NSMutableArray alloc] initWithCapacity:self.products.count];
-            for (NSUInteger i = 0; i < self.products.count; i++)
-                [self.cellHeightsCache addObject:[NSNull null]];
-            
-            // update view
-            [self.tableView reloadData];
+            if (products.count == 1)
+            {
+                // show shopelia SDK
+                SPProduct *product = products[0];
+                
+                [SPShopeliaManager showShopeliaSDKForURL:product.URL fromViewController:self completion:^{
+                   [self cancelViewController];
+                }];
+            }
+            else
+            {
+                // update model
+                self.products = products;
+                
+                // cell height cache
+                self.cellHeightsCache = [[NSMutableArray alloc] initWithCapacity:self.products.count];
+                for (NSUInteger i = 0; i < self.products.count; i++)
+                    [self.cellHeightsCache addObject:[NSNull null]];
+                
+                // update view
+                [self.tableView reloadData];
+            }
         }
     }];
 }
