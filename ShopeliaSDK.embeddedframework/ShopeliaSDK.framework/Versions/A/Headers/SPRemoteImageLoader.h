@@ -6,10 +6,11 @@
 //  Copyright (c) 2013 Shopelia. All rights reserved.
 //
 
-#import <ShopeliaSDK/ShopeliaSDK.h>
+#import <UIKit/UIKit.h>
 
-@interface SPRemoteImageLoader : SPSingletonObject
+@interface SPRemoteImageLoader : NSObject
 
++ (id)sharedInstance;
 - (void)fetchImageForURL:(NSURL *)imageURL completion:(void (^)(NSURL *imageURL, UIImage *image))completion;
 
 @end

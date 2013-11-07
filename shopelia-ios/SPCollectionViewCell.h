@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SPCollectionViewCell : UICollectionViewCell <SPViewCustomization, SPViewTranslation>
+@interface SPCollectionViewCell : UICollectionViewCell <SPViewCustomization>
 
 @end

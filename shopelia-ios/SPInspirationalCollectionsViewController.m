@@ -83,25 +83,25 @@
     [self.waitingMessageView.messageLabel setText:NSLocalizedString(@"PleaseWaitWhileLoadingCollections", nil)];
 }
 
-- (void)setupUIForWaitingView
+- (void)setupUIForContentView
 {
-    [self.errorMessageView removeFromSuperview];
-    [self.view insertSubview:self.waitingMessageView atIndex:0];
-    [self.tableView setHidden:YES];
+    [super setupUIForContentView];
+    
+    self.tableView.hidden = NO;
 }
 
 - (void)setupUIForErrorMessageView
 {
-    [self.waitingMessageView removeFromSuperview];
-    [self.tableView setHidden:YES];
-    [self.view insertSubview:self.errorMessageView atIndex:0];
+    [super setupUIForErrorMessageView];
+    
+    self.tableView.hidden = YES;
 }
 
-- (void)setupUIForCollections
+- (void)setupUIForWaitingMessageView
 {
-    [self.waitingMessageView removeFromSuperview];
-    [self.errorMessageView removeFromSuperview];
-    [self.tableView setHidden:NO];
+    [super setupUIForWaitingMessageView];
+    
+    self.tableView.hidden = YES;
 }
 
 #pragma mark - Actions
@@ -115,7 +115,7 @@
 
 - (void)reloadCollections
 {
-    [self setupUIForWaitingView];
+    [self setupUIForWaitingMessageView];
     [self startFetchRequest];
 }
 
@@ -139,7 +139,7 @@
             
             // update view
             [self.tableView reloadData];
-            [self setupUIForCollections];
+            [self setupUIForContentView];
         }
     }];
 }

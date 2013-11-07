@@ -10,6 +10,13 @@
 
 @interface SPAlgoliaAPIClient : SPSingletonObject
 
-- (void)searchProductsWithQuery:(NSString *)query page:(NSUInteger)page completion:(void (^)(BOOL success, NSArray *searchResults))completion;
+// performs a search request
+- (void)searchProductsWithQuery:(NSString *)query page:(NSUInteger)page completion:(void (^)(BOOL success, NSArray *searchResults, NSUInteger pagesNumber))completion;
+
+// cancels all the searches
+- (void)cancelSearches;
+
+// returns whether algolia is currently busy
+- (BOOL)isSearching;
 
 @end

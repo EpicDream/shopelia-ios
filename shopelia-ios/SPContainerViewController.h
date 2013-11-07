@@ -9,8 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "SPWaitingMessageView.h"
 #import "SPErrorMessageView.h"
+#import "SPViewController+Utilities.h"
 
-@interface SPContainerViewController : SPViewController
+@interface SPContainerViewController : SPViewController <UIScrollViewDelegate>
+
+- (void)setupUIForWaitingMessageView;
+- (void)setupUIForErrorMessageView;
+- (void)setupUIForContentView;
 
 @property (strong, nonatomic) SPWaitingMessageView *waitingMessageView;
 @property (strong, nonatomic) SPErrorMessageView *errorMessageView;

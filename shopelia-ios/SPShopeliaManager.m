@@ -19,7 +19,7 @@
     SPAPIRequest *request = [client defaultRequest];
     [request setHTTPBodyParameters:@{@"tracker" : [client tracker],
                                      @"visitor" : [client visitor],
-                                     @"action" : @"click",
+                                     @"type" : @"click",
                                      @"urls" : @[[url absoluteString]]}];
     [request setURL:[NSURL URLWithString:@"https://www.shopelia.com/api/events"]];
     [request setHTTPMethod:@"POST"];
@@ -38,6 +38,7 @@
         else
         {
             [viewController showLoadingView:NO];
+            
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Shopelia"
                                                             message:[error localizedDescription]
                                                            delegate:nil

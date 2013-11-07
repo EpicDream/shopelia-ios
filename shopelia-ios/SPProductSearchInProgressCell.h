@@ -7,7 +7,11 @@
 //
 
 #import "SPTableViewCell.h"
+#import "SPShopeliaSpinnerView.h"
 
 @interface SPProductSearchInProgressCell : SPTableViewCell
+
+@property (weak, nonatomic) IBOutlet SPLabel *textLabel;
+@property (weak, nonatomic) IBOutlet SPShopeliaSpinnerView *spinner;
 
 @end

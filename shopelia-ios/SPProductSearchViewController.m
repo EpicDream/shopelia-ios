@@ -57,6 +57,24 @@
     [self presentViewController:navigationController animated:YES completion:nil];
 }
 
+#pragma mark - UITableView delegate
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([cell isKindOfClass:[SPProductSearchInProgressCell class]])
+    {
+        [((SPProductSearchInProgressCell *)cell).spinner startAnimating];
+    }
+}
+
+- (void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([cell isKindOfClass:[SPProductSearchInProgressCell class]])
+    {
+        [((SPProductSearchInProgressCell *)cell).spinner stopAnimating];
+    }
+}
+
 #pragma mark - UITableView data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -79,13 +97,11 @@
     if (self.product.count == 0)
     {
         SPProductSearchInProgressCell *cell = [tableView dequeueReusableCellWithIdentifier:TABLE_VIEW_SEARCH_IN_PROGRESS_IDENTIFIER];
-        
         return cell;
     }
     
     SPProductSearchCell *cell = [tableView dequeueReusableCellWithIdentifier:TABLE_VIEW_PRODUCT_CELL_IDENFITIER];
     SPProduct *product = [self.products objectAtIndex:indexPath.row];
-    
     [cell configureWithProduct:product];
     [cell.actionButton setTag:indexPath.row + 1000];
     [cell.merchantButton setTag:indexPath.row + 2000];
@@ -100,7 +116,7 @@
     
     // searching cell
     if (self.product.count == 0)
-        return 100.0f;
+        return 132.0f;
         
     if ([[self.cellHeightsCache objectAtIndex:indexPath.row] class] == [NSNull class])
     {
@@ -128,25 +144,25 @@
     [self.waitingMessageView.messageLabel setText:NSLocalizedString(@"ProductSearchInProgress", nil)];
 }
 
-- (void)setupUIForProductRequest
+- (void)setupUIForContentView
 {
-    [self.tableView setHidden:YES];
-    [self.view addSubview:self.waitingMessageView];
-    [self.errorMessageView removeFromSuperview];
+    [super setupUIForContentView];
+    
+    self.tableView.hidden = NO;
 }
 
-- (void)setupUIForPricesRequest
+- (void)setupUIForErrorMessageView
 {
-    [self.tableView setHidden:NO];
-    [self.waitingMessageView removeFromSuperview];
-    [self.errorMessageView removeFromSuperview];
+    [super setupUIForErrorMessageView];
+    
+    self.tableView.hidden = YES;
 }
 
-- (void)setupUIForErrorMessage
+- (void)setupUIForWaitingMessageView
 {
-    [self.tableView setHidden:YES];
-    [self.waitingMessageView removeFromSuperview];
-    [self.view addSubview:self.errorMessageView];
+    [super setupUIForWaitingMessageView];
+    
+    self.tableView.hidden = YES;
 }
 
 - (void)updateProductInformation
@@ -167,7 +183,7 @@
         if (error)
         {
             self.errorMessageView.messageLabel.text = error.localizedMessage;
-            [self setupUIForErrorMessage];
+            [self setupUIForErrorMessageView];
         }
         else
         {
@@ -176,7 +192,7 @@
             
             // update view
             [self updateProductInformation];
-            [self setupUIForPricesRequest];
+            [self setupUIForContentView];
             
             // update tableview header height
             [self.tableView.tableHeaderView setNeedsLayout];
@@ -207,7 +223,7 @@
         if (timeout || error || products.count == 0)
         {
             self.errorMessageView.messageLabel.text = NSLocalizedString(@"ErrorUnableToFindPricesForThisProductOnline", nil);
-            [self setupUIForErrorMessage];
+            [self setupUIForErrorMessageView];
         }
         else
         {
@@ -240,13 +256,13 @@
     if ([self.product count] == 0)
     {
         // fetch product
-        [self setupUIForProductRequest];
+        [self setupUIForWaitingMessageView];
         [self startProductRequest];
     }
     else if (self.products.count == 0)
     {
         // fetch prices
-        [self setupUIForPricesRequest];
+        [self setupUIForContentView];
         [self startPricesRequest];
     }
 }

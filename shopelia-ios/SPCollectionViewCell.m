@@ -31,19 +31,13 @@
     self.contentView.backgroundColor = [UIColor clearColor];
 }
 
-#pragma mark - Translation
-
-- (void)translate
-{
-    
-}
-
 #pragma mark - Lifecycle
 
 - (void)awakeFromNib
 {
+    [super awakeFromNib];
+    
     [SPViewController customizeView:self];
-    [SPViewController translateView:self];
 }
 
 
