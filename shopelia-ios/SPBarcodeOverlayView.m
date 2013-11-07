@@ -22,16 +22,6 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
-
-    // central text
-    self.centralTextLabel = [[UILabel alloc] init];
-    self.centralTextLabel.text = NSLocalizedString(@"TheEasiestWayToBuyFromYourMobile", nil);
-    [self.centralTextLabel setTextColor:[UIColor whiteColor]];
-    [self.centralTextLabel setTextAlignment:NSTextAlignmentCenter];
-    [self.centralTextLabel setNumberOfLines:0];
-    [self.centralTextLabel setFont:[UIFont fontWithName:[SPVisualFactory regularFontName] size:20.0f]];
-    [self.centralTextLabel setBackgroundColor:[UIColor clearColor]];
-    [self addSubview:self.centralTextLabel];
 }
 
 - (void)layoutSubviews
