@@ -144,25 +144,25 @@
     [self.waitingMessageView.messageLabel setText:NSLocalizedString(@"ProductSearchInProgress", nil)];
 }
 
-- (void)setupUIForProductRequest
+- (void)setupUIForContentView
 {
-    [self.tableView setHidden:YES];
-    [self.view addSubview:self.waitingMessageView];
-    [self.errorMessageView removeFromSuperview];
+    [super setupUIForContentView];
+    
+    self.tableView.hidden = NO;
 }
 
-- (void)setupUIForPricesRequest
+- (void)setupUIForErrorMessageView
 {
-    [self.tableView setHidden:NO];
-    [self.waitingMessageView removeFromSuperview];
-    [self.errorMessageView removeFromSuperview];
+    [super setupUIForErrorMessageView];
+    
+    self.tableView.hidden = YES;
 }
 
-- (void)setupUIForErrorMessage
+- (void)setupUIForWaitingMessageView
 {
-    [self.tableView setHidden:YES];
-    [self.waitingMessageView removeFromSuperview];
-    [self.view addSubview:self.errorMessageView];
+    [super setupUIForWaitingMessageView];
+    
+    self.tableView.hidden = YES;
 }
 
 - (void)updateProductInformation
@@ -183,7 +183,7 @@
         if (error)
         {
             self.errorMessageView.messageLabel.text = error.localizedMessage;
-            [self setupUIForErrorMessage];
+            [self setupUIForErrorMessageView];
         }
         else
         {
@@ -192,7 +192,7 @@
             
             // update view
             [self updateProductInformation];
-            [self setupUIForPricesRequest];
+            [self setupUIForContentView];
             
             // update tableview header height
             [self.tableView.tableHeaderView setNeedsLayout];
@@ -223,7 +223,7 @@
         if (timeout || error || products.count == 0)
         {
             self.errorMessageView.messageLabel.text = NSLocalizedString(@"ErrorUnableToFindPricesForThisProductOnline", nil);
-            [self setupUIForErrorMessage];
+            [self setupUIForErrorMessageView];
         }
         else
         {
@@ -256,13 +256,13 @@
     if ([self.product count] == 0)
     {
         // fetch product
-        [self setupUIForProductRequest];
+        [self setupUIForWaitingMessageView];
         [self startProductRequest];
     }
     else if (self.products.count == 0)
     {
         // fetch prices
-        [self setupUIForPricesRequest];
+        [self setupUIForContentView];
         [self startPricesRequest];
     }
 }

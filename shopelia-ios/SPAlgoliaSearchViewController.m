@@ -16,6 +16,7 @@
 #import "CHTCollectionViewWaterfallLayout.h"
 
 #define PRODUCT_CELL_WIDTH 145.0f
+#define SECTION_HEADER_HEIGHT 64.0f
 
 @interface SPAlgoliaSearchViewController ()  <UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate>
 @property (weak, nonatomic) IBOutlet SPSearchBar *searchBar;
@@ -154,11 +155,6 @@
 
 #pragma mark - UIScrollView delegate
 
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
-{
-    [self.searchBar resignFirstResponder];
-}
-
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     if (scrollView.contentSize.height > 0 &&
@@ -188,10 +184,27 @@
     CHTCollectionViewWaterfallLayout *collectionViewLayout = (CHTCollectionViewWaterfallLayout *)self.collectionView.collectionViewLayout;
     [collectionViewLayout setItemWidth:PRODUCT_CELL_WIDTH];
     [collectionViewLayout setColumnCount:2];
-    [collectionViewLayout setSectionInset:UIEdgeInsetsMake(64.0f, 10.0f, 10.0f, 10.0f)];
+    [collectionViewLayout setSectionInset:UIEdgeInsetsMake(SECTION_HEADER_HEIGHT, 10.0f, 10.0f, 10.0f)];
     
     self.collectionView.backgroundColor = [SPVisualFactory defaultBackgroundColor];
     [self updateCollectionViewVisibility];
+    
+    self.errorMessageView.messageLabel.text = NSLocalizedString(@"NoResultsForThisQuery", nil);
+    [self.errorMessageView.actionButton removeFromSuperview];
+}
+
+- (void)setupUIForContentView
+{
+    [super setupUIForContentView];
+    
+    self.collectionView.hidden = NO;
+}
+
+- (void)setupUIForErrorMessageView
+{
+    [super setupUIForErrorMessageView];
+    
+    self.collectionView.hidden = YES;
 }
 
 - (id)firstSubviewConformingToProtocol:(Protocol *)protocol inView:(UIView *)view
@@ -211,8 +224,13 @@
 
 - (void)updateCollectionViewVisibility
 {
+    [self setupUIForContentView];
+
     if ([self shouldDisplayNoResultsCell] || self.searchResults.count > 0)
     {
+        if ([self shouldDisplayNoResultsCell])
+            [self setupUIForErrorMessageView];
+            
         self.collectionView.hidden = NO;
     }
     else
@@ -224,6 +242,17 @@
 - (BOOL)shouldDisplayNoResultsCell
 {
     return (self.searchResults.count == 0 && self.lastSearchQuery.length >= 3);
+}
+
+#pragma mark - Layout
+
+- (void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    
+    CGRect frame = self.errorMessageView.frame;
+    frame.origin.y = SECTION_HEADER_HEIGHT;
+    self.errorMessageView.frame = frame;
 }
 
 #pragma mark - Lifecycle

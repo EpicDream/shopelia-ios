@@ -81,25 +81,25 @@
     [collectionViewLayout setSectionInset:UIEdgeInsetsMake(10.0f, 10.0f, 10.0f, 10.0f)];
 }
 
-- (void)setupUIForWaitingView
+- (void)setupUIForContentView
 {
-    [self.errorMessageView removeFromSuperview];
-    [self.view insertSubview:self.waitingMessageView atIndex:0];
-    [self.collectionView setHidden:YES];
+    [super setupUIForContentView];
+    
+    self.collectionView.hidden = NO;
 }
 
 - (void)setupUIForErrorMessageView
 {
-    [self.waitingMessageView removeFromSuperview];
-    [self.collectionView setHidden:YES];
-    [self.view insertSubview:self.errorMessageView atIndex:0];
+    [super setupUIForErrorMessageView];
+    
+    self.collectionView.hidden = YES;
 }
 
-- (void)setupUIForCollectionProducts
+- (void)setupUIForWaitingMessageView
 {
-    [self.waitingMessageView removeFromSuperview];
-    [self.errorMessageView removeFromSuperview];
-    [self.collectionView setHidden:NO];
+    [super setupUIForWaitingMessageView];
+    
+    self.collectionView.hidden = YES;
 }
 
 #pragma mark - Actions
@@ -113,7 +113,7 @@
 
 - (void)reloadCollectionProducts
 {
-    [self setupUIForWaitingView];
+    [self setupUIForWaitingMessageView];
     [self startFetchRequest];
 }
 
@@ -136,7 +136,7 @@
             
             // update view
             [self.collectionView reloadData];
-            [self setupUIForCollectionProducts];
+            [self setupUIForContentView];
         }
     }];
 }

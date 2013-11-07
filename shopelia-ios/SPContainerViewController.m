@@ -11,7 +11,7 @@
 #import "SPProductSearchViewController.h"
 #import "SPShopeliaManager.h"
 
-@interface SPContainerViewController () <SPAlgoliaSearchViewControllerDelegate, UIScrollViewDelegate>
+@interface SPContainerViewController () <SPAlgoliaSearchViewControllerDelegate>
 @property (strong, nonatomic) SPAlgoliaSearchViewController *algoliaSearchViewController;
 @end
 
@@ -86,6 +86,24 @@
     }
 }
 
+- (void)setupUIForWaitingMessageView
+{
+    [self.errorMessageView removeFromSuperview];
+    [self.view insertSubview:self.waitingMessageView atIndex:self.view.subviews.count];
+}
+
+- (void)setupUIForErrorMessageView
+{
+    [self.waitingMessageView removeFromSuperview];
+    [self.view insertSubview:self.errorMessageView atIndex:self.view.subviews.count];
+}
+
+- (void)setupUIForContentView
+{
+    [self.errorMessageView removeFromSuperview];
+    [self.waitingMessageView removeFromSuperview];
+}
+
 #pragma mark - Layout
 
 - (void)viewDidLayoutSubviews
@@ -113,6 +131,16 @@
                                              (self.view.bounds.size.height - height) / 2.0f,
                                              self.view.bounds.size.width - 20.0f,
                                              height);
+}
+
+#pragma mark - View lifecyle
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+
+    [[SPViewController firstResponderInView:self.view] resignFirstResponder];
+    [[SPViewController firstEditingView:self.view] resignFirstResponder];
 }
 
 @end

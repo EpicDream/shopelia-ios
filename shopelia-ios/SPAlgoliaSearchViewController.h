@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "SPAlgoliaSearchResult.h"
+#import "SPContainerViewController.h"
 
 @class SPAlgoliaSearchViewController;
 
@@ -17,7 +18,7 @@
 
 @end
 
-@interface SPAlgoliaSearchViewController : SPViewController
+@interface SPAlgoliaSearchViewController : SPContainerViewController
 
 @property (weak, nonatomic) id <SPAlgoliaSearchViewControllerDelegate> delegate;
 
