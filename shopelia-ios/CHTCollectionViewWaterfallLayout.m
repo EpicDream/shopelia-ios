@@ -12,8 +12,6 @@
 @property (nonatomic, assign) CGFloat interitemSpacing;
 @property (nonatomic, strong) NSMutableArray *columnHeights; // height for each column
 @property (nonatomic, strong) NSMutableArray *itemAttributes; // attributes for each item
-@property (nonatomic, strong) UICollectionViewLayoutAttributes *headerAttributes;
-@property (nonatomic, strong) UICollectionViewLayoutAttributes *footerAttributes;
 @property (nonatomic, strong) NSMutableArray *unionRects;
 @end
 
@@ -77,23 +75,12 @@ const int unionSize = 20;
   NSAssert(_columnCount > 1, @"columnCount for UICollectionViewWaterfallLayout should be greater than 1.");
   CGFloat width = self.collectionView.frame.size.width - _sectionInset.left - _sectionInset.right;
 
-  _headerAttributes = nil;
-  if ([self.delegate respondsToSelector:@selector(collectionView:heightForHeaderInLayout:)]) {
-    CGFloat headerHeight = [self.delegate collectionView:self.collectionView
-                                 heightForHeaderInLayout:self];
-
-    _headerAttributes =
-    [UICollectionViewLayoutAttributes layoutAttributesForSupplementaryViewOfKind:UICollectionElementKindSectionHeader
-                                                                   withIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
-    _headerAttributes.frame = CGRectMake(_sectionInset.left, 0, width, headerHeight);
-  }
-
-  _interitemSpacing = floorf((width - _columnCount * _itemWidth) / (_columnCount - 1));
+    _interitemSpacing = floorf((width - _columnCount * _itemWidth) / (_columnCount - 1));
 
   _itemAttributes = [NSMutableArray arrayWithCapacity:_itemCount];
   _columnHeights = [NSMutableArray arrayWithCapacity:_columnCount];
   for (idx = 0; idx < _columnCount; idx++) {
-    [_columnHeights addObject:@(_sectionInset.top + CGRectGetMaxY(_headerAttributes.frame))];
+    [_columnHeights addObject:@(_sectionInset.top)];
   }
 
   // Item will be put into shortest column.
@@ -122,18 +109,6 @@ const int unionSize = 20;
     [_unionRects addObject:[NSValue valueWithCGRect:CGRectUnion(rect1, rect2)]];
     idx++;
   }
-
-  _footerAttributes = nil;
-  if ([self.delegate respondsToSelector:@selector(collectionView:heightForFooterInLayout:)]) {
-    CGFloat footerHeight = [self.delegate collectionView:self.collectionView
-                                 heightForFooterInLayout:self];
-    _footerAttributes =
-    [UICollectionViewLayoutAttributes layoutAttributesForSupplementaryViewOfKind:UICollectionElementKindSectionFooter
-                                                                   withIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
-    NSUInteger columnIndex = [self longestColumnIndex];
-    CGFloat yOffset = [self.columnHeights[columnIndex] floatValue] - _interitemSpacing + _sectionInset.bottom;
-    _footerAttributes.frame = CGRectMake(_sectionInset.left, yOffset, width, footerHeight);
-  }
 }
 
 - (CGSize)collectionViewContentSize {
@@ -146,24 +121,11 @@ const int unionSize = 20;
   CGFloat height = [self.columnHeights[columnIndex] floatValue];
   contentSize.height = height - self.interitemSpacing + self.sectionInset.bottom;
 
-  if (self.footerAttributes) {
-    contentSize.height = CGRectGetMaxY(self.footerAttributes.frame);
-  }
-
   return contentSize;
 }
 
 - (UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)path {
   return (self.itemAttributes)[path.item];
-}
-
-- (UICollectionViewLayoutAttributes *)layoutAttributesForSupplementaryViewOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
-  if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
-    return _headerAttributes;
-  } else if ([kind isEqualToString:UICollectionElementKindSectionFooter]) {
-    return _footerAttributes;
-  }
-  return nil;
 }
 
 - (NSArray *)layoutAttributesForElementsInRect:(CGRect)rect {
@@ -188,14 +150,6 @@ const int unionSize = 20;
     if (CGRectIntersectsRect(rect, attr.frame)) {
       [attrs addObject:attr];
     }
-  }
-
-  if (_headerAttributes && CGRectIntersectsRect(rect, [_headerAttributes frame])) {
-    [attrs addObject:_headerAttributes];
-  }
-
-  if (_footerAttributes && CGRectIntersectsRect(rect, [_footerAttributes frame])) {
-    [attrs addObject:_footerAttributes];
   }
 
   return [attrs copy];
