@@ -24,6 +24,8 @@
 
 "ProductSearchInProgress" = "Recherche du produit en cours...";
 
+"ProductsSearchInProgress" = "Recherche des produits en cours...";
+
 "Back" = "Retour";
 
 "By%@" = "par %@";

@@ -47,6 +47,7 @@
 		3756884B18213CD40018B57E /* SPAlgoliaSearchBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3756884A18213CD40018B57E /* SPAlgoliaSearchBackgroundView.m */; };
 		37568852182144FE0018B57E /* SPCardImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 37568851182144FE0018B57E /* SPCardImageView.m */; };
 		37568860182162100018B57E /* SPCardButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3756885F182162100018B57E /* SPCardButton.m */; };
+		37653949182BD7D40019FC67 /* SPViewController+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 37653948182BD7D40019FC67 /* SPViewController+Utilities.m */; };
 		376839411816C479008BFAA5 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 376839401816C479008BFAA5 /* Accelerate.framework */; };
 		376839431816C496008BFAA5 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 376839421816C496008BFAA5 /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		376839471816CF0C008BFAA5 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 376839461816CF0C008BFAA5 /* CoreTelephony.framework */; };
@@ -171,6 +172,8 @@
 		37568851182144FE0018B57E /* SPCardImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPCardImageView.m; sourceTree = "<group>"; };
 		3756885E182162100018B57E /* SPCardButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPCardButton.h; sourceTree = "<group>"; };
 		3756885F182162100018B57E /* SPCardButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPCardButton.m; sourceTree = "<group>"; };
+		37653947182BD7D40019FC67 /* SPViewController+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SPViewController+Utilities.h"; sourceTree = "<group>"; };
+		37653948182BD7D40019FC67 /* SPViewController+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SPViewController+Utilities.m"; sourceTree = "<group>"; };
 		376839401816C479008BFAA5 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		376839421816C496008BFAA5 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		376839461816CF0C008BFAA5 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
@@ -325,6 +328,8 @@
 			children = (
 				11C6E7E117E06F5600D66D96 /* UIColor+Shopelia.h */,
 				11C6E7E217E06F5600D66D96 /* UIColor+Shopelia.m */,
+				37653947182BD7D40019FC67 /* SPViewController+Utilities.h */,
+				37653948182BD7D40019FC67 /* SPViewController+Utilities.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -880,6 +885,7 @@
 				37FEA954181E71910004E85B /* SPLargeImportantButton.m in Sources */,
 				37AEE49F18225856009BC5FF /* SPContainerViewController.m in Sources */,
 				37AD7766181FED3600E1EE0D /* SPAlgoliaAPIClient.m in Sources */,
+				37653949182BD7D40019FC67 /* SPViewController+Utilities.m in Sources */,
 				373E2EA6181EAD0B00C575B0 /* SPAPIFetchProductPricesError.m in Sources */,
 				37B09C0A1828E67D0004E3DF /* AFNetworkReachabilityManager.m in Sources */,
 				375333A3181FA732004BAB46 /* SPShopeliaManager.m in Sources */,
