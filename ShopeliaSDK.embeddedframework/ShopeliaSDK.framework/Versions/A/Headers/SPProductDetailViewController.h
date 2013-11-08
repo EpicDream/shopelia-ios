@@ -9,8 +9,9 @@
 #import "SPViewController.h"
 #import "SPViewContentSize.h"
 
-@interface SPProductDetailViewController : SPViewController <SPViewContentSize>
+@interface SPProductDetailViewController : SPViewController
 
 @property (strong, nonatomic) SPProduct *product;
+@property (assign, nonatomic) BOOL hidesProductDescription;
 
 @end

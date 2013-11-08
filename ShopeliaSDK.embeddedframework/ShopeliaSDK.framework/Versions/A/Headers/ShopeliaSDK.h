@@ -30,7 +30,8 @@
 #import "SPAddPaymentCardViewController.h"
 #import "SPAddress.h"
 #import "SPAnalyticsInformation.h"
-#import "SPAnalyticsManager.h"
+#import "SPAnalyticsTracker.h"
+#import "SPSDKAnalyticsTracker.h"
 #import "SPArrowButton.h"
 #import "SPBackgroundView.h"
 #import "SPBarButtonItem.h"
@@ -146,5 +147,7 @@
 #import "SPDataCacheEntry.h"
 #import "SPMetadataFactory.h"
 #import "SPRemoteImageLoader.h"
+
+#import "Mixpanel.h" 
 
 #endif

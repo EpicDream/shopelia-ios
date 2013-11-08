@@ -9,7 +9,7 @@
 #import "SPViewController.h"
 #import "SPViewContentSize.h"
 
-@interface SPProductSummaryViewController : SPViewController <SPViewContentSize>
+@interface SPProductSummaryViewController : SPViewController
 
 // sets the spinner state
 - (void)setSpinning:(BOOL)spinning;

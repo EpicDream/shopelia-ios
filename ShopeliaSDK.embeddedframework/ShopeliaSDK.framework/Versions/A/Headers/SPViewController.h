@@ -17,7 +17,6 @@
 #import "SPLoadingView.h"
 #import "SPBarButtonItem.h"
 #import "SPViewTailor.h"
-#import "SPAnalyticsManager.h"
 #import "SPAnalyticsInformation.h"
 
 typedef enum
@@ -27,7 +26,7 @@ typedef enum
     SPViewControllerPresentationModeContained
 } SPViewControllerPresentationMode;
 
-@interface SPViewController : UIViewController <SPAnalyticsInformation>
+@interface SPViewController : UIViewController <SPAnalyticsInformation, SPViewContentSize>
 
 // setups the UI, to reimplement
 - (void)setupUI;
