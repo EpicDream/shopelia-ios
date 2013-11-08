@@ -14,6 +14,9 @@
 
 + (void)showShopeliaSDKForURL:(NSURL *)url fromViewController:(SPViewController *)viewController completion:(void (^)(void))completion
 {
+    // analytics
+    [[SPShopeliaAnalyticsTracker sharedInstance] trackOpenSDK];
+    
     // send view event
     SPAPIClient *client = [SPAPIV1Client sharedInstance];
     SPAPIRequest *request = [client defaultRequest];

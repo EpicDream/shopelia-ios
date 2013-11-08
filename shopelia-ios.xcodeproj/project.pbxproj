@@ -52,6 +52,7 @@
 		376839431816C496008BFAA5 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 376839421816C496008BFAA5 /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		376839471816CF0C008BFAA5 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 376839461816CF0C008BFAA5 /* CoreTelephony.framework */; };
 		376F2607182971DD003DE2E3 /* SPImageProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 376F2606182971DD003DE2E3 /* SPImageProcessor.m */; };
+		377A3EE0182D26C900863C1A /* SPShopeliaAnalyticsTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 377A3EDF182D26C900863C1A /* SPShopeliaAnalyticsTracker.m */; };
 		37862C76180E9553009E2B44 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37862C75180E9553009E2B44 /* AudioToolbox.framework */; };
 		378B9A3E18278D530031F2F4 /* SPCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 378B9A3D18278D530031F2F4 /* SPCollectionView.m */; };
 		378B9A41182792500031F2F4 /* SPCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 378B9A40182792500031F2F4 /* SPCollectionViewCell.m */; };
@@ -180,6 +181,8 @@
 		376839461816CF0C008BFAA5 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		376F2605182971DD003DE2E3 /* SPImageProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPImageProcessor.h; sourceTree = "<group>"; };
 		376F2606182971DD003DE2E3 /* SPImageProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPImageProcessor.m; sourceTree = "<group>"; };
+		377A3EDE182D26C900863C1A /* SPShopeliaAnalyticsTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPShopeliaAnalyticsTracker.h; sourceTree = "<group>"; };
+		377A3EDF182D26C900863C1A /* SPShopeliaAnalyticsTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPShopeliaAnalyticsTracker.m; sourceTree = "<group>"; };
 		37862C75180E9553009E2B44 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		378B9A3C18278D530031F2F4 /* SPCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPCollectionView.h; sourceTree = "<group>"; };
 		378B9A3D18278D530031F2F4 /* SPCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPCollectionView.m; sourceTree = "<group>"; };
@@ -391,6 +394,7 @@
 		113DDE3417DDFA9A0056E126 /* shopelia-ios */ = {
 			isa = PBXGroup;
 			children = (
+				377A3EDD182D26B100863C1A /* Analytics */,
 				3756880B182104610018B57E /* Helpers */,
 				377F3A3F181916AF00C0ECF5 /* Model View Controllers */,
 				37A83AD6181AA2AF0077B517 /* Custom Views */,
@@ -549,6 +553,15 @@
 				3756884A18213CD40018B57E /* SPAlgoliaSearchBackgroundView.m */,
 			);
 			name = "Algolia Search";
+			sourceTree = "<group>";
+		};
+		377A3EDD182D26B100863C1A /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				377A3EDE182D26C900863C1A /* SPShopeliaAnalyticsTracker.h */,
+				377A3EDF182D26C900863C1A /* SPShopeliaAnalyticsTracker.m */,
+			);
+			name = Analytics;
 			sourceTree = "<group>";
 		};
 		377F3A3F181916AF00C0ECF5 /* Model View Controllers */ = {
@@ -875,6 +888,7 @@
 				37B09C0E1828E67D0004E3DF /* AFURLResponseSerialization.m in Sources */,
 				113DDE3B17DDFA9A0056E126 /* main.m in Sources */,
 				37AEE4AF1822784E009BC5FF /* SPInspirationalCollectionsViewController.m in Sources */,
+				377A3EE0182D26C900863C1A /* SPShopeliaAnalyticsTracker.m in Sources */,
 				37A83AA8181A85710077B517 /* SPProductSearchViewController.m in Sources */,
 				37B09C0C1828E67D0004E3DF /* AFURLConnectionOperation.m in Sources */,
 				37B09C0F1828E67D0004E3DF /* AFURLSessionManager.m in Sources */,

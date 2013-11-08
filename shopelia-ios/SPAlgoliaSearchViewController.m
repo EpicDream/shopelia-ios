@@ -45,6 +45,9 @@
         return ;
     }
     
+    // analytics
+    [[SPShopeliaAnalyticsTracker sharedInstance] fromTextualSearch:query];
+    
     // launch new search
     [[SPAlgoliaAPIClient sharedInstance] searchProductsWithQuery:query page:page completion:^(BOOL success, NSArray *searchResults, NSUInteger pagesNumber) {
     
@@ -128,6 +131,9 @@
 {
     SPAlgoliaSearchResult *searchResult = [self.searchResults objectAtIndex:indexPath.row];
 
+    // analytics
+    [[SPShopeliaAnalyticsTracker sharedInstance] setURL:[searchResult.product.URL absoluteString]];
+    
     [self.delegate algoliaSearchViewController:self didSelectSearchResult:searchResult];
 }
 

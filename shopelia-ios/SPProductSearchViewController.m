@@ -33,6 +33,9 @@
 
 - (void)cancelViewController
 {
+    // analytics
+    [[SPShopeliaAnalyticsTracker sharedInstance] trackErrorCancel];
+    
     [self stopProductRequest];
     [self stopPricesRequest];
     
@@ -43,6 +46,9 @@
 {
     SPProduct *product = [self.products objectAtIndex:sender.tag - 1000];
 
+    // analytics
+    [[SPShopeliaAnalyticsTracker sharedInstance] setURL:[product.URL absoluteString]];
+    
     [SPShopeliaManager showShopeliaSDKForURL:product.URL fromViewController:self];
 }
 
@@ -177,11 +183,17 @@
 {
     [self stopProductRequest];
     
+    // analytics
+    [[SPShopeliaAnalyticsTracker sharedInstance] trackSearch];
+    
     self.productRequest = [[SPAPIV1Client sharedInstance] fetchProductWithBarcode:self.barcode
                                                 fromScanner:self.fromScanner
                                                  completion:^(SPAPIError *error, NSDictionary *product) {
         if (error)
         {
+            // analytics
+            [[SPShopeliaAnalyticsTracker sharedInstance] trackErrorNoProduct];
+            
             self.errorMessageView.messageLabel.text = error.localizedMessage;
             [self setupUIForErrorMessageView];
         }
@@ -222,11 +234,17 @@
     self.pricesRequest = [[SPAPIV1Client sharedInstance] fetchProductPrices:productURLs completion:^(BOOL timeout, SPAPIError *error, NSArray *products) {
         if (timeout || error || products.count == 0)
         {
+            // analytics
+            [[SPShopeliaAnalyticsTracker sharedInstance] trackErrorNoPrice];
+            
             self.errorMessageView.messageLabel.text = NSLocalizedString(@"ErrorUnableToFindPricesForThisProductOnline", nil);
             [self setupUIForErrorMessageView];
         }
         else
         {
+            // analytics
+            [[SPShopeliaAnalyticsTracker sharedInstance] trackDisplayProduct];
+            
             if (products.count == 1)
             {
                 // show shopelia SDK

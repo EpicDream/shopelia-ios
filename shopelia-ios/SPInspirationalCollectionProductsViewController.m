@@ -41,6 +41,9 @@
 {
     SPProduct *product = [self.products objectAtIndex:indexPath.row];
     
+    // analytics
+    [[SPShopeliaAnalyticsTracker sharedInstance] setURL:[product.URL absoluteString]];
+    
     [SPShopeliaManager showShopeliaSDKForURL:product.URL fromViewController:self];
 }
 
@@ -63,6 +66,17 @@
     
     [cell configureWithProduct:product];
     return cell;
+}
+
+#pragma mark - UIScrollview delegate
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    if (scrollView.contentOffset.y + scrollView.bounds.size.height >= scrollView.contentSize.height)
+    {
+        // analytics
+        [[SPShopeliaAnalyticsTracker sharedInstance] trackCollectionBottomReached];
+    }
 }
 
 #pragma mark - Interface
@@ -100,6 +114,14 @@
     [super setupUIForWaitingMessageView];
     
     self.collectionView.hidden = YES;
+}
+
+- (void)setCollection:(SPInspirationalCollection *)collection
+{
+    _collection = collection;
+    
+    // analytics
+    [[SPShopeliaAnalyticsTracker sharedInstance] fromCollection:collection.name];
 }
 
 #pragma mark - Actions
@@ -147,12 +169,14 @@
     self.fetchRequest = nil;
 }
 
-
 #pragma mark - View lifecycle
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    // analytics
+    [[SPShopeliaAnalyticsTracker sharedInstance] trackCollection];
     
     if (self.products.count == 0)
         [self reloadCollectionProducts];

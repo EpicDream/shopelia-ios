@@ -156,6 +156,9 @@
 {
     [super viewWillAppear:animated];
     
+    // track Home
+    [[SPShopeliaAnalyticsTracker sharedInstance] trackHome];
+    
     if (self.collections.count == 0)
         [self reloadCollections];
 }

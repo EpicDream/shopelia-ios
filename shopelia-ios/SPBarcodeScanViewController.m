@@ -33,6 +33,9 @@
     if (!symbol.data)
         return ;
     
+    // analytics
+    [[SPShopeliaAnalyticsTracker sharedInstance] fromScan:symbol.data];
+    
     // vibrate
     AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
     
@@ -90,6 +93,9 @@
 {
     [super viewWillAppear:animated];
     
+    // analytics
+    [[SPShopeliaAnalyticsTracker sharedInstance] trackScan];
+
     [self.readerView performSelector:@selector(start) withObject:nil afterDelay:0.00f];
 }
 
