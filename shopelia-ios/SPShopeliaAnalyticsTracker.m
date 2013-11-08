@@ -67,8 +67,7 @@
 
 - (void)trackEvent:(NSString *)name properties:(NSDictionary *)properties
 {
-    NSLog(@"TRACK [%@] PROPERTIES [%@]", name, properties);
-    // [self.mixpanel track:name properties:properties];
+    [self.mixpanel track:name properties:properties];
 }
 
 - (void)trackErrorCancel
