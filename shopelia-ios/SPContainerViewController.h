@@ -16,6 +16,7 @@
 - (void)setupUIForWaitingMessageView;
 - (void)setupUIForErrorMessageView;
 - (void)setupUIForContentView;
+- (CGFloat)georgeButtonOverHeight;
 
 @property (strong, nonatomic) SPWaitingMessageView *waitingMessageView;
 @property (strong, nonatomic) SPErrorMessageView *errorMessageView;

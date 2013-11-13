@@ -10,9 +10,13 @@
 #import "SPAlgoliaSearchViewController.h"
 #import "SPProductSearchViewController.h"
 #import "SPShopeliaManager.h"
+#import "SPGeorgeConversationViewController.h"
+#import "SPPushNotificationsPermissionViewController.h"
+#import "SPPushNotificationsPreferencesManager.h"
 
-@interface SPContainerViewController () <SPAlgoliaSearchViewControllerDelegate>
+@interface SPContainerViewController () <SPAlgoliaSearchViewControllerDelegate, SPGeorgeConversationViewControllerDelegate, SPPushNotificationsPermissionViewControllerDelegate>
 @property (strong, nonatomic) SPAlgoliaSearchViewController *algoliaSearchViewController;
+@property (strong, nonatomic) SPButton *georgeButton;
 @end
 
 @implementation SPContainerViewController
@@ -46,6 +50,64 @@
     return _errorMessageView;
 }
 
+- (SPButton *)georgeButton
+{
+    if (!_georgeButton)
+    {
+        UIImage *image = [UIImage imageNamed:@"btn_georges_normal.png"];
+        _georgeButton = [[SPButton alloc] initWithFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
+        [_georgeButton setImage:image forState:UIControlStateNormal];
+        [_georgeButton setImage:[UIImage imageNamed:@"btn_georges_hover.png"] forState:UIControlStateHighlighted];
+        [_georgeButton addTarget:self action:@selector(georgeButtonTouched:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _georgeButton;
+}
+
+#pragma mark - Actions
+
+- (void)georgeButtonTouched:(SPButton *)sender
+{
+    // if push notifications were already asked
+    if ([[SPPushNotificationsPreferencesManager sharedInstance] userAlreadyGrantedPushNotificationsPermission])
+    {
+        // show george conversation
+        [self showGeorgeConversationViewController];
+    }
+    else
+    {
+        // show push notifications permissions
+        SPNavigationController *navigationController = [self.storyboard instantiateViewControllerWithIdentifier:@"SPPushNotificationsPermissionNavigationController"];
+        SPPushNotificationsPermissionViewController *pushViewController = (SPPushNotificationsPermissionViewController *)navigationController.topViewController;
+        pushViewController.delegate = self;
+        [self presentViewController:navigationController animated:YES completion:nil];
+    }
+}
+
+- (void)showGeorgeConversationViewController
+{
+    SPNavigationController *navigationController = [self.storyboard instantiateViewControllerWithIdentifier:@"SPGeorgeConversationNavigationController"];
+    SPGeorgeConversationViewController *georgeViewController = (SPGeorgeConversationViewController *)navigationController.topViewController;
+    georgeViewController.delegate = self;
+    [self presentViewController:navigationController animated:YES completion:nil];
+}
+
+#pragma mark - SPPushNotificationsPermissionViewController delegate
+
+- (void)pushNotificationsPermissionViewControllerUserDidAcceptRemoteNotifications:(SPPushNotificationsPermissionViewController *)viewController
+{
+    // dissmiss vc
+    [viewController dismissViewControllerAnimated:YES completion:^{
+        // show george conversation
+        [self showGeorgeConversationViewController];
+    }];
+}
+
+- (void)pushNotificationsPermissionViewControllerUserDidRefuseRemoteNotifications:(SPPushNotificationsPermissionViewController *)viewController
+{
+    // dissmiss vc
+    [viewController dismissViewControllerAnimated:YES completion:nil];
+}
+
 #pragma mark - SPAlgoliaSearchViewController delegate
 
 - (void)algoliaSearchViewController:(SPAlgoliaSearchViewController *)vc didSelectSearchResult:(SPAlgoliaSearchResult *)searchResult
@@ -62,6 +124,14 @@
     {
         [SPShopeliaManager showShopeliaSDKForURL:searchResult.product.URL fromViewController:self];
     }
+}
+
+#pragma mark - SPGeorgeConversationViewController delegate
+
+- (void)georgeConversationViewControllerDidEndConversation:(SPGeorgeConversationViewController *)vc
+{
+    // dissmiss vc
+    [vc dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - UIScrollView delegate
@@ -84,6 +154,12 @@
         [self.view addSubview:self.algoliaSearchViewController.view];
         self.algoliaSearchViewController.delegate = self;
     }
+    
+    if (self.showsGeorge)
+    {
+        // add George button in view
+        [self.view addSubview:self.georgeButton];
+    }
 }
 
 - (void)setupUIForWaitingMessageView
@@ -104,6 +180,13 @@
     [self.waitingMessageView removeFromSuperview];
 }
 
+- (CGFloat)georgeButtonOverHeight
+{
+    if (self.showsGeorge)
+        return [self.georgeButton imageForState:UIControlStateNormal].size.height + 10.0f;
+    return 0.0f;
+}
+
 #pragma mark - Layout
 
 - (void)viewDidLayoutSubviews
@@ -114,6 +197,15 @@
     {
         // resize algolia search view
         self.algoliaSearchViewController.view.frame = self.view.bounds;
+    }
+    
+    if (self.showsGeorge)
+    {
+        // place george button
+        self.georgeButton.frame = CGRectMake((self.view.frame.size.width - self.georgeButton.frame.size.width) / 2.0f,
+                                              self.view.frame.size.height - self.georgeButton.frame.size.height - 10.0f,
+                                              self.georgeButton.frame.size.width,
+                                              self.georgeButton.frame.size.height);
     }
     
     CGFloat height = 0.0f;

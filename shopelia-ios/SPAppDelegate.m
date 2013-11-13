@@ -8,7 +8,8 @@
 
 #import "SPAppDelegate.h"
 #import "TestFlight.h"
-#import "SPBarcodeScanViewController.h"
+#import "SPPushNotificationsPreferencesManager.h"
+#import "SPDevicesAPIClient.h"
 
 @implementation SPAppDelegate
 
@@ -21,9 +22,24 @@
     // launch Crashlytics
     [Crashlytics startWithAPIKey:SPCrashlyticsAPIKey];
     
+    // push notifications
+    if ([[SPPushNotificationsPreferencesManager sharedInstance] userAlreadyGrantedPushNotificationsPermission])
+        [[SPPushNotificationsPreferencesManager sharedInstance] registerForRemoteNotifications];
+    
     return YES;
 }
-							
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+{
+    
+}
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    // handle new device token
+    [[SPDevicesAPIClient sharedInstance] handleNewDeviceToken:deviceToken];
+}
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

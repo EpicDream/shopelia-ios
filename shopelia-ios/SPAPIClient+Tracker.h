@@ -6,8 +6,6 @@
 //  Copyright (c) 2013 Shopelia. All rights reserved.
 //
 
-
-
 @interface SPAPIClient (Tracker)
 
 - (NSString *)tracker;

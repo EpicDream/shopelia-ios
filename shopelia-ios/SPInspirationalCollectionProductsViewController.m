@@ -92,7 +92,7 @@
     CHTCollectionViewWaterfallLayout *collectionViewLayout = (CHTCollectionViewWaterfallLayout *)self.collectionView.collectionViewLayout;
     [collectionViewLayout setItemWidth:PRODUCT_CELL_WIDTH];
     [collectionViewLayout setColumnCount:2];
-    [collectionViewLayout setSectionInset:UIEdgeInsetsMake(10.0f, 10.0f, 10.0f, 10.0f)];
+    [collectionViewLayout setSectionInset:UIEdgeInsetsMake(10.0f, 10.0f, self.georgeButtonOverHeight + 10.0f, 10.0f)];
 }
 
 - (void)setupUIForContentView
