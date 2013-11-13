@@ -147,6 +147,8 @@
 #import "SPDataCacheEntry.h"
 #import "SPMetadataFactory.h"
 #import "SPRemoteImageLoader.h"
+#import "SPUUIDManager.h"
+#import "SPPreferencesManager.h"
 
 #import "Mixpanel.h" 
 

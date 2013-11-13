@@ -21,6 +21,9 @@
 
 @interface SPAPIClient : SPHTTPClient
 
+// returns the API user agent used in requests header
+- (NSString *)APIUserAgent;
+
 // fetches a product's merchant
 - (SPAPIRequest *)fetchProductMerchant:(SPProduct *)product completion:(void (^)(SPAPIError *error, SPMerchant *merchant))completion;
 

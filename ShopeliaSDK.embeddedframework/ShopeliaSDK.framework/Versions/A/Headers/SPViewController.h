@@ -70,6 +70,12 @@ typedef enum
 // translates the given view
 + (void)translateView:(UIView *)view;
 
+// notification used to tell that the keyboard will be shown
+- (void)keyboardWillBeShown:(NSNotification *)notification;
+
+// notification used to tell that the keyboard will be hidden
+- (void)keyboardWillBeHidden:(NSNotification *)notification;
+
 @property (strong, nonatomic) SPOrder *order;
 @property (strong, nonatomic) SPParams *params;
 

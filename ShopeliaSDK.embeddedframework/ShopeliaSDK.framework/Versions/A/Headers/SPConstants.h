@@ -19,7 +19,6 @@
 
 #define SPDefaultDeveloperTracker @"shopelia-ios"
 #define SPCGUStringURL @"https://www.shopelia.com/cgu"
-#define SPDataCacheJournalName @"journal"
 
 #define SP_SYSTEM_VERSION_EQUAL_TO(v)                  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
 #define SP_SYSTEM_VERSION_GREATER_THAN(v)              ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending)
