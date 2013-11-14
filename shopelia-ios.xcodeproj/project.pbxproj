@@ -52,8 +52,8 @@
 		376839471816CF0C008BFAA5 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 376839461816CF0C008BFAA5 /* CoreTelephony.framework */; };
 		376F2607182971DD003DE2E3 /* SPImageProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 376F2606182971DD003DE2E3 /* SPImageProcessor.m */; };
 		377A3EE0182D26C900863C1A /* SPShopeliaAnalyticsTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 377A3EDF182D26C900863C1A /* SPShopeliaAnalyticsTracker.m */; };
-		3782A09D18339D3900E01020 /* SPGeorgePushNotificationsStepsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3782A09C18339D3900E01020 /* SPGeorgePushNotificationsStepsView.m */; };
-		3782A09F18339D5500E01020 /* SPGeorgePushNotificationsStepsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3782A09E18339D5500E01020 /* SPGeorgePushNotificationsStepsView.xib */; };
+		3782A09D18339D3900E01020 /* SPChatPushNotificationsStepsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3782A09C18339D3900E01020 /* SPChatPushNotificationsStepsView.m */; };
+		3782A09F18339D5500E01020 /* SPChatPushNotificationsStepsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3782A09E18339D5500E01020 /* SPChatPushNotificationsStepsView.xib */; };
 		3782A0A21833B88B00E01020 /* SPPushNotificationsPreferencesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3782A0A11833B88B00E01020 /* SPPushNotificationsPreferencesManager.m */; };
 		3782A0A51833C7A700E01020 /* SPDevicesAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 3782A0A41833C7A700E01020 /* SPDevicesAPIClient.m */; };
 		37862C76180E9553009E2B44 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37862C75180E9553009E2B44 /* AudioToolbox.framework */; };
@@ -90,7 +90,7 @@
 		37B09C0D1828E67D0004E3DF /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 37B09C021828E67D0004E3DF /* AFURLRequestSerialization.m */; };
 		37B09C0E1828E67D0004E3DF /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 37B09C041828E67D0004E3DF /* AFURLResponseSerialization.m */; };
 		37B09C0F1828E67D0004E3DF /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 37B09C061828E67D0004E3DF /* AFURLSessionManager.m */; };
-		37CC27C31832226900978FEC /* SPGeorgeConversationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37CC27C21832226900978FEC /* SPGeorgeConversationViewController.m */; };
+		37CC27C31832226900978FEC /* SPChatConversationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37CC27C21832226900978FEC /* SPChatConversationViewController.m */; };
 		37CC27CF18328A5F00978FEC /* SPChatAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 37CC27CE18328A5F00978FEC /* SPChatAPIClient.m */; };
 		37CC27D518328CCC00978FEC /* SPPushNotificationsPermissionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37CC27D418328CCC00978FEC /* SPPushNotificationsPermissionViewController.m */; };
 		37D5C97E180E805300216A31 /* ShopeliaSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 37D5C97C180E805300216A31 /* ShopeliaSDKResources.bundle */; };
@@ -187,9 +187,9 @@
 		376F2606182971DD003DE2E3 /* SPImageProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPImageProcessor.m; sourceTree = "<group>"; };
 		377A3EDE182D26C900863C1A /* SPShopeliaAnalyticsTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPShopeliaAnalyticsTracker.h; sourceTree = "<group>"; };
 		377A3EDF182D26C900863C1A /* SPShopeliaAnalyticsTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPShopeliaAnalyticsTracker.m; sourceTree = "<group>"; };
-		3782A09B18339D3900E01020 /* SPGeorgePushNotificationsStepsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPGeorgePushNotificationsStepsView.h; sourceTree = "<group>"; };
-		3782A09C18339D3900E01020 /* SPGeorgePushNotificationsStepsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPGeorgePushNotificationsStepsView.m; sourceTree = "<group>"; };
-		3782A09E18339D5500E01020 /* SPGeorgePushNotificationsStepsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPGeorgePushNotificationsStepsView.xib; sourceTree = "<group>"; };
+		3782A09B18339D3900E01020 /* SPChatPushNotificationsStepsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPChatPushNotificationsStepsView.h; sourceTree = "<group>"; };
+		3782A09C18339D3900E01020 /* SPChatPushNotificationsStepsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPChatPushNotificationsStepsView.m; sourceTree = "<group>"; };
+		3782A09E18339D5500E01020 /* SPChatPushNotificationsStepsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPChatPushNotificationsStepsView.xib; sourceTree = "<group>"; };
 		3782A0A01833B88B00E01020 /* SPPushNotificationsPreferencesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPPushNotificationsPreferencesManager.h; sourceTree = "<group>"; };
 		3782A0A11833B88B00E01020 /* SPPushNotificationsPreferencesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPPushNotificationsPreferencesManager.m; sourceTree = "<group>"; };
 		3782A0A31833C7A700E01020 /* SPDevicesAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPDevicesAPIClient.h; sourceTree = "<group>"; };
@@ -260,8 +260,8 @@
 		37B09C041828E67D0004E3DF /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLResponseSerialization.m; sourceTree = "<group>"; };
 		37B09C051828E67D0004E3DF /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
 		37B09C061828E67D0004E3DF /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
-		37CC27C11832226900978FEC /* SPGeorgeConversationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPGeorgeConversationViewController.h; sourceTree = "<group>"; };
-		37CC27C21832226900978FEC /* SPGeorgeConversationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPGeorgeConversationViewController.m; sourceTree = "<group>"; };
+		37CC27C11832226900978FEC /* SPChatConversationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPChatConversationViewController.h; sourceTree = "<group>"; };
+		37CC27C21832226900978FEC /* SPChatConversationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPChatConversationViewController.m; sourceTree = "<group>"; };
 		37CC27CD18328A5F00978FEC /* SPChatAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPChatAPIClient.h; sourceTree = "<group>"; };
 		37CC27CE18328A5F00978FEC /* SPChatAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPChatAPIClient.m; sourceTree = "<group>"; };
 		37CC27D318328CCC00978FEC /* SPPushNotificationsPermissionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPPushNotificationsPermissionViewController.h; sourceTree = "<group>"; };
@@ -696,11 +696,11 @@
 		37CC27C01832223D00978FEC /* George */ = {
 			isa = PBXGroup;
 			children = (
-				37CC27C11832226900978FEC /* SPGeorgeConversationViewController.h */,
-				37CC27C21832226900978FEC /* SPGeorgeConversationViewController.m */,
-				3782A09B18339D3900E01020 /* SPGeorgePushNotificationsStepsView.h */,
-				3782A09C18339D3900E01020 /* SPGeorgePushNotificationsStepsView.m */,
-				3782A09E18339D5500E01020 /* SPGeorgePushNotificationsStepsView.xib */,
+				37CC27C11832226900978FEC /* SPChatConversationViewController.h */,
+				37CC27C21832226900978FEC /* SPChatConversationViewController.m */,
+				3782A09B18339D3900E01020 /* SPChatPushNotificationsStepsView.h */,
+				3782A09C18339D3900E01020 /* SPChatPushNotificationsStepsView.m */,
+				3782A09E18339D5500E01020 /* SPChatPushNotificationsStepsView.xib */,
 			);
 			name = George;
 			sourceTree = "<group>";
@@ -890,7 +890,7 @@
 				37D5C97E180E805300216A31 /* ShopeliaSDKResources.bundle in Resources */,
 				372C32FB180EEB18008928B7 /* release_notes.md in Resources */,
 				37AEE4BA18229E9B009BC5FF /* SPWaitingMessageView.xib in Resources */,
-				3782A09F18339D5500E01020 /* SPGeorgePushNotificationsStepsView.xib in Resources */,
+				3782A09F18339D5500E01020 /* SPChatPushNotificationsStepsView.xib in Resources */,
 				37E2244618196DD2001DD2A2 /* Localizable.strings in Resources */,
 				372C32FA180EEB18008928B7 /* README.md in Resources */,
 				37A83ACF181A9DDC0077B517 /* Storyboard.storyboard in Resources */,
@@ -958,7 +958,7 @@
 				3782A0A21833B88B00E01020 /* SPPushNotificationsPreferencesManager.m in Sources */,
 				37B09BEF1828E6620004E3DF /* ASAPIClient+Network.m in Sources */,
 				37E2243C181957AE001DD2A2 /* SPSearchBar.m in Sources */,
-				3782A09D18339D3900E01020 /* SPGeorgePushNotificationsStepsView.m in Sources */,
+				3782A09D18339D3900E01020 /* SPChatPushNotificationsStepsView.m in Sources */,
 				37B09C0D1828E67D0004E3DF /* AFURLRequestSerialization.m in Sources */,
 				37AD7760181FC76A00E1EE0D /* SPAlgoliaSearchViewController.m in Sources */,
 				37B09C081828E67D0004E3DF /* AFHTTPRequestOperationManager.m in Sources */,
@@ -973,7 +973,7 @@
 				37FEA954181E71910004E85B /* SPLargeImportantButton.m in Sources */,
 				37AEE49F18225856009BC5FF /* SPContainerViewController.m in Sources */,
 				37AD7766181FED3600E1EE0D /* SPAlgoliaAPIClient.m in Sources */,
-				37CC27C31832226900978FEC /* SPGeorgeConversationViewController.m in Sources */,
+				37CC27C31832226900978FEC /* SPChatConversationViewController.m in Sources */,
 				37CC27D518328CCC00978FEC /* SPPushNotificationsPermissionViewController.m in Sources */,
 				37653949182BD7D40019FC67 /* SPViewController+Utilities.m in Sources */,
 				373E2EA6181EAD0B00C575B0 /* SPAPIFetchProductPricesError.m in Sources */,
@@ -1136,7 +1136,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "19DDB208-1913-4BBD-93F6-9556ECD3C640";
+				PROVISIONING_PROFILE = "5B01A47D-DCCA-42A7-B551-179E87E5B3CE";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1177,7 +1177,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "28D34DE8-50BA-4490-858B-6CFA661B7935";
+				PROVISIONING_PROFILE = "87F02A61-9549-41F1-8222-26E7D8608652";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

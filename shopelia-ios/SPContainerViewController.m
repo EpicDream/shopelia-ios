@@ -10,13 +10,13 @@
 #import "SPAlgoliaSearchViewController.h"
 #import "SPProductSearchViewController.h"
 #import "SPShopeliaManager.h"
-#import "SPGeorgeConversationViewController.h"
+#import "SPChatConversationViewController.h"
 #import "SPPushNotificationsPermissionViewController.h"
 #import "SPPushNotificationsPreferencesManager.h"
 
-@interface SPContainerViewController () <SPAlgoliaSearchViewControllerDelegate, SPGeorgeConversationViewControllerDelegate, SPPushNotificationsPermissionViewControllerDelegate>
+@interface SPContainerViewController () <SPAlgoliaSearchViewControllerDelegate, SPChatConversationViewControllerDelegate, SPPushNotificationsPermissionViewControllerDelegate>
 @property (strong, nonatomic) SPAlgoliaSearchViewController *algoliaSearchViewController;
-@property (strong, nonatomic) SPButton *georgeButton;
+@property (strong, nonatomic) SPButton *chatButton;
 @end
 
 @implementation SPContainerViewController
@@ -50,28 +50,28 @@
     return _errorMessageView;
 }
 
-- (SPButton *)georgeButton
+- (SPButton *)chatButton
 {
-    if (!_georgeButton)
+    if (!_chatButton)
     {
-        UIImage *image = [UIImage imageNamed:@"btn_georges_normal.png"];
-        _georgeButton = [[SPButton alloc] initWithFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
-        [_georgeButton setImage:image forState:UIControlStateNormal];
-        [_georgeButton setImage:[UIImage imageNamed:@"btn_georges_hover.png"] forState:UIControlStateHighlighted];
-        [_georgeButton addTarget:self action:@selector(georgeButtonTouched:) forControlEvents:UIControlEventTouchUpInside];
+        UIImage *image = [UIImage imageNamed:@"btn_chat_normal.png"];
+        _chatButton = [[SPButton alloc] initWithFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
+        [_chatButton setImage:image forState:UIControlStateNormal];
+        [_chatButton setImage:[UIImage imageNamed:@"btn_chat_hover.png"] forState:UIControlStateHighlighted];
+        [_chatButton addTarget:self action:@selector(chatButtonTouched:) forControlEvents:UIControlEventTouchUpInside];
     }
-    return _georgeButton;
+    return _chatButton;
 }
 
 #pragma mark - Actions
 
-- (void)georgeButtonTouched:(SPButton *)sender
+- (void)chatButtonTouched:(SPButton *)sender
 {
     // if push notifications were already asked
     if ([[SPPushNotificationsPreferencesManager sharedInstance] userAlreadyGrantedPushNotificationsPermission])
     {
-        // show george conversation
-        [self showGeorgeConversationViewController];
+        // show chat conversation
+        [self showChatConversationViewController];
     }
     else
     {
@@ -83,11 +83,11 @@
     }
 }
 
-- (void)showGeorgeConversationViewController
+- (void)showChatConversationViewController
 {
-    SPNavigationController *navigationController = [self.storyboard instantiateViewControllerWithIdentifier:@"SPGeorgeConversationNavigationController"];
-    SPGeorgeConversationViewController *georgeViewController = (SPGeorgeConversationViewController *)navigationController.topViewController;
-    georgeViewController.delegate = self;
+    SPNavigationController *navigationController = [self.storyboard instantiateViewControllerWithIdentifier:@"SPChatConversationNavigationController"];
+    SPChatConversationViewController *ChatViewController = (SPChatConversationViewController *)navigationController.topViewController;
+    ChatViewController.delegate = self;
     [self presentViewController:navigationController animated:YES completion:nil];
 }
 
@@ -97,8 +97,8 @@
 {
     // dissmiss vc
     [viewController dismissViewControllerAnimated:YES completion:^{
-        // show george conversation
-        [self showGeorgeConversationViewController];
+        // show chat conversation
+        [self showChatConversationViewController];
     }];
 }
 
@@ -126,9 +126,9 @@
     }
 }
 
-#pragma mark - SPGeorgeConversationViewController delegate
+#pragma mark - SPChatConversationViewController delegate
 
-- (void)georgeConversationViewControllerDidEndConversation:(SPGeorgeConversationViewController *)vc
+- (void)chatConversationViewControllerDidEndConversation:(SPChatConversationViewController *)vc
 {
     // dissmiss vc
     [vc dismissViewControllerAnimated:YES completion:nil];
@@ -155,10 +155,10 @@
         self.algoliaSearchViewController.delegate = self;
     }
     
-    if (self.showsGeorge)
+    if (self.showsChat)
     {
-        // add George button in view
-        [self.view addSubview:self.georgeButton];
+        // add Chat button in view
+        [self.view addSubview:self.chatButton];
     }
 }
 
@@ -180,10 +180,10 @@
     [self.waitingMessageView removeFromSuperview];
 }
 
-- (CGFloat)georgeButtonOverHeight
+- (CGFloat)chatButtonOverHeight
 {
-    if (self.showsGeorge)
-        return [self.georgeButton imageForState:UIControlStateNormal].size.height + 10.0f;
+    if (self.showsChat)
+        return [self.chatButton imageForState:UIControlStateNormal].size.height + 10.0f;
     return 0.0f;
 }
 
@@ -199,13 +199,13 @@
         self.algoliaSearchViewController.view.frame = self.view.bounds;
     }
     
-    if (self.showsGeorge)
+    if (self.showsChat)
     {
-        // place george button
-        self.georgeButton.frame = CGRectMake((self.view.frame.size.width - self.georgeButton.frame.size.width) / 2.0f,
-                                              self.view.frame.size.height - self.georgeButton.frame.size.height - 10.0f,
-                                              self.georgeButton.frame.size.width,
-                                              self.georgeButton.frame.size.height);
+        // place chat button
+        self.chatButton.frame = CGRectMake((self.view.frame.size.width - self.chatButton.frame.size.width) / 2.0f,
+                                              self.view.frame.size.height - self.chatButton.frame.size.height - 10.0f,
+                                              self.chatButton.frame.size.width,
+                                              self.chatButton.frame.size.height);
     }
     
     CGFloat height = 0.0f;

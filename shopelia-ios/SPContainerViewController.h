@@ -16,12 +16,12 @@
 - (void)setupUIForWaitingMessageView;
 - (void)setupUIForErrorMessageView;
 - (void)setupUIForContentView;
-- (CGFloat)georgeButtonOverHeight;
+- (CGFloat)chatButtonOverHeight;
 
 @property (strong, nonatomic) SPWaitingMessageView *waitingMessageView;
 @property (strong, nonatomic) SPErrorMessageView *errorMessageView;
 
 @property (assign, nonatomic) BOOL showsAlgoliaSearch;
-@property (assign, nonatomic) BOOL showsGeorge;
+@property (assign, nonatomic) BOOL showsChat;
 
 @end

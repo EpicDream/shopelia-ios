@@ -58,7 +58,7 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="showsCancelButton" value="YES"/>
-                        <userDefinedRuntimeAttribute type="boolean" keyPath="showsGeorge" value="YES"/>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="showsChat" value="YES"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="readerOverlayView" destination="pK7-CD-5xr" id="inu-w9-6zt"/>
@@ -221,10 +221,10 @@
             </objects>
             <point key="canvasLocation" x="310" y="852"/>
         </scene>
-        <!--George Conversation View Controller-->
+        <!--Chat Conversation View Controller-->
         <scene sceneID="KNV-oG-yFy">
             <objects>
-                <viewController id="WLW-m7-6rW" customClass="SPGeorgeConversationViewController" sceneMemberID="viewController">
+                <viewController id="WLW-m7-6rW" customClass="SPChatConversationViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zg3-x6-wtA"/>
                         <viewControllerLayoutGuide type="bottom" id="u3a-QU-Vka"/>
@@ -409,7 +409,7 @@
                     <navigationItem key="navigationItem" id="lv5-0J-I4Q"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="showsAlgoliaSearch" value="YES"/>
-                        <userDefinedRuntimeAttribute type="boolean" keyPath="showsGeorge" value="YES"/>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="showsChat" value="YES"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <segue destination="lNn-TN-2mi" kind="push" identifier="SHOW_INSPIRATIONAL_COLLECTION_PRODUCTS" id="F42-Ks-ZJM"/>
@@ -531,7 +531,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="0MS-m9-s5E"/>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="boolean" keyPath="showsGeorge" value="YES"/>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="showsChat" value="YES"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="collectionView" destination="vLm-Fc-sbj" id="76T-G1-JfP"/>
@@ -871,7 +871,7 @@
         <!--Navigation Controller-->
         <scene sceneID="jGK-5D-fX4">
             <objects>
-                <navigationController storyboardIdentifier="SPGeorgeConversationNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="jNu-x6-wOX" customClass="SPNavigationController" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="SPChatConversationNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="jNu-x6-wOX" customClass="SPNavigationController" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" translucent="NO" prompted="NO"/>

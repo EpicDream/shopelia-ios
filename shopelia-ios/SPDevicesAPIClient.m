@@ -17,6 +17,7 @@
 
 - (void)handleNewDeviceToken:(NSData *)token
 {
+    // get last sent token
     NSData *lastSentToken = [[SPPushNotificationsPreferencesManager sharedInstance] deviceToken];
     
     if (![token isEqualToData:lastSentToken])
@@ -27,7 +28,7 @@
         // create request
         self.deviceTokenRequest = [self defaultRequest];
         NSString *currentUUID = [SPUUIDManager sharedUUID];
-        NSString *pushToken = @"";
+        NSString *pushToken = [SPDataConvertor hexStringFromData:token];
         NSURL *requestURL = [[self.baseURL URLByAppendingPathComponent:@"api/devices"] URLByAppendingPathComponent:currentUUID];
         [self.deviceTokenRequest setHTTPMethod:@"PUT"];
         [self.deviceTokenRequest setURL:requestURL];
@@ -39,7 +40,11 @@
             }
             else
             {
+                // save last sent token
                 [[SPPushNotificationsPreferencesManager sharedInstance] setDeviceToken:token];
+                
+                [self.deviceTokenRequest cancelAndClearCompletionBlock];
+                self.deviceTokenRequest = nil;
             }
         }];
     }
