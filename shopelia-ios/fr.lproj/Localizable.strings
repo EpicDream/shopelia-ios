@@ -51,3 +51,11 @@
 "You" = "Vous";
 
 "ChatFirstMessage" = "Bonjour,\nJe m'appelle Georges, je ne suis pas un robot :)\nJe suis là pour trouver les produits qui vous intéressent.\nComment puis-je vous aider ?";
+
+"Send" = "Envoyer";
+
+"PleaseAuthorisePushNotifications" = "Afin que je puisse vous répondre, merci d'autoriser l'envoi de notifications Push.";
+
+"IAccept" = "J'accepte";
+
+"PushNotificationsArentEnabled" = "Pour pouvoir trouver les produits qui vous intéressent avec Georges, activez les notifications Push.\n\nDepuis l'application Réglages, touchez le Centre de notifications, puis Shopelia et réglez le style d'alerte à « Bannières » ou « Alertes ».";

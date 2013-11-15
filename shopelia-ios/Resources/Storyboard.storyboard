@@ -111,7 +111,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="6" maxY="0.0"/>
                                                     <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                    <state key="normal" title="_buy_" image="shopelia_logo_dark.png"/>
+                                                    <state key="normal" title="_buy_" image="ShopeliaSDKResources/shopelia-fat-logo.png"/>
                                                 </button>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_price_" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q9j-pt-XTT" customClass="SPLabel">
                                                     <rect key="frame" x="0.0" y="167" width="60" height="30"/>
@@ -237,7 +237,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="9e6-bu-KFz" customClass="SPTableView">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="372"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="NgF-V4-KeX" customClass="SPView">
@@ -245,29 +245,35 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </view>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="aEc-QY-VaT" customClass="SPView">
+                                    <rect key="frame" x="0.0" y="10" width="320" height="50"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </view>
                                 <connections>
                                     <outlet property="dataSource" destination="WLW-m7-6rW" id="Kjv-XT-jih"/>
                                     <outlet property="delegate" destination="WLW-m7-6rW" id="vfS-fC-2fT"/>
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xwg-yq-14m" customClass="SPView">
-                                <rect key="frame" x="0.0" y="372" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="366" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="test" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="E1H-hQ-RNj" customClass="SPTextField">
-                                        <rect key="frame" x="0.0" y="0.0" width="270" height="44"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="E1H-hQ-RNj" customClass="SPCardTextField">
+                                        <rect key="frame" x="10" y="0.0" width="232" height="42"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecR-jj-UWC">
-                                        <rect key="frame" x="270" y="0.0" width="50" height="44"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecR-jj-UWC" customClass="SPLargeButton">
+                                        <rect key="frame" x="250" y="0.0" width="60" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="44" id="Vqo-ot-a8p"/>
-                                            <constraint firstAttribute="width" constant="50" id="rRv-RA-COL"/>
+                                            <constraint firstAttribute="width" constant="60" id="I1C-Bh-ub2"/>
                                         </constraints>
-                                        <state key="normal" title="Send">
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
+                                        <state key="normal" title="_envoyer_">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -278,25 +284,25 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="7AM-2M-6mg"/>
-                                    <constraint firstAttribute="bottom" secondItem="ecR-jj-UWC" secondAttribute="bottom" id="9hi-xo-7qz"/>
-                                    <constraint firstAttribute="trailing" secondItem="ecR-jj-UWC" secondAttribute="trailing" id="Dpz-Zp-sYA"/>
-                                    <constraint firstItem="E1H-hQ-RNj" firstAttribute="leading" secondItem="xwg-yq-14m" secondAttribute="leading" id="MQC-WK-ATu"/>
+                                    <constraint firstAttribute="bottom" secondItem="ecR-jj-UWC" secondAttribute="bottom" constant="4" id="9hi-xo-7qz"/>
+                                    <constraint firstAttribute="trailing" secondItem="ecR-jj-UWC" secondAttribute="trailing" constant="10" id="Dpz-Zp-sYA"/>
+                                    <constraint firstItem="E1H-hQ-RNj" firstAttribute="leading" secondItem="xwg-yq-14m" secondAttribute="leading" constant="10" id="MQC-WK-ATu"/>
                                     <constraint firstItem="E1H-hQ-RNj" firstAttribute="top" secondItem="xwg-yq-14m" secondAttribute="top" id="Qh7-QR-9AG"/>
-                                    <constraint firstAttribute="bottom" secondItem="E1H-hQ-RNj" secondAttribute="bottom" id="gVh-Fm-c3V"/>
+                                    <constraint firstAttribute="bottom" secondItem="E1H-hQ-RNj" secondAttribute="bottom" constant="2" id="gVh-Fm-c3V"/>
                                     <constraint firstItem="ecR-jj-UWC" firstAttribute="top" secondItem="xwg-yq-14m" secondAttribute="top" id="pF4-rX-LvA"/>
-                                    <constraint firstItem="ecR-jj-UWC" firstAttribute="leading" secondItem="E1H-hQ-RNj" secondAttribute="trailing" id="v7f-aI-RbQ"/>
+                                    <constraint firstItem="ecR-jj-UWC" firstAttribute="leading" secondItem="E1H-hQ-RNj" secondAttribute="trailing" constant="8" id="v7f-aI-RbQ"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="9e6-bu-KFz" firstAttribute="leading" secondItem="WGS-Ro-aTl" secondAttribute="leading" id="DKo-EF-T8b"/>
-                            <constraint firstAttribute="bottom" secondItem="xwg-yq-14m" secondAttribute="bottom" id="SM7-kj-quU"/>
                             <constraint firstItem="9e6-bu-KFz" firstAttribute="top" secondItem="WGS-Ro-aTl" secondAttribute="top" id="UHh-gP-YU1"/>
                             <constraint firstItem="xwg-yq-14m" firstAttribute="leading" secondItem="WGS-Ro-aTl" secondAttribute="leading" id="caQ-6t-xPh"/>
                             <constraint firstAttribute="trailing" secondItem="9e6-bu-KFz" secondAttribute="trailing" id="fGK-8B-Xee"/>
-                            <constraint firstItem="xwg-yq-14m" firstAttribute="top" secondItem="9e6-bu-KFz" secondAttribute="bottom" id="fwr-k6-8jJ"/>
                             <constraint firstAttribute="trailing" secondItem="xwg-yq-14m" secondAttribute="trailing" id="j9S-Cx-TNF"/>
+                            <constraint firstItem="u3a-QU-Vka" firstAttribute="top" secondItem="xwg-yq-14m" secondAttribute="bottom" constant="6" id="jN4-YR-7Ps"/>
+                            <constraint firstAttribute="bottom" secondItem="9e6-bu-KFz" secondAttribute="bottom" id="nbe-vd-jgo"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="LXC-wt-QdZ"/>
@@ -306,6 +312,7 @@
                     <connections>
                         <outlet property="messageTextField" destination="E1H-hQ-RNj" id="nRO-Yr-KK1"/>
                         <outlet property="messageView" destination="xwg-yq-14m" id="clZ-ga-D1P"/>
+                        <outlet property="sendButton" destination="ecR-jj-UWC" id="0Q9-ud-feP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AYx-yS-per" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -451,7 +458,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="6" maxY="0.0"/>
                                                     <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                    <state key="normal" title="_buy_" image="shopelia_logo_dark.png"/>
+                                                    <state key="normal" title="_buy_" image="ShopeliaSDKResources/shopelia-fat-logo.png"/>
                                                 </button>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_price_" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MVz-jV-Lqe" customClass="SPLabel">
                                                     <rect key="frame" x="0.0" y="167" width="60" height="30"/>
@@ -910,40 +917,93 @@
                         <viewControllerLayoutGuide type="top" id="TUs-TS-axH"/>
                         <viewControllerLayoutGuide type="bottom" id="11c-V1-yEA"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="tlW-1B-ckb">
+                    <view key="view" contentMode="scaleToFill" id="tlW-1B-ckb" customClass="SPBackgroundView">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Enable push notifications ?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IcM-an-NgN">
-                                <rect key="frame" x="56" y="20" width="208" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NJU-4j-aRl">
-                                <rect key="frame" x="62" y="73" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="YES">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="yesButtonTouched:" destination="ttI-Ep-YEZ" eventType="touchUpInside" id="vmA-3A-ccY"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fY4-M2-l2C">
-                                <rect key="frame" x="225" y="73" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="NO">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="noButtonTouched:" destination="ttI-Ep-YEZ" eventType="touchUpInside" id="AuC-59-rGq"/>
-                                </connections>
-                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="huE-nP-RvZ" customClass="SPView">
+                                <rect key="frame" x="10" y="118" width="300" height="181"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5ec-vo-j6X" customClass="SPCardImageView">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="181"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vk3-9L-BaU" customClass="SPLargeButton">
+                                        <rect key="frame" x="155" y="121" width="115" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="bjW-CC-vGb"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <state key="normal" title="_accept_">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="yesButtonTouched:" destination="ttI-Ep-YEZ" eventType="touchUpInside" id="yaL-Cn-tnd"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ACU-H7-01W" customClass="SPLargeImportantButton">
+                                        <rect key="frame" x="30" y="121" width="115" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <state key="normal" title="_back_">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="noButtonTouched:" destination="ttI-Ep-YEZ" eventType="touchUpInside" id="0SX-wX-ugA"/>
+                                        </connections>
+                                    </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chat_sender_icon" translatesAutoresizingMaskIntoConstraints="NO" id="Jzh-SD-0W7">
+                                        <rect key="frame" x="128" y="20" width="44" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_hello_" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="240" translatesAutoresizingMaskIntoConstraints="NO" id="Gw1-fi-WC1" customClass="SPSmallLabel">
+                                        <rect key="frame" x="30" y="84" width="240" height="17"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="vk3-9L-BaU" secondAttribute="trailing" constant="30" id="06o-PW-NhN"/>
+                                    <constraint firstAttribute="trailing" secondItem="Gw1-fi-WC1" secondAttribute="trailing" constant="30" id="2lK-g8-e6U"/>
+                                    <constraint firstItem="ACU-H7-01W" firstAttribute="width" secondItem="vk3-9L-BaU" secondAttribute="width" id="2pY-C6-oZN"/>
+                                    <constraint firstItem="vk3-9L-BaU" firstAttribute="leading" secondItem="ACU-H7-01W" secondAttribute="trailing" constant="10" id="3rz-cw-RmI"/>
+                                    <constraint firstItem="vk3-9L-BaU" firstAttribute="top" secondItem="Gw1-fi-WC1" secondAttribute="bottom" constant="20" id="5Ty-Z4-PFW"/>
+                                    <constraint firstAttribute="bottom" secondItem="ACU-H7-01W" secondAttribute="bottom" constant="20" id="Gbb-n6-J2m"/>
+                                    <constraint firstItem="Jzh-SD-0W7" firstAttribute="top" secondItem="huE-nP-RvZ" secondAttribute="top" constant="20" id="OHx-4N-Od4"/>
+                                    <constraint firstItem="5ec-vo-j6X" firstAttribute="top" secondItem="huE-nP-RvZ" secondAttribute="top" id="P80-RQ-6G6"/>
+                                    <constraint firstAttribute="bottom" secondItem="vk3-9L-BaU" secondAttribute="bottom" constant="20" id="buX-JL-XF9"/>
+                                    <constraint firstItem="ACU-H7-01W" firstAttribute="leading" secondItem="huE-nP-RvZ" secondAttribute="leading" constant="30" id="eZ2-iQ-ZRU"/>
+                                    <constraint firstItem="5ec-vo-j6X" firstAttribute="leading" secondItem="huE-nP-RvZ" secondAttribute="leading" id="gAM-NH-ACe"/>
+                                    <constraint firstAttribute="centerX" secondItem="Jzh-SD-0W7" secondAttribute="centerX" id="nHB-03-BTo"/>
+                                    <constraint firstItem="Gw1-fi-WC1" firstAttribute="leading" secondItem="huE-nP-RvZ" secondAttribute="leading" constant="30" id="qmR-mB-I3n"/>
+                                    <constraint firstAttribute="trailing" secondItem="5ec-vo-j6X" secondAttribute="trailing" id="seF-n1-lMe"/>
+                                    <constraint firstItem="ACU-H7-01W" firstAttribute="height" secondItem="vk3-9L-BaU" secondAttribute="height" id="tFb-k0-iCC"/>
+                                    <constraint firstItem="Gw1-fi-WC1" firstAttribute="top" secondItem="Jzh-SD-0W7" secondAttribute="bottom" constant="20" id="wl1-dG-6an"/>
+                                    <constraint firstAttribute="bottom" secondItem="5ec-vo-j6X" secondAttribute="bottom" id="xKb-n0-yVV"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="huE-nP-RvZ" firstAttribute="leading" secondItem="tlW-1B-ckb" secondAttribute="leading" constant="10" id="IK5-ci-Ino"/>
+                            <constraint firstAttribute="trailing" secondItem="huE-nP-RvZ" secondAttribute="trailing" constant="10" id="MWE-bF-B4G"/>
+                            <constraint firstAttribute="centerY" secondItem="huE-nP-RvZ" secondAttribute="centerY" id="N76-T1-4yP"/>
+                            <constraint firstAttribute="centerX" secondItem="huE-nP-RvZ" secondAttribute="centerX" id="em7-Nj-62L"/>
+                            <constraint firstAttribute="centerY" secondItem="huE-nP-RvZ" secondAttribute="centerY" id="xnB-TR-Z9X"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="zb3-iI-eQX"/>
+                    <connections>
+                        <outlet property="acceptButton" destination="vk3-9L-BaU" id="SBf-zg-LzF"/>
+                        <outlet property="backButton" destination="ACU-H7-01W" id="Vgp-8J-YQI"/>
+                        <outlet property="helloLabel" destination="Gw1-fi-WC1" id="IRy-kW-h74"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ihr-5D-7Jn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -951,10 +1011,11 @@
         </scene>
     </scenes>
     <resources>
+        <image name="ShopeliaSDKResources/shopelia-fat-logo.png" width="22" height="18"/>
+        <image name="chat_sender_icon" width="44" height="44"/>
         <image name="scan_icon_active.png" width="22" height="19"/>
         <image name="scan_icon_inactive.png" width="22" height="19"/>
         <image name="separator.png" width="2" height="1"/>
-        <image name="shopelia_logo_dark.png" width="50" height="50"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

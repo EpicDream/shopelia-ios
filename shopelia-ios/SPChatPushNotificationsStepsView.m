@@ -8,24 +8,19 @@
 
 #import "SPChatPushNotificationsStepsView.h"
 
+@interface SPChatPushNotificationsStepsView ()
+@property (weak, nonatomic) IBOutlet SPLabel *pushNotificationsLabel;
+@end
+
 @implementation SPChatPushNotificationsStepsView
 
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
-    }
-    return self;
-}
+#pragma mark - Customize
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
+- (void)customize
 {
-    // Drawing code
+    [super customize];
+    
+    self.pushNotificationsLabel.text = NSLocalizedString(@"PushNotificationsArentEnabled", nil);
 }
-*/
 
 @end

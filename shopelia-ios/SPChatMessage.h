@@ -17,6 +17,7 @@ typedef enum NSUInteger
 
 - (BOOL)statusState:(SPChatMessageStatus)status;
 - (void)setStatus:(SPChatMessageStatus)status state:(BOOL)enabled;
+- (NSString *)displayCellIdentifier;
 
 @property (strong, nonatomic) NSNumber *ID;
 @property (assign, nonatomic) BOOL fromAgent;

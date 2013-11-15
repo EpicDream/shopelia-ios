@@ -18,6 +18,8 @@
 
 @interface SPChatConversationViewController : SPContainerViewController
 
++ (void)showChatConversation:(BOOL)force;
+
 @property (weak, nonatomic) id <SPChatConversationViewControllerDelegate> delegate;
 
 @end

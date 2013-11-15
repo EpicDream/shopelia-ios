@@ -10,7 +10,9 @@
 #import "SPPushNotificationsPreferencesManager.h"
 
 @interface SPPushNotificationsPermissionViewController ()
-
+@property (weak, nonatomic) IBOutlet SPLabel *helloLabel;
+@property (weak, nonatomic) IBOutlet SPButton *backButton;
+@property (weak, nonatomic) IBOutlet SPButton *acceptButton;
 @end
 
 @implementation SPPushNotificationsPermissionViewController
@@ -44,7 +46,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+
+    self.helloLabel.text = NSLocalizedString(@"PleaseAuthorisePushNotifications", nil);
+    [self.backButton setTitle:NSLocalizedString(@"Back", nil) forState:UIControlStateNormal];
+    [self.acceptButton setTitle:NSLocalizedString(@"IAccept", nil) forState:UIControlStateNormal];
+    [self.backButton setTitle:NSLocalizedString(@"Back", nil) forState:UIControlStateHighlighted];
+    [self.acceptButton setTitle:NSLocalizedString(@"IAccept", nil) forState:UIControlStateHighlighted];
 }
 
 - (void)didReceiveMemoryWarning

@@ -15,7 +15,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Dak-j6-0Xh" customClass="SPCardImageView">
-                        <rect key="frame" x="50" y="0.0" width="260" height="92"/>
+                        <rect key="frame" x="50" y="0.0" width="260" height="94"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     </imageView>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_text_" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="178" translatesAutoresizingMaskIntoConstraints="NO" id="zBd-Jo-xcL" customClass="SPSmallLabel">
@@ -43,7 +43,7 @@
                 <constraints>
                     <constraint firstItem="Dak-j6-0Xh" firstAttribute="top" secondItem="6dt-p0-HAo" secondAttribute="top" id="7aY-nN-eJe"/>
                     <constraint firstItem="zBd-Jo-xcL" firstAttribute="leading" secondItem="6dt-p0-HAo" secondAttribute="leading" constant="70" id="CAP-Hq-bID"/>
-                    <constraint firstAttribute="bottom" secondItem="Dak-j6-0Xh" secondAttribute="bottom" constant="10" id="GrE-57-uW6"/>
+                    <constraint firstAttribute="bottom" secondItem="Dak-j6-0Xh" secondAttribute="bottom" constant="8" id="GrE-57-uW6"/>
                     <constraint firstItem="x6e-4t-lNZ" firstAttribute="top" secondItem="6dt-p0-HAo" secondAttribute="top" constant="10" id="R2o-XC-Y94"/>
                     <constraint firstAttribute="trailing" secondItem="x6e-4t-lNZ" secondAttribute="trailing" constant="20" id="Z6h-En-CUt"/>
                     <constraint firstAttribute="trailing" secondItem="Dak-j6-0Xh" secondAttribute="trailing" constant="10" id="bGx-8T-xgK"/>

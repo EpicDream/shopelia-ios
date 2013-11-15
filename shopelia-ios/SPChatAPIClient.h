@@ -7,6 +7,7 @@
 //
 
 #import "SPChatTextMessage.h"
+#import "SPChatProductMessage.h"
 
 #define SPChatAPIClientMessageListUpdatedNotification @"SPChatAPIClientMessageListUpdatedNotification"
 
@@ -15,5 +16,6 @@
 - (NSArray *)allMessages;
 - (void)fetchNewMessages;
 - (void)sendTextMessage:(SPChatTextMessage *)message;
+- (void)clearAllMessages;
 
 @end

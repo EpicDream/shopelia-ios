@@ -11,6 +11,7 @@
 #import "SPPushNotificationsPreferencesManager.h"
 #import "SPDevicesAPIClient.h"
 #import "SPChatAPIClient.h"
+#import "SPChatConversationViewController.h"
 #import "SPContainerViewController.h"
 
 @implementation SPAppDelegate
@@ -28,6 +29,10 @@
     if ([[SPPushNotificationsPreferencesManager sharedInstance] userAlreadyGrantedPushNotificationsPermission])
         [[SPPushNotificationsPreferencesManager sharedInstance] registerForRemoteNotifications];
 
+    // handle push notification
+    if ([launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey])
+        [self performSelector:@selector(showChatConversationAfterDelay) withObject:nil afterDelay:1.0f];
+    
     return YES;
 }
 
@@ -36,22 +41,8 @@
     // handle push notification
     [[SPChatAPIClient sharedInstance] fetchNewMessages];
     
-    // show chat view conversation, if needed
-    if (application.applicationState != UIApplicationStateActive)
-    {
-        SPNavigationController *navigationController = (SPNavigationController *)self.window.rootViewController;
-        if ([navigationController isKindOfClass:[SPNavigationController class]])
-        {
-            SPContainerViewController *viewController = (SPContainerViewController *)navigationController.topViewController;
-            if ([viewController isKindOfClass:[SPContainerViewController class]])
-            {
-                if (viewController.showsChat)
-                {
-                    [viewController showChatConversationViewController];
-                }
-            }
-        }
-    }
+    // show chat conversation
+    [SPChatConversationViewController showChatConversation:NO];
 }
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
@@ -86,6 +77,12 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (void)showChatConversationAfterDelay
+{
+    // show chat conversation
+    [SPChatConversationViewController showChatConversation:YES];
 }
 
 @end

@@ -60,9 +60,9 @@
     for (NSDictionary *messageJSON in messagesJSON)
     {
         Class messageClass = NSClassFromString([messageJSON objectForKey:@"message_class"]);
-        SPChatMessage *message = [[messageClass alloc] initWithJSON:messageJSON];
+        id message = [[messageClass alloc] initWithJSON:messageJSON];
         
-        if (message)
+        if ([message isValid])
             [messages addObject:message];
     }
     self.messages = messages;
@@ -74,10 +74,20 @@
 {
     NSMutableArray *messages = [[NSMutableArray alloc] init];
     
-    // create messages
+    // text messages
     SPChatTextMessage *textMessage = [[SPChatTextMessage alloc] initWithJSON:JSON];
-    if (textMessage)
+    if ([textMessage isValid])
         [messages addObject:textMessage];
+    
+    // product messages
+    for (NSDictionary *productJSON in [JSON objectForKey:@"products"])
+    {
+        NSMutableDictionary *productMessageJSON = [JSON mutableCopy];
+        [productMessageJSON addEntriesFromDictionary:productJSON];
+        SPChatProductMessage *productMessage = [[SPChatProductMessage alloc] initWithJSON:productMessageJSON];
+        if ([productMessage isValid])
+            [messages addObject:productMessage];
+    }
     
     // configure messages
     for (SPChatMessage *message in messages)
@@ -109,6 +119,12 @@
 - (NSArray *)allMessages
 {
     return self.messages;
+}
+
+- (void)clearAllMessages
+{
+    [self.messages removeAllObjects];
+    [self writeMessagesToPreferences];
 }
 
 - (void)sendTextMessage:(SPChatTextMessage *)message
@@ -146,14 +162,23 @@
     if (messages.count == 0)
         return ;
     
-    // get index of last sent message
-    NSUInteger indexOfLastSentMessage = [self.messages indexOfObject:message];
-    if (indexOfLastSentMessage == NSNotFound)
-        return ;
-    
-    // insert received messages between sent and not sent messages
-    NSIndexSet *indexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(indexOfLastSentMessage + 1, messages.count)];
-    [self.messages insertObjects:messages atIndexes:indexSet];
+    if (message)
+    {
+        // get index of last sent message
+        NSUInteger indexOfLastSentMessage = [self.messages indexOfObject:message];
+        if (indexOfLastSentMessage == NSNotFound)
+            return ;
+        
+        // insert received messages between sent and not sent messages
+        NSIndexSet *indexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(indexOfLastSentMessage + 1, messages.count)];
+        [self.messages insertObjects:messages atIndexes:indexSet];
+    }
+    else
+    {
+        // insert received messages between sent and not sent messages
+        NSIndexSet *indexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, messages.count)];
+        [self.messages insertObjects:messages atIndexes:indexSet];
+    }
     [self writeMessagesToPreferences];
 }
 

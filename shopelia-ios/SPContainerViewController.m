@@ -11,10 +11,8 @@
 #import "SPProductSearchViewController.h"
 #import "SPShopeliaManager.h"
 #import "SPChatConversationViewController.h"
-#import "SPPushNotificationsPermissionViewController.h"
-#import "SPPushNotificationsPreferencesManager.h"
 
-@interface SPContainerViewController () <SPAlgoliaSearchViewControllerDelegate, SPChatConversationViewControllerDelegate, SPPushNotificationsPermissionViewControllerDelegate>
+@interface SPContainerViewController () <SPAlgoliaSearchViewControllerDelegate, SPChatConversationViewControllerDelegate>
 @property (strong, nonatomic) SPAlgoliaSearchViewController *algoliaSearchViewController;
 @end
 
@@ -66,20 +64,8 @@
 
 - (void)chatButtonTouched:(SPButton *)sender
 {
-    // if push notifications were already asked
-    if ([[SPPushNotificationsPreferencesManager sharedInstance] userAlreadyGrantedPushNotificationsPermission])
-    {
-        // show chat conversation
-        [self showChatConversationViewController];
-    }
-    else
-    {
-        // show push notifications permissions
-        SPNavigationController *navigationController = [self.storyboard instantiateViewControllerWithIdentifier:@"SPPushNotificationsPermissionNavigationController"];
-        SPPushNotificationsPermissionViewController *pushViewController = (SPPushNotificationsPermissionViewController *)navigationController.topViewController;
-        pushViewController.delegate = self;
-        [self presentViewController:navigationController animated:YES completion:nil];
-    }
+    // show chat conversation
+    [self showChatConversationViewController];
 }
 
 - (void)showChatConversationViewController
@@ -88,23 +74,6 @@
     SPChatConversationViewController *ChatViewController = (SPChatConversationViewController *)navigationController.topViewController;
     ChatViewController.delegate = self;
     [self presentViewController:navigationController animated:YES completion:nil];
-}
-
-#pragma mark - SPPushNotificationsPermissionViewController delegate
-
-- (void)pushNotificationsPermissionViewControllerUserDidAcceptRemoteNotifications:(SPPushNotificationsPermissionViewController *)viewController
-{
-    // dissmiss vc
-    [viewController dismissViewControllerAnimated:YES completion:^{
-        // show chat conversation
-        [self showChatConversationViewController];
-    }];
-}
-
-- (void)pushNotificationsPermissionViewControllerUserDidRefuseRemoteNotifications:(SPPushNotificationsPermissionViewController *)viewController
-{
-    // dissmiss vc
-    [viewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - SPAlgoliaSearchViewController delegate

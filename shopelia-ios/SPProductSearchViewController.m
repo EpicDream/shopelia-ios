@@ -156,6 +156,7 @@
     [super setupUIForContentView];
     
     self.tableView.hidden = NO;
+    self.chatButton.hidden = YES;
 }
 
 - (void)setupUIForErrorMessageView
@@ -163,6 +164,7 @@
     [super setupUIForErrorMessageView];
     
     self.tableView.hidden = YES;
+    self.chatButton.hidden = NO;
 }
 
 - (void)setupUIForWaitingMessageView
@@ -170,6 +172,7 @@
     [super setupUIForWaitingMessageView];
     
     self.tableView.hidden = YES;
+    self.chatButton.hidden = YES;
 }
 
 - (void)updateProductInformation
@@ -257,6 +260,8 @@
             }
             else
             {
+                self.chatButton.hidden = NO;
+                
                 // update model
                 self.products = products;
                 

@@ -12,6 +12,11 @@
 
 #pragma mark - Message
 
+- (BOOL)isValid
+{
+    return ([super isValid] && self.ID && self.timestamp);
+}
+
 - (BOOL)statusState:(SPChatMessageStatus)status
 {
     return ((self.messageStatus & status) == status);
@@ -23,6 +28,11 @@
         return ;
     
     self.messageStatus = (self.messageStatus ^ status);
+}
+
+- (NSString *)displayCellIdentifier
+{
+    return nil;
 }
 
 #pragma mark - JSON
@@ -51,9 +61,6 @@
         self.timestamp = [SPJSONFactory numberValueForJSONObject:[JSON objectForKey:@"timestamp"]];
         self.fromAgent = [SPJSONFactory boolValueForJSONObject:[JSON objectForKey:@"georges"]];
         self.messageStatus = [[SPJSONFactory numberValueForJSONObject:[JSON objectForKey:@"status"]] unsignedIntegerValue];
-        
-        if (!self.ID || !self.timestamp)
-            return NO;
     }
     return configure;
 }

@@ -10,6 +10,20 @@
 
 @implementation SPChatTextMessage
 
+#pragma mark - Message
+
+- (BOOL)isValid
+{
+    return ([super isValid] && self.message);
+}
+
+- (NSString *)displayCellIdentifier
+{
+    if ([self fromAgent])
+        return @"SPChatSenderTextMessageTableViewCell";
+    return @"SPChatReceiverTextMessageTableViewCell";
+}
+
 #pragma mark - JSON
 
 - (NSDictionary *)JSONReprensentation
@@ -28,9 +42,6 @@
     if (configure)
     {
         self.message = [SPJSONFactory stringValueForJSONObject:[JSON objectForKey:@"message"]];
-    
-        if (!self.message)
-            return NO;
     }
     return configure;
 }

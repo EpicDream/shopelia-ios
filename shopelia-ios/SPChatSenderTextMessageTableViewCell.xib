@@ -15,7 +15,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lN6-7F-jKV" customClass="SPCardImageView">
-                        <rect key="frame" x="10" y="0.0" width="260" height="92"/>
+                        <rect key="frame" x="10" y="0.0" width="260" height="94"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chat_sender_icon" translatesAutoresizingMaskIntoConstraints="NO" id="PK7-Zb-O7C">
@@ -42,7 +42,7 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="PK7-Zb-O7C" firstAttribute="leading" secondItem="RmL-ag-qvH" secondAttribute="leading" constant="20" id="5Mh-Fs-5YG"/>
-                    <constraint firstAttribute="bottom" secondItem="lN6-7F-jKV" secondAttribute="bottom" constant="10" id="HqJ-rM-xZ4"/>
+                    <constraint firstAttribute="bottom" secondItem="lN6-7F-jKV" secondAttribute="bottom" constant="8" id="HqJ-rM-xZ4"/>
                     <constraint firstItem="lN6-7F-jKV" firstAttribute="leading" secondItem="RmL-ag-qvH" secondAttribute="leading" constant="10" id="Ig7-uZ-hUj"/>
                     <constraint firstItem="lN6-7F-jKV" firstAttribute="top" secondItem="RmL-ag-qvH" secondAttribute="top" id="QG1-mU-dnq"/>
                     <constraint firstItem="QjK-Vb-BSd" firstAttribute="leading" secondItem="RmL-ag-qvH" secondAttribute="leading" constant="20" id="SSb-HW-orR"/>
