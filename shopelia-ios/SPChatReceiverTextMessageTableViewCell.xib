@@ -50,6 +50,7 @@
                     <constraint firstItem="Dak-j6-0Xh" firstAttribute="leading" secondItem="6dt-p0-HAo" secondAttribute="leading" constant="50" id="c4B-vX-eZD"/>
                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Wg4-N3-dFS" secondAttribute="bottom" constant="20" id="gNK-dj-H5y"/>
                     <constraint firstAttribute="trailing" secondItem="Wg4-N3-dFS" secondAttribute="trailing" constant="20" id="qv1-eb-ojH"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="zBd-Jo-xcL" secondAttribute="bottom" constant="20" id="sDE-l2-ZQl"/>
                     <constraint firstItem="x6e-4t-lNZ" firstAttribute="leading" secondItem="zBd-Jo-xcL" secondAttribute="trailing" constant="8" id="sje-PY-xah"/>
                     <constraint firstItem="zBd-Jo-xcL" firstAttribute="top" secondItem="6dt-p0-HAo" secondAttribute="top" constant="10" id="tWw-Sn-aYm"/>
                     <constraint firstItem="Wg4-N3-dFS" firstAttribute="top" secondItem="x6e-4t-lNZ" secondAttribute="bottom" constant="2" id="uB0-6j-f1O"/>

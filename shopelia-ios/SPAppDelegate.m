@@ -13,6 +13,7 @@
 #import "SPChatAPIClient.h"
 #import "SPChatConversationViewController.h"
 #import "SPContainerViewController.h"
+#import "SPApplicationPreferencesManager.h"
 
 @implementation SPAppDelegate
 
@@ -32,6 +33,9 @@
     // handle push notification
     if ([launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey])
         [self performSelector:@selector(showChatConversationAfterDelay) withObject:nil afterDelay:1.0f];
+    
+    // increment launch count
+    [[SPApplicationPreferencesManager sharedInstance] incrementLaunchCount];
     
     return YES;
 }

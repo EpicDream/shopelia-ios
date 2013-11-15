@@ -65,6 +65,7 @@
         if ([message isValid])
             [messages addObject:message];
     }
+    
     self.messages = messages;
 }
 
