@@ -108,6 +108,7 @@
     
     SPProductSearchCell *cell = [tableView dequeueReusableCellWithIdentifier:TABLE_VIEW_PRODUCT_CELL_IDENFITIER];
     SPProduct *product = [self.products objectAtIndex:indexPath.row];
+    
     [cell configureWithProduct:product];
     [cell.actionButton setTag:indexPath.row + 1000];
     [cell.merchantButton setTag:indexPath.row + 2000];

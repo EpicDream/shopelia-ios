@@ -45,3 +45,9 @@
 "Done" = "Terminé";
 
 "SendAMessageToGeorge" = "Envoyer un message à Georges";
+
+"George" = "Georges";
+
+"You" = "Vous";
+
+"ChatFirstMessage" = "Bonjour,\nJe m'appelle Georges, je ne suis pas un robot :)\nJe suis là pour trouver les produits qui vous intéressent.\nComment puis-je vous aider ?";

@@ -10,6 +10,9 @@
 #import "SPPushNotificationsPermissionViewController.h"
 #import "SPChatPushNotificationsStepsView.h"
 #import "SPPushNotificationsPreferencesManager.h"
+#import "SPChatTextMessageTableViewCell.h"
+#import "SPChatAPIClient.h"
+#import "SPChatTextMessage.h"
 
 @interface SPChatConversationViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet SPTextField *messageTextField;
@@ -18,20 +21,37 @@
 @property (assign, nonatomic) CGRect initialTableViewFrame;
 @property (strong, nonatomic) SPChatPushNotificationsStepsView *pushStepsView;
 @property (strong, nonatomic) NSTimer *pushStepsViewTimer;
+@property (copy, nonatomic) NSArray *messages;
 @end
 
 @implementation SPChatConversationViewController
 
 #pragma mark - Lazy instantiation
 
-- (SPChatPushNotificationsStepsView *)pushStepsView
+//- (SPChatPushNotificationsStepsView *)pushStepsView
+//{
+//    if (!_pushStepsView)
+//    {
+//        _pushStepsView = [SPChatPushNotificationsStepsView instanciateFromNibInBundle:[NSBundle mainBundle]];
+//        [SPViewController customizeView:_pushStepsView];
+//    }
+//    return _pushStepsView;
+//}
+
+#pragma mark - Utilities
+
+- (NSString *)cellIdentifierForMessage:(id)message
 {
-    if (!_pushStepsView)
+    NSString *cellIdentifier = nil;
+    
+    if ([message isKindOfClass:[SPChatTextMessage class]])
     {
-        _pushStepsView = [SPChatPushNotificationsStepsView instanciateFromNibInBundle:[NSBundle mainBundle]];
-        [SPViewController customizeView:_pushStepsView];
+        if ([message fromAgent])
+            cellIdentifier = @"SPChatSenderTextMessageTableViewCell";
+        else
+            cellIdentifier = @"SPChatReceiverTextMessageTableViewCell";
     }
-    return _pushStepsView;
+    return cellIdentifier;
 }
 
 #pragma mark - Actions
@@ -46,7 +66,12 @@
 
 - (IBAction)sendButtonTouched:(id)sender
 {
-  
+    // create new message
+    SPChatTextMessage *message = [[SPChatTextMessage alloc] init];
+    message.message = self.messageTextField.text;
+    
+    // send it
+    [[SPChatAPIClient sharedInstance] sendTextMessage:message];
 }
 
 - (void)applicationDidBecomeActive:(NSNotification *)notification
@@ -60,6 +85,13 @@
     self.pushStepsViewTimer = nil;
 }
 
+#pragma mark - SPChatAPIClient notifications
+
+- (void)chatAPIClientDidUpdateMessageList:(NSNotification *)notification
+{
+    [self updateMessageList];
+}
+
 #pragma mark - UITableView datasource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -69,13 +101,27 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    return self.messages.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Coucou"];
+    id message = [self.messages objectAtIndex:indexPath.row];
+    NSString *cellIdentifier = [self cellIdentifierForMessage:message];
+    SPChatMessageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    
+    [cell configureWithChatMessage:message];
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    id message = [self.messages objectAtIndex:indexPath.row];
+    NSString *cellIdentifier = [self cellIdentifierForMessage:message];
+    SPChatMessageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    
+    [cell configureWithChatMessage:message];
+    return [cell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
 }
 
 #pragma mark - Interface
@@ -85,6 +131,27 @@
     [super setupUI];
     
     self.messageTextField.placeholder = NSLocalizedString(@"SendAMessageToGeorge", nil);
+
+    [self.tableView registerNib:[UINib nibWithNibName:@"SPChatSenderTextMessageTableViewCell" bundle:nil] forCellReuseIdentifier:@"SPChatSenderTextMessageTableViewCell"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"SPChatReceiverTextMessageTableViewCell" bundle:nil] forCellReuseIdentifier:@"SPChatReceiverTextMessageTableViewCell"];
+}
+
+- (void)updateMessageList
+{
+    // get all messages
+    NSUInteger beforeCount = self.messages.count;
+    self.messages = [[SPChatAPIClient sharedInstance] allMessages];
+    
+    // reload table view
+    [self.tableView reloadData];
+    
+    // scroll to bottom, if needed
+    if (self.messages.count != beforeCount && self.messages.count > 0)
+    {
+        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.messages.count - 1 inSection:0]
+                              atScrollPosition:UITableViewScrollPositionBottom
+                                      animated:NO];
+    }
 }
 
 - (void)updatePushNotificationStepsVisibility
@@ -154,6 +221,7 @@
     [super awakeFromNib];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidBecomeActive:) name:UIApplicationDidBecomeActiveNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(chatAPIClientDidUpdateMessageList:) name:SPChatAPIClientMessageListUpdatedNotification object:nil];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -179,6 +247,9 @@
     
     // register notifications
     [[SPPushNotificationsPreferencesManager sharedInstance] registerForRemoteNotifications];
+    
+    // fetch new message
+    [[SPChatAPIClient sharedInstance] fetchNewMessages];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -191,7 +262,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+
+    [self updateMessageList];
 }
 
 - (void)didReceiveMemoryWarning
@@ -203,6 +275,7 @@
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidBecomeActiveNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:SPChatAPIClientMessageListUpdatedNotification object:nil];
 }
 
 @end

@@ -16,7 +16,6 @@
 
 @interface SPContainerViewController () <SPAlgoliaSearchViewControllerDelegate, SPChatConversationViewControllerDelegate, SPPushNotificationsPermissionViewControllerDelegate>
 @property (strong, nonatomic) SPAlgoliaSearchViewController *algoliaSearchViewController;
-@property (strong, nonatomic) SPButton *chatButton;
 @end
 
 @implementation SPContainerViewController
@@ -146,6 +145,12 @@
 - (void)setupUI
 {
     [super setupUI];
+
+    if (self.showsChat)
+    {
+        // add Chat button in view
+        [self.view addSubview:self.chatButton];
+    }
     
     if (self.showsAlgoliaSearch)
     {
@@ -153,12 +158,6 @@
         [self addChildViewController:self.algoliaSearchViewController];
         [self.view addSubview:self.algoliaSearchViewController.view];
         self.algoliaSearchViewController.delegate = self;
-    }
-    
-    if (self.showsChat)
-    {
-        // add Chat button in view
-        [self.view addSubview:self.chatButton];
     }
 }
 

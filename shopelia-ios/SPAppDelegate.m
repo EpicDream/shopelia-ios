@@ -10,6 +10,8 @@
 #import "TestFlight.h"
 #import "SPPushNotificationsPreferencesManager.h"
 #import "SPDevicesAPIClient.h"
+#import "SPChatAPIClient.h"
+#import "SPContainerViewController.h"
 
 @implementation SPAppDelegate
 
@@ -22,17 +24,34 @@
     // launch Crashlytics
     [Crashlytics startWithAPIKey:SPCrashlyticsAPIKey];
     
-    // push notifications
+    // renew push notifications token
     if ([[SPPushNotificationsPreferencesManager sharedInstance] userAlreadyGrantedPushNotificationsPermission])
         [[SPPushNotificationsPreferencesManager sharedInstance] registerForRemoteNotifications];
-    
+
     return YES;
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Shopelia" message:[[userInfo objectForKey:@"aps"] objectForKey:@"alert"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [alert show];
+    // handle push notification
+    [[SPChatAPIClient sharedInstance] fetchNewMessages];
+    
+    // show chat view conversation, if needed
+    if (application.applicationState != UIApplicationStateActive)
+    {
+        SPNavigationController *navigationController = (SPNavigationController *)self.window.rootViewController;
+        if ([navigationController isKindOfClass:[SPNavigationController class]])
+        {
+            SPContainerViewController *viewController = (SPContainerViewController *)navigationController.topViewController;
+            if ([viewController isKindOfClass:[SPContainerViewController class]])
+            {
+                if (viewController.showsChat)
+                {
+                    [viewController showChatConversationViewController];
+                }
+            }
+        }
+    }
 }
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
@@ -60,7 +79,8 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    // fetch new message
+    [[SPChatAPIClient sharedInstance] fetchNewMessages];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application

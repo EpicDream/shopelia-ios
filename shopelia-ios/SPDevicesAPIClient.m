@@ -27,7 +27,7 @@
         
         // create request
         self.deviceTokenRequest = [self defaultRequest];
-        NSString *currentUUID = [SPUUIDManager sharedUUID];
+        NSString *currentUUID = [[SPUUIDManager sharedInstance] currentUUID];
         NSString *pushToken = [SPDataConvertor hexStringFromData:token];
         NSURL *requestURL = [[self.baseURL URLByAppendingPathComponent:@"api/devices"] URLByAppendingPathComponent:currentUUID];
         [self.deviceTokenRequest setHTTPMethod:@"PUT"];

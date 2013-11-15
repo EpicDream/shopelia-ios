@@ -11,4 +11,9 @@ shopelia-ios
 * Add inspirational collections
 * Add grid search
 * Resolved bugs, timeout issues, products not found troubles
-* New SDK version.
+* New SDK version
+
+1.2
+---
+* George first integration
+* Improved API stability

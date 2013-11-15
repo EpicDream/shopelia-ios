@@ -6,7 +6,14 @@
 //  Copyright (c) 2013 Shopelia. All rights reserved.
 //
 
+#import "SPChatTextMessage.h"
+
+#define SPChatAPIClientMessageListUpdatedNotification @"SPChatAPIClientMessageListUpdatedNotification"
+
 @interface SPChatAPIClient : SPAPIV1Client
 
+- (NSArray *)allMessages;
+- (void)fetchNewMessages;
+- (void)sendTextMessage:(SPChatTextMessage *)message;
 
 @end

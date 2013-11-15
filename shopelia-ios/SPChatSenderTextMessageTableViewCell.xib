@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SPChatSenderTextMessageTableViewCell" rowHeight="1" id="CRT-pn-G2u" customClass="SPChatSenderTextMessageTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="103"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CRT-pn-G2u" id="RmL-ag-qvH">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="102"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lN6-7F-jKV" customClass="SPCardImageView">
+                        <rect key="frame" x="10" y="0.0" width="260" height="92"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chat_sender_icon" translatesAutoresizingMaskIntoConstraints="NO" id="PK7-Zb-O7C">
+                        <rect key="frame" x="20" y="10" width="44" height="44"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="44" id="3gn-vD-Ab2"/>
+                            <constraint firstAttribute="width" constant="44" id="hPO-e3-W4V"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_text_" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="178" translatesAutoresizingMaskIntoConstraints="NO" id="4UN-Nb-chh" customClass="SPSmallLabel">
+                        <rect key="frame" x="72" y="10" width="178" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_george_" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QjK-Vb-BSd" customClass="SPExtraSmallLabel">
+                        <rect key="frame" x="20" y="56" width="44" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="PK7-Zb-O7C" firstAttribute="leading" secondItem="RmL-ag-qvH" secondAttribute="leading" constant="20" id="5Mh-Fs-5YG"/>
+                    <constraint firstAttribute="bottom" secondItem="lN6-7F-jKV" secondAttribute="bottom" constant="10" id="HqJ-rM-xZ4"/>
+                    <constraint firstItem="lN6-7F-jKV" firstAttribute="leading" secondItem="RmL-ag-qvH" secondAttribute="leading" constant="10" id="Ig7-uZ-hUj"/>
+                    <constraint firstItem="lN6-7F-jKV" firstAttribute="top" secondItem="RmL-ag-qvH" secondAttribute="top" id="QG1-mU-dnq"/>
+                    <constraint firstItem="QjK-Vb-BSd" firstAttribute="leading" secondItem="RmL-ag-qvH" secondAttribute="leading" constant="20" id="SSb-HW-orR"/>
+                    <constraint firstItem="QjK-Vb-BSd" firstAttribute="width" secondItem="PK7-Zb-O7C" secondAttribute="width" id="XQh-Ep-fLS"/>
+                    <constraint firstItem="PK7-Zb-O7C" firstAttribute="top" secondItem="RmL-ag-qvH" secondAttribute="top" constant="10" id="YDv-7a-aFK"/>
+                    <constraint firstItem="4UN-Nb-chh" firstAttribute="top" secondItem="RmL-ag-qvH" secondAttribute="top" constant="10" id="Yjx-CE-RPY"/>
+                    <constraint firstItem="QjK-Vb-BSd" firstAttribute="top" secondItem="PK7-Zb-O7C" secondAttribute="bottom" constant="2" id="YqF-X2-NSY"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="QjK-Vb-BSd" secondAttribute="bottom" constant="20" id="ZQx-dN-SHq"/>
+                    <constraint firstItem="4UN-Nb-chh" firstAttribute="leading" secondItem="PK7-Zb-O7C" secondAttribute="trailing" constant="8" id="l7Q-5i-6ea"/>
+                    <constraint firstAttribute="trailing" secondItem="lN6-7F-jKV" secondAttribute="trailing" constant="50" id="luQ-Ip-zk0"/>
+                    <constraint firstAttribute="trailing" secondItem="4UN-Nb-chh" secondAttribute="trailing" constant="70" id="mS6-6V-5ZI"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="messageLabel" destination="4UN-Nb-chh" id="wZD-EM-GiU"/>
+                <outlet property="senderLabel" destination="QjK-Vb-BSd" id="GqG-Qo-pSQ"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="chat_sender_icon" width="44" height="44"/>
+    </resources>
+</document>

@@ -17,9 +17,11 @@
 - (void)setupUIForErrorMessageView;
 - (void)setupUIForContentView;
 - (CGFloat)chatButtonOverHeight;
+- (void)showChatConversationViewController;
 
 @property (strong, nonatomic) SPWaitingMessageView *waitingMessageView;
 @property (strong, nonatomic) SPErrorMessageView *errorMessageView;
+@property (strong, nonatomic) SPButton *chatButton;
 
 @property (assign, nonatomic) BOOL showsAlgoliaSearch;
 @property (assign, nonatomic) BOOL showsChat;

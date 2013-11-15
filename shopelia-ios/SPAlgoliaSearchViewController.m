@@ -243,6 +243,8 @@
     {
         self.collectionView.hidden = YES;
     }
+    
+    self.chatButton.hidden = self.collectionView.hidden;
 }
 
 - (BOOL)shouldDisplayNoResultsCell
