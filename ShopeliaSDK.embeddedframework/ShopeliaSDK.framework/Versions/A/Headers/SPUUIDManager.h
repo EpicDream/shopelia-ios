@@ -6,11 +6,11 @@
 //  Copyright (c) 2013 Shopelia. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "SPSingletonObject.h"
 
-@interface SPUUIDManager : NSObject
+@interface SPUUIDManager : SPSingletonObject
 
-// returns the shared UUID
-+ (NSString *)sharedUUID;
+// returns the current UUID
+- (NSString *)currentUUID;
 
 @end

@@ -10,11 +10,11 @@
 
 @interface SPPreferencesManager : SPSingletonObject
 
-- (NSString *)preferencesRootDirectory;
+- (id)initWithFilename:(NSString *)filename;
+- (id)initWithFilename:(NSString *)filename directory:(NSString *)directory;
+
 - (NSString *)preferencesFilename;
 - (NSString *)preferencesDirectory;
-- (NSString *)preferencesExtension;
-- (NSString *)preferencesFilepath;
 
 - (void)markItemAsExcludedFromCloudBackup:(NSString *)filepath;
 
