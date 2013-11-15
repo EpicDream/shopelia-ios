@@ -89,6 +89,16 @@
             [messages addObject:productMessage];
     }
     
+    // collection messages
+    NSDictionary *collectionJSON = [JSON objectForKey:@"collection"];
+    if (collectionJSON)
+    {
+        SPChatCollectionMessage *collectionMessage = [[SPChatCollectionMessage alloc] initWithJSON:JSON];
+        if ([collectionMessage isValid])
+            [messages addObject:collectionMessage];
+    }
+    
+    
     // configure messages
     for (SPChatMessage *message in messages)
     {

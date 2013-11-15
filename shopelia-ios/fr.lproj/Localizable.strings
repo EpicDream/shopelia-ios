@@ -42,7 +42,7 @@
 
 "Buy" = "Acheter";
 
-"Done" = "Terminé";
+"Done" = "Fermer";
 
 "SendAMessageToGeorge" = "Envoyer un message à Georges";
 
@@ -59,3 +59,7 @@
 "IAccept" = "J'accepte";
 
 "PushNotificationsArentEnabled" = "Pour pouvoir trouver les produits qui vous intéressent avec Georges, activez les notifications Push.\n\nDepuis l'application Réglages, touchez le Centre de notifications, puis Shopelia et réglez le style d'alerte à « Bannières » ou « Alertes ».";
+
+"SeeTheProduct" = "Voir le produit";
+
+"SeeTheCollection" = "Voir la collection";

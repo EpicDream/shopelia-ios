@@ -62,10 +62,11 @@
 		376E87F2183642920028578D /* SPChatProductMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 376E87F1183642920028578D /* SPChatProductMessage.m */; };
 		376E87F5183659700028578D /* SPChatSenderProductMessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 376E87F4183659700028578D /* SPChatSenderProductMessageTableViewCell.m */; };
 		376E87F7183659E50028578D /* SPChatSenderProductMessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 376E87F6183659E50028578D /* SPChatSenderProductMessageTableViewCell.xib */; };
+		376E87F918369C290028578D /* SPChatSenderCollectionMessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 376E87F818369C290028578D /* SPChatSenderCollectionMessageTableViewCell.xib */; };
+		376E87FC18369C3A0028578D /* SPChatSenderCollectionMessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 376E87FB18369C3A0028578D /* SPChatSenderCollectionMessageTableViewCell.m */; };
+		376E87FF18369CF50028578D /* SPChatCollectionMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 376E87FE18369CF50028578D /* SPChatCollectionMessage.m */; };
 		376F2607182971DD003DE2E3 /* SPImageProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 376F2606182971DD003DE2E3 /* SPImageProcessor.m */; };
 		377A3EE0182D26C900863C1A /* SPShopeliaAnalyticsTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 377A3EDF182D26C900863C1A /* SPShopeliaAnalyticsTracker.m */; };
-		3782A09D18339D3900E01020 /* SPChatPushNotificationsStepsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3782A09C18339D3900E01020 /* SPChatPushNotificationsStepsView.m */; };
-		3782A09F18339D5500E01020 /* SPChatPushNotificationsStepsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3782A09E18339D5500E01020 /* SPChatPushNotificationsStepsView.xib */; };
 		3782A0A21833B88B00E01020 /* SPPushNotificationsPreferencesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3782A0A11833B88B00E01020 /* SPPushNotificationsPreferencesManager.m */; };
 		3782A0A51833C7A700E01020 /* SPDevicesAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 3782A0A41833C7A700E01020 /* SPDevicesAPIClient.m */; };
 		37862C76180E9553009E2B44 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37862C75180E9553009E2B44 /* AudioToolbox.framework */; };
@@ -216,13 +217,15 @@
 		376E87F3183659700028578D /* SPChatSenderProductMessageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPChatSenderProductMessageTableViewCell.h; sourceTree = "<group>"; };
 		376E87F4183659700028578D /* SPChatSenderProductMessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPChatSenderProductMessageTableViewCell.m; sourceTree = "<group>"; };
 		376E87F6183659E50028578D /* SPChatSenderProductMessageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPChatSenderProductMessageTableViewCell.xib; sourceTree = "<group>"; };
+		376E87F818369C290028578D /* SPChatSenderCollectionMessageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPChatSenderCollectionMessageTableViewCell.xib; sourceTree = "<group>"; };
+		376E87FA18369C3A0028578D /* SPChatSenderCollectionMessageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPChatSenderCollectionMessageTableViewCell.h; sourceTree = "<group>"; };
+		376E87FB18369C3A0028578D /* SPChatSenderCollectionMessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPChatSenderCollectionMessageTableViewCell.m; sourceTree = "<group>"; };
+		376E87FD18369CF50028578D /* SPChatCollectionMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPChatCollectionMessage.h; sourceTree = "<group>"; };
+		376E87FE18369CF50028578D /* SPChatCollectionMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPChatCollectionMessage.m; sourceTree = "<group>"; };
 		376F2605182971DD003DE2E3 /* SPImageProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPImageProcessor.h; sourceTree = "<group>"; };
 		376F2606182971DD003DE2E3 /* SPImageProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPImageProcessor.m; sourceTree = "<group>"; };
 		377A3EDE182D26C900863C1A /* SPShopeliaAnalyticsTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPShopeliaAnalyticsTracker.h; sourceTree = "<group>"; };
 		377A3EDF182D26C900863C1A /* SPShopeliaAnalyticsTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPShopeliaAnalyticsTracker.m; sourceTree = "<group>"; };
-		3782A09B18339D3900E01020 /* SPChatPushNotificationsStepsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPChatPushNotificationsStepsView.h; sourceTree = "<group>"; };
-		3782A09C18339D3900E01020 /* SPChatPushNotificationsStepsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPChatPushNotificationsStepsView.m; sourceTree = "<group>"; };
-		3782A09E18339D5500E01020 /* SPChatPushNotificationsStepsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPChatPushNotificationsStepsView.xib; sourceTree = "<group>"; };
 		3782A0A01833B88B00E01020 /* SPPushNotificationsPreferencesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPPushNotificationsPreferencesManager.h; sourceTree = "<group>"; };
 		3782A0A11833B88B00E01020 /* SPPushNotificationsPreferencesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPPushNotificationsPreferencesManager.m; sourceTree = "<group>"; };
 		3782A0A31833C7A700E01020 /* SPDevicesAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPDevicesAPIClient.h; sourceTree = "<group>"; };
@@ -731,9 +734,6 @@
 			children = (
 				37CC27C11832226900978FEC /* SPChatConversationViewController.h */,
 				37CC27C21832226900978FEC /* SPChatConversationViewController.m */,
-				3782A09B18339D3900E01020 /* SPChatPushNotificationsStepsView.h */,
-				3782A09C18339D3900E01020 /* SPChatPushNotificationsStepsView.m */,
-				3782A09E18339D5500E01020 /* SPChatPushNotificationsStepsView.xib */,
 				374E82EE18350E59001EC179 /* SPChatMessageTableViewCell.h */,
 				374E82EF18350E59001EC179 /* SPChatMessageTableViewCell.m */,
 				374E82D81834C7F5001EC179 /* SPChatTextMessageTableViewCell.h */,
@@ -747,12 +747,17 @@
 				376E87F3183659700028578D /* SPChatSenderProductMessageTableViewCell.h */,
 				376E87F4183659700028578D /* SPChatSenderProductMessageTableViewCell.m */,
 				376E87F6183659E50028578D /* SPChatSenderProductMessageTableViewCell.xib */,
+				376E87FA18369C3A0028578D /* SPChatSenderCollectionMessageTableViewCell.h */,
+				376E87FB18369C3A0028578D /* SPChatSenderCollectionMessageTableViewCell.m */,
+				376E87F818369C290028578D /* SPChatSenderCollectionMessageTableViewCell.xib */,
 				374E82DD1834D4BA001EC179 /* SPChatMessage.h */,
 				374E82DE1834D4BA001EC179 /* SPChatMessage.m */,
 				374E82E01834D697001EC179 /* SPChatTextMessage.h */,
 				374E82E11834D697001EC179 /* SPChatTextMessage.m */,
 				376E87F0183642920028578D /* SPChatProductMessage.h */,
 				376E87F1183642920028578D /* SPChatProductMessage.m */,
+				376E87FD18369CF50028578D /* SPChatCollectionMessage.h */,
+				376E87FE18369CF50028578D /* SPChatCollectionMessage.m */,
 				37CC27CD18328A5F00978FEC /* SPChatAPIClient.h */,
 				37CC27CE18328A5F00978FEC /* SPChatAPIClient.m */,
 			);
@@ -943,10 +948,10 @@
 				37369F1A182A44C600202A79 /* Images.xcassets in Resources */,
 				37369F17182A43FB00202A79 /* zbar-helpicons.png in Resources */,
 				37D5C97E180E805300216A31 /* ShopeliaSDKResources.bundle in Resources */,
+				376E87F918369C290028578D /* SPChatSenderCollectionMessageTableViewCell.xib in Resources */,
 				372C32FB180EEB18008928B7 /* release_notes.md in Resources */,
 				37AEE4BA18229E9B009BC5FF /* SPWaitingMessageView.xib in Resources */,
 				376E87F7183659E50028578D /* SPChatSenderProductMessageTableViewCell.xib in Resources */,
-				3782A09F18339D5500E01020 /* SPChatPushNotificationsStepsView.xib in Resources */,
 				37E2244618196DD2001DD2A2 /* Localizable.strings in Resources */,
 				372C32FA180EEB18008928B7 /* README.md in Resources */,
 				37A83ACF181A9DDC0077B517 /* Storyboard.storyboard in Resources */,
@@ -1018,10 +1023,10 @@
 				37AEE4BD1822B28D009BC5FF /* SPMessageView.m in Sources */,
 				37B09BF21828E6620004E3DF /* ASRemoteIndex.m in Sources */,
 				373E2E92181E7BE000C575B0 /* SPAPIClient+Tracker.m in Sources */,
+				376E87FF18369CF50028578D /* SPChatCollectionMessage.m in Sources */,
 				3782A0A21833B88B00E01020 /* SPPushNotificationsPreferencesManager.m in Sources */,
 				37B09BEF1828E6620004E3DF /* ASAPIClient+Network.m in Sources */,
 				37E2243C181957AE001DD2A2 /* SPSearchBar.m in Sources */,
-				3782A09D18339D3900E01020 /* SPChatPushNotificationsStepsView.m in Sources */,
 				37B09C0D1828E67D0004E3DF /* AFURLRequestSerialization.m in Sources */,
 				37AD7760181FC76A00E1EE0D /* SPAlgoliaSearchViewController.m in Sources */,
 				37B09C081828E67D0004E3DF /* AFHTTPRequestOperationManager.m in Sources */,
@@ -1047,6 +1052,7 @@
 				373E2EA0181EAB5A00C575B0 /* SPAPIClient+ProductPrices.m in Sources */,
 				37E2244918197028001DD2A2 /* SPBarcodeOverlayView.m in Sources */,
 				37B09C091828E67D0004E3DF /* AFHTTPSessionManager.m in Sources */,
+				376E87FC18369C3A0028578D /* SPChatSenderCollectionMessageTableViewCell.m in Sources */,
 				378B9A511827C4F20031F2F4 /* SPFetchInspirationalCollectionProductsError.m in Sources */,
 				37B09C0B1828E67D0004E3DF /* AFSecurityPolicy.m in Sources */,
 				378B9A3E18278D530031F2F4 /* SPCollectionView.m in Sources */,

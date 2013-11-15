@@ -8,34 +8,35 @@
 
 #import "SPChatConversationViewController.h"
 #import "SPPushNotificationsPermissionViewController.h"
-#import "SPChatPushNotificationsStepsView.h"
 #import "SPPushNotificationsPreferencesManager.h"
 #import "SPChatTextMessageTableViewCell.h"
+#import "SPChatSenderProductMessageTableViewCell.h"
+#import "SPChatSenderCollectionMessageTableViewCell.h"
 #import "SPChatAPIClient.h"
 #import "SPChatTextMessage.h"
 #import "SPPushNotificationsPermissionViewController.h"
+#import "SPShopeliaManager.h"
+#import "SPInspirationalCollectionProductsViewController.h"
 
 @interface SPChatConversationViewController () <UITableViewDataSource, UITableViewDelegate, SPPushNotificationsPermissionViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet SPTextField *messageTextField;
 @property (weak, nonatomic) IBOutlet SPView *messageView;
 @property (weak, nonatomic) IBOutlet SPButton *sendButton;
-@property (strong, nonatomic) SPChatPushNotificationsStepsView *pushStepsView;
 @property (strong, nonatomic) NSTimer *pushStepsViewTimer;
 @property (copy, nonatomic) NSArray *messages;
 @end
 
 @implementation SPChatConversationViewController
 
-#pragma mark - Lazy instantiation
+#pragma mark - Segues
 
-- (SPChatPushNotificationsStepsView *)pushStepsView
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if (!_pushStepsView)
+    if ([segue.identifier isEqualToString:@"SHOW_INSPIRATIONAL_COLLECTION_PRODUCTS"])
     {
-        _pushStepsView = [SPChatPushNotificationsStepsView instanciateFromNibInBundle:[NSBundle mainBundle]];
-        [SPViewController customizeView:_pushStepsView];
+        SPInspirationalCollectionProductsViewController *vc = (SPInspirationalCollectionProductsViewController *)segue.destinationViewController;
+        vc.collection = sender;
     }
-    return _pushStepsView;
 }
 
 #pragma mark - Actions
@@ -132,6 +133,38 @@
     [self updateMessageList];
 }
 
+#pragma mark - UITableView delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    id message = [self.messages objectAtIndex:indexPath.row];
+    
+    if ([message isKindOfClass:[SPChatProductMessage class]])
+    {
+        SPChatProductMessage *productMessage = (SPChatProductMessage *)message;
+        
+        // show SDK
+        [SPShopeliaManager showShopeliaSDKForURL:productMessage.URL fromViewController:self];
+    }
+    else if ([message isKindOfClass:[SPChatCollectionMessage class]])
+    {
+        SPChatCollectionMessage *collectionMessage = (SPChatCollectionMessage *)message;
+        
+        // show collection
+        [self performSegueWithIdentifier:@"SHOW_INSPIRATIONAL_COLLECTION_PRODUCTS" sender:collectionMessage.collection];
+    }
+}
+
+- (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    id message = [self.messages objectAtIndex:indexPath.row];
+    
+    if ([message isKindOfClass:[SPChatProductMessage class]] ||
+        [message isKindOfClass:[SPChatCollectionMessage class]])
+        return YES;
+    return NO;
+}
+
 #pragma mark - UITableView datasource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -158,6 +191,10 @@
     id message = [self.messages objectAtIndex:indexPath.row];
     SPChatMessageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[message displayCellIdentifier]];
     
+    if ([cell isKindOfClass:[SPChatSenderProductMessageTableViewCell class]] ||
+        [cell isKindOfClass:[SPChatSenderCollectionMessageTableViewCell class]])
+        return 200.0f;
+    
     [cell configureWithChatMessage:message];
     return [cell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
 }
@@ -176,6 +213,7 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"SPChatSenderTextMessageTableViewCell" bundle:nil] forCellReuseIdentifier:@"SPChatSenderTextMessageTableViewCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"SPChatReceiverTextMessageTableViewCell" bundle:nil] forCellReuseIdentifier:@"SPChatReceiverTextMessageTableViewCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"SPChatSenderProductMessageTableViewCell" bundle:nil] forCellReuseIdentifier:@"SPChatSenderProductMessageTableViewCell"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"SPChatSenderCollectionMessageTableViewCell" bundle:nil] forCellReuseIdentifier:@"SPChatSenderCollectionMessageTableViewCell"];
     
     self.tableView.showsHorizontalScrollIndicator = YES;
     self.tableView.showsVerticalScrollIndicator = YES;
@@ -278,15 +316,6 @@
     [UIView animateWithDuration:[[[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue] animations:^{
         self.messageView.transform = CGAffineTransformMakeTranslation(0.0f, -keyboardBounds.size.height);
     }];
-}
-
-#pragma mark - Layout
-
-- (void)viewDidLayoutSubviews
-{
-    [super viewDidLayoutSubviews];
-    
-    self.pushStepsView.frame = self.view.bounds;
 }
 
 #pragma mark - Lifecycle

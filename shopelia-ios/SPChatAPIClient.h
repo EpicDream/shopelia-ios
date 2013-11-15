@@ -8,6 +8,7 @@
 
 #import "SPChatTextMessage.h"
 #import "SPChatProductMessage.h"
+#import "SPChatCollectionMessage.h"
 
 #define SPChatAPIClientMessageListUpdatedNotification @"SPChatAPIClientMessageListUpdatedNotification"
 
