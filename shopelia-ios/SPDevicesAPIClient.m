@@ -41,8 +41,6 @@
             }
             else
             {
-                SPLog(@"Sent device token: %@", token);
-                
                 // save last sent token
                 [[SPPushNotificationsPreferencesManager sharedInstance] setDeviceToken:token];
                 

@@ -25,11 +25,17 @@
     [[SPPushNotificationsPreferencesManager sharedInstance] markPushNotificationsAsGranted];
 
     [self.delegate pushNotificationsPermissionViewControllerUserDidAcceptRemoteNotifications:self];
+    
+    // analytics
+    [[SPShopeliaAnalyticsTracker sharedInstance] trackPushNotificationsPermission:YES];
 }
 
 - (IBAction)noButtonTouched:(id)sender
 {
     [self.delegate pushNotificationsPermissionViewControllerUserDidRefuseRemoteNotifications:self];
+    
+    // analytics
+    [[SPShopeliaAnalyticsTracker sharedInstance] trackPushNotificationsPermission:NO];
 }
 
 #pragma mark - Lifecycle

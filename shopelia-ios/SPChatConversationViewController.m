@@ -171,6 +171,16 @@
     return NO;
 }
 
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    SPChatMessage *message = [self.messages objectAtIndex:indexPath.row];
+    
+    if (message.fromAgent && ![message statusState:SPChatMessageDeliveryStatusRead])
+    {
+        [[SPChatAPIClient sharedInstance] markMessageAsSent:message];
+    }
+}
+
 #pragma mark - UITableView datasource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -270,11 +280,15 @@
     NSUInteger beforeCount = self.messages.count;
     self.messages = [[SPChatAPIClient sharedInstance] allMessages];
     
+    // if messages are the same
+    if (self.messages.count == beforeCount)
+        return ;
+    
     // reload table view
     [self.tableView reloadData];
     
     // scroll to bottom, if needed
-    if (self.messages.count != beforeCount && self.messages.count > 0 && self.tableView.contentSize.height > self.tableView.frame.size.height)
+    if (self.messages.count > 0 && self.tableView.contentSize.height > self.tableView.frame.size.height)
     {
         [self scrollTableViewToBottomAnimated:animated];
     }
@@ -367,6 +381,9 @@
     
     // fetch new message
     [[SPChatAPIClient sharedInstance] fetchNewMessages];
+    
+    // analytics
+    [[SPShopeliaAnalyticsTracker sharedInstance] trackGeorgeHome];
 }
 
 - (void)viewWillDisappear:(BOOL)animated

@@ -10,6 +10,8 @@
 #import "SPChatProductMessage.h"
 #import "SPChatCollectionMessage.h"
 
+#define kSPChatAPIClientNoID @0x0
+
 #define SPChatAPIClientMessageListUpdatedNotification @"SPChatAPIClientMessageListUpdatedNotification"
 
 @interface SPChatAPIClient : SPAPIV1Client
@@ -18,5 +20,6 @@
 - (void)fetchNewMessages;
 - (void)sendTextMessage:(SPChatTextMessage *)message;
 - (void)clearAllMessages;
+- (void)markMessageAsSent:(SPChatMessage *)message;
 
 @end

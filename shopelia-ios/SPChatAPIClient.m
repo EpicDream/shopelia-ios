@@ -14,6 +14,7 @@
 @property (strong, nonatomic) SPPreferencesManager *preferences;
 @property (strong, nonatomic) NSMutableArray *messages;
 @property (strong, nonatomic) SPAPIRequest *fetchMessagesRequest;
+@property (strong, nonatomic) NSOperationQueue *operationQueue;
 @end
 
 @implementation SPChatAPIClient
@@ -36,6 +37,17 @@
         [self loadMessagesFromPreferences];
     }
     return _messages;
+}
+
+- (NSOperationQueue *)operationQueue
+{
+    if (!_operationQueue)
+    {
+        _operationQueue = [[NSOperationQueue alloc] init];
+        [_operationQueue setMaxConcurrentOperationCount:1];
+        [_operationQueue setName:[NSString stringWithFormat:@"%@.chat_api_operation_queue", [SPMetadataFactory bundleIdentifier:[NSBundle mainBundle]]]];
+    }
+    return _operationQueue;
 }
 
 #pragma mark - Preferences management
@@ -138,7 +150,7 @@
 {
     SPChatTextMessage *message = [[SPChatTextMessage alloc] init];
     [message setTimestamp:@0];
-    [message setID:@0];
+    [message setID:kSPChatAPIClientNoID];
     [message setMessage:NSLocalizedString(@"ChatFirstMessage", nil)];
     [message setFromAgent:YES];
     
@@ -147,11 +159,14 @@
 
 - (void)sendTextMessage:(SPChatTextMessage *)message
 {
+    // analytics
+    [[SPShopeliaAnalyticsTracker sharedInstance] trackGeorgeMessage:message.message];
+    
     // add message to list
     NSTimeInterval now = [[NSDate date] timeIntervalSince1970];
     [message setTimestamp:[NSNumber numberWithDouble:now]];
     [message setFromAgent:NO];
-    [message setID:@0];
+    [message setID:kSPChatAPIClientNoID];
     [message setStatus:SPChatMessageDeliveryStatusSending state:YES];
     [message setStatus:SPChatMessageDeliveryStatusSent state:NO];
     
@@ -261,6 +276,26 @@
         
         [self.fetchMessagesRequest cancelAndClearCompletionBlock];
         self.fetchMessagesRequest = nil;
+    }];
+}
+
+- (void)markMessageAsSent:(SPChatMessage *)message
+{
+    if ([message.ID isEqualToNumber:kSPChatAPIClientNoID] || [message statusState:SPChatMessageDeliveryStatusRead])
+        return ;
+
+    // mark message as read
+    [message setStatus:SPChatMessageDeliveryStatusRead state:YES];
+    [self writeMessagesToPreferences];
+    
+    // add operation
+    [self.operationQueue addOperationWithBlock:^{
+        SPHTTPRequest *request = [self defaultRequest];
+        NSString *stringURL = [NSString stringWithFormat:@"api/georges/messages/%@/read", message.ID];
+        [request setHTTPMethod:@"GET"];
+        [request setIgnoresNetworkActivityIndicator:YES];
+        [request setURL:[self.baseURL URLByAppendingPathComponent:stringURL]];
+        [request startSynchronousWithReturningError:nil];
     }];
 }
 

@@ -134,6 +134,21 @@
     [self trackEvent:@"Scan" properties:nil];
 }
 
+- (void)trackGeorgeHome
+{
+    [self trackEvent:@"Georges Home" properties:nil];
+}
+
+- (void)trackGeorgeMessage:(NSString *)message
+{
+    [self trackEvent:@"Georges Message" properties:@{@"Message" : message}];
+}
+
+- (void)trackPushNotificationsPermission:(BOOL)accepts
+{
+    [self trackEvent:@"Push Notifications Permission" properties:@{@"Value" : accepts ? @"YES" : @"NO"}];
+}
+
 - (NSDictionary *)propertiesWithKeys:(NSArray *)keys
 {
     NSMutableDictionary *properties = [NSMutableDictionary dictionary];
