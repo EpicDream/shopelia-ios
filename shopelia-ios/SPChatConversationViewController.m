@@ -73,29 +73,18 @@
 
 - (IBAction)sendButtonTouched:(id)sender
 {
-    if (![[SPPushNotificationsPreferencesManager sharedInstance] userEnabledRequiredRemoteNotificationType])
+    if (![[SPPushNotificationsPreferencesManager sharedInstance] userAlreadyGrantedPushNotificationsPermission])
     {
-        if (![[SPPushNotificationsPreferencesManager sharedInstance] userAlreadyGrantedPushNotificationsPermission])
-        {
-            // show push notifications permissions
-            SPNavigationController *navigationController = [self.storyboard instantiateViewControllerWithIdentifier:@"SPPushNotificationsPermissionNavigationController"];
-            SPPushNotificationsPermissionViewController *pushViewController = (SPPushNotificationsPermissionViewController *)navigationController.topViewController;
-            pushViewController.delegate = self;
-            [self presentViewController:navigationController animated:YES completion:nil];
-        }
+        // show push notifications permissions
+        SPNavigationController *navigationController = [self.storyboard instantiateViewControllerWithIdentifier:@"SPPushNotificationsPermissionNavigationController"];
+        SPPushNotificationsPermissionViewController *pushViewController = (SPPushNotificationsPermissionViewController *)navigationController.topViewController;
+        pushViewController.delegate = self;
+        [self presentViewController:navigationController animated:YES completion:nil];
         return ;
     }
-    
-    // create new message
-    SPChatTextMessage *message = [[SPChatTextMessage alloc] init];
-    message.message = self.messageTextField.text;
-    
-    // send it
-    [[SPChatAPIClient sharedInstance] sendTextMessage:message];
-    
-    // clear message textfield text
-    self.messageTextField.text = @"";
-    [self updateSendButtonState];
+
+    // send current text message
+    [self sendTextMessageWithCurrentText];
 }
 
 - (void)applicationDidBecomeActive:(NSNotification *)notification
@@ -114,10 +103,27 @@
     [self updateSendButtonState];
 }
 
+- (void)sendTextMessageWithCurrentText
+{
+    // create new message
+    SPChatTextMessage *message = [[SPChatTextMessage alloc] init];
+    message.message = self.messageTextField.text;
+    
+    // send it
+    [[SPChatAPIClient sharedInstance] sendTextMessage:message];
+    
+    // clear message textfield text
+    self.messageTextField.text = @"";
+    [self updateSendButtonState];
+}
+
 #pragma mark - SPPushNotificationsPermissionViewController delegate
 
 - (void)pushNotificationsPermissionViewControllerUserDidAcceptRemoteNotifications:(SPPushNotificationsPermissionViewController *)viewController
 {
+    // send current text message
+    [self sendTextMessageWithCurrentText];
+    
     [viewController dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -130,7 +136,7 @@
 
 - (void)chatAPIClientDidUpdateMessageList:(NSNotification *)notification
 {
-    [self updateMessageList];
+    [self updateMessageListAnimated:YES];
 }
 
 #pragma mark - UITableView delegate
@@ -189,14 +195,19 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     id message = [self.messages objectAtIndex:indexPath.row];
-    SPChatMessageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[message displayCellIdentifier]];
     
-    if ([cell isKindOfClass:[SPChatSenderProductMessageTableViewCell class]] ||
-        [cell isKindOfClass:[SPChatSenderCollectionMessageTableViewCell class]])
+    // fixed heights
+    if ([message isKindOfClass:[SPChatProductMessage class]] ||
+        [message isKindOfClass:[SPChatCollectionMessage class]])
         return 200.0f;
     
-    [cell configureWithChatMessage:message];
-    return [cell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
+    // dynamic heights
+    if ([message isKindOfClass:[SPChatTextMessage class]])
+    {
+        SPChatTextMessage *textMessage = (SPChatTextMessage *)message;
+        return [SPChatTextMessageTableViewCell heightForMessage:textMessage.message];
+    }
+    return 100.0f;
 }
 
 #pragma mark - Interface
@@ -253,7 +264,7 @@
     self.sendButton.enabled = (message.length > 0);
 }
 
-- (void)updateMessageList
+- (void)updateMessageListAnimated:(BOOL)animated
 {
     // get all messages
     NSUInteger beforeCount = self.messages.count;
@@ -263,15 +274,15 @@
     [self.tableView reloadData];
     
     // scroll to bottom, if needed
-    if (self.messages.count != beforeCount && self.messages.count > 0)
+    if (self.messages.count != beforeCount && self.messages.count > 0 && self.tableView.contentSize.height > self.tableView.frame.size.height)
     {
-        [self scrollTableViewToBottom];
+        [self scrollTableViewToBottomAnimated:animated];
     }
 }
 
-- (void)scrollTableViewToBottom
+- (void)scrollTableViewToBottomAnimated:(BOOL)animated
 {
-    [self.tableView setContentOffset:CGPointMake(0.0f, self.tableView.contentSize.height - self.tableView.frame.size.height + self.tableView.contentInset.bottom) animated:YES];
+    [self.tableView setContentOffset:CGPointMake(0.0f, self.tableView.contentSize.height - self.tableView.frame.size.height + self.tableView.contentInset.bottom) animated:animated];
 }
 
 - (void)updatePushNotificationStepsVisibility
@@ -312,7 +323,8 @@
     
     // move elements
     [self.tableView setContentInset:UIEdgeInsetsMake(0.0f, 0.0f, keyboardBounds.size.height, 0.0f)];
-    [self scrollTableViewToBottom];
+    if (self.tableView.contentSize.height > (self.tableView.frame.size.height - keyboardBounds.size.height))
+        [self scrollTableViewToBottomAnimated:YES];
     [UIView animateWithDuration:[[[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue] animations:^{
         self.messageView.transform = CGAffineTransformMakeTranslation(0.0f, -keyboardBounds.size.height);
     }];
@@ -350,7 +362,8 @@
     [self updatePushNotificationStepsVisibility];
     
     // register notifications
-    [[SPPushNotificationsPreferencesManager sharedInstance] registerForRemoteNotifications];
+    if ([[SPPushNotificationsPreferencesManager sharedInstance] userAlreadyGrantedPushNotificationsPermission])
+        [[SPPushNotificationsPreferencesManager sharedInstance] registerForRemoteNotifications];
     
     // fetch new message
     [[SPChatAPIClient sharedInstance] fetchNewMessages];
@@ -366,8 +379,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    [self updateMessageList];
+    
+    [self updateMessageListAnimated:NO];
     [self updateSendButtonState];
     
     // listen for message textfield changes

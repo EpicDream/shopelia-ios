@@ -11,6 +11,8 @@
 
 @interface SPChatTextMessageTableViewCell : SPChatMessageTableViewCell
 
++ (CGFloat)heightForMessage:(NSString *)message;
+
 @property (weak, nonatomic) IBOutlet SPLabel *messageLabel;
 @property (weak, nonatomic) IBOutlet SPLabel *timeLabel;
 @property (weak, nonatomic) IBOutlet SPLabel *senderLabel;

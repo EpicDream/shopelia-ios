@@ -67,6 +67,10 @@
     }
     
     self.messages = messages;
+    
+    // if there are no messages, insert default one
+    if (self.messages.count == 0)
+        [self insertDefaultMessage];
 }
 
 #pragma mark - JSON
@@ -97,14 +101,6 @@
         SPChatCollectionMessage *collectionMessage = [[SPChatCollectionMessage alloc] initWithJSON:JSON];
         if ([collectionMessage isValid])
             [messages addObject:collectionMessage];
-    }
-    
-    
-    // configure messages
-    for (SPChatMessage *message in messages)
-    {
-        [message setStatus:SPChatMessageDeliveryStatusSending state:NO];
-        [message setStatus:SPChatMessageDeliveryStatusSent state:YES];
     }
     
     return messages;
@@ -138,14 +134,27 @@
     [self writeMessagesToPreferences];
 }
 
+- (void)insertDefaultMessage
+{
+    SPChatTextMessage *message = [[SPChatTextMessage alloc] init];
+    [message setTimestamp:@0];
+    [message setID:@0];
+    [message setMessage:NSLocalizedString(@"ChatFirstMessage", nil)];
+    [message setFromAgent:YES];
+    
+    [self receiveMessages:@[message] fromMessage:nil];
+}
+
 - (void)sendTextMessage:(SPChatTextMessage *)message
 {
     // add message to list
     NSTimeInterval now = [[NSDate date] timeIntervalSince1970];
     [message setTimestamp:[NSNumber numberWithDouble:now]];
+    [message setFromAgent:NO];
     [message setID:@0];
     [message setStatus:SPChatMessageDeliveryStatusSending state:YES];
     [message setStatus:SPChatMessageDeliveryStatusSent state:NO];
+    
     [self.messages addObject:message];
     [self writeMessagesToPreferences];
     
@@ -153,7 +162,7 @@
     SPAPIRequest *request = [self defaultRequest];
     [request setHTTPMethod:@"POST"];
     [request setURL:[self.baseURL URLByAppendingPathComponent:@"/api/georges/messages"]];
-    [request setHTTPBodyParameters:[message JSONReprensentation]];
+    [request setHTTPBodyParameters:@{@"message": message.message}];
     [request startWithCompletion:^(NSError *error, id response) {
         // mark message as sent (or not)
         if (error || [response statusCode] != 200)
@@ -173,22 +182,45 @@
     if (messages.count == 0)
         return ;
     
+    // configure messages
+    for (SPChatMessage *message in messages)
+    {
+        [message setStatus:SPChatMessageDeliveryStatusSending state:NO];
+        [message setStatus:SPChatMessageDeliveryStatusSent state:YES];
+    }
+    
     if (message)
     {
         // get index of last sent message
         NSUInteger indexOfLastSentMessage = [self.messages indexOfObject:message];
         if (indexOfLastSentMessage == NSNotFound)
             return ;
-        
-        // insert received messages between sent and not sent messages
-        NSIndexSet *indexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(indexOfLastSentMessage + 1, messages.count)];
-        [self.messages insertObjects:messages atIndexes:indexSet];
+
+        // if there are messages between his and mine
+        if ((indexOfLastSentMessage + 1) < self.messages.count)
+        {
+            NSMutableArray *notSentMessages = [[NSMutableArray alloc] init];
+            for (NSUInteger i = indexOfLastSentMessage; i < self.messages.count; i++)
+            {
+                SPChatMessage *message = self.messages[i];
+                if (!message.fromAgent && ![message statusState:SPChatMessageDeliveryStatusSent])
+                    [notSentMessages addObject:message];
+            }
+            
+            NSIndexSet *indexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(indexOfLastSentMessage + 1, self.messages.count - (indexOfLastSentMessage + 1))];
+            [self.messages removeObjectsAtIndexes:indexSet];
+            
+            [self.messages addObjectsFromArray:messages];
+            [self.messages addObjectsFromArray:notSentMessages];
+        }
+        else
+        {
+            [self.messages addObjectsFromArray:messages];
+        }
     }
     else
     {
-        // insert received messages between sent and not sent messages
-        NSIndexSet *indexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, messages.count)];
-        [self.messages insertObjects:messages atIndexes:indexSet];
+        [self.messages addObjectsFromArray:messages];
     }
     [self writeMessagesToPreferences];
 }
@@ -199,7 +231,7 @@
     {
         SPChatMessage *message = [self.messages objectAtIndex:i];
         
-        if ([message statusState:SPChatMessageDeliveryStatusSent])
+        if ( message.fromAgent && [message statusState:SPChatMessageDeliveryStatusSent])
             return message;
     }
     return nil;

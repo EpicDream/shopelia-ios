@@ -29,13 +29,13 @@
     // renew push notifications token
     if ([[SPPushNotificationsPreferencesManager sharedInstance] userAlreadyGrantedPushNotificationsPermission])
         [[SPPushNotificationsPreferencesManager sharedInstance] registerForRemoteNotifications];
-
-    // handle push notification
-    if ([launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey])
-        [self performSelector:@selector(showChatConversationAfterDelay) withObject:nil afterDelay:1.0f];
     
     // increment launch count
     [[SPApplicationPreferencesManager sharedInstance] incrementLaunchCount];
+    
+    // handle push notification
+    if ([launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey])
+        [self performSelector:@selector(showChatConversationAfterDelay) withObject:nil afterDelay:1.0f];
     
     return YES;
 }

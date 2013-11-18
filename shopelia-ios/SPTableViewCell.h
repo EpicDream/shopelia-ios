@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SPTableViewCell : UITableViewCell <SPViewCustomization, SPViewTranslation>
+@interface SPTableViewCell : UITableViewCell <SPViewCustomization, SPViewTranslation, SPViewContentSize>
 
 
 @end

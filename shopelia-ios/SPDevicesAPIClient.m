@@ -32,6 +32,7 @@
         NSURL *requestURL = [[self.baseURL URLByAppendingPathComponent:@"api/devices"] URLByAppendingPathComponent:currentUUID];
         [self.deviceTokenRequest setHTTPMethod:@"PUT"];
         [self.deviceTokenRequest setURL:requestURL];
+        [self.deviceTokenRequest setIgnoresNetworkActivityIndicator:YES];
         [self.deviceTokenRequest setHTTPBodyParameters:@{@"device" : @{@"push_token" : pushToken}}];
         [self.deviceTokenRequest startWithCompletion:^(NSError *error, SPAPIResponse *response) {
             if (error || [response statusCode] != 204)
@@ -40,6 +41,8 @@
             }
             else
             {
+                SPLog(@"Sent device token: %@", token);
+                
                 // save last sent token
                 [[SPPushNotificationsPreferencesManager sharedInstance] setDeviceToken:token];
                 
