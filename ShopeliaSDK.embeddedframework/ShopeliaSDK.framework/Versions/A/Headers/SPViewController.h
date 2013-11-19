@@ -76,6 +76,12 @@ typedef enum
 // notification used to tell that the keyboard will be hidden
 - (void)keyboardWillBeHidden:(NSNotification *)notification;
 
+// returns whether the keyboard is shown
+- (BOOL)keyboardIsShown;
+
+// returns the current keyboard size (0.0 or > if not hidden)
+- (CGSize)currentKeyboardSize;
+
 @property (strong, nonatomic) SPOrder *order;
 @property (strong, nonatomic) SPParams *params;
 
