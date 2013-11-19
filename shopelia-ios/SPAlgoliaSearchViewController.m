@@ -47,6 +47,7 @@
     
     // analytics
     [[SPShopeliaAnalyticsTracker sharedInstance] fromTextualSearch:query];
+    [[SPTracesAPIClient sharedInstance] traceSearchRequest:query];
     
     // launch new search
     [[SPAlgoliaAPIClient sharedInstance] searchProductsWithQuery:query page:page completion:^(BOOL success, NSArray *searchResults, NSUInteger pagesNumber) {
@@ -110,6 +111,12 @@
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     [searchBar resignFirstResponder];
+}
+
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
+{
+    // analytics
+    [[SPTracesAPIClient sharedInstance] traceSearchView];
 }
 
 #pragma mark - CHTCollectionViewWaterfallLayout delegate
@@ -190,7 +197,7 @@
     CHTCollectionViewWaterfallLayout *collectionViewLayout = (CHTCollectionViewWaterfallLayout *)self.collectionView.collectionViewLayout;
     [collectionViewLayout setItemWidth:PRODUCT_CELL_WIDTH];
     [collectionViewLayout setColumnCount:2];
-    [collectionViewLayout setSectionInset:UIEdgeInsetsMake(SECTION_HEADER_HEIGHT, 10.0f, 10.0f, 10.0f)];
+    [collectionViewLayout setSectionInset:UIEdgeInsetsMake(SECTION_HEADER_HEIGHT, 10.0f, self.chatButtonOverHeight + 10.0f, 10.0f)];
     
     self.collectionView.backgroundColor = [SPVisualFactory defaultBackgroundColor];
     [self updateCollectionViewVisibility];
@@ -243,6 +250,8 @@
     {
         self.collectionView.hidden = YES;
     }
+    
+    self.chatButton.hidden = self.collectionView.hidden;
 }
 
 - (BOOL)shouldDisplayNoResultsCell

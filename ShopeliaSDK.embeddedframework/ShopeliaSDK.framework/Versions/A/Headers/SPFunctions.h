@@ -27,4 +27,10 @@ NSString *SPPercentEncodedString(NSString *string);
 // flushes all the static variables
 void SPFlushStaticVariables(void);
 
+// returns the system caches directory
+NSString *SPSystemCachesDirectory(void);
+
+// returns the system library directory
+NSString *SPSystemLibraryDirectory(void);
+
 #endif

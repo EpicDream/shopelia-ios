@@ -41,3 +41,29 @@
 "Retry" = "Réessayer";
 
 "Buy" = "Acheter";
+
+"Done" = "Fermer";
+
+"SendAMessageToGeorge" = "Envoyer un message à Georges";
+
+"George" = "Georges";
+
+"You" = "Vous";
+
+"ChatFirstMessage" = "Bonjour,\nJe m'appelle Georges, je ne suis pas un robot :)\nJe suis là pour trouver les produits qui vous intéressent.\nComment puis-je vous aider ?";
+
+"Send" = "Envoyer";
+
+"PleaseAuthorisePushNotifications" = "Afin que je puisse vous répondre, merci d'autoriser l'envoi de notifications Push.\n\nVous devez choisir le style d'alerte «\U00A0Bannières\U00A0» ou «\U00A0Alertes\U00A0» et activer l'option \"Afficher les alertes sur écran verrouillé\".";
+
+"IAccept" = "J'accepte";
+
+"PushNotificationsArentEnabled" = "Afin que je puisse vous proposer des sélections personnalisées de produits, merci d'autoriser l'envoi de notifications Push.\n\nDepuis l'application Réglages, cliquez sur %@, puis sur Shopelia.\nVous devez alors choisir le style d'alerte «\U00A0Bannières\U00A0» ou «\U00A0Alertes\U00A0» et activer l'option \"Afficher les alertes sur écran verrouillé\"";
+
+"SeeTheProduct" = "Voir le produit";
+
+"SeeTheCollection" = "Voir la collection";
+
+"TheNotificationCenteriOS7" = "le Centre de notifications";
+
+"TheNotificationCenteriOS6" = "les Notifications";

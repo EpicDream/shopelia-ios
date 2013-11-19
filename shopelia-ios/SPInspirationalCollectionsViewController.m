@@ -156,8 +156,9 @@
 {
     [super viewWillAppear:animated];
     
-    // track Home
+    // analytics
     [[SPShopeliaAnalyticsTracker sharedInstance] trackHome];
+    [[SPTracesAPIClient sharedInstance] traceHomeView];
     
     if (self.collections.count == 0)
         [self reloadCollections];

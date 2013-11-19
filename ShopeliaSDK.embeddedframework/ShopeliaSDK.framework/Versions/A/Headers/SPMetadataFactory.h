@@ -13,5 +13,6 @@
 + (NSString *)bundleIdentifier:(NSBundle *)bundle;
 + (NSString *)bundleVersionString:(NSBundle *)bundle;
 + (NSString *)bundleBuildNumberString:(NSBundle *)bundle;
++ (NSString *)machineName;
 
 @end

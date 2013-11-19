@@ -10,8 +10,9 @@
 #import "SPAlgoliaSearchViewController.h"
 #import "SPProductSearchViewController.h"
 #import "SPShopeliaManager.h"
+#import "SPChatConversationViewController.h"
 
-@interface SPContainerViewController () <SPAlgoliaSearchViewControllerDelegate>
+@interface SPContainerViewController () <SPAlgoliaSearchViewControllerDelegate, SPChatConversationViewControllerDelegate>
 @property (strong, nonatomic) SPAlgoliaSearchViewController *algoliaSearchViewController;
 @end
 
@@ -46,6 +47,35 @@
     return _errorMessageView;
 }
 
+- (SPButton *)chatButton
+{
+    if (!_chatButton)
+    {
+        UIImage *image = [UIImage imageNamed:@"btn_chat_normal.png"];
+        _chatButton = [[SPButton alloc] initWithFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
+        [_chatButton setImage:image forState:UIControlStateNormal];
+        [_chatButton setImage:[UIImage imageNamed:@"btn_chat_hover.png"] forState:UIControlStateHighlighted];
+        [_chatButton addTarget:self action:@selector(chatButtonTouched:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _chatButton;
+}
+
+#pragma mark - Actions
+
+- (void)chatButtonTouched:(SPButton *)sender
+{
+    // show chat conversation
+    [self showChatConversationViewController];
+}
+
+- (void)showChatConversationViewController
+{
+    SPNavigationController *navigationController = [self.storyboard instantiateViewControllerWithIdentifier:@"SPChatConversationNavigationController"];
+    SPChatConversationViewController *ChatViewController = (SPChatConversationViewController *)navigationController.topViewController;
+    ChatViewController.delegate = self;
+    [self presentViewController:navigationController animated:YES completion:nil];
+}
+
 #pragma mark - SPAlgoliaSearchViewController delegate
 
 - (void)algoliaSearchViewController:(SPAlgoliaSearchViewController *)vc didSelectSearchResult:(SPAlgoliaSearchResult *)searchResult
@@ -64,6 +94,14 @@
     }
 }
 
+#pragma mark - SPChatConversationViewController delegate
+
+- (void)chatConversationViewControllerDidEndConversation:(SPChatConversationViewController *)vc
+{
+    // dissmiss vc
+    [vc dismissViewControllerAnimated:YES completion:nil];
+}
+
 #pragma mark - UIScrollView delegate
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
@@ -76,6 +114,12 @@
 - (void)setupUI
 {
     [super setupUI];
+
+    if (self.showsChat)
+    {
+        // add Chat button in view
+        [self.view addSubview:self.chatButton];
+    }
     
     if (self.showsAlgoliaSearch)
     {
@@ -104,6 +148,13 @@
     [self.waitingMessageView removeFromSuperview];
 }
 
+- (CGFloat)chatButtonOverHeight
+{
+    if (self.showsChat)
+        return [self.chatButton imageForState:UIControlStateNormal].size.height + 10.0f;
+    return 0.0f;
+}
+
 #pragma mark - Layout
 
 - (void)viewDidLayoutSubviews
@@ -114,6 +165,15 @@
     {
         // resize algolia search view
         self.algoliaSearchViewController.view.frame = self.view.bounds;
+    }
+    
+    if (self.showsChat)
+    {
+        // place chat button
+        self.chatButton.frame = CGRectMake((self.view.frame.size.width - self.chatButton.frame.size.width) / 2.0f,
+                                              self.view.frame.size.height - self.chatButton.frame.size.height - 10.0f,
+                                              self.chatButton.frame.size.width,
+                                              self.chatButton.frame.size.height);
     }
     
     CGFloat height = 0.0f;

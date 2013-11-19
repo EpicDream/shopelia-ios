@@ -14,6 +14,9 @@
 // returns wether the request is running
 - (BOOL)isRunning;
 
+// sync starts the request
+- (id)startSynchronousWithReturningError:(NSError **)error;
+
 // async starts the request
 - (void)start;
 

@@ -76,6 +76,7 @@
     {
         // analytics
         [[SPShopeliaAnalyticsTracker sharedInstance] trackCollectionBottomReached];
+        [[SPTracesAPIClient sharedInstance] traceCollectionBottom:self.collection.UUID];
     }
 }
 
@@ -92,7 +93,7 @@
     CHTCollectionViewWaterfallLayout *collectionViewLayout = (CHTCollectionViewWaterfallLayout *)self.collectionView.collectionViewLayout;
     [collectionViewLayout setItemWidth:PRODUCT_CELL_WIDTH];
     [collectionViewLayout setColumnCount:2];
-    [collectionViewLayout setSectionInset:UIEdgeInsetsMake(10.0f, 10.0f, 10.0f, 10.0f)];
+    [collectionViewLayout setSectionInset:UIEdgeInsetsMake(10.0f, 10.0f, self.chatButtonOverHeight + 10.0f, 10.0f)];
 }
 
 - (void)setupUIForContentView
@@ -177,6 +178,7 @@
     
     // analytics
     [[SPShopeliaAnalyticsTracker sharedInstance] trackCollection];
+    [[SPTracesAPIClient sharedInstance] traceCollectionView:self.collection.UUID];
     
     if (self.products.count == 0)
         [self reloadCollectionProducts];

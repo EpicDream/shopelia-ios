@@ -8,7 +8,6 @@
 
 #import "SPShopeliaManager.h"
 #import "SPAPIClient+Tracker.h"
-#import "SPAPIClient+Visitor.h"
 
 @implementation SPShopeliaManager
 
@@ -16,12 +15,12 @@
 {
     // analytics
     [[SPShopeliaAnalyticsTracker sharedInstance] trackOpenSDK];
+    [[SPTracesAPIClient sharedInstance] traceProductClick:[url absoluteString]];
     
     // send view event
     SPAPIClient *client = [SPAPIV1Client sharedInstance];
     SPAPIRequest *request = [client defaultRequest];
     [request setHTTPBodyParameters:@{@"tracker" : [client tracker],
-                                     @"visitor" : [client visitor],
                                      @"type" : @"click",
                                      @"urls" : @[[url absoluteString]]}];
     [request setURL:[NSURL URLWithString:@"https://www.shopelia.com/api/events"]];

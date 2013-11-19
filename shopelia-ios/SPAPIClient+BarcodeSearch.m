@@ -8,7 +8,6 @@
 
 #import "SPAPIClient+BarcodeSearch.h"
 #import "SPAPIClient+Tracker.h"
-#import "SPAPIClient+Visitor.h"
 #import "SPAPIFetchProductWithBarCodeError.h"
 
 @implementation SPAPIClient (BarcodeSearch)
@@ -19,7 +18,7 @@
     SPAPIRequest *request = [self defaultRequest];
     [request setURL:[self.baseURL URLByAppendingPathComponent:@"api/showcase/products/search"]];
     [request setHTTPMethod:@"GET"];
-    [request setURLParameters:@{@"ean" : barcode, @"tracker" : [self tracker], @"visitor" : [self visitor]}];
+    [request setURLParameters:@{@"ean" : barcode, @"tracker" : [self tracker]}];
   
     [request startWithCompletion:^(NSError *error, SPAPIResponse *response) {
         // check errors

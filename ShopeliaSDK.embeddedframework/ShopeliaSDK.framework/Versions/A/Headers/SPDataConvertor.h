@@ -31,8 +31,11 @@
 // returns the trimmed parameter string
 + (NSString *)stringByTrimmingString:(NSString *)string;
 
-// returns a string representation of any NSData
+// returns a string representation of any data
 + (NSString *)stringFromData:(NSData *)data;
+
+// returns a hex string representation of any data
++ (NSString *)hexStringFromData:(NSData *)data;
 
 // returns a rounded decimal number
 + (NSDecimalNumber *)roundedDecimalNumber:(NSDecimalNumber *)decimalNumber roundingMode:(NSRoundingMode)roundingMode scale:(short)scale;

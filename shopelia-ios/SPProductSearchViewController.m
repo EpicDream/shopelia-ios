@@ -108,6 +108,7 @@
     
     SPProductSearchCell *cell = [tableView dequeueReusableCellWithIdentifier:TABLE_VIEW_PRODUCT_CELL_IDENFITIER];
     SPProduct *product = [self.products objectAtIndex:indexPath.row];
+    
     [cell configureWithProduct:product];
     [cell.actionButton setTag:indexPath.row + 1000];
     [cell.merchantButton setTag:indexPath.row + 2000];
@@ -155,6 +156,7 @@
     [super setupUIForContentView];
     
     self.tableView.hidden = NO;
+    self.chatButton.hidden = YES;
 }
 
 - (void)setupUIForErrorMessageView
@@ -162,6 +164,7 @@
     [super setupUIForErrorMessageView];
     
     self.tableView.hidden = YES;
+    self.chatButton.hidden = NO;
 }
 
 - (void)setupUIForWaitingMessageView
@@ -169,6 +172,7 @@
     [super setupUIForWaitingMessageView];
     
     self.tableView.hidden = YES;
+    self.chatButton.hidden = YES;
 }
 
 - (void)updateProductInformation
@@ -256,6 +260,8 @@
             }
             else
             {
+                self.chatButton.hidden = NO;
+                
                 // update model
                 self.products = products;
                 
@@ -295,6 +301,9 @@
         [self setupUIForContentView];
         [self startPricesRequest];
     }
+    
+    // analytics
+    [[SPTracesAPIClient sharedInstance] traceProductView:self.barcode];
 }
 
 - (void)viewWillDisappear:(BOOL)animated

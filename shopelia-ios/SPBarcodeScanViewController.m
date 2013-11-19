@@ -35,6 +35,7 @@
     
     // analytics
     [[SPShopeliaAnalyticsTracker sharedInstance] fromScan:symbol.data];
+    [[SPTracesAPIClient sharedInstance] traceScanScan:symbol.data];
     
     // vibrate
     AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
@@ -95,7 +96,8 @@
     
     // analytics
     [[SPShopeliaAnalyticsTracker sharedInstance] trackScan];
-
+    [[SPTracesAPIClient sharedInstance] traceScanView];
+    
     [self.readerView performSelector:@selector(start) withObject:nil afterDelay:0.00f];
 }
 

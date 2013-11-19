@@ -13,9 +13,4 @@
 // returns the shared instance
 + (instancetype)sharedInstance;
 
-// flushes all the living instances
-+ (void)flushInstances;
-
-@property (assign, nonatomic) BOOL resistsToFlushInstances;
-
 @end

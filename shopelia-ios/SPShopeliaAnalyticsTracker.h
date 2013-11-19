@@ -22,6 +22,9 @@
 - (void)trackErrorCancel;
 - (void)trackErrorNoPrice;
 - (void)trackErrorNoProduct;
+- (void)trackGeorgeHome;
+- (void)trackGeorgeMessage:(NSString *)message;
+- (void)trackPushNotificationsPermission:(BOOL)accepts;
 
 - (void)fromCollection:(NSString *)collectionName;
 - (void)fromScan:(NSString *)EAN;

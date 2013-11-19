@@ -10,6 +10,15 @@
 
 @protocol SPViewContentSize <NSObject>
 
+@optional
++ (CGSize)estimatedContentSize;
++ (CGSize)minimumContentSize;
++ (CGSize)maximumContentSize;
++ (CGSize)externalContentSize;
+
 - (CGSize)estimatedContentSize;
+- (CGSize)minimumContentSize;
+- (CGSize)maximumContentSize;
+- (CGSize)externalContentSize;
 
 @end

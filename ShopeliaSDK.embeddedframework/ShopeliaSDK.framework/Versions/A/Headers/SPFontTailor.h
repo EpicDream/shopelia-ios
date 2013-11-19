@@ -12,6 +12,6 @@
 @interface SPFontTailor : NSObject
 
 // returns the expected height of a font
-+ (CGSize)sizeForText:(NSString *)text width:(CGFloat)width font:(UIFont *)font lineBreakMode:(NSLineBreakMode)lineBreakMode;
++ (CGSize)sizeForText:(NSString *)text width:(CGFloat)width font:(UIFont *)font;
 
 @end

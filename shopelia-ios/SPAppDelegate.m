@@ -8,7 +8,12 @@
 
 #import "SPAppDelegate.h"
 #import "TestFlight.h"
-#import "SPBarcodeScanViewController.h"
+#import "SPPushNotificationsPreferencesManager.h"
+#import "SPDevicesAPIClient.h"
+#import "SPChatAPIClient.h"
+#import "SPChatConversationViewController.h"
+#import "SPContainerViewController.h"
+#import "SPApplicationPreferencesManager.h"
 
 @implementation SPAppDelegate
 
@@ -21,9 +26,35 @@
     // launch Crashlytics
     [Crashlytics startWithAPIKey:SPCrashlyticsAPIKey];
     
+    // renew push notifications token
+    if ([[SPPushNotificationsPreferencesManager sharedInstance] userAlreadyGrantedPushNotificationsPermission])
+        [[SPPushNotificationsPreferencesManager sharedInstance] registerForRemoteNotifications];
+    
+    // increment launch count
+    [[SPApplicationPreferencesManager sharedInstance] incrementLaunchCount];
+    
+    // handle push notification
+    if ([launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey])
+        [self performSelector:@selector(showChatConversationAfterDelay) withObject:nil afterDelay:1.0f];
+    
     return YES;
 }
-							
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+{
+    // handle push notification
+    [[SPChatAPIClient sharedInstance] fetchNewMessages];
+    
+    // show chat conversation
+    [SPChatConversationViewController showChatConversation:NO];
+}
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    // handle new device token
+    [[SPDevicesAPIClient sharedInstance] handleNewDeviceToken:deviceToken];
+}
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -43,12 +74,19 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    // fetch new message
+    [[SPChatAPIClient sharedInstance] fetchNewMessages];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (void)showChatConversationAfterDelay
+{
+    // show chat conversation
+    [SPChatConversationViewController showChatConversation:YES];
 }
 
 @end

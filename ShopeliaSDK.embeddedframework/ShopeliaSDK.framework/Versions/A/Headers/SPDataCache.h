@@ -11,8 +11,6 @@
 
 @interface SPDataCache : NSObject
 
-+ (NSString *)systemCachesDirectoryPath;
-
 - (id)initWithName:(NSString *)name rootDirectoryName:(NSString *)root maxCacheSize:(unsigned long long)size;
 - (NSData *)dataForKey:(NSString *)key;
 - (SPDataCacheEntry *)entryForKey:(NSString *)key;
