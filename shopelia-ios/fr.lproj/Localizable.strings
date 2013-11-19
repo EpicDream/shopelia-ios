@@ -54,12 +54,16 @@
 
 "Send" = "Envoyer";
 
-"PleaseAuthorisePushNotifications" = "Afin que je puisse vous répondre, merci d'autoriser l'envoi de notifications Push.";
+"PleaseAuthorisePushNotifications" = "Afin que je puisse vous répondre, merci d'autoriser l'envoi de notifications Push.\n\nVous devez choisir le style d'alerte «\U00A0Bannières\U00A0» ou «\U00A0Alertes\U00A0» et activer l'option \"Afficher les alertes sur écran verrouillé\".";
 
 "IAccept" = "J'accepte";
 
-"PushNotificationsArentEnabled" = "Pour pouvoir trouver les produits qui vous intéressent avec Georges, activez les notifications Push.\n\nDepuis l'application Réglages, touchez le Centre de notifications, puis Shopelia et réglez le style d'alerte à « Bannières » ou « Alertes ».";
+"PushNotificationsArentEnabled" = "Afin que je puisse vous proposer des sélections personnalisées de produits, merci d'autoriser l'envoi de notifications Push.\n\nDepuis l'application Réglages, cliquez sur %@, puis sur Shopelia.\nVous devez alors choisir le style d'alerte «\U00A0Bannières\U00A0» ou «\U00A0Alertes\U00A0» et activer l'option \"Afficher les alertes sur écran verrouillé\"";
 
 "SeeTheProduct" = "Voir le produit";
 
 "SeeTheCollection" = "Voir la collection";
+
+"TheNotificationCenteriOS7" = "le Centre de notifications";
+
+"TheNotificationCenteriOS6" = "les Notifications";

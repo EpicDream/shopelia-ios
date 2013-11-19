@@ -240,7 +240,12 @@
     self.tableView.showsVerticalScrollIndicator = YES;
     
     [self.errorMessageView.actionButton removeFromSuperview];
-    [self.errorMessageView.messageLabel setText:NSLocalizedString(@"PushNotificationsArentEnabled", nil)];
+    NSString *error = nil;
+    if (SP_SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0"))
+        error = [NSString stringWithFormat:NSLocalizedString(@"PushNotificationsArentEnabled", nil), NSLocalizedString(@"TheNotificationCenteriOS7", nil)];
+    else
+        error = [NSString stringWithFormat:NSLocalizedString(@"PushNotificationsArentEnabled", nil), NSLocalizedString(@"TheNotificationCenteriOS6", nil)];
+    [self.errorMessageView.messageLabel setText:error];
 }
 
 - (void)setupUIForContentView
@@ -286,9 +291,9 @@
     
     // reload table view
     [self.tableView reloadData];
-    
+
     // scroll to bottom, if needed
-    if (self.messages.count > 0 && self.tableView.contentSize.height > self.tableView.frame.size.height)
+    if (self.messages.count > 0 && self.tableView.contentSize.height > (self.tableView.frame.size.height - self.currentKeyboardSize.height))
     {
         [self scrollTableViewToBottomAnimated:animated];
     }
