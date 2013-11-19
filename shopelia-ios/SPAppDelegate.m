@@ -19,9 +19,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // launch TestFight
-    [TestFlight setOptions:@{TFOptionLogToConsole : @NO, TFOptionLogToSTDERR : @NO, TFOptionLogOnCheckpoint : @NO}];
-    [TestFlight takeOff:SPTestFlightApplicationToken];
+//    // launch TestFight
+//    [TestFlight setOptions:@{TFOptionLogToConsole : @NO, TFOptionLogToSTDERR : @NO, TFOptionLogOnCheckpoint : @NO}];
+//    [TestFlight takeOff:SPTestFlightApplicationToken];
 
     // launch Crashlytics
     [Crashlytics startWithAPIKey:SPCrashlyticsAPIKey];
