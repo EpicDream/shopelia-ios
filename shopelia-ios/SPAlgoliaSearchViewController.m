@@ -47,6 +47,7 @@
     
     // analytics
     [[SPShopeliaAnalyticsTracker sharedInstance] fromTextualSearch:query];
+    [[SPTracesAPIClient sharedInstance] traceSearchRequest:query];
     
     // launch new search
     [[SPAlgoliaAPIClient sharedInstance] searchProductsWithQuery:query page:page completion:^(BOOL success, NSArray *searchResults, NSUInteger pagesNumber) {
@@ -110,6 +111,12 @@
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     [searchBar resignFirstResponder];
+}
+
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
+{
+    // analytics
+    [[SPTracesAPIClient sharedInstance] traceSearchView];
 }
 
 #pragma mark - CHTCollectionViewWaterfallLayout delegate

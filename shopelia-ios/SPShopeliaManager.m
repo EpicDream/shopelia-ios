@@ -15,6 +15,7 @@
 {
     // analytics
     [[SPShopeliaAnalyticsTracker sharedInstance] trackOpenSDK];
+    [[SPTracesAPIClient sharedInstance] traceProductClick:[url absoluteString]];
     
     // send view event
     SPAPIClient *client = [SPAPIV1Client sharedInstance];

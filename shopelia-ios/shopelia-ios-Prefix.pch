@@ -18,5 +18,6 @@
     #import "ZBarSDK.h"
     #import "SPConstants.h"
     #import "SPShopeliaAnalyticsTracker.h"
+    #import "SPTracesAPIClient.h"
 #endif
 

@@ -301,6 +301,9 @@
         [self setupUIForContentView];
         [self startPricesRequest];
     }
+    
+    // analytics
+    [[SPTracesAPIClient sharedInstance] traceProductView:self.barcode];
 }
 
 - (void)viewWillDisappear:(BOOL)animated

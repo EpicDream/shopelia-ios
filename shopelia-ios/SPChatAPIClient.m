@@ -161,6 +161,7 @@
 {
     // analytics
     [[SPShopeliaAnalyticsTracker sharedInstance] trackGeorgeMessage:message.message];
+    [[SPTracesAPIClient sharedInstance] traceGeorgeMessage:message.message];
     
     // add message to list
     NSTimeInterval now = [[NSDate date] timeIntervalSince1970];

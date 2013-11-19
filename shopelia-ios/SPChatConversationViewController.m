@@ -315,6 +315,7 @@
     }
     else if ([[SPPushNotificationsPreferencesManager sharedInstance] userAlreadyGrantedPushNotificationsPermission])
     {
+        [[SPViewController firstResponderInView:self.view] resignFirstResponder];
         [self setupUIForErrorMessageView];
         
         self.pushStepsViewTimer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(updatePushNotificationStepsVisibility) userInfo:nil repeats:NO];
@@ -389,6 +390,7 @@
     
     // analytics
     [[SPShopeliaAnalyticsTracker sharedInstance] trackGeorgeHome];
+    [[SPTracesAPIClient sharedInstance] traceGeorgeView];
 }
 
 - (void)viewWillDisappear:(BOOL)animated

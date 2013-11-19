@@ -25,6 +25,7 @@
 		116CD92D17DE030100978733 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 116CD92817DE030100978733 /* QuartzCore.framework */; };
 		11C6E7E317E06F5600D66D96 /* UIColor+Shopelia.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C6E7E217E06F5600D66D96 /* UIColor+Shopelia.m */; };
 		3705528F181928D300826EA0 /* SPBarcodeScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3705528D181928D300826EA0 /* SPBarcodeScanViewController.m */; };
+		372A6278183B77F600702C2E /* SPTracesAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 372A6277183B77F600702C2E /* SPTracesAPIClient.m */; };
 		372C32F9180EEB18008928B7 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 372C32F3180EEB18008928B7 /* libTestFlight.a */; };
 		372C32FA180EEB18008928B7 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 372C32F4180EEB18008928B7 /* README.md */; };
 		372C32FB180EEB18008928B7 /* release_notes.md in Resources */ = {isa = PBXBuildFile; fileRef = 372C32F5180EEB18008928B7 /* release_notes.md */; };
@@ -155,6 +156,8 @@
 		11C6E7E217E06F5600D66D96 /* UIColor+Shopelia.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Shopelia.m"; sourceTree = "<group>"; };
 		3705528C181928D300826EA0 /* SPBarcodeScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPBarcodeScanViewController.h; sourceTree = "<group>"; };
 		3705528D181928D300826EA0 /* SPBarcodeScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPBarcodeScanViewController.m; sourceTree = "<group>"; };
+		372A6276183B77F600702C2E /* SPTracesAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPTracesAPIClient.h; sourceTree = "<group>"; };
+		372A6277183B77F600702C2E /* SPTracesAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPTracesAPIClient.m; sourceTree = "<group>"; };
 		372C32F3180EEB18008928B7 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
 		372C32F4180EEB18008928B7 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		372C32F5180EEB18008928B7 /* release_notes.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes.md; sourceTree = "<group>"; };
@@ -532,6 +535,8 @@
 				373E2E9F181EAB5A00C575B0 /* SPAPIClient+ProductPrices.m */,
 				37AEE4A71822768F009BC5FF /* SPAPIClient+InspirationalCollections.h */,
 				37AEE4A81822768F009BC5FF /* SPAPIClient+InspirationalCollections.m */,
+				372A6276183B77F600702C2E /* SPTracesAPIClient.h */,
+				372A6277183B77F600702C2E /* SPTracesAPIClient.m */,
 			);
 			name = Client;
 			sourceTree = "<group>";
@@ -1002,6 +1007,7 @@
 				37AEE4B518229697009BC5FF /* SPInspirationalCollection.m in Sources */,
 				3782A0A51833C7A700E01020 /* SPDevicesAPIClient.m in Sources */,
 				37CC27CF18328A5F00978FEC /* SPChatAPIClient.m in Sources */,
+				372A6278183B77F600702C2E /* SPTracesAPIClient.m in Sources */,
 				378B9A41182792500031F2F4 /* SPCollectionViewCell.m in Sources */,
 				373D53BB181ECE0A00337724 /* SPProductSearchInProgressCell.m in Sources */,
 				374E82ED18350A81001EC179 /* SPChatReceiverTextMessageTableViewCell.m in Sources */,

@@ -76,6 +76,7 @@
     {
         // analytics
         [[SPShopeliaAnalyticsTracker sharedInstance] trackCollectionBottomReached];
+        [[SPTracesAPIClient sharedInstance] traceCollectionBottom:self.collection.UUID];
     }
 }
 
@@ -177,6 +178,7 @@
     
     // analytics
     [[SPShopeliaAnalyticsTracker sharedInstance] trackCollection];
+    [[SPTracesAPIClient sharedInstance] traceCollectionView:self.collection.UUID];
     
     if (self.products.count == 0)
         [self reloadCollectionProducts];
