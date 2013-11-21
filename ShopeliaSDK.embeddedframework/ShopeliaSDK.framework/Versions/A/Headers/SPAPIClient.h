@@ -48,6 +48,8 @@
 // places a new order
 - (SPAPIRequest *)placeOrder:(SPOrder *)order tracker:(NSString *)tracker completion:(void (^)(SPAPIError *error))completion;
 
+- (NSString *)tracker;
+
 @property (strong, nonatomic) NSString *APIVersion;
 @property (strong, nonatomic) NSString *APIKey;
 @property (strong, nonatomic) NSString *contentType;
