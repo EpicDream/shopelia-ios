@@ -28,5 +28,6 @@
 + (UIColor *)navigationBarBackgroundColor;
 + (UIColor *)fieldPlaceholderTextColor;
 + (UIColor *)validColor;
++ (UIColor*)darkNavigationBarBackgroundColor;
 
 @end
