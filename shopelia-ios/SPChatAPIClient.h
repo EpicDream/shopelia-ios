@@ -13,6 +13,13 @@
 #define kSPChatAPIClientNoID @0x0
 
 #define SPChatAPIClientMessageListUpdatedNotification @"SPChatAPIClientMessageListUpdatedNotification"
+#define SPChatAPIClientStateChangedNotification @"SPChatAPIClientStateChangedNotification"
+
+typedef NS_ENUM(NSUInteger, SPChatState)
+{
+    SPChatStateAvailable = 0,
+    SPChatStateSleeping
+};
 
 @interface SPChatAPIClient : SPAPIV1Client
 
@@ -21,5 +28,7 @@
 - (void)sendTextMessage:(SPChatTextMessage *)message;
 - (void)clearAllMessages;
 - (void)markMessageAsSent:(SPChatMessage *)message;
+- (SPChatState)chatState;
+- (NSString *)chatStateMessage;
 
 @end

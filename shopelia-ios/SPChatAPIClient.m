@@ -9,12 +9,16 @@
 #import "SPChatAPIClient.h"
 
 #define SPChatPreferencesMessagesKey @"messages"
+#define SPChatPreferencesStateKey @"state"
+#define SPChatPreferencesStateMessageKey @"state_message"
+#define SPChatStateRefreshInterval 3.0f
 
 @interface SPChatAPIClient ()
 @property (strong, nonatomic) SPPreferencesManager *preferences;
 @property (strong, nonatomic) NSMutableArray *messages;
 @property (strong, nonatomic) SPAPIRequest *fetchMessagesRequest;
 @property (strong, nonatomic) NSOperationQueue *operationQueue;
+@property (strong, nonatomic) NSTimer *chatStateTimer;
 @end
 
 @implementation SPChatAPIClient
@@ -298,6 +302,70 @@
         [request setURL:[self.baseURL URLByAppendingPathComponent:stringURL]];
         [request startSynchronousWithReturningError:nil];
     }];
+}
+
+#pragma mark - Chat state
+
+- (SPChatState)chatState
+{
+    NSNumber *state = [self.preferences objectForKey:SPChatPreferencesStateKey];
+
+    return [state unsignedIntegerValue];
+}
+
+- (NSString *)chatStateMessage
+{
+    return [self.preferences objectForKey:SPChatPreferencesStateMessageKey];
+}
+
+- (void)updateChatState
+{
+    SPHTTPRequest *request = [self defaultRequest];
+    [request setHTTPMethod:@"GET"];
+    [request setIgnoresNetworkActivityIndicator:YES];
+    [request setURL:[self.baseURL URLByAppendingPathComponent:@"api/georges/status"]];
+    [request startWithCompletion:^(NSError *error, id response) {
+        NSDictionary *JSON = [response responseJSON];
+        
+        if (![JSON isKindOfClass:[NSDictionary class]])
+            return ;
+        
+        NSString *status = [SPJSONFactory stringValueForJSONObject:[JSON objectForKey:@"status"]];
+        NSString *statusMessage = [SPJSONFactory stringValueForJSONObject:[JSON objectForKey:@"message"]];
+        
+        // if no status
+        if (!status)
+            return ;
+        
+        SPChatState currentState = [self chatState];
+        SPChatState newState = currentState;
+        
+        if ([status isEqualToString:@"available"])
+            newState = SPChatStateAvailable;
+        else if ([status isEqualToString:@"sleeping"])
+            newState = SPChatStateSleeping;
+        
+        // if no changes
+        if (currentState == newState)
+            return ;
+        
+        [self.preferences setObject:[NSNumber numberWithUnsignedInteger:newState] forKey:SPChatPreferencesStateKey];
+        [self.preferences setObject:statusMessage forKey:SPChatPreferencesStateMessageKey];
+        [[NSNotificationCenter defaultCenter] postNotificationName:SPChatAPIClientStateChangedNotification object:nil];
+    }];
+}
+
+#pragma mark - Lifecycle
+
+- (id)init
+{
+    self = [super init];
+    
+    if (self)
+    {
+        self.chatStateTimer = [NSTimer scheduledTimerWithTimeInterval:SPChatStateRefreshInterval target:self selector:@selector(updateChatState) userInfo:nil repeats:YES];
+    }
+    return self;
 }
 
 @end

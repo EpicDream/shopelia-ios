@@ -47,17 +47,27 @@
     return _errorMessageView;
 }
 
-- (SPButton *)chatButton
+- (SPChatButton *)chatButton
 {
     if (!_chatButton)
     {
-        UIImage *image = [UIImage imageNamed:@"btn_chat_normal.png"];
-        _chatButton = [[SPButton alloc] initWithFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
-        [_chatButton setImage:image forState:UIControlStateNormal];
-        [_chatButton setImage:[UIImage imageNamed:@"btn_chat_hover.png"] forState:UIControlStateHighlighted];
+        _chatButton = [[SPChatButton alloc] initWithFrame:CGRectMake(0, 0, 75.0f, 75.0f)];
         [_chatButton addTarget:self action:@selector(chatButtonTouched:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _chatButton;
+}
+
+- (SPLabel *)notificationLabel
+{
+    if (!_notificationLabel)
+    {
+        _notificationLabel = [[SPSmallLabel alloc] init];
+        _notificationLabel.textAlignment = NSTextAlignmentCenter;
+        [SPViewController customizeView:_notificationLabel];
+        _notificationLabel.textColor = [UIColor whiteColor];
+        _notificationLabel.backgroundColor = [SPVisualFactory darkNavigationBarBackgroundColor];
+    }
+    return _notificationLabel;
 }
 
 #pragma mark - Actions
@@ -74,6 +84,42 @@
     SPChatConversationViewController *ChatViewController = (SPChatConversationViewController *)navigationController.topViewController;
     ChatViewController.delegate = self;
     [self presentViewController:navigationController animated:YES completion:nil];
+}
+
+#pragma mark - Notifications message
+
+- (void)notificationMessageDidUpdate
+{
+    [self updateContentInsets];
+}
+
+- (void)setNotificationMessage:(NSString *)notificationMessage
+{
+    self.notificationLabel.text = notificationMessage;
+    
+    [self.view setNeedsLayout];
+    [self.view layoutIfNeeded];
+    [self updateNotificationMessageVisibility];
+    [self notificationMessageDidUpdate];
+}
+
+- (NSString *)notificationMessage
+{
+    if (self.notificationLabel.text.length == 0)
+        return nil;
+    return self.notificationLabel.text;
+}
+
+- (void)updateNotificationMessageVisibility
+{
+    if (self.notificationMessage)
+    {
+        self.notificationLabel.hidden = NO;
+    }
+    else
+    {
+        self.notificationLabel.hidden = YES;
+    }
 }
 
 #pragma mark - SPAlgoliaSearchViewController delegate
@@ -107,6 +153,17 @@
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
     [[SPViewController firstResponderInView:self.view] resignFirstResponder];
+}
+
+#pragma mark - Content size
+
+- (UIEdgeInsets)currentContentInsets
+{
+    UIEdgeInsets insets = [super currentContentInsets];
+    
+    if (self.notificationMessage)
+        insets.top += self.notificationLabel.bounds.size.height;
+    return insets;
 }
 
 #pragma mark - Interface
@@ -151,7 +208,7 @@
 - (CGFloat)chatButtonOverHeight
 {
     if (self.showsChat)
-        return [self.chatButton imageForState:UIControlStateNormal].size.height + 10.0f;
+        return self.chatButton.frame.size.height + 10.0f;
     return 0.0f;
 }
 
@@ -191,9 +248,30 @@
                                              (self.view.bounds.size.height - height) / 2.0f,
                                              self.view.bounds.size.width - 20.0f,
                                              height);
+    
+    height = [SPFontTailor sizeForText:self.notificationMessage width:self.view.frame.size.width font:self.notificationLabel.font].height + 20.0f;
+    self.notificationLabel.bounds = CGRectMake(0.0f,
+                                              0.0f,
+                                              self.view.bounds.size.width,
+                                              height);
+    self.notificationLabel.center = CGPointMake(self.view.frame.size.width / 2.0f, height / 2.0f);
 }
 
 #pragma mark - View lifecyle
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+
+    [self.view addSubview:self.notificationLabel];
+    [self updateNotificationMessageVisibility];
+    [self updateContentInsets];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+}
 
 - (void)viewWillDisappear:(BOOL)animated
 {

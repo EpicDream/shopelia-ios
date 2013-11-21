@@ -134,9 +134,15 @@
 
 #pragma mark - SPChatAPIClient notifications
 
-- (void)chatAPIClientDidUpdateMessageList:(NSNotification *)notification
+- (void)chatAPIClientDidUpdateMessageList
 {
     [self updateMessageListAnimated:YES];
+}
+
+- (void)chatAPIClientStateDidChange
+{
+    // setup notification message
+    [self setNotificationMessage:[[SPChatAPIClient sharedInstance] chatStateMessage]];
 }
 
 #pragma mark - UITableView delegate
@@ -301,7 +307,7 @@
 
 - (void)scrollTableViewToBottomAnimated:(BOOL)animated
 {
-    [self.tableView setContentOffset:CGPointMake(0.0f, self.tableView.contentSize.height - self.tableView.frame.size.height + self.tableView.contentInset.bottom) animated:animated];
+    [self.tableView setContentOffset:CGPointMake(0.0f, CGFLOAT_MAX) animated:animated];
 }
 
 - (void)updatePushNotificationStepsVisibility
@@ -326,8 +332,6 @@
 {
     [super keyboardWillBeHidden:notification];
 
-    // move elements
-    [self.tableView setContentInset:UIEdgeInsetsZero];
     [UIView animateWithDuration:[[[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue] animations:^{
         self.messageView.transform = CGAffineTransformIdentity;
     }];
@@ -338,15 +342,12 @@
     [super keyboardWillBeShown:notification];
     
     // get keyboard size
-    NSDictionary *info = [notification userInfo];
-    CGRect keyboardBounds = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue];
+    CGSize keyboardSize = [self currentKeyboardSize];
     
-    // move elements
-    [self.tableView setContentInset:UIEdgeInsetsMake(0.0f, 0.0f, keyboardBounds.size.height, 0.0f)];
-    if (self.tableView.contentSize.height > (self.tableView.frame.size.height - keyboardBounds.size.height))
+    if (self.tableView.contentSize.height > (self.tableView.frame.size.height - keyboardSize.height))
         [self scrollTableViewToBottomAnimated:YES];
     [UIView animateWithDuration:[[[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue] animations:^{
-        self.messageView.transform = CGAffineTransformMakeTranslation(0.0f, -keyboardBounds.size.height);
+        self.messageView.transform = CGAffineTransformMakeTranslation(0.0f, -keyboardSize.height);
     }];
 }
 
@@ -357,7 +358,8 @@
     [super awakeFromNib];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidBecomeActive:) name:UIApplicationDidBecomeActiveNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(chatAPIClientDidUpdateMessageList:) name:SPChatAPIClientMessageListUpdatedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(chatAPIClientDidUpdateMessageList) name:SPChatAPIClientMessageListUpdatedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(chatAPIClientStateDidChange) name:SPChatAPIClientStateChangedNotification object:nil];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -404,6 +406,9 @@
 {
     [super viewDidLoad];
     
+    // setup notification message
+    [self setNotificationMessage:[[SPChatAPIClient sharedInstance] chatStateMessage]];
+    
     [self updateMessageListAnimated:NO];
     [self updateSendButtonState];
     
@@ -421,6 +426,7 @@
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidBecomeActiveNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:SPChatAPIClientMessageListUpdatedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:SPChatAPIClientStateChangedNotification object:nil];
     
     // stop listening for message textfield changes
     [self.messageTextField removeTarget:self action:@selector(messageTextFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
