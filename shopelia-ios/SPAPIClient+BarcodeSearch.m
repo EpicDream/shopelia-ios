@@ -7,7 +7,6 @@
 //
 
 #import "SPAPIClient+BarcodeSearch.h"
-#import "SPAPIClient+Tracker.h"
 #import "SPAPIFetchProductWithBarCodeError.h"
 
 @implementation SPAPIClient (BarcodeSearch)

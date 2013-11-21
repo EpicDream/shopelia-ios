@@ -11,7 +11,7 @@
 #define SPChatPreferencesMessagesKey @"messages"
 #define SPChatPreferencesStateKey @"state"
 #define SPChatPreferencesStateMessageKey @"state_message"
-#define SPChatStateRefreshInterval 3.0f
+#define SPChatStateRefreshInterval (60.0f * 10.0f)
 
 @interface SPChatAPIClient ()
 @property (strong, nonatomic) SPPreferencesManager *preferences;
@@ -251,7 +251,7 @@
     {
         SPChatMessage *message = [self.messages objectAtIndex:i];
         
-        if ( message.fromAgent && [message statusState:SPChatMessageDeliveryStatusSent])
+        if (message.fromAgent && [message statusState:SPChatMessageDeliveryStatusSent])
             return message;
     }
     return nil;
@@ -281,26 +281,6 @@
         
         [self.fetchMessagesRequest cancelAndClearCompletionBlock];
         self.fetchMessagesRequest = nil;
-    }];
-}
-
-- (void)markMessageAsSent:(SPChatMessage *)message
-{
-    if ([message.ID isEqualToNumber:kSPChatAPIClientNoID] || [message statusState:SPChatMessageDeliveryStatusRead])
-        return ;
-
-    // mark message as read
-    [message setStatus:SPChatMessageDeliveryStatusRead state:YES];
-    [self writeMessagesToPreferences];
-    
-    // add operation
-    [self.operationQueue addOperationWithBlock:^{
-        SPHTTPRequest *request = [self defaultRequest];
-        NSString *stringURL = [NSString stringWithFormat:@"api/georges/messages/%@/read", message.ID];
-        [request setHTTPMethod:@"GET"];
-        [request setIgnoresNetworkActivityIndicator:YES];
-        [request setURL:[self.baseURL URLByAppendingPathComponent:stringURL]];
-        [request startSynchronousWithReturningError:nil];
     }];
 }
 
@@ -352,6 +332,40 @@
         [self.preferences setObject:[NSNumber numberWithUnsignedInteger:newState] forKey:SPChatPreferencesStateKey];
         [self.preferences setObject:statusMessage forKey:SPChatPreferencesStateMessageKey];
         [[NSNotificationCenter defaultCenter] postNotificationName:SPChatAPIClientStateChangedNotification object:nil];
+    }];
+}
+
+#pragma mark - Unread messages
+
+- (NSUInteger)unreadMessageCount
+{
+    NSUInteger count = 0;
+    
+    for (SPChatMessage *message in self.messages)
+    {
+        if (![message statusState:SPChatMessageDeliveryStatusRead] && [message fromAgent])
+            count++;
+    }
+    return count;
+}
+
+- (void)markMessageAsRead:(SPChatMessage *)message
+{
+    if ([message statusState:SPChatMessageDeliveryStatusRead] || ![message fromAgent])
+        return ;
+    
+    // mark message as read
+    [message setStatus:SPChatMessageDeliveryStatusRead state:YES];
+    [self writeMessagesToPreferences];
+    
+    // add operation
+    [self.operationQueue addOperationWithBlock:^{
+        SPHTTPRequest *request = [self defaultRequest];
+        NSString *stringURL = [NSString stringWithFormat:@"api/georges/messages/%@/read", message.ID];
+        [request setHTTPMethod:@"GET"];
+        [request setIgnoresNetworkActivityIndicator:YES];
+        [request setURL:[self.baseURL URLByAppendingPathComponent:stringURL]];
+        [request startSynchronousWithReturningError:nil];
     }];
 }
 

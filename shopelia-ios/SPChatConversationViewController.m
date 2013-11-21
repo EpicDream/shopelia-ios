@@ -183,7 +183,7 @@
     
     if (message.fromAgent && ![message statusState:SPChatMessageDeliveryStatusRead])
     {
-        [[SPChatAPIClient sharedInstance] markMessageAsSent:message];
+        [[SPChatAPIClient sharedInstance] markMessageAsRead:message];
     }
 }
 
@@ -285,7 +285,7 @@
     self.sendButton.enabled = (message.length > 0);
 }
 
-- (void)updateMessageListAnimated:(BOOL)animated
+- (void)updateMessageList
 {
     // get all messages
     NSUInteger beforeCount = self.messages.count;
@@ -297,6 +297,12 @@
     
     // reload table view
     [self.tableView reloadData];
+}
+
+- (void)updateMessageListAnimated:(BOOL)animated
+{
+    // update message list
+    [self updateMessageList];
 
     // scroll to bottom, if needed
     if (self.messages.count > 0 && self.tableView.contentSize.height > (self.tableView.frame.size.height - self.currentKeyboardSize.height))
@@ -307,7 +313,7 @@
 
 - (void)scrollTableViewToBottomAnimated:(BOOL)animated
 {
-    [self.tableView setContentOffset:CGPointMake(0.0f, CGFLOAT_MAX) animated:animated];
+    [self.tableView setContentOffset:CGPointMake(0.0f, self.tableView.contentSize.height - (self.tableView.bounds.size.height - self.currentContentInsets.bottom)) animated:animated];
 }
 
 - (void)updatePushNotificationStepsVisibility
@@ -409,8 +415,9 @@
     // setup notification message
     [self setNotificationMessage:[[SPChatAPIClient sharedInstance] chatStateMessage]];
     
-    [self updateMessageListAnimated:NO];
+    [self updateMessageList];
     [self updateSendButtonState];
+    [self.tableView setContentOffset:CGPointMake(0.0f, CGFLOAT_MAX)];
     
     // listen for message textfield changes
     [self.messageTextField addTarget:self action:@selector(messageTextFieldDidChange:) forControlEvents:UIControlEventEditingChanged];

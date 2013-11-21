@@ -8,4 +8,6 @@
 
 @interface SPChatButton : SPButton
 
+@property (assign, nonatomic) NSUInteger badgeCount;
+
 @end

@@ -36,7 +36,6 @@
 		37369F1A182A44C600202A79 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37369F19182A44C600202A79 /* Images.xcassets */; };
 		37369F1D182A7A3F00202A79 /* SPGridCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 37369F1C182A7A3F00202A79 /* SPGridCollectionViewCell.m */; };
 		373D53BB181ECE0A00337724 /* SPProductSearchInProgressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 373D53BA181ECE0A00337724 /* SPProductSearchInProgressCell.m */; };
-		373E2E92181E7BE000C575B0 /* SPAPIClient+Tracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 373E2E91181E7BE000C575B0 /* SPAPIClient+Tracker.m */; };
 		373E2E96181E805900C575B0 /* SPAPIFetchProductWithBarCodeError.m in Sources */ = {isa = PBXBuildFile; fileRef = 373E2E95181E805900C575B0 /* SPAPIFetchProductWithBarCodeError.m */; };
 		373E2EA0181EAB5A00C575B0 /* SPAPIClient+ProductPrices.m in Sources */ = {isa = PBXBuildFile; fileRef = 373E2E9F181EAB5A00C575B0 /* SPAPIClient+ProductPrices.m */; };
 		373E2EA6181EAD0B00C575B0 /* SPAPIFetchProductPricesError.m in Sources */ = {isa = PBXBuildFile; fileRef = 373E2EA5181EAD0B00C575B0 /* SPAPIFetchProductPricesError.m */; };
@@ -174,8 +173,6 @@
 		37369F1C182A7A3F00202A79 /* SPGridCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPGridCollectionViewCell.m; sourceTree = "<group>"; };
 		373D53B9181ECE0A00337724 /* SPProductSearchInProgressCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPProductSearchInProgressCell.h; sourceTree = "<group>"; };
 		373D53BA181ECE0A00337724 /* SPProductSearchInProgressCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPProductSearchInProgressCell.m; sourceTree = "<group>"; };
-		373E2E90181E7BE000C575B0 /* SPAPIClient+Tracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SPAPIClient+Tracker.h"; sourceTree = "<group>"; };
-		373E2E91181E7BE000C575B0 /* SPAPIClient+Tracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SPAPIClient+Tracker.m"; sourceTree = "<group>"; };
 		373E2E94181E805900C575B0 /* SPAPIFetchProductWithBarCodeError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPAPIFetchProductWithBarCodeError.h; sourceTree = "<group>"; };
 		373E2E95181E805900C575B0 /* SPAPIFetchProductWithBarCodeError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPAPIFetchProductWithBarCodeError.m; sourceTree = "<group>"; };
 		373E2E9E181EAB5A00C575B0 /* SPAPIClient+ProductPrices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SPAPIClient+ProductPrices.h"; sourceTree = "<group>"; };
@@ -530,8 +527,6 @@
 			children = (
 				3782A0A31833C7A700E01020 /* SPDevicesAPIClient.h */,
 				3782A0A41833C7A700E01020 /* SPDevicesAPIClient.m */,
-				373E2E90181E7BE000C575B0 /* SPAPIClient+Tracker.h */,
-				373E2E91181E7BE000C575B0 /* SPAPIClient+Tracker.m */,
 				37FEA95E181E780C0004E85B /* SPAPIClient+BarcodeSearch.h */,
 				37FEA95F181E780C0004E85B /* SPAPIClient+BarcodeSearch.m */,
 				373E2E9E181EAB5A00C575B0 /* SPAPIClient+ProductPrices.h */,
@@ -1039,7 +1034,6 @@
 				376E88021836B6000028578D /* SPApplicationPreferencesManager.m in Sources */,
 				37AEE4BD1822B28D009BC5FF /* SPMessageView.m in Sources */,
 				37B09BF21828E6620004E3DF /* ASRemoteIndex.m in Sources */,
-				373E2E92181E7BE000C575B0 /* SPAPIClient+Tracker.m in Sources */,
 				376E87FF18369CF50028578D /* SPChatCollectionMessage.m in Sources */,
 				3782A0A21833B88B00E01020 /* SPPushNotificationsPreferencesManager.m in Sources */,
 				37B09BEF1828E6620004E3DF /* ASAPIClient+Network.m in Sources */,

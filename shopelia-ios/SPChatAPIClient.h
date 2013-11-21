@@ -27,8 +27,11 @@ typedef NS_ENUM(NSUInteger, SPChatState)
 - (void)fetchNewMessages;
 - (void)sendTextMessage:(SPChatTextMessage *)message;
 - (void)clearAllMessages;
-- (void)markMessageAsSent:(SPChatMessage *)message;
+
 - (SPChatState)chatState;
 - (NSString *)chatStateMessage;
+
+- (void)markMessageAsRead:(SPChatMessage *)message;
+- (NSUInteger)unreadMessageCount;
 
 @end
