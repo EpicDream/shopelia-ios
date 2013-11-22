@@ -30,5 +30,6 @@
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSNumber *ID;
 @property (strong, nonatomic) NSString *definition;
+@property (strong, nonatomic) NSArray *imagesURL;
 
 @end

@@ -15,6 +15,7 @@
 
 - (NSString *)preferencesFilename;
 - (NSString *)preferencesDirectory;
+- (NSString *)preferencesFilepath;
 
 - (void)markItemAsExcludedFromCloudBackup:(NSString *)filepath;
 
@@ -23,5 +24,6 @@
 
 - (void)setObject:(id)object forKey:(NSString *)key;
 - (id)objectForKey:(NSString *)key;
+- (void)removeObjectForKey:(NSString *)key;
 
 @end

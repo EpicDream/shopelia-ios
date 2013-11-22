@@ -10,6 +10,7 @@
 #import "SPWaitingMessageView.h"
 #import "SPErrorMessageView.h"
 #import "SPViewController+Utilities.h"
+#import "SPChatButton.h"
 
 @interface SPContainerViewController : SPViewController <UIScrollViewDelegate>
 
@@ -19,9 +20,14 @@
 - (CGFloat)chatButtonOverHeight;
 - (void)showChatConversationViewController;
 
+- (void)setNotificationMessage:(NSString *)notificationMessage;
+- (NSString *)notificationMessage;
+- (void)notificationMessageDidUpdate;
+
 @property (strong, nonatomic) SPWaitingMessageView *waitingMessageView;
 @property (strong, nonatomic) SPErrorMessageView *errorMessageView;
-@property (strong, nonatomic) SPButton *chatButton;
+@property (strong, nonatomic) SPChatButton *chatButton;
+@property (strong, nonatomic) SPLabel *notificationLabel;
 
 @property (assign, nonatomic) BOOL showsAlgoliaSearch;
 @property (assign, nonatomic) BOOL showsChat;

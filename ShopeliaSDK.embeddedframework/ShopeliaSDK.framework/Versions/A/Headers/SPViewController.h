@@ -82,6 +82,12 @@ typedef enum
 // returns the current keyboard size (0.0 or > if not hidden)
 - (CGSize)currentKeyboardSize;
 
+// updates the current content insets
+- (void)updateContentInsets;
+
+// returns the current content insets
+- (UIEdgeInsets)currentContentInsets;
+
 @property (strong, nonatomic) SPOrder *order;
 @property (strong, nonatomic) SPParams *params;
 

@@ -73,6 +73,9 @@
 // returns the product image URL
 - (NSURL *)imageURL;
 
+// returns the product images URL
+- (NSArray *)imagesURL;
+
 // returns the product image size
 - (CGSize)imageSize;
 
@@ -91,6 +94,7 @@
 @property (assign, nonatomic) NSUInteger selectedVersionHash;
 @property (strong, nonatomic) SPMerchant *merchant;
 @property (strong, nonatomic) NSURL *URL;
+@property (strong, nonatomic) NSURL *monetizedURL;
 @property (strong, nonatomic) NSNumber *ID;
 @property (strong, nonatomic) SPCurrency *currency;
 @property (strong, nonatomic) NSString *brand;

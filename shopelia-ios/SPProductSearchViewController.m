@@ -58,7 +58,7 @@
     
     SPNavigationController *navigationController = [[SPNavigationController alloc] init];
     SPWebNavigatorViewController *webNavigation = [[SPWebNavigatorViewController alloc] init];
-    [webNavigation setInitialURL:product.URL];
+    [webNavigation setInitialURL:product.monetizedURL];
     [navigationController setViewControllers:@[webNavigation]];
     [self presentViewController:navigationController animated:YES completion:nil];
 }
