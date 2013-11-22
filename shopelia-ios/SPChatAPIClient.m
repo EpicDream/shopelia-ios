@@ -11,7 +11,7 @@
 #define SPChatPreferencesMessagesKey @"messages"
 #define SPChatPreferencesStateKey @"state"
 #define SPChatPreferencesStateMessageKey @"state_message"
-#define SPChatStateRefreshInterval (60.0f * 10.0f)
+#define SPChatStateRefreshInterval (60.0f * 5.0f)
 
 @interface SPChatAPIClient ()
 @property (strong, nonatomic) SPPreferencesManager *preferences;
