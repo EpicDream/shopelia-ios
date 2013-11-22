@@ -17,3 +17,9 @@ shopelia-ios
 * George first integration
 * Improved API stability
 * Traces integration
+
+1.2.1
+---
+* George statuses
+* Stability improvements
+* Improved SDK (brand, gallery)
