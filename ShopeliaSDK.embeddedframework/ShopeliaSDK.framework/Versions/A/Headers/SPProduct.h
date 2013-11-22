@@ -73,6 +73,9 @@
 // returns the product image URL
 - (NSURL *)imageURL;
 
+// returns the product images URL
+- (NSArray *)imagesURL;
+
 // returns the product image size
 - (CGSize)imageSize;
 
