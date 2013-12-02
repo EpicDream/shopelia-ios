@@ -17,6 +17,8 @@
 
 @implementation SPAppDelegate
 
+#pragma mark - Application
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 //    // launch TestFight
@@ -76,12 +78,17 @@
 {
     // fetch new message
     [[SPChatAPIClient sharedInstance] fetchNewMessages];
+    
+    // update chat state
+    [[SPChatAPIClient sharedInstance] updateChatState];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+#pragma mark - Chat conversation
 
 - (void)showChatConversationAfterDelay
 {

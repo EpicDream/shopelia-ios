@@ -64,6 +64,7 @@
         [self setImage:[UIImage imageNamed:@"btn_chat_available_normal.png"] forState:UIControlStateNormal];
         [self setImage:[UIImage imageNamed:@"btn_chat_available_hover.png"] forState:UIControlStateHighlighted];
     }
+    self.alpha = (chatState == SPChatStateOffline) ? 0.0f : 1.0f;
 }
 
 #pragma mark - Shake

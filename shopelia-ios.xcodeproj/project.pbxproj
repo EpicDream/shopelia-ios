@@ -66,7 +66,6 @@
 		376E87FC18369C3A0028578D /* SPChatSenderCollectionMessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 376E87FB18369C3A0028578D /* SPChatSenderCollectionMessageTableViewCell.m */; };
 		376E87FF18369CF50028578D /* SPChatCollectionMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 376E87FE18369CF50028578D /* SPChatCollectionMessage.m */; };
 		376E88021836B6000028578D /* SPApplicationPreferencesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 376E88011836B6000028578D /* SPApplicationPreferencesManager.m */; };
-		376F2607182971DD003DE2E3 /* SPImageProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 376F2606182971DD003DE2E3 /* SPImageProcessor.m */; };
 		377A3EE0182D26C900863C1A /* SPShopeliaAnalyticsTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 377A3EDF182D26C900863C1A /* SPShopeliaAnalyticsTracker.m */; };
 		3782A0A21833B88B00E01020 /* SPPushNotificationsPreferencesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3782A0A11833B88B00E01020 /* SPPushNotificationsPreferencesManager.m */; };
 		3782A0A51833C7A700E01020 /* SPDevicesAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 3782A0A41833C7A700E01020 /* SPDevicesAPIClient.m */; };
@@ -226,8 +225,6 @@
 		376E87FE18369CF50028578D /* SPChatCollectionMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPChatCollectionMessage.m; sourceTree = "<group>"; };
 		376E88001836B6000028578D /* SPApplicationPreferencesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPApplicationPreferencesManager.h; sourceTree = "<group>"; };
 		376E88011836B6000028578D /* SPApplicationPreferencesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPApplicationPreferencesManager.m; sourceTree = "<group>"; };
-		376F2605182971DD003DE2E3 /* SPImageProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPImageProcessor.h; sourceTree = "<group>"; };
-		376F2606182971DD003DE2E3 /* SPImageProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPImageProcessor.m; sourceTree = "<group>"; };
 		377A3EDE182D26C900863C1A /* SPShopeliaAnalyticsTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPShopeliaAnalyticsTracker.h; sourceTree = "<group>"; };
 		377A3EDF182D26C900863C1A /* SPShopeliaAnalyticsTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPShopeliaAnalyticsTracker.m; sourceTree = "<group>"; };
 		3782A0A01833B88B00E01020 /* SPPushNotificationsPreferencesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPPushNotificationsPreferencesManager.h; sourceTree = "<group>"; };
@@ -546,8 +543,6 @@
 				375333A2181FA732004BAB46 /* SPShopeliaManager.m */,
 				378B9A551827DA5F0031F2F4 /* CHTCollectionViewWaterfallLayout.h */,
 				378B9A561827DA5F0031F2F4 /* CHTCollectionViewWaterfallLayout.m */,
-				376F2605182971DD003DE2E3 /* SPImageProcessor.h */,
-				376F2606182971DD003DE2E3 /* SPImageProcessor.m */,
 				376E88001836B6000028578D /* SPApplicationPreferencesManager.h */,
 				376E88011836B6000028578D /* SPApplicationPreferencesManager.m */,
 			);
@@ -1069,7 +1064,6 @@
 				378B9A3E18278D530031F2F4 /* SPCollectionView.m in Sources */,
 				37AEE4C31822C89D009BC5FF /* SPInspirationalCollectionProductsViewController.m in Sources */,
 				37AEE4B818229E86009BC5FF /* SPWaitingMessageView.m in Sources */,
-				376F2607182971DD003DE2E3 /* SPImageProcessor.m in Sources */,
 				37AEE4B218227861009BC5FF /* SPInspirationalCollectionCell.m in Sources */,
 				37E61C0A183BBEB5003B33BE /* SPChatButton.m in Sources */,
 				37B09BF11828E6620004E3DF /* ASQuery.m in Sources */,
@@ -1261,7 +1255,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "82A009EB-8206-47E6-9E59-6DA96C4E2722";
+				PROVISIONING_PROFILE = "87F02A61-9549-41F1-8222-26E7D8608652";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

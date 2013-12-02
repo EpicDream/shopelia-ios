@@ -7,7 +7,6 @@
 //
 
 #import "SPInspirationalCollectionCell.h"
-#import "SPImageProcessor.h"
 
 @interface SPInspirationalCollectionCell ()
 @property (weak, nonatomic) IBOutlet SPImageView *collectionImageView;

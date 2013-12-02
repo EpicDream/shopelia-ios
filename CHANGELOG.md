@@ -23,3 +23,7 @@ shopelia-ios
 * George statuses
 * Stability improvements
 * Improved SDK (brand, gallery)
+
+1.2.2
+---
+* George Offline status
