@@ -18,7 +18,8 @@
 typedef NS_ENUM(NSUInteger, SPChatState)
 {
     SPChatStateAvailable = 0,
-    SPChatStateSleeping
+    SPChatStateSleeping,
+    SPChatStateOffline
 };
 
 @interface SPChatAPIClient : SPAPIV1Client
@@ -30,6 +31,7 @@ typedef NS_ENUM(NSUInteger, SPChatState)
 
 - (SPChatState)chatState;
 - (NSString *)chatStateMessage;
+- (void)updateChatState;
 
 - (void)markMessageAsRead:(SPChatMessage *)message;
 - (NSUInteger)unreadMessageCount;

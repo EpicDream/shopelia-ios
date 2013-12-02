@@ -78,6 +78,9 @@
 {
     // fetch new message
     [[SPChatAPIClient sharedInstance] fetchNewMessages];
+    
+    // update chat state
+    [[SPChatAPIClient sharedInstance] updateChatState];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
